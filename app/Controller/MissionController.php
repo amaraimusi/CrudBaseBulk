@@ -3,28 +3,28 @@ App::uses('CrudBaseController', 'Controller');
 App::uses('PagenationForCake', 'Vendor/Wacg');
 
 /**
- * ネコ
+ * 任務
  * 
- * ネコ画面ではネコ一覧を検索閲覧、および編集ができます。
+ * 任務画面では任務一覧を検索閲覧、および編集ができます。
  * 
  * 
  * @date 2015-9-16	新規作成 
  * @author k-uehara
  *
  */
-class NekoController extends CrudBaseController {
+class MissionController extends CrudBaseController {
 
 	/// 名称コード
-	public $name = 'Neko';
+	public $name = 'Mission';
 	
 	/// 使用しているモデル
-	public $uses = array('Neko','CrudBase');
+	public $uses = array('Mission','CrudBase');
 	
 	/// オリジナルヘルパーの登録
 	public $helpers = array('CrudBase');
 
 	/// デフォルトの並び替え対象フィールド
-	public $defSortFeild='Neko.sort_no';
+	public $defSortFeild='Mission.sort_no';
 	
 	/// デフォルトソートタイプ	  0:昇順 1:降順
 	public $defSortType=0;
@@ -60,30 +60,30 @@ class NekoController extends CrudBaseController {
 	/**
 	 * indexページのアクション
 	 *
-	 * indexページではネコ一覧を検索閲覧できます。
+	 * indexページでは任務一覧を検索閲覧できます。
 	 * 一覧のidから詳細画面に遷移できます。
 	 * ページネーション、列名ソート、列表示切替、CSVダウンロード機能を備えます。
 	 */
 	public function index() {
 		
         // CrudBase共通処理（前）
-		$crudBaseData = $this->indexBefore('Neko');//indexアクションの共通先処理(CrudBaseController)
+		$crudBaseData = $this->indexBefore('Mission');//indexアクションの共通先処理(CrudBaseController)
 		
 		//一覧データを取得
-		$data = $this->Neko->findData2($crudBaseData);
+		$data = $this->Mission->findData2($crudBaseData);
 
 		// CrudBase共通処理（後）
 		$crudBaseData = $this->indexAfter($crudBaseData);//indexアクションの共通後処理
 		
-		$nekoGroupList = array(1=>'ペルシャ',2=>'ボンベイ',3=>'三毛',4=>'シャム',5=>'雉トラ',6=>'スフィンクス');
-		$neko_group_json = json_encode($nekoGroupList,JSON_HEX_TAG | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_HEX_APOS);
+		$missionGroupList = array(1=>'ペルシャ',2=>'ボンベイ',3=>'三毛',4=>'シャム',5=>'雉トラ',6=>'スフィンクス');
+		$mission_group_json = json_encode($missionGroupList,JSON_HEX_TAG | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_HEX_APOS);
 		
 		$this->set($crudBaseData);
 		$this->set(array(
-			'title_for_layout'=>'ネコ',
+			'title_for_layout'=>'任務',
 			'data'=> $data,
-			'nekoGroupList' => $nekoGroupList,
-			'neko_group_json' => $neko_group_json,
+			'missionGroupList' => $missionGroupList,
+			'mission_group_json' => $mission_group_json,
 		));
 		
 		//当画面系の共通セット
@@ -95,18 +95,18 @@ class NekoController extends CrudBaseController {
 	/**
 	 * 詳細画面
 	 * 
-	 * ネコ情報の詳細を表示します。
+	 * 任務情報の詳細を表示します。
 	 * この画面から入力画面に遷移できます。
 	 * 
 	 */
 	public function detail() {
 		
-		$res=$this->edit_before('Neko');
+		$res=$this->edit_before('Mission');
 		$ent=$res['ent'];
 	
 
 		$this->set(array(
-				'title_for_layout'=>'ネコ・詳細',
+				'title_for_layout'=>'任務・詳細',
 				'ent'=>$ent,
 		));
 		
@@ -138,11 +138,11 @@ class NekoController extends CrudBaseController {
 	 */
 	public function edit() {
 
-		$res=$this->edit_before('Neko');
+		$res=$this->edit_before('Mission');
 		$ent=$res['ent'];
 
 		$this->set(array(
-				'title_for_layout'=>'ネコ・編集',
+				'title_for_layout'=>'任務・編集',
 				'ent'=>$ent,
 		));
 		
@@ -158,13 +158,13 @@ class NekoController extends CrudBaseController {
 	 * 入力エラーがある場合は、入力画面へ、エラーメッセージと共にリダイレクトで戻ります。
 	 */
 	public function reg(){
-		$res=$this->reg_before('Neko');
+		$res=$this->reg_before('Mission');
 		$ent=$res['ent'];
 		
 		$regMsg="<p id='reg_msg'>更新しました。</p>";
 
 		//オリジナルバリデーション■■■□□□■■■□□□■■■□□□
-		//$xFlg=$this->validNeko();
+		//$xFlg=$this->validMission();
 		$xFlg=true;
 		if($xFlg==false){
 			//エラーメッセージと一緒に編集画面へ、リダイレクトで戻る。
@@ -172,12 +172,12 @@ class NekoController extends CrudBaseController {
 		}
 		
 		//★DB保存
-		$this->Neko->begin();//トランザクション開始
-		$ent=$this->Neko->saveEntity($ent);//登録
-		$this->Neko->commit();//コミット
+		$this->Mission->begin();//トランザクション開始
+		$ent=$this->Mission->saveEntity($ent);//登録
+		$this->Mission->commit();//コミット
 
 		$this->set(array(
-				'title_for_layout'=>'ネコ・登録完了',
+				'title_for_layout'=>'任務・登録完了',
 				'ent'=>$ent,
 				'regMsg'=>$regMsg,
 		));
@@ -211,7 +211,7 @@ class NekoController extends CrudBaseController {
 		$upload_file = null;
 		if(!empty($_FILES["upload_file"])){
 			$upload_file = $_FILES["upload_file"]["name"];
-			$ent['neko_fn'] = $upload_file;
+			$ent['mission_fn'] = $upload_file;
 		}
 	
 	
@@ -219,9 +219,9 @@ class NekoController extends CrudBaseController {
 		$ent = $this->setCommonToEntity($ent);
 	
 		// エンティティをDB保存
-		$this->Neko->begin();
-		$ent = $this->Neko->saveEntity($ent);
-		$this->Neko->commit();//コミット
+		$this->Mission->begin();
+		$ent = $this->Mission->saveEntity($ent);
+		$this->Mission->commit();//コミット
 
 		if(!empty($upload_file)){
 			
@@ -272,13 +272,13 @@ class NekoController extends CrudBaseController {
 		$ent['delete_flg'] = $ent0['delete_flg'];
 	
 		// エンティティをDB保存
-		$this->Neko->begin();
+		$this->Mission->begin();
 		if($eliminate_flg == 0){
-		    $ent = $this->Neko->saveEntity($ent); // 更新
+		    $ent = $this->Mission->saveEntity($ent); // 更新
 		}else{
-		    $this->Neko->delete($ent['id']); // 削除
+		    $this->Mission->delete($ent['id']); // 削除
 		}
-		$this->Neko->commit();//コミット
+		$this->Mission->commit();//コミット
 	
 		$ent=Sanitize::clean($ent, array('encode' => true));//サニタイズ（XSS対策）
 		$json_data=json_encode($ent);//JSONに変換
@@ -307,9 +307,9 @@ class NekoController extends CrudBaseController {
 		$data = Sanitize::clean($data, array('encode' => false));
 		
 		// データ保存
-		$this->Neko->begin();
-		$this->Neko->saveAll($data);
-		$this->Neko->commit();
+		$this->Mission->begin();
+		$this->Mission->saveAll($data);
+		$this->Mission->commit();
 
 		$res = array('success');
 		
@@ -330,7 +330,7 @@ class NekoController extends CrudBaseController {
 	public function csv_fu(){
 		$this->autoRender = false;//ビュー(ctp)を使わない。
 		
-		$this->csv_fu_base($this->Neko,array('id','neko_val','neko_name','neko_date','neko_group','neko_dt','note','sort_no'));
+		$this->csv_fu_base($this->Mission,array('id','mission_val','mission_name','mission_date','mission_group','mission_dt','note','sort_no'));
 		
 	}
 	
@@ -373,7 +373,7 @@ class NekoController extends CrudBaseController {
 		//CSVファイル名を作成
 		$date = new DateTime();
 		$strDate=$date->format("Y-m-d");
-		$fn='neko'.$strDate.'.csv';
+		$fn='mission'.$strDate.'.csv';
 	
 	
 		//CSVダウンロード
@@ -394,10 +394,10 @@ class NekoController extends CrudBaseController {
 		 
 		
         //セッションから検索条件情報を取得
-        $kjs=$this->Session->read('neko_kjs');
+        $kjs=$this->Session->read('mission_kjs');
         
         // セッションからページネーション情報を取得
-        $pages = $this->Session->read('neko_pages');
+        $pages = $this->Session->read('mission_pages');
 
         $page_no = 0;
         $row_limit = 100000;
@@ -405,7 +405,7 @@ class NekoController extends CrudBaseController {
         $sort_desc = $pages['sort_desc'];
 
 		//DBからデータ取得
-	   $data=$this->Neko->findData($kjs,$page_no,$row_limit,$sort_field,$sort_desc);
+	   $data=$this->Mission->findData($kjs,$page_no,$row_limit,$sort_field,$sort_desc);
 		if(empty($data)){
 			return array();
 		}
@@ -441,23 +441,22 @@ class NekoController extends CrudBaseController {
 	 */
 	private function initCrudBase(){
 
-		
-		
-		
-		
 		/// 検索条件情報の定義
 		$this->kensakuJoken=array(
 		
-			array('name'=>'kj_id','def'=>null),
-			array('name'=>'kj_neko_val1','def'=>null),
-			array('name'=>'kj_neko_val2','def'=>null),
-			array('name'=>'kj_neko_name','def'=>null),
-		    array('name'=>'kj_neko_date_ym','def'=>null),
-			array('name'=>'kj_neko_date1','def'=>null),
-			array('name'=>'kj_neko_date2','def'=>null),
-			array('name'=>'kj_neko_group','def'=>null),
-			array('name'=>'kj_neko_dt','def'=>null),
-			array('name'=>'kj_note','def'=>null),
+		    array('name'=>'kj_id','def'=>null),
+		    array('name'=>'kj_mission_name','def'=>null),
+		    array('name'=>'kj_project_path','def'=>null),
+		    array('name'=>'kj_from_path','def'=>null),
+		    array('name'=>'kj_from_scr_code','def'=>null),
+		    array('name'=>'kj_from_db_name','def'=>null),
+		    array('name'=>'kj_from_tbl_name','def'=>null),
+		    array('name'=>'kj_from_wamei','def'=>null),
+		    array('name'=>'kj_to_path','def'=>null),
+		    array('name'=>'kj_to_scr_code','def'=>null),
+		    array('name'=>'kj_to_db_name','def'=>null),
+		    array('name'=>'kj_to_tbl_name','def'=>null),
+		    array('name'=>'kj_to_wamei','def'=>null),
 			array('name'=>'kj_sort_no','def'=>null),
 			array('name'=>'kj_delete_flg','def'=>0),
 			array('name'=>'kj_update_user','def'=>null),
@@ -471,102 +470,141 @@ class NekoController extends CrudBaseController {
 		
 		
 		
-		
 		/// 検索条件のバリデーション
 		$this->kjs_validate=array(
 		
-				'kj_id' => array(
-						'naturalNumber'=>array(
-								'rule' => array('naturalNumber', true),
-								'message' => 'IDは数値を入力してください',
-								'allowEmpty' => true
-						),
-				),
-					
-				'kj_neko_val1' => array(
-						'custom'=>array(
-								'rule' => array( 'custom', '/^[-]?[0-9]+?$/' ),
-								'message' => 'ネコ数値1は整数を入力してください。',
-								'allowEmpty' => true
-						),
-				),
-					
-				'kj_neko_val2' => array(
-						'custom'=>array(
-								'rule' => array( 'custom', '/^[-]?[0-9]+?$/' ),
-								'message' => 'ネコ数値2は整数を入力してください。',
-								'allowEmpty' => true
-						),
-				),
-					
-		
-				'kj_neko_name'=> array(
-						'maxLength'=>array(
-								'rule' => array('maxLength', 255),
-								'message' => 'ネコ名前は255文字以内で入力してください',
-								'allowEmpty' => true
-						),
-				),
-		
-				'kj_neko_date1'=> array(
-						'rule' => array( 'date', 'ymd'),
-						'message' => 'ネコ日【範囲1】は日付形式【yyyy-mm-dd】で入力してください。',
-						'allowEmpty' => true
-				),
-		
-				'kj_neko_date2'=> array(
-						'rule' => array( 'date', 'ymd'),
-						'message' => 'ネコ日【範囲2】は日付形式【yyyy-mm-dd】で入力してください。',
-						'allowEmpty' => true
-				),
-					
-				'kj_note'=> array(
-						'maxLength'=>array(
-								'rule' => array('maxLength', 255),
-								'message' => '備考は255文字以内で入力してください',
-								'allowEmpty' => true
-						),
-				),
-			
-				'kj_sort_no' => array(
-					'custom'=>array(
-						'rule' => array( 'custom', '/^[-]?[0-9]+?$/' ),
-						'message' => '順番は整数を入力してください。',
-						'allowEmpty' => true
+			'kj_id' => array(
+					'naturalNumber'=>array(
+							'rule' => array('naturalNumber', true),
+							'message' => 'IDは数値を入力してください',
+							'allowEmpty' => true
 					),
-				),
+			),
 					
-				'kj_update_user'=> array(
-						'maxLength'=>array(
-								'rule' => array('maxLength', 50),
-								'message' => '更新者は50文字以内で入力してください',
-								'allowEmpty' => true
-						),
+		    'kj_mission_name'=> array(
+		        'maxLength'=>array(
+		            'rule' => array('maxLength', 255),
+		            'message' => '任務名は255文字以内で入力してください',
+		            'allowEmpty' => true
+		        ),
+		    ),
+		    'kj_project_path'=> array(
+		        'maxLength'=>array(
+		            'rule' => array('maxLength', 1024),
+		            'message' => 'プロジェクトパスは1024文字以内で入力してください',
+		            'allowEmpty' => true
+		        ),
+		    ),
+		    'kj_from_path'=> array(
+		        'maxLength'=>array(
+		            'rule' => array('maxLength', 1024),
+		            'message' => '複製元パスは1024文字以内で入力してください',
+		            'allowEmpty' => true
+		        ),
+		    ),
+		    'kj_from_scr_code'=> array(
+		        'maxLength'=>array(
+		            'rule' => array('maxLength', 64),
+		            'message' => '複製元画面コードは64文字以内で入力してください',
+		            'allowEmpty' => true
+		        ),
+		    ),
+		    'kj_from_db_name'=> array(
+		        'maxLength'=>array(
+		            'rule' => array('maxLength', 64),
+		            'message' => '複製元DB名は64文字以内で入力してください',
+		            'allowEmpty' => true
+		        ),
+		    ),
+		    'kj_from_tbl_name'=> array(
+		        'maxLength'=>array(
+		            'rule' => array('maxLength', 64),
+		            'message' => '複製元テーブル名は64文字以内で入力してください',
+		            'allowEmpty' => true
+		        ),
+		    ),
+		    'kj_from_wamei'=> array(
+		        'maxLength'=>array(
+		            'rule' => array('maxLength', 256),
+		            'message' => '複製元和名は256文字以内で入力してください',
+		            'allowEmpty' => true
+		        ),
+		    ),
+		    'kj_to_path'=> array(
+		        'maxLength'=>array(
+		            'rule' => array('maxLength', 1024),
+		            'message' => '複製先パスは1024文字以内で入力してください',
+		            'allowEmpty' => true
+		        ),
+		    ),
+		    'kj_to_scr_code'=> array(
+		        'maxLength'=>array(
+		            'rule' => array('maxLength', 64),
+		            'message' => '複製先画面コードは64文字以内で入力してください',
+		            'allowEmpty' => true
+		        ),
+		    ),
+		    'kj_to_db_name'=> array(
+		        'maxLength'=>array(
+		            'rule' => array('maxLength', 64),
+		            'message' => '複製先DB名は64文字以内で入力してください',
+		            'allowEmpty' => true
+		        ),
+		    ),
+		    'kj_to_tbl_name'=> array(
+		        'maxLength'=>array(
+		            'rule' => array('maxLength', 64),
+		            'message' => '複製先テーブル名は64文字以内で入力してください',
+		            'allowEmpty' => true
+		        ),
+		    ),
+		    'kj_to_wamei'=> array(
+		        'maxLength'=>array(
+		            'rule' => array('maxLength', 256),
+		            'message' => '複製先和名は256文字以内で入力してください',
+		            'allowEmpty' => true
+		        ),
+		    ),
+			
+			'kj_sort_no' => array(
+				'custom'=>array(
+					'rule' => array( 'custom', '/^[-]?[0-9]+?$/' ),
+					'message' => '順番は整数を入力してください。',
+					'allowEmpty' => true
 				),
-					
-				'kj_ip_addr'=> array(
-						'maxLength'=>array(
-								'rule' => array('maxLength', 40),
-								'message' => '更新IPアドレスは40文字以内で入力してください',
-								'allowEmpty' => true
-						),
-				),
-					
-				'kj_created'=> array(
-						'maxLength'=>array(
-								'rule' => array('maxLength', 20),
-								'message' => '生成日時は20文字以内で入力してください',
-								'allowEmpty' => true
-						),
-				),
-					
-				'kj_modified'=> array(
-						'maxLength'=>array(
-								'rule' => array('maxLength', 20),
-								'message' => '更新日時は20文字以内で入力してください',
-								'allowEmpty' => true
-						),
-				),
+			),
+				
+			'kj_update_user'=> array(
+					'maxLength'=>array(
+							'rule' => array('maxLength', 50),
+							'message' => '更新者は50文字以内で入力してください',
+							'allowEmpty' => true
+					),
+			),
+				
+			'kj_ip_addr'=> array(
+					'maxLength'=>array(
+							'rule' => array('maxLength', 40),
+							'message' => '更新IPアドレスは40文字以内で入力してください',
+							'allowEmpty' => true
+					),
+			),
+				
+			'kj_created'=> array(
+					'maxLength'=>array(
+							'rule' => array('maxLength', 20),
+							'message' => '生成日時は20文字以内で入力してください',
+							'allowEmpty' => true
+					),
+			),
+				
+			'kj_modified'=> array(
+					'maxLength'=>array(
+							'rule' => array('maxLength', 20),
+							'message' => '更新日時は20文字以内で入力してください',
+							'allowEmpty' => true
+					),
+			),
 		);
 		
 		
@@ -578,67 +616,97 @@ class NekoController extends CrudBaseController {
 		
 			'id'=>array(
 					'name'=>'ID',//HTMLテーブルの列名
-					'row_order'=>'Neko.id',//SQLでの並び替えコード
+					'row_order'=>'Mission.id',//SQLでの並び替えコード
 					'clm_show'=>1,//デフォルト列表示 0:非表示 1:表示
 			),
-			'neko_val'=>array(
-					'name'=>'ネコ数値',
-					'row_order'=>'Neko.neko_val',
-					'clm_show'=>0,
-			),
-			'neko_name'=>array(
-					'name'=>'ネコ名前',
-					'row_order'=>'Neko.neko_name',
-					'clm_show'=>1,
-			),
-			'neko_group'=>array(
-				'name'=>'ネコ種別',
-				'row_order'=>'Neko.neko_group',
-				'clm_show'=>1,
-			),
-			'neko_date'=>array(
-					'name'=>'ネコ日',
-					'row_order'=>'Neko.neko_date',
-					'clm_show'=>1,
-			),
-			'neko_dt'=>array(
-					'name'=>'ネコ日時',
-					'row_order'=>'Neko.neko_dt',
-					'clm_show'=>1,
-			),
-			'note'=>array(
-					'name'=>'備考',
-					'row_order'=>'Neko.note',
-					'clm_show'=>0,
-			),
+		    'mission_name'=>array(
+		        'name'=>'任務名',
+		        'row_order'=>'Mission.mission_name',
+		        'clm_show'=>1,
+		    ),
+		    'project_path'=>array(
+		        'name'=>'プロジェクトパス',
+		        'row_order'=>'Mission.project_path',
+		        'clm_show'=>0,
+		    ),
+		    'from_path'=>array(
+		        'name'=>'複製元パス',
+		        'row_order'=>'Mission.from_path',
+		        'clm_show'=>0,
+		    ),
+		    'from_scr_code'=>array(
+		        'name'=>'複製元画面コード',
+		        'row_order'=>'Mission.from_scr_code',
+		        'clm_show'=>1,
+		    ),
+		    'from_db_name'=>array(
+		        'name'=>'複製元DB名',
+		        'row_order'=>'Mission.from_db_name',
+		        'clm_show'=>1,
+		    ),
+		    'from_tbl_name'=>array(
+		        'name'=>'複製元テーブル名',
+		        'row_order'=>'Mission.from_tbl_name',
+		        'clm_show'=>1,
+		    ),
+		    'from_wamei'=>array(
+		        'name'=>'複製元和名',
+		        'row_order'=>'Mission.from_wamei',
+		        'clm_show'=>1,
+		    ),
+		    'to_path'=>array(
+		        'name'=>'複製先パス',
+		        'row_order'=>'Mission.to_path',
+		        'clm_show'=>0,
+		    ),
+		    'to_scr_code'=>array(
+		        'name'=>'複製先画面コード',
+		        'row_order'=>'Mission.to_scr_code',
+		        'clm_show'=>1,
+		    ),
+		    'to_db_name'=>array(
+		        'name'=>'複製先DB名',
+		        'row_order'=>'Mission.to_db_name',
+		        'clm_show'=>1,
+		    ),
+		    'to_tbl_name'=>array(
+		        'name'=>'複製先テーブル名',
+		        'row_order'=>'Mission.to_tbl_name',
+		        'clm_show'=>1,
+		    ),
+		    'to_wamei'=>array(
+		        'name'=>'複製先和名',
+		        'row_order'=>'Mission.to_wamei',
+		        'clm_show'=>1,
+		    ),
 			'sort_no'=>array(
 				'name'=>'順番',
-				'row_order'=>'Neko.sort_no',
+				'row_order'=>'Mission.sort_no',
 				'clm_show'=>0,
 			),
 			'delete_flg'=>array(
 					'name'=>'削除フラグ',
-					'row_order'=>'Neko.delete_flg',
+					'row_order'=>'Mission.delete_flg',
 					'clm_show'=>1,
 			),
 			'update_user'=>array(
 					'name'=>'更新者',
-					'row_order'=>'Neko.update_user',
+					'row_order'=>'Mission.update_user',
 					'clm_show'=>0,
 			),
 			'ip_addr'=>array(
 					'name'=>'更新IPアドレス',
-					'row_order'=>'Neko.ip_addr',
+					'row_order'=>'Mission.ip_addr',
 					'clm_show'=>0,
 			),
 			'created'=>array(
 					'name'=>'生成日時',
-					'row_order'=>'Neko.created',
+					'row_order'=>'Mission.created',
 					'clm_show'=>0,
 			),
 			'modified'=>array(
 					'name'=>'更新日時',
-					'row_order'=>'Neko.modified',
+					'row_order'=>'Mission.modified',
 					'clm_show'=>1,
 			),
 		));
@@ -652,82 +720,7 @@ class NekoController extends CrudBaseController {
 		unset($fEnt);
 
 
-		
-//■■■□□□■■■□□□■■■□□□■■■		
-// 		/// 編集エンティティ定義
-// 		$this->entity_info=array(
-		
-// 				array('name'=>'id','def'=>null),
-// 				array('name'=>'neko_val','def'=>null),
-// 				array('name'=>'neko_name','def'=>null),
-// 				array('name'=>'neko_date','def'=>null),
-// 				array('name'=>'neko_group','def'=>null),
-// 				array('name'=>'neko_dt','def'=>null),
-// 				array('name'=>'note','def'=>null),
-// 				array('name'=>'delete_flg','def'=>0),
-		
-		
-// 		);
-		
-		
-		
-		
-		//■■■□□□■■■□□□■■■□□□■■■
-// 		/// 編集用バリデーション
-// 		$this->edit_validate=array(
-
-// 				'neko_val' => array(
-// 						'custom'=>array(
-// 								'rule' => array( 'custom', '/^[-]?[0-9]+?$/' ),
-// 								'message' => 'ネコ数値は整数を入力してください。',
-// 								'allowEmpty' => true
-// 						),
-// 				),
-					
-// 				'neko_name'=> array(
-// 						'maxLength'=>array(
-// 								'rule' => array('maxLength', 255),
-// 								'message' => 'ネコ名前は255文字以内で入力してください',
-// 								'allowEmpty' => true
-// 						),
-// 				),
-					
-// 				'neko_date'=> array(
-// 						'rule' => array( 'date', 'ymd'),
-// 						'message' => 'ネコ日は日付形式【yyyy-mm-dd】で入力してください。',
-// 						'allowEmpty' => true
-// 				),
-					
-// 				'neko_dt'=> array(
-// 						'rule' => array( 'datetime', 'ymd'),
-// 						'message' => 'ネコ日時は日時形式【yyyy-mm-dd h:i:s】で入力してください。',
-// 						'allowEmpty' => true
-// 				),
-					
-// 				'note'=> array(
-// 						'maxLength'=>array(
-// 								'rule' => array('maxLength', 255),
-// 								'message' => '備考は255文字以内で入力してください',
-// 								'allowEmpty' => true
-// 						),
-// 				),
-
-// 		);
-		
-		
-		
-		
-		 
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 
 }

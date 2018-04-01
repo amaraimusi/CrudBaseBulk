@@ -9,6 +9,7 @@
 
 
 
+
 // 値種別定数    この定数を主に利用しているファイルと関数 → 「app/View/Helper/AppHelper.php : ent_show_x」
 define('CB_FLD_SANITAIZE','1'); // サニタイズ
 define('CB_FLD_MONEY','2'); // 金額表記
