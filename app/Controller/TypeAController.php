@@ -3,28 +3,28 @@ App::uses('CrudBaseController', 'Controller');
 App::uses('PagenationForCake', 'Vendor/Wacg');
 
 /**
- * ネコ
+ * タイプA
  * 
- * ネコ画面ではネコ一覧を検索閲覧、および編集ができます。
+ * タイプA画面ではタイプA一覧を検索閲覧、および編集ができます。
  * 
  * 
  * @date 2015-9-16	新規作成 
  * @author k-uehara
  *
  */
-class NekoController extends CrudBaseController {
+class TypeAController extends CrudBaseController {
 
 	/// 名称コード
-	public $name = 'Neko';
+	public $name = 'TypeA';
 	
 	/// 使用しているモデル
-	public $uses = array('Neko','CrudBase');
+	public $uses = array('TypeA','CrudBase');
 	
 	/// オリジナルヘルパーの登録
 	public $helpers = array('CrudBase');
 
 	/// デフォルトの並び替え対象フィールド
-	public $defSortFeild='Neko.sort_no';
+	public $defSortFeild='TypeA.sort_no';
 	
 	/// デフォルトソートタイプ	  0:昇順 1:降順
 	public $defSortType=0;
@@ -60,30 +60,30 @@ class NekoController extends CrudBaseController {
 	/**
 	 * indexページのアクション
 	 *
-	 * indexページではネコ一覧を検索閲覧できます。
+	 * indexページではタイプA一覧を検索閲覧できます。
 	 * 一覧のidから詳細画面に遷移できます。
 	 * ページネーション、列名ソート、列表示切替、CSVダウンロード機能を備えます。
 	 */
 	public function index() {
 		
         // CrudBase共通処理（前）
-		$crudBaseData = $this->indexBefore('Neko');//indexアクションの共通先処理(CrudBaseController)
+		$crudBaseData = $this->indexBefore('TypeA');//indexアクションの共通先処理(CrudBaseController)
 		
 		//一覧データを取得
-		$data = $this->Neko->findData2($crudBaseData);
+		$data = $this->TypeA->findData2($crudBaseData);
 
 		// CrudBase共通処理（後）
 		$crudBaseData = $this->indexAfter($crudBaseData);//indexアクションの共通後処理
 		
-		$nekoGroupList = array(1=>'ペルシャ',2=>'ボンベイ',3=>'三毛',4=>'シャム',5=>'雉トラ',6=>'スフィンクス');
-		$neko_group_json = json_encode($nekoGroupList,JSON_HEX_TAG | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_HEX_APOS);
+		$type_aGroupList = array(1=>'ペルシャ',2=>'ボンベイ',3=>'三毛',4=>'シャム',5=>'雉トラ',6=>'スフィンクス');
+		$type_a_group_json = json_encode($type_aGroupList,JSON_HEX_TAG | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_HEX_APOS);
 		
 		$this->set($crudBaseData);
 		$this->set(array(
-			'title_for_layout'=>'ネコ',
+			'title_for_layout'=>'タイプA',
 			'data'=> $data,
-			'nekoGroupList' => $nekoGroupList,
-			'neko_group_json' => $neko_group_json,
+			'type_aGroupList' => $type_aGroupList,
+			'type_a_group_json' => $type_a_group_json,
 		));
 		
 		//当画面系の共通セット
@@ -95,18 +95,18 @@ class NekoController extends CrudBaseController {
 	/**
 	 * 詳細画面
 	 * 
-	 * ネコ情報の詳細を表示します。
+	 * タイプA情報の詳細を表示します。
 	 * この画面から入力画面に遷移できます。
 	 * 
 	 */
 	public function detail() {
 		
-		$res=$this->edit_before('Neko');
+		$res=$this->edit_before('TypeA');
 		$ent=$res['ent'];
 	
 
 		$this->set(array(
-				'title_for_layout'=>'ネコ・詳細',
+				'title_for_layout'=>'タイプA・詳細',
 				'ent'=>$ent,
 		));
 		
@@ -138,11 +138,11 @@ class NekoController extends CrudBaseController {
 	 */
 	public function edit() {
 
-		$res=$this->edit_before('Neko');
+		$res=$this->edit_before('TypeA');
 		$ent=$res['ent'];
 
 		$this->set(array(
-				'title_for_layout'=>'ネコ・編集',
+				'title_for_layout'=>'タイプA・編集',
 				'ent'=>$ent,
 		));
 		
@@ -158,13 +158,13 @@ class NekoController extends CrudBaseController {
 	 * 入力エラーがある場合は、入力画面へ、エラーメッセージと共にリダイレクトで戻ります。
 	 */
 	public function reg(){
-		$res=$this->reg_before('Neko');
+		$res=$this->reg_before('TypeA');
 		$ent=$res['ent'];
 		
 		$regMsg="<p id='reg_msg'>更新しました。</p>";
 
 		//オリジナルバリデーション■■■□□□■■■□□□■■■□□□
-		//$xFlg=$this->validNeko();
+		//$xFlg=$this->validTypeA();
 		$xFlg=true;
 		if($xFlg==false){
 			//エラーメッセージと一緒に編集画面へ、リダイレクトで戻る。
@@ -172,12 +172,12 @@ class NekoController extends CrudBaseController {
 		}
 		
 		//★DB保存
-		$this->Neko->begin();//トランザクション開始
-		$ent=$this->Neko->saveEntity($ent);//登録
-		$this->Neko->commit();//コミット
+		$this->TypeA->begin();//トランザクション開始
+		$ent=$this->TypeA->saveEntity($ent);//登録
+		$this->TypeA->commit();//コミット
 
 		$this->set(array(
-				'title_for_layout'=>'ネコ・登録完了',
+				'title_for_layout'=>'タイプA・登録完了',
 				'ent'=>$ent,
 				'regMsg'=>$regMsg,
 		));
@@ -211,7 +211,7 @@ class NekoController extends CrudBaseController {
 		$upload_file = null;
 		if(!empty($_FILES["upload_file"])){
 			$upload_file = $_FILES["upload_file"]["name"];
-			$ent['neko_fn'] = $upload_file;
+			$ent['type_a_fn'] = $upload_file;
 		}
 	
 	
@@ -219,9 +219,9 @@ class NekoController extends CrudBaseController {
 		$ent = $this->setCommonToEntity($ent);
 	
 		// エンティティをDB保存
-		$this->Neko->begin();
-		$ent = $this->Neko->saveEntity($ent);
-		$this->Neko->commit();//コミット
+		$this->TypeA->begin();
+		$ent = $this->TypeA->saveEntity($ent);
+		$this->TypeA->commit();//コミット
 
 		if(!empty($upload_file)){
 			
@@ -272,13 +272,13 @@ class NekoController extends CrudBaseController {
 		$ent['delete_flg'] = $ent0['delete_flg'];
 	
 		// エンティティをDB保存
-		$this->Neko->begin();
+		$this->TypeA->begin();
 		if($eliminate_flg == 0){
-		    $ent = $this->Neko->saveEntity($ent); // 更新
+		    $ent = $this->TypeA->saveEntity($ent); // 更新
 		}else{
-		    $this->Neko->delete($ent['id']); // 削除
+		    $this->TypeA->delete($ent['id']); // 削除
 		}
-		$this->Neko->commit();//コミット
+		$this->TypeA->commit();//コミット
 	
 		$ent=Sanitize::clean($ent, array('encode' => true));//サニタイズ（XSS対策）
 		$json_data=json_encode($ent);//JSONに変換
@@ -307,9 +307,9 @@ class NekoController extends CrudBaseController {
 		$data = Sanitize::clean($data, array('encode' => false));
 		
 		// データ保存
-		$this->Neko->begin();
-		$this->Neko->saveAll($data);
-		$this->Neko->commit();
+		$this->TypeA->begin();
+		$this->TypeA->saveAll($data);
+		$this->TypeA->commit();
 
 		$res = array('success');
 		
@@ -330,7 +330,7 @@ class NekoController extends CrudBaseController {
 	public function csv_fu(){
 		$this->autoRender = false;//ビュー(ctp)を使わない。
 		
-		$this->csv_fu_base($this->Neko,array('id','neko_val','neko_name','neko_date','neko_group','neko_dt','note','sort_no'));
+		$this->csv_fu_base($this->TypeA,array('id','type_a_val','type_a_name','type_a_date','type_a_group','type_a_dt','note','sort_no'));
 		
 	}
 	
@@ -373,7 +373,7 @@ class NekoController extends CrudBaseController {
 		//CSVファイル名を作成
 		$date = new DateTime();
 		$strDate=$date->format("Y-m-d");
-		$fn='neko'.$strDate.'.csv';
+		$fn='type_a'.$strDate.'.csv';
 	
 	
 		//CSVダウンロード
@@ -394,10 +394,10 @@ class NekoController extends CrudBaseController {
 		 
 		
         //セッションから検索条件情報を取得
-        $kjs=$this->Session->read('neko_kjs');
+        $kjs=$this->Session->read('type_a_kjs');
         
         // セッションからページネーション情報を取得
-        $pages = $this->Session->read('neko_pages');
+        $pages = $this->Session->read('type_a_pages');
 
         $page_no = 0;
         $row_limit = 100000;
@@ -405,7 +405,7 @@ class NekoController extends CrudBaseController {
         $sort_desc = $pages['sort_desc'];
 
 		//DBからデータ取得
-	   $data=$this->Neko->findData($kjs,$page_no,$row_limit,$sort_field,$sort_desc);
+	   $data=$this->TypeA->findData($kjs,$page_no,$row_limit,$sort_field,$sort_desc);
 		if(empty($data)){
 			return array();
 		}
@@ -449,15 +449,16 @@ class NekoController extends CrudBaseController {
 		$this->kensakuJoken=array(
 		
 			array('name'=>'kj_id','def'=>null),
-			array('name'=>'kj_neko_val1','def'=>null),
-			array('name'=>'kj_neko_val2','def'=>null),
-			array('name'=>'kj_neko_name','def'=>null),
-		    array('name'=>'kj_neko_date_ym','def'=>null),
-			array('name'=>'kj_neko_date1','def'=>null),
-			array('name'=>'kj_neko_date2','def'=>null),
-			array('name'=>'kj_neko_group','def'=>null),
-			array('name'=>'kj_neko_dt','def'=>null),
-			array('name'=>'kj_note','def'=>null),
+		    array('name'=>'kj_type_a_name','def'=>null),
+		    array('name'=>'kj_cnd_field_name','def'=>null),
+		    array('name'=>'kj_cnd_field_type','def'=>null),
+		    array('name'=>'kj_cnd_type_long1','def'=>null),
+		    array('name'=>'kj_cnd_type_long2','def'=>null),
+		    array('name'=>'kj_cnd_null_flg','def'=>null),
+		    array('name'=>'kj_cnd_p_key_flg','def'=>null),
+		    array('name'=>'kj_cnd_def_val','def'=>null),
+		    array('name'=>'kj_cnd_extra','def'=>null),
+		    array('name'=>'kj_cnd_comment','def'=>null),
 			array('name'=>'kj_sort_no','def'=>null),
 			array('name'=>'kj_delete_flg','def'=>0),
 			array('name'=>'kj_update_user','def'=>null),
@@ -483,51 +484,65 @@ class NekoController extends CrudBaseController {
 						),
 				),
 					
-				'kj_neko_val1' => array(
-						'custom'=>array(
-								'rule' => array( 'custom', '/^[-]?[0-9]+?$/' ),
-								'message' => 'ネコ数値1は整数を入力してください。',
-								'allowEmpty' => true
-						),
-				),
-					
-				'kj_neko_val2' => array(
-						'custom'=>array(
-								'rule' => array( 'custom', '/^[-]?[0-9]+?$/' ),
-								'message' => 'ネコ数値2は整数を入力してください。',
-								'allowEmpty' => true
-						),
-				),
-					
-		
-				'kj_neko_name'=> array(
-						'maxLength'=>array(
-								'rule' => array('maxLength', 255),
-								'message' => 'ネコ名前は255文字以内で入力してください',
-								'allowEmpty' => true
-						),
-				),
-		
-				'kj_neko_date1'=> array(
-						'rule' => array( 'date', 'ymd'),
-						'message' => 'ネコ日【範囲1】は日付形式【yyyy-mm-dd】で入力してください。',
-						'allowEmpty' => true
-				),
-		
-				'kj_neko_date2'=> array(
-						'rule' => array( 'date', 'ymd'),
-						'message' => 'ネコ日【範囲2】は日付形式【yyyy-mm-dd】で入力してください。',
-						'allowEmpty' => true
-				),
-					
-				'kj_note'=> array(
-						'maxLength'=>array(
-								'rule' => array('maxLength', 255),
-								'message' => '備考は255文字以内で入力してください',
-								'allowEmpty' => true
-						),
-				),
-			
+		    'kj_type_a_name'=> array(
+		        'maxLength'=>array(
+		            'rule' => array('maxLength', 256),
+		            'message' => 'タイプ名は256文字以内で入力してください',
+		            'allowEmpty' => true
+		        ),
+		    ),
+		    'kj_cnd_field_name'=> array(
+		        'maxLength'=>array(
+		            'rule' => array('maxLength', 64),
+		            'message' => 'フィールド名条件は64文字以内で入力してください',
+		            'allowEmpty' => true
+		        ),
+		    ),
+		    'kj_cnd_field_type'=> array(
+		        'maxLength'=>array(
+		            'rule' => array('maxLength', 32),
+		            'message' => 'フィールド型条件は32文字以内で入力してください',
+		            'allowEmpty' => true
+		        ),
+		    ),
+		    
+		    'kj_cnd_type_long1' => array(
+		        'custom'=>array(
+		            'rule' => array( 'custom', '/^[-]?[0-9]+?$/' ),
+		            'message' => '型長さ条件1は整数を入力してください。',
+		            'allowEmpty' => true
+		        ),
+		    ),
+		    'kj_cnd_type_long2' => array(
+		        'custom'=>array(
+		            'rule' => array( 'custom', '/^[-]?[0-9]+?$/' ),
+		            'message' => '型長さ条件2は整数を入力してください。',
+		            'allowEmpty' => true
+		        ),
+		    ),
+		    
+		    'kj_cnd_def_val'=> array(
+		        'maxLength'=>array(
+		            'rule' => array('maxLength', 256),
+		            'message' => 'デフォルト値条件は256文字以内で入力してください',
+		            'allowEmpty' => true
+		        ),
+		    ),
+		    'kj_cnd_extra'=> array(
+		        'maxLength'=>array(
+		            'rule' => array('maxLength', 256),
+		            'message' => '補足条件は256文字以内で入力してください',
+		            'allowEmpty' => true
+		        ),
+		    ),
+		    'kj_cnd_comment'=> array(
+		        'maxLength'=>array(
+		            'rule' => array('maxLength', 256),
+		            'message' => 'コメント条件は256文字以内で入力してください',
+		            'allowEmpty' => true
+		        ),
+		    ),
+		    
 				'kj_sort_no' => array(
 					'custom'=>array(
 						'rule' => array( 'custom', '/^[-]?[0-9]+?$/' ),
@@ -578,67 +593,87 @@ class NekoController extends CrudBaseController {
 		
 			'id'=>array(
 					'name'=>'ID',//HTMLテーブルの列名
-					'row_order'=>'Neko.id',//SQLでの並び替えコード
+					'row_order'=>'TypeA.id',//SQLでの並び替えコード
 					'clm_show'=>1,//デフォルト列表示 0:非表示 1:表示
 			),
-			'neko_val'=>array(
-					'name'=>'ネコ数値',
-					'row_order'=>'Neko.neko_val',
-					'clm_show'=>0,
-			),
-			'neko_name'=>array(
-					'name'=>'ネコ名前',
-					'row_order'=>'Neko.neko_name',
-					'clm_show'=>1,
-			),
-			'neko_group'=>array(
-				'name'=>'ネコ種別',
-				'row_order'=>'Neko.neko_group',
-				'clm_show'=>1,
-			),
-			'neko_date'=>array(
-					'name'=>'ネコ日',
-					'row_order'=>'Neko.neko_date',
-					'clm_show'=>1,
-			),
-			'neko_dt'=>array(
-					'name'=>'ネコ日時',
-					'row_order'=>'Neko.neko_dt',
-					'clm_show'=>1,
-			),
-			'note'=>array(
-					'name'=>'備考',
-					'row_order'=>'Neko.note',
-					'clm_show'=>0,
-			),
+		    'type_a_name'=>array(
+		        'name'=>'タイプ名',
+		        'row_order'=>'TypeA.type_a_name',
+		        'clm_show'=>1,
+		    ),
+		    'cnd_field_name'=>array(
+		        'name'=>'フィールド名条件',
+		        'row_order'=>'TypeA.cnd_field_name',
+		        'clm_show'=>1,
+		    ),
+		    'cnd_field_type'=>array(
+		        'name'=>'フィールド型条件',
+		        'row_order'=>'TypeA.cnd_field_type',
+		        'clm_show'=>1,
+		    ),
+		    'cnd_type_long1'=>array(
+		        'name'=>'型長さ条件1',
+		        'row_order'=>'TypeA.cnd_type_long1',
+		        'clm_show'=>1,
+		    ),
+		    'cnd_type_long2'=>array(
+		        'name'=>'型長さ条件2',
+		        'row_order'=>'TypeA.cnd_type_long2',
+		        'clm_show'=>1,
+		    ),
+		    'cnd_null_flg'=>array(
+		        'name'=>'NULLフラグ条件',
+		        'row_order'=>'TypeA.cnd_null_flg',
+		        'clm_show'=>1,
+		    ),
+		    'cnd_p_key_flg'=>array(
+		        'name'=>'主キーフラグ条件',
+		        'row_order'=>'TypeA.cnd_p_key_flg',
+		        'clm_show'=>1,
+		    ),
+		    'cnd_def_val'=>array(
+		        'name'=>'デフォルト値条件',
+		        'row_order'=>'TypeA.cnd_def_val',
+		        'clm_show'=>1,
+		    ),
+		    'cnd_extra'=>array(
+		        'name'=>'補足条件',
+		        'row_order'=>'TypeA.cnd_extra',
+		        'clm_show'=>1,
+		    ),
+		    'cnd_comment'=>array(
+		        'name'=>'コメント条件',
+		        'row_order'=>'TypeA.cnd_comment',
+		        'clm_show'=>1,
+		    ),
 			'sort_no'=>array(
 				'name'=>'順番',
-				'row_order'=>'Neko.sort_no',
+				'row_order'=>'TypeA.sort_no',
 				'clm_show'=>0,
 			),
 			'delete_flg'=>array(
 					'name'=>'削除フラグ',
-					'row_order'=>'Neko.delete_flg',
-					'clm_show'=>1,
+					'row_order'=>'TypeA.delete_flg',
+					'clm_show'=>0,
 			),
 			'update_user'=>array(
 					'name'=>'更新者',
-					'row_order'=>'Neko.update_user',
+					'row_order'=>'TypeA.update_user',
 					'clm_show'=>0,
 			),
 			'ip_addr'=>array(
 					'name'=>'更新IPアドレス',
-					'row_order'=>'Neko.ip_addr',
+					'row_order'=>'TypeA.ip_addr',
 					'clm_show'=>0,
 			),
 			'created'=>array(
 					'name'=>'生成日時',
-					'row_order'=>'Neko.created',
+					'row_order'=>'TypeA.created',
 					'clm_show'=>0,
 			),
 			'modified'=>array(
 					'name'=>'更新日時',
-					'row_order'=>'Neko.modified',
+					'row_order'=>'TypeA.modified',
 					'clm_show'=>0,
 			),
 		));

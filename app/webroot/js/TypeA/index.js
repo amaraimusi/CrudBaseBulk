@@ -9,7 +9,7 @@ var crudBase;//AjaxによるCRUD
 var pwms; // ProcessWithMultiSelection.js | 一覧のチェックボックス複数選択による一括処理
 
 /**
- *  ネコ画面の初期化
+ *  タイプA画面の初期化
  * 
   * ◇主に以下の処理を行う。
  * - 日付系の検索入力フォームにJQueryカレンダーを組み込む
@@ -28,23 +28,21 @@ function init(){
 	
 	//AjaxによるCRUD
 	crudBase = new CrudBase({
-			'src_code':'neko', // 画面コード（スネーク記法)
+			'src_code':'type_a', // 画面コード（スネーク記法)
 			'kjs':kjs,
 		});
 	
-	// ネコグループリストJSON
-	var neko_group_json = jQuery('#neko_group_json').val();
-	var nekoGroupList = JSON.parse(neko_group_json);
+	// タイプAグループリストJSON
+	var type_a_group_json = jQuery('#type_a_group_json').val();
+	var type_aGroupList = JSON.parse(type_a_group_json);
 
 	// 表示フィルターデータの定義とセット
 	var disFilData = {
-			'neko_val':{
-				'fil_type':'money',
-				'option':{'currency':'&yen;'}
+			'cnd_null_flg':{
+				'fil_type':'flg',
 			},
-			'neko_group':{
-				'fil_type':'select',
-				'option':{'list':nekoGroupList}
+			'cnd_p_key_flg':{
+				'fil_type':'flg',
 			},
 			'delete_flg':{
 				'fil_type':'delete_flg',
@@ -61,8 +59,8 @@ function init(){
 
 	// 一覧のチェックボックス複数選択による一括処理
 	pwms = new ProcessWithMultiSelection({
-		'tbl_slt':'#neko_tbl',
-		'ajax_url':'neko/ajax_pwms',
+		'tbl_slt':'#type_a_tbl',
+		'ajax_url':'type_a/ajax_pwms',
 			});
 
 	// 新規入力フォームのinput要素にEnterキー押下イベントを組み込む。
@@ -79,12 +77,7 @@ function init(){
 		}
 	});
 	
-	
 
-	
-	// ■■■□□□■■■□□□■■■□□□■■■
-//	// CSVインポートの初期化  <CrudBase/index.js>
-//	initCsvImportFu('neko/csv_fu');
 	
 }
 
@@ -180,7 +173,7 @@ function resetKjs(exempts){
 function moveClmSorter(){
 	
 	//列並替画面に遷移する <CrudBase:index.js>
-	moveClmSorterBase('neko');
+	moveClmSorterBase('type_a');
 	
 }
 

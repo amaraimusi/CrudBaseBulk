@@ -1,5 +1,5 @@
 <?php
-$this->CrudBase->setModelName('Mission');
+$this->CrudBase->setModelName('Hinagata');
 
 // CSSファイルのインクルード
 $cssList = $this->CrudBase->getCssList();
@@ -7,7 +7,7 @@ $this->assign('css', $this->Html->css($cssList));
 
 // JSファイルのインクルード
 $jsList = $this->CrudBase->getJsList();
-$jsList[] = 'Mission/index'; // 当画面専用JavaScript
+$jsList[] = 'Hinagata/index'; // 当画面専用JavaScript
 $this->assign('script', $this->Html->script($jsList,array('charset'=>'utf-8')));
 
 ?>
@@ -15,14 +15,14 @@ $this->assign('script', $this->Html->script($jsList,array('charset'=>'utf-8')));
 
 
 
-<h2>任務</h2>
+<h2>フィールド雛型</h2>
 
-任務の検索閲覧および編集する画面です。<br>
+フィールド雛型の検索閲覧および編集する画面です。<br>
 <br>
 
 <?php
 	$this->Html->addCrumb("トップ",'/');
-	$this->Html->addCrumb("任務");
+	$this->Html->addCrumb("フィールド雛型");
 	echo $this->Html->getCrumbs(" > ");
 ?>
 
@@ -33,7 +33,7 @@ $this->assign('script', $this->Html->script($jsList,array('charset'=>'utf-8')));
 <!-- 検索条件入力フォーム -->
 <div style="margin-top:5px">
 	<?php 
-		echo $this->Form->create('Mission', array('url' => true ));
+		echo $this->Form->create('Hinagata', array('url' => true ));
 	?>
 
 	
@@ -44,19 +44,12 @@ $this->assign('script', $this->Html->script($jsList,array('charset'=>'utf-8')));
 		<?php 
 		
 		// --- Start kj_input
-		$this->CrudBase->inputKjText($kjs,'kj_mission_name','任務名',300);
-		$this->CrudBase->inputKjText($kjs,'kj_project_path','プロジェクトパス',300);
-		$this->CrudBase->inputKjText($kjs,'kj_from_path','複製元パス',300);
-		$this->CrudBase->inputKjText($kjs,'kj_from_scr_code','複製元画面コード',300);
-		$this->CrudBase->inputKjText($kjs,'kj_from_db_name','複製元DB名',300);
-		$this->CrudBase->inputKjText($kjs,'kj_from_tbl_name','複製元テーブル名',300);
-		$this->CrudBase->inputKjText($kjs,'kj_from_wamei','複製元和名',300);
-		$this->CrudBase->inputKjText($kjs,'kj_to_path','複製先パス',300);
-		$this->CrudBase->inputKjText($kjs,'kj_to_scr_code','複製先画面コード',300);
-		$this->CrudBase->inputKjText($kjs,'kj_to_db_name','複製先DB名',300);
-		$this->CrudBase->inputKjText($kjs,'kj_to_tbl_name','複製先テーブル名',300);
-		$this->CrudBase->inputKjText($kjs,'kj_to_wamei','複製先和名',300);
+		$this->CrudBase->inputKjText($kjs,'kj_hina_code','雛型コード',300);
+		$this->CrudBase->inputKjNouislider($kjs,'hinagata_val','フィールド雛型数値'); 
+		$this->CrudBase->inputKjSelect($kjs,'kj_type_a','タイプA',$typeAList); 
+		$this->CrudBase->inputKjText($kjs,'kj_hinagata','雛型',200,'部分一致検索');
 		
+		$this->CrudBase->inputKjId($kjs); 
 		$this->CrudBase->inputKjHidden($kjs,'kj_sort_no');
 		$this->CrudBase->inputKjDeleteFlg($kjs);
 		$this->CrudBase->inputKjText($kjs,'kj_update_user','更新者',150);
@@ -78,7 +71,7 @@ $this->assign('script', $this->Html->script($jsList,array('charset'=>'utf-8')));
 		
 		echo $this->element('CrudBase/crud_base_index');
 		
-		$csv_dl_url = $this->html->webroot . 'mission/csv_download';
+		$csv_dl_url = $this->html->webroot . 'hinagata/csv_download';
 		$this->CrudBase->makeCsvBtns($csv_dl_url);
 		?>
 	
@@ -111,8 +104,6 @@ $this->assign('script', $this->Html->script($jsList,array('charset'=>'utf-8')));
 					$this->CrudBase->newBtn($newBtnOption);
 				?>
 
-				<a href="type_a" class="btn btn-primary btn-sm">タイプA</a>
-				<a href="hinagata" class="btn btn-primary btn-sm">フィールド雛型</a>
 			</div>
 
 
@@ -125,6 +116,7 @@ $this->assign('script', $this->Html->script($jsList,array('charset'=>'utf-8')));
 </div>
 
 
+<br />
 
 <div id="total_div">
 	<table><tr>
@@ -142,7 +134,7 @@ $this->assign('script', $this->Html->script($jsList,array('charset'=>'utf-8')));
 
 <div id="crud_base_auto_save_msg" style="height:20px;" class="text-success"></div>
 <!-- 一覧テーブル -->
-<table id="mission_tbl" border="1"  class="table table-striped table-bordered table-condensed">
+<table id="hinagata_tbl" border="1"  class="table table-striped table-bordered table-condensed">
 
 <thead>
 <tr>
@@ -166,18 +158,9 @@ foreach($data as $i=>$ent){
 	echo "<tr id=i{$ent['id']}>";
 	// --- Start field_table
 	$this->CrudBase->tdId($ent,'id',array('checkbox_name'=>'pwms'));
-	$this->CrudBase->tdStr($ent,'mission_name');
-	$this->CrudBase->tdStr($ent,'project_path');
-	$this->CrudBase->tdStr($ent,'from_path');
-	$this->CrudBase->tdStr($ent,'from_scr_code');
-	$this->CrudBase->tdStr($ent,'from_db_name');
-	$this->CrudBase->tdStr($ent,'from_tbl_name');
-	$this->CrudBase->tdStr($ent,'from_wamei');
-	$this->CrudBase->tdStr($ent,'to_path');
-	$this->CrudBase->tdStr($ent,'to_scr_code');
-	$this->CrudBase->tdStr($ent,'to_db_name');
-	$this->CrudBase->tdStr($ent,'to_tbl_name');
-	$this->CrudBase->tdStr($ent,'to_wamei');
+	$this->CrudBase->tdStr($ent,'hina_code');
+	$this->CrudBase->tdList($ent,'type_a',$typeAList);
+	$this->CrudBase->tdNote($ent,'hinagata');
 	$this->CrudBase->tdPlain($ent,'sort_no');
 	$this->CrudBase->tdDeleteFlg($ent,'delete_flg');
 	$this->CrudBase->tdPlain($ent,'update_user');
@@ -230,53 +213,28 @@ foreach($data as $i=>$ent){
 	<table><tbody>
 
 		<!-- Start ajax_form_new_start -->
-		<tr><td>任務名: </td><td>
-			<input type="text" name="mission_name" class="valid" value=""  maxlength="255" title="255文字以内で入力してください" />
-			<label class="text-danger" for="mission_name"></label>
+
+		<tr><td>雛型コード: </td><td>
+			<input type="text" name="hina_code" class="valid" value=""  maxlength="255" title="255文字以内で入力してください" />
+			<label class="text-danger" for="hina_code"></label>
 		</td></tr>
-		<tr><td>プロジェクトパス: </td><td>
-			<input type="text" name="project_path" class="valid" value=""  maxlength="1024" title="1024文字以内で入力してください" />
-			<label class="text-danger" for="project_path"></label>
+
+		<tr><td>タイプA: </td><td>
+			<select name="type_a" required title="必須入力です">
+				<option value="">-- タイプA --</option>
+				<option value="1">ペルシャ</option>
+				<option value="2">ボンベイ</option>
+				<option value="3">三毛</option>
+				<option value="4">シャム</option>
+				<option value="5">雉トラ</option>
+				<option value="6">スフィンクス</option>
+			</select>
+			<label class="text-danger" for="type_a"></label>
 		</td></tr>
-		<tr><td>複製元パス: </td><td>
-			<input type="text" name="from_path" class="valid" value=""  maxlength="1024" title="1024文字以内で入力してください" />
-			<label class="text-danger" for="from_path"></label>
-		</td></tr>
-		<tr><td>複製元画面コード: </td><td>
-			<input type="text" name="from_scr_code" class="valid" value=""  maxlength="64" title="64文字以内で入力してください" />
-			<label class="text-danger" for="from_scr_code"></label>
-		</td></tr>
-		<tr><td>複製元DB名: </td><td>
-			<input type="text" name="from_db_name" class="valid" value=""  maxlength="64" title="64文字以内で入力してください" />
-			<label class="text-danger" for="from_db_name"></label>
-		</td></tr>
-		<tr><td>複製元テーブル名: </td><td>
-			<input type="text" name="from_tbl_name" class="valid" value=""  maxlength="64" title="64文字以内で入力してください" />
-			<label class="text-danger" for="from_tbl_name"></label>
-		</td></tr>
-		<tr><td>複製元和名: </td><td>
-			<input type="text" name="from_wamei" class="valid" value=""  maxlength="256" title="256文字以内で入力してください" />
-			<label class="text-danger" for="from_wamei"></label>
-		</td></tr>
-		<tr><td>複製先パス: </td><td>
-			<input type="text" name="to_path" class="valid" value=""  maxlength="1024" title="1024文字以内で入力してください" />
-			<label class="text-danger" for="to_path"></label>
-		</td></tr>
-		<tr><td>複製先画面コード: </td><td>
-			<input type="text" name="to_scr_code" class="valid" value=""  maxlength="64" title="64文字以内で入力してください" />
-			<label class="text-danger" for="to_scr_code"></label>
-		</td></tr>
-		<tr><td>複製先DB名: </td><td>
-			<input type="text" name="to_db_name" class="valid" value=""  maxlength="64" title="64文字以内で入力してください" />
-			<label class="text-danger" for="to_db_name"></label>
-		</td></tr>
-		<tr><td>複製先テーブル名: </td><td>
-			<input type="text" name="to_tbl_name" class="valid" value=""  maxlength="64" title="64文字以内で入力してください" />
-			<label class="text-danger" for="to_tbl_name"></label>
-		</td></tr>
-		<tr><td>複製先和名: </td><td>
-			<input type="text" name="to_wamei" class="valid" value=""  maxlength="256" title="256文字以内で入力してください" />
-			<label class="text-danger" for="to_wamei"></label>
+		
+		<tr><td>雛型： </td><td>
+			<textarea name="hinagata"  cols="30" rows="4" maxlength="1000" title="1000文字以内で入力してください"></textarea>
+			<label class="text-danger" for="hinagata"></label>
 		</td></tr>
 		<!-- Start ajax_form_new_end -->
 	</tbody></table>
@@ -312,54 +270,27 @@ foreach($data as $i=>$ent){
 		<tr><td>ID: </td><td>
 			<span class="id"></span>
 		</td></tr>
-		
-		<tr><td>任務名: </td><td>
-			<input type="text" name="mission_name" class="valid" value=""  maxlength="255" title="255文字以内で入力してください" />
-			<label class="text-danger" for="mission_name"></label>
+
+		<tr><td>雛型コード: </td><td>
+			<input type="text" name="hina_code" class="valid" value=""  maxlength="255" title="255文字以内で入力してください" />
+			<label class="text-danger" for="hina_code"></label>
 		</td></tr>
-		<tr><td>プロジェクトパス: </td><td>
-			<input type="text" name="project_path" class="valid" value=""  maxlength="1024" title="1024文字以内で入力してください" />
-			<label class="text-danger" for="project_path"></label>
+
+		<tr><td>タイプA: </td><td>
+			<div>
+				<label><input type="radio" name="type_a" value="1" />ペルシャ</label>
+				<label><input type="radio" name="type_a" value="2" />ボンベイ</label>
+				<label><input type="radio" name="type_a" value="3" />三毛</label>
+				<label><input type="radio" name="type_a" value="4" />シャム</label>
+				<label><input type="radio" name="type_a" value="5" />雉トラ</label>
+				<label><input type="radio" name="type_a" value="6" />スフィンクス</label>
+				<label for="type_a" ></label>
+			</div>
 		</td></tr>
-		<tr><td>複製元パス: </td><td>
-			<input type="text" name="from_path" class="valid" value=""  maxlength="1024" title="1024文字以内で入力してください" />
-			<label class="text-danger" for="from_path"></label>
-		</td></tr>
-		<tr><td>複製元画面コード: </td><td>
-			<input type="text" name="from_scr_code" class="valid" value=""  maxlength="64" title="64文字以内で入力してください" />
-			<label class="text-danger" for="from_scr_code"></label>
-		</td></tr>
-		<tr><td>複製元DB名: </td><td>
-			<input type="text" name="from_db_name" class="valid" value=""  maxlength="64" title="64文字以内で入力してください" />
-			<label class="text-danger" for="from_db_name"></label>
-		</td></tr>
-		<tr><td>複製元テーブル名: </td><td>
-			<input type="text" name="from_tbl_name" class="valid" value=""  maxlength="64" title="64文字以内で入力してください" />
-			<label class="text-danger" for="from_tbl_name"></label>
-		</td></tr>
-		<tr><td>複製元和名: </td><td>
-			<input type="text" name="from_wamei" class="valid" value=""  maxlength="256" title="256文字以内で入力してください" />
-			<label class="text-danger" for="from_wamei"></label>
-		</td></tr>
-		<tr><td>複製先パス: </td><td>
-			<input type="text" name="to_path" class="valid" value=""  maxlength="1024" title="1024文字以内で入力してください" />
-			<label class="text-danger" for="to_path"></label>
-		</td></tr>
-		<tr><td>複製先画面コード: </td><td>
-			<input type="text" name="to_scr_code" class="valid" value=""  maxlength="64" title="64文字以内で入力してください" />
-			<label class="text-danger" for="to_scr_code"></label>
-		</td></tr>
-		<tr><td>複製先DB名: </td><td>
-			<input type="text" name="to_db_name" class="valid" value=""  maxlength="64" title="64文字以内で入力してください" />
-			<label class="text-danger" for="to_db_name"></label>
-		</td></tr>
-		<tr><td>複製先テーブル名: </td><td>
-			<input type="text" name="to_tbl_name" class="valid" value=""  maxlength="64" title="64文字以内で入力してください" />
-			<label class="text-danger" for="to_tbl_name"></label>
-		</td></tr>
-		<tr><td>複製先和名: </td><td>
-			<input type="text" name="to_wamei" class="valid" value=""  maxlength="256" title="256文字以内で入力してください" />
-			<label class="text-danger" for="to_wamei"></label>
+
+		<tr><td>雛型： </td><td>
+			<textarea name="hinagata"  cols="30" rows="4" maxlength="1000" title="1000文字以内で入力してください"></textarea>
+			<label class="text-danger" for="hinagata"></label>
 		</td></tr>
 
 		<tr><td>削除： </td><td>
@@ -410,8 +341,8 @@ foreach($data as $i=>$ent){
 		</td></tr>
 		
 
-		<tr><td>任務名: </td><td>
-			<span class="mission_name"></span>
+		<tr><td>雛型コード: </td><td>
+			<span class="hina_code"></span>
 		</td></tr>
 
 
@@ -460,8 +391,8 @@ foreach($data as $i=>$ent){
 		</td></tr>
 		
 
-		<tr><td>任務名: </td><td>
-			<span class="mission_name"></span>
+		<tr><td>雛型コード: </td><td>
+			<span class="hina_code"></span>
 		</td></tr>
 
 
@@ -493,7 +424,7 @@ foreach($data as $i=>$ent){
 
 <!-- 埋め込みJSON -->
 <div style="display:none">
-	<input id="mission_group_json" type="hidden" value='<?php echo $mission_group_json; ?>' />
+	<input id="type_a_json" type="hidden" value='<?php echo $type_a_json; ?>' />
 </div>
 
 
@@ -507,6 +438,26 @@ foreach($data as $i=>$ent){
 
 
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

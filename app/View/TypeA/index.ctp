@@ -1,5 +1,5 @@
 <?php
-$this->CrudBase->setModelName('Mission');
+$this->CrudBase->setModelName('TypeA');
 
 // CSSファイルのインクルード
 $cssList = $this->CrudBase->getCssList();
@@ -7,7 +7,7 @@ $this->assign('css', $this->Html->css($cssList));
 
 // JSファイルのインクルード
 $jsList = $this->CrudBase->getJsList();
-$jsList[] = 'Mission/index'; // 当画面専用JavaScript
+$jsList[] = 'TypeA/index'; // 当画面専用JavaScript
 $this->assign('script', $this->Html->script($jsList,array('charset'=>'utf-8')));
 
 ?>
@@ -15,14 +15,14 @@ $this->assign('script', $this->Html->script($jsList,array('charset'=>'utf-8')));
 
 
 
-<h2>任務</h2>
+<h2>タイプA</h2>
 
-任務の検索閲覧および編集する画面です。<br>
+タイプAの検索閲覧および編集する画面です。<br>
 <br>
 
 <?php
 	$this->Html->addCrumb("トップ",'/');
-	$this->Html->addCrumb("任務");
+	$this->Html->addCrumb("タイプA");
 	echo $this->Html->getCrumbs(" > ");
 ?>
 
@@ -33,7 +33,7 @@ $this->assign('script', $this->Html->script($jsList,array('charset'=>'utf-8')));
 <!-- 検索条件入力フォーム -->
 <div style="margin-top:5px">
 	<?php 
-		echo $this->Form->create('Mission', array('url' => true ));
+		echo $this->Form->create('TypeA', array('url' => true ));
 	?>
 
 	
@@ -43,20 +43,18 @@ $this->assign('script', $this->Html->script($jsList,array('charset'=>'utf-8')));
 		
 		<?php 
 		
-		// --- Start kj_input
-		$this->CrudBase->inputKjText($kjs,'kj_mission_name','任務名',300);
-		$this->CrudBase->inputKjText($kjs,'kj_project_path','プロジェクトパス',300);
-		$this->CrudBase->inputKjText($kjs,'kj_from_path','複製元パス',300);
-		$this->CrudBase->inputKjText($kjs,'kj_from_scr_code','複製元画面コード',300);
-		$this->CrudBase->inputKjText($kjs,'kj_from_db_name','複製元DB名',300);
-		$this->CrudBase->inputKjText($kjs,'kj_from_tbl_name','複製元テーブル名',300);
-		$this->CrudBase->inputKjText($kjs,'kj_from_wamei','複製元和名',300);
-		$this->CrudBase->inputKjText($kjs,'kj_to_path','複製先パス',300);
-		$this->CrudBase->inputKjText($kjs,'kj_to_scr_code','複製先画面コード',300);
-		$this->CrudBase->inputKjText($kjs,'kj_to_db_name','複製先DB名',300);
-		$this->CrudBase->inputKjText($kjs,'kj_to_tbl_name','複製先テーブル名',300);
-		$this->CrudBase->inputKjText($kjs,'kj_to_wamei','複製先和名',300);
+		$this->CrudBase->inputKjText($kjs,'kj_type_a_name','タイプ名',300);
+		$this->CrudBase->inputKjText($kjs,'kj_cnd_field_name','フィールド名条件',300);
+		$this->CrudBase->inputKjText($kjs,'kj_cnd_field_type','フィールド型条件',300);
+		$this->CrudBase->inputKjText($kjs,'kj_cnd_type_long1','型長さ条件1',300);
+		$this->CrudBase->inputKjText($kjs,'kj_cnd_type_long2','型長さ条件2',300);
+		$this->CrudBase->inputKjFlg($kjs,'kj_cnd_null_flg','NULLフラグ条件',300);
+		$this->CrudBase->inputKjFlg($kjs,'kj_cnd_p_key_flg','主キーフラグ条件',300);
+		$this->CrudBase->inputKjText($kjs,'kj_cnd_def_val','デフォルト値条件',300);
+		$this->CrudBase->inputKjText($kjs,'kj_cnd_extra','補足条件',300);
+		$this->CrudBase->inputKjText($kjs,'kj_cnd_comment','コメント条件',300);
 		
+		$this->CrudBase->inputKjId($kjs); 
 		$this->CrudBase->inputKjHidden($kjs,'kj_sort_no');
 		$this->CrudBase->inputKjDeleteFlg($kjs);
 		$this->CrudBase->inputKjText($kjs,'kj_update_user','更新者',150);
@@ -64,8 +62,7 @@ $this->assign('script', $this->Html->script($jsList,array('charset'=>'utf-8')));
 		$this->CrudBase->inputKjCreated($kjs);
 		$this->CrudBase->inputKjModified($kjs);
 		$this->CrudBase->inputKjLimit($kjs);
-		// --- End kj_input
-		
+
 		echo $this->element('CrudBase/crud_base_cmn_inp');
 		
 		?>
@@ -78,7 +75,7 @@ $this->assign('script', $this->Html->script($jsList,array('charset'=>'utf-8')));
 		
 		echo $this->element('CrudBase/crud_base_index');
 		
-		$csv_dl_url = $this->html->webroot . 'mission/csv_download';
+		$csv_dl_url = $this->html->webroot . 'type_a/csv_download';
 		$this->CrudBase->makeCsvBtns($csv_dl_url);
 		?>
 	
@@ -111,8 +108,6 @@ $this->assign('script', $this->Html->script($jsList,array('charset'=>'utf-8')));
 					$this->CrudBase->newBtn($newBtnOption);
 				?>
 
-				<a href="type_a" class="btn btn-primary btn-sm">タイプA</a>
-				<a href="hinagata" class="btn btn-primary btn-sm">フィールド雛型</a>
 			</div>
 
 
@@ -125,6 +120,7 @@ $this->assign('script', $this->Html->script($jsList,array('charset'=>'utf-8')));
 </div>
 
 
+<br />
 
 <div id="total_div">
 	<table><tr>
@@ -142,7 +138,7 @@ $this->assign('script', $this->Html->script($jsList,array('charset'=>'utf-8')));
 
 <div id="crud_base_auto_save_msg" style="height:20px;" class="text-success"></div>
 <!-- 一覧テーブル -->
-<table id="mission_tbl" border="1"  class="table table-striped table-bordered table-condensed">
+<table id="type_a_tbl" border="1"  class="table table-striped table-bordered table-condensed">
 
 <thead>
 <tr>
@@ -166,18 +162,18 @@ foreach($data as $i=>$ent){
 	echo "<tr id=i{$ent['id']}>";
 	// --- Start field_table
 	$this->CrudBase->tdId($ent,'id',array('checkbox_name'=>'pwms'));
-	$this->CrudBase->tdStr($ent,'mission_name');
-	$this->CrudBase->tdStr($ent,'project_path');
-	$this->CrudBase->tdStr($ent,'from_path');
-	$this->CrudBase->tdStr($ent,'from_scr_code');
-	$this->CrudBase->tdStr($ent,'from_db_name');
-	$this->CrudBase->tdStr($ent,'from_tbl_name');
-	$this->CrudBase->tdStr($ent,'from_wamei');
-	$this->CrudBase->tdStr($ent,'to_path');
-	$this->CrudBase->tdStr($ent,'to_scr_code');
-	$this->CrudBase->tdStr($ent,'to_db_name');
-	$this->CrudBase->tdStr($ent,'to_tbl_name');
-	$this->CrudBase->tdStr($ent,'to_wamei');
+	
+	$this->CrudBase->tdStr($ent,'type_a_name');
+	$this->CrudBase->tdStr($ent,'cnd_field_name');
+	$this->CrudBase->tdStr($ent,'cnd_field_type');
+	$this->CrudBase->tdPlain($ent,'cnd_type_long1');
+	$this->CrudBase->tdPlain($ent,'cnd_type_long2');
+	$this->CrudBase->tdFlg($ent,'cnd_null_flg');
+	$this->CrudBase->tdFlg($ent,'cnd_p_key_flg');
+	$this->CrudBase->tdStr($ent,'cnd_def_val');
+	$this->CrudBase->tdStr($ent,'cnd_extra');
+	$this->CrudBase->tdStr($ent,'cnd_comment');
+	
 	$this->CrudBase->tdPlain($ent,'sort_no');
 	$this->CrudBase->tdDeleteFlg($ent,'delete_flg');
 	$this->CrudBase->tdPlain($ent,'update_user');
@@ -228,57 +224,56 @@ foreach($data as $i=>$ent){
     	<input type="hidden" name="sort_no">
 	</div>
 	<table><tbody>
-
-		<!-- Start ajax_form_new_start -->
-		<tr><td>任務名: </td><td>
-			<input type="text" name="mission_name" class="valid" value=""  maxlength="255" title="255文字以内で入力してください" />
-			<label class="text-danger" for="mission_name"></label>
+	
+		<tr><td>タイプ名: </td><td>
+			<input type="text" name="type_a_name" class="valid" value=""  maxlength="256" title="256文字以内で入力してください" />
+			<label class="text-danger" for="type_a_name"></label>
 		</td></tr>
-		<tr><td>プロジェクトパス: </td><td>
-			<input type="text" name="project_path" class="valid" value=""  maxlength="1024" title="1024文字以内で入力してください" />
-			<label class="text-danger" for="project_path"></label>
+		<tr><td>フィールド名条件: </td><td>
+			<input type="text" name="cnd_field_name" class="valid" value=""  maxlength="64" title="64文字以内で入力してください" />
+			<label class="text-danger" for="cnd_field_name"></label>
 		</td></tr>
-		<tr><td>複製元パス: </td><td>
-			<input type="text" name="from_path" class="valid" value=""  maxlength="1024" title="1024文字以内で入力してください" />
-			<label class="text-danger" for="from_path"></label>
+		<tr><td>フィールド型条件: </td><td>
+			<input type="text" name="cnd_field_type" class="valid" value=""  maxlength="32" title="32文字以内で入力してください" />
+			<label class="text-danger" for="cnd_field_type"></label>
 		</td></tr>
-		<tr><td>複製元画面コード: </td><td>
-			<input type="text" name="from_scr_code" class="valid" value=""  maxlength="64" title="64文字以内で入力してください" />
-			<label class="text-danger" for="from_scr_code"></label>
+		<tr><td>型長さ条件1: </td><td>
+			<input type="text" name="cnd_type_long1" class="valid" value=""  maxlength="11" title="11文字以内で入力してください" />
+			<label class="text-danger" for="cnd_type_long1"></label>
 		</td></tr>
-		<tr><td>複製元DB名: </td><td>
-			<input type="text" name="from_db_name" class="valid" value=""  maxlength="64" title="64文字以内で入力してください" />
-			<label class="text-danger" for="from_db_name"></label>
+		<tr><td>型長さ条件2: </td><td>
+			<input type="text" name="cnd_type_long2" class="valid" value=""  maxlength="11" title="11文字以内で入力してください" />
+			<label class="text-danger" for="cnd_type_long2"></label>
 		</td></tr>
-		<tr><td>複製元テーブル名: </td><td>
-			<input type="text" name="from_tbl_name" class="valid" value=""  maxlength="64" title="64文字以内で入力してください" />
-			<label class="text-danger" for="from_tbl_name"></label>
+		<tr><td>NULLフラグ条件: </td><td>
+			<select name="cnd_null_flg" >
+				<option value="">-- NULLフラグ条件 --</option>
+				<option value="0">無効</option>
+				<option value="1">有効</option>
+			</select>
+			<label class="text-danger" for="cnd_null_flg"></label>
 		</td></tr>
-		<tr><td>複製元和名: </td><td>
-			<input type="text" name="from_wamei" class="valid" value=""  maxlength="256" title="256文字以内で入力してください" />
-			<label class="text-danger" for="from_wamei"></label>
+		<tr><td>主キーフラグ条件: </td><td>
+			<select name="cnd_p_key_flg" >
+				<option value="">-- 主キーフラグ条件 --</option>
+				<option value="0">無効</option>
+				<option value="1">有効</option>
+			</select>
+			<label class="text-danger" for="cnd_p_key_flg"></label>
 		</td></tr>
-		<tr><td>複製先パス: </td><td>
-			<input type="text" name="to_path" class="valid" value=""  maxlength="1024" title="1024文字以内で入力してください" />
-			<label class="text-danger" for="to_path"></label>
+		<tr><td>デフォルト値条件: </td><td>
+			<input type="text" name="cnd_def_val" class="valid" value=""  maxlength="256" title="256文字以内で入力してください" />
+			<label class="text-danger" for="cnd_def_val"></label>
 		</td></tr>
-		<tr><td>複製先画面コード: </td><td>
-			<input type="text" name="to_scr_code" class="valid" value=""  maxlength="64" title="64文字以内で入力してください" />
-			<label class="text-danger" for="to_scr_code"></label>
+		<tr><td>補足条件: </td><td>
+			<input type="text" name="cnd_extra" class="valid" value=""  maxlength="256" title="256文字以内で入力してください" />
+			<label class="text-danger" for="cnd_extra"></label>
 		</td></tr>
-		<tr><td>複製先DB名: </td><td>
-			<input type="text" name="to_db_name" class="valid" value=""  maxlength="64" title="64文字以内で入力してください" />
-			<label class="text-danger" for="to_db_name"></label>
+		<tr><td>コメント条件: </td><td>
+			<input type="text" name="cnd_comment" class="valid" value=""  maxlength="256" title="256文字以内で入力してください" />
+			<label class="text-danger" for="cnd_comment"></label>
 		</td></tr>
-		<tr><td>複製先テーブル名: </td><td>
-			<input type="text" name="to_tbl_name" class="valid" value=""  maxlength="64" title="64文字以内で入力してください" />
-			<label class="text-danger" for="to_tbl_name"></label>
-		</td></tr>
-		<tr><td>複製先和名: </td><td>
-			<input type="text" name="to_wamei" class="valid" value=""  maxlength="256" title="256文字以内で入力してください" />
-			<label class="text-danger" for="to_wamei"></label>
-		</td></tr>
-		<!-- Start ajax_form_new_end -->
+		
 	</tbody></table>
 	
 
@@ -313,53 +308,53 @@ foreach($data as $i=>$ent){
 			<span class="id"></span>
 		</td></tr>
 		
-		<tr><td>任務名: </td><td>
-			<input type="text" name="mission_name" class="valid" value=""  maxlength="255" title="255文字以内で入力してください" />
-			<label class="text-danger" for="mission_name"></label>
+		<tr><td>タイプ名: </td><td>
+			<input type="text" name="type_a_name" class="valid" value=""  maxlength="256" title="256文字以内で入力してください" />
+			<label class="text-danger" for="type_a_name"></label>
 		</td></tr>
-		<tr><td>プロジェクトパス: </td><td>
-			<input type="text" name="project_path" class="valid" value=""  maxlength="1024" title="1024文字以内で入力してください" />
-			<label class="text-danger" for="project_path"></label>
+		<tr><td>フィールド名条件: </td><td>
+			<input type="text" name="cnd_field_name" class="valid" value=""  maxlength="64" title="64文字以内で入力してください" />
+			<label class="text-danger" for="cnd_field_name"></label>
 		</td></tr>
-		<tr><td>複製元パス: </td><td>
-			<input type="text" name="from_path" class="valid" value=""  maxlength="1024" title="1024文字以内で入力してください" />
-			<label class="text-danger" for="from_path"></label>
+		<tr><td>フィールド型条件: </td><td>
+			<input type="text" name="cnd_field_type" class="valid" value=""  maxlength="32" title="32文字以内で入力してください" />
+			<label class="text-danger" for="cnd_field_type"></label>
 		</td></tr>
-		<tr><td>複製元画面コード: </td><td>
-			<input type="text" name="from_scr_code" class="valid" value=""  maxlength="64" title="64文字以内で入力してください" />
-			<label class="text-danger" for="from_scr_code"></label>
+		<tr><td>型長さ条件1: </td><td>
+			<input type="text" name="cnd_type_long1" class="valid" value=""  maxlength="11" title="11文字以内で入力してください" />
+			<label class="text-danger" for="cnd_type_long1"></label>
 		</td></tr>
-		<tr><td>複製元DB名: </td><td>
-			<input type="text" name="from_db_name" class="valid" value=""  maxlength="64" title="64文字以内で入力してください" />
-			<label class="text-danger" for="from_db_name"></label>
+		<tr><td>型長さ条件2: </td><td>
+			<input type="text" name="cnd_type_long2" class="valid" value=""  maxlength="11" title="11文字以内で入力してください" />
+			<label class="text-danger" for="cnd_type_long2"></label>
 		</td></tr>
-		<tr><td>複製元テーブル名: </td><td>
-			<input type="text" name="from_tbl_name" class="valid" value=""  maxlength="64" title="64文字以内で入力してください" />
-			<label class="text-danger" for="from_tbl_name"></label>
+		<tr><td>NULLフラグ条件: </td><td>
+			<select name="cnd_null_flg" >
+				<option value="">-- NULLフラグ条件 --</option>
+				<option value="0">無効</option>
+				<option value="1">有効</option>
+			</select>
+			<label class="text-danger" for="cnd_null_flg"></label>
 		</td></tr>
-		<tr><td>複製元和名: </td><td>
-			<input type="text" name="from_wamei" class="valid" value=""  maxlength="256" title="256文字以内で入力してください" />
-			<label class="text-danger" for="from_wamei"></label>
+		<tr><td>主キーフラグ条件: </td><td>
+			<select name="cnd_p_key_flg" >
+				<option value="">-- 主キーフラグ条件 --</option>
+				<option value="0">無効</option>
+				<option value="1">有効</option>
+			</select>
+			<label class="text-danger" for="cnd_p_key_flg"></label>
 		</td></tr>
-		<tr><td>複製先パス: </td><td>
-			<input type="text" name="to_path" class="valid" value=""  maxlength="1024" title="1024文字以内で入力してください" />
-			<label class="text-danger" for="to_path"></label>
+		<tr><td>デフォルト値条件: </td><td>
+			<input type="text" name="cnd_def_val" class="valid" value=""  maxlength="256" title="256文字以内で入力してください" />
+			<label class="text-danger" for="cnd_def_val"></label>
 		</td></tr>
-		<tr><td>複製先画面コード: </td><td>
-			<input type="text" name="to_scr_code" class="valid" value=""  maxlength="64" title="64文字以内で入力してください" />
-			<label class="text-danger" for="to_scr_code"></label>
+		<tr><td>補足条件: </td><td>
+			<input type="text" name="cnd_extra" class="valid" value=""  maxlength="256" title="256文字以内で入力してください" />
+			<label class="text-danger" for="cnd_extra"></label>
 		</td></tr>
-		<tr><td>複製先DB名: </td><td>
-			<input type="text" name="to_db_name" class="valid" value=""  maxlength="64" title="64文字以内で入力してください" />
-			<label class="text-danger" for="to_db_name"></label>
-		</td></tr>
-		<tr><td>複製先テーブル名: </td><td>
-			<input type="text" name="to_tbl_name" class="valid" value=""  maxlength="64" title="64文字以内で入力してください" />
-			<label class="text-danger" for="to_tbl_name"></label>
-		</td></tr>
-		<tr><td>複製先和名: </td><td>
-			<input type="text" name="to_wamei" class="valid" value=""  maxlength="256" title="256文字以内で入力してください" />
-			<label class="text-danger" for="to_wamei"></label>
+		<tr><td>コメント条件: </td><td>
+			<input type="text" name="cnd_comment" class="valid" value=""  maxlength="256" title="256文字以内で入力してください" />
+			<label class="text-danger" for="cnd_comment"></label>
 		</td></tr>
 
 		<tr><td>削除： </td><td>
@@ -410,8 +405,8 @@ foreach($data as $i=>$ent){
 		</td></tr>
 		
 
-		<tr><td>任務名: </td><td>
-			<span class="mission_name"></span>
+		<tr><td>タイプA名: </td><td>
+			<span class="type_a_name"></span>
 		</td></tr>
 
 
@@ -460,8 +455,8 @@ foreach($data as $i=>$ent){
 		</td></tr>
 		
 
-		<tr><td>任務名: </td><td>
-			<span class="mission_name"></span>
+		<tr><td>タイプA名: </td><td>
+			<span class="type_a_name"></span>
 		</td></tr>
 
 
@@ -493,7 +488,7 @@ foreach($data as $i=>$ent){
 
 <!-- 埋め込みJSON -->
 <div style="display:none">
-	<input id="mission_group_json" type="hidden" value='<?php echo $mission_group_json; ?>' />
+	<input id="type_a_group_json" type="hidden" value='<?php echo $type_a_group_json; ?>' />
 </div>
 
 
@@ -507,6 +502,26 @@ foreach($data as $i=>$ent){
 
 
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

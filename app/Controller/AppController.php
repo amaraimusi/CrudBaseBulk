@@ -27,6 +27,11 @@ class AppController extends Controller {
 
 	public function beforeFilter(){
 		
+	    // ローカルホスト環境でなければ処理を中断する
+	    if(strpos($_SERVER['SERVER_NAME'],'localhost')===false){
+	        echo 'localhost only !';
+	        die();
+	    }
 
 		
 		// ■■■□□□■■■□□□■■■□□□一時的なバグ回避
