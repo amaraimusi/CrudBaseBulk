@@ -1,14 +1,14 @@
 <?php
-$this->CrudBase->setModelName('Hinagata');
+$this->CrudBase->setModelName('BulkMake');
 
 // CSSファイルのインクルード
 $cssList = $this->CrudBase->getCssList();
-$cssList[] = 'Hinagata/index'; // 当画面専用CSS
+$cssList[] = 'BulkMake/index.css';
 $this->assign('css', $this->Html->css($cssList));
 
 // JSファイルのインクルード
 $jsList = $this->CrudBase->getJsList();
-$jsList[] = 'Hinagata/index'; // 当画面専用JavaScript
+$jsList[] = 'BulkMake/index'; // 当画面専用JavaScript
 $this->assign('script', $this->Html->script($jsList,array('charset'=>'utf-8')));
 
 ?>
@@ -16,14 +16,14 @@ $this->assign('script', $this->Html->script($jsList,array('charset'=>'utf-8')));
 
 
 
-<h2>フィールド雛型</h2>
+<h2>一括作成</h2>
 
-フィールド雛型の検索閲覧および編集する画面です。<br>
+一括作成の検索閲覧および編集する画面です。<br>
 <br>
 
 <?php
 	$this->Html->addCrumb("トップ",'/');
-	$this->Html->addCrumb("フィールド雛型");
+	$this->Html->addCrumb("一括作成");
 	echo $this->Html->getCrumbs(" > ");
 ?>
 
@@ -34,7 +34,7 @@ $this->assign('script', $this->Html->script($jsList,array('charset'=>'utf-8')));
 <!-- 検索条件入力フォーム -->
 <div style="margin-top:5px">
 	<?php 
-		echo $this->Form->create('Hinagata', array('url' => true ));
+		echo $this->Form->create('BulkMake', array('url' => true ));
 	?>
 
 	
@@ -45,18 +45,27 @@ $this->assign('script', $this->Html->script($jsList,array('charset'=>'utf-8')));
 		<?php 
 		
 		// --- Start kj_input
-		$this->CrudBase->inputKjText($kjs,'kj_hina_code','雛型コード',300);
-		$this->CrudBase->inputKjNouislider($kjs,'hinagata_val','フィールド雛型数値'); 
-		$this->CrudBase->inputKjSelect($kjs,'kj_type_a','タイプA',$typeAList); 
-		$this->CrudBase->inputKjText($kjs,'kj_hinagata','雛型',200,'部分一致検索');
+		$this->CrudBase->inputKjText($kjs,'kj_mission_id','任務id',300);
+		$this->CrudBase->inputKjText($kjs,'kj_field_name','フィールド名',300);
+		$this->CrudBase->inputKjSelect($kjs,'kj_type_a','タイプA',$typeAList);
+		$this->CrudBase->inputKjText($kjs,'kj_field_type','フィールド型',300);
+		$this->CrudBase->inputKjText($kjs,'kj_orig_type','オリジナル型',300);
+		$this->CrudBase->inputKjText($kjs,'kj_type_long','型長さ',300);
+		$this->CrudBase->inputKjText($kjs,'kj_null_flg','NULLフラグ',300);
+		$this->CrudBase->inputKjText($kjs,'kj_p_key_flg','主キーフラグ',300);
+		$this->CrudBase->inputKjText($kjs,'kj_def_val','デフォルト値',300);
+		$this->CrudBase->inputKjText($kjs,'kj_extra','補足',300);
+		$this->CrudBase->inputKjText($kjs,'kj_comment','コメント',300);
 		
 		$this->CrudBase->inputKjId($kjs); 
 		$this->CrudBase->inputKjHidden($kjs,'kj_sort_no');
 		$this->CrudBase->inputKjDeleteFlg($kjs);
+		echo "<div style='clear:both'></div>";
 		$this->CrudBase->inputKjText($kjs,'kj_update_user','更新者',150);
 		$this->CrudBase->inputKjText($kjs,'kj_ip_addr','更新IPアドレス',200);
 		$this->CrudBase->inputKjCreated($kjs);
 		$this->CrudBase->inputKjModified($kjs);
+		echo "<div style='clear:both'></div>";
 		$this->CrudBase->inputKjLimit($kjs);
 		// --- End kj_input
 		
@@ -72,7 +81,7 @@ $this->assign('script', $this->Html->script($jsList,array('charset'=>'utf-8')));
 		
 		echo $this->element('CrudBase/crud_base_index');
 		
-		$csv_dl_url = $this->html->webroot . 'hinagata/csv_download';
+		$csv_dl_url = $this->html->webroot . 'bulk_make/csv_download';
 		$this->CrudBase->makeCsvBtns($csv_dl_url);
 		?>
 	
@@ -116,8 +125,40 @@ $this->assign('script', $this->Html->script($jsList,array('charset'=>'utf-8')));
 	
 </div>
 
+<hr>
 
-<br />
+<div id="mission_info">
+<strong>任務情報</strong>&nbsp;&nbsp;
+任務ID:<?php echo $missionEnt['id']; ?>&nbsp;
+任務名:<?php echo $missionEnt['mission_name']; ?>&nbsp;
+<input type="button" value="詳細" class="btn btn-info btn-xs" onclick="jQuery('#mission_info_tbl').toggle(300)" />
+<table id="mission_info_tbl" class="tbl2" style="display:none">
+	<thead><tr><th>任務フィールド</th><th>値</th></tr></thead>
+	<tbody>
+		<tr><td>任務ID</td><td><?php echo $missionEnt['id']; ?></td></tr>
+		<tr><td>任務名</td><td><?php echo $missionEnt['mission_name']; ?></td></tr>
+		<tr><td>複製元パス</td><td><?php echo $missionEnt['from_path']; ?></td></tr>
+		<tr><td>複製元画面コード</td><td><?php echo $missionEnt['from_scr_code']; ?></td></tr>
+		<tr><td>複製元DB名</td><td><?php echo $missionEnt['from_db_name']; ?></td></tr>
+		<tr><td>複製元テーブル名</td><td><?php echo $missionEnt['from_tbl_name']; ?></td></tr>
+		<tr><td>複製元和名</td><td><?php echo $missionEnt['from_wamei']; ?></td></tr>
+		<tr><td>複製先パス</td><td><?php echo $missionEnt['to_path']; ?></td></tr>
+		<tr><td>複製先画面コード</td><td><?php echo $missionEnt['to_scr_code']; ?></td></tr>
+		<tr><td>複製先DB名</td><td><?php echo $missionEnt['to_db_name']; ?></td></tr>
+		<tr><td>複製先テーブル名</td><td><?php echo $missionEnt['to_tbl_name']; ?></td></tr>
+		<tr><td>複製先和名</td><td><?php echo $missionEnt['to_wamei']; ?></td></tr>
+	</tbody>
+</table>
+</div>
+
+
+<hr>
+<div id="read_fd">
+    <input type="button" value="フィールドデータ読取" class="btn btn-success btn-lg" onclick="readFieldData()" />
+    <div style="display:inline-block;padding-left:10px">
+    	<label for="type_a_over"><input type="checkbox" id="type_a_over" value="1" /> タイプA上書き</label>
+    </div>
+</div>
 
 <div id="total_div">
 	<table><tr>
@@ -135,7 +176,7 @@ $this->assign('script', $this->Html->script($jsList,array('charset'=>'utf-8')));
 
 <div id="crud_base_auto_save_msg" style="height:20px;" class="text-success"></div>
 <!-- 一覧テーブル -->
-<table id="hinagata_tbl" border="1"  class="table table-striped table-bordered table-condensed">
+<table id="bulk_make_tbl" border="1"  class="table table-striped table-bordered table-condensed">
 
 <thead>
 <tr>
@@ -159,9 +200,17 @@ foreach($data as $i=>$ent){
 	echo "<tr id=i{$ent['id']}>";
 	// --- Start field_table
 	$this->CrudBase->tdId($ent,'id',array('checkbox_name'=>'pwms'));
-	$this->CrudBase->tdStr($ent,'hina_code');
+	$this->CrudBase->tdPlain($ent,'mission_id');
+	$this->CrudBase->tdPlain($ent,'field_name');
 	$this->CrudBase->tdList($ent,'type_a',$typeAList);
-	$this->CrudBase->tdNote($ent,'hinagata',512);
+	$this->CrudBase->tdPlain($ent,'field_type');
+	$this->CrudBase->tdPlain($ent,'orig_type');
+	$this->CrudBase->tdPlain($ent,'type_long');
+	$this->CrudBase->tdPlain($ent,'null_flg');
+	$this->CrudBase->tdPlain($ent,'p_key_flg');
+	$this->CrudBase->tdPlain($ent,'def_val');
+	$this->CrudBase->tdPlain($ent,'extra');
+	$this->CrudBase->tdPlain($ent,'comment');
 	$this->CrudBase->tdPlain($ent,'sort_no');
 	$this->CrudBase->tdDeleteFlg($ent,'delete_flg');
 	$this->CrudBase->tdPlain($ent,'update_user');
@@ -191,6 +240,19 @@ foreach($data as $i=>$ent){
 </tbody>
 </table>
 
+
+<div id="exe_bulk_make_par">
+
+	<input type="button" class="btn btn-danger btn-lg" value="一括作成実行" onclick="exeBulkMake()" />
+    <div style="display:inline-block;padding-left:10px">
+    	<label for="type_a_over"><input type="checkbox" id="file_over" value="1" /> ファイル上書き</label>
+    </div>
+    <pre id="exe_bulk_make_err"></pre>
+</div><br>
+
+
+
+
 <?php echo $this->element('CrudBase/crud_base_pwms'); // 複数選択による一括処理 ?>
 
 <!-- 新規入力フォーム -->
@@ -212,24 +274,53 @@ foreach($data as $i=>$ent){
     	<input type="hidden" name="sort_no">
 	</div>
 	<table><tbody>
-
-		<!-- Start ajax_form_new_start -->
-
-		<tr><td>雛型コード: </td><td>
-			<input type="text" name="hina_code" class="valid" value=""  maxlength="255" title="255文字以内で入力してください" />
-			<label class="text-danger" for="hina_code"></label>
+	
+		<tr><td>任務id: </td><td>
+			<input type="text" name="mission_id" class="valid" value="" pattern="^[0-9]+$" maxlength="11" title="数値を入力してください" />
+			<label class="text-danger" for="mission_id"></label>
 		</td></tr>
-
+		<tr><td>フィールド名: </td><td>
+			<input type="text" name="field_name" class="valid" value=""  maxlength="64" title="64文字以内で入力してください" />
+			<label class="text-danger" for="field_name"></label>
+		</td></tr>
 		<tr><td>タイプA: </td><td>
 			<?php $this->CrudBase->selectX('type_a',null,$typeAList,null,'-- タイプA --');?>
 			<label class="text-danger" for="type_a"></label>
 		</td></tr>
-		
-		<tr><td>雛型： </td><td>
-			<textarea name="hinagata" class="hinagata_ta" maxlength="1000" title="1000文字以内で入力してください"></textarea>
-			<label class="text-danger" for="hinagata"></label>
+		<tr><td>フィールド型: </td><td>
+			<input type="text" name="field_type" class="valid" value=""  maxlength="11" title="11文字以内で入力してください" />
+			<label class="text-danger" for="field_type"></label>
 		</td></tr>
-		<!-- Start ajax_form_new_end -->
+		<tr><td>オリジナル型: </td><td>
+			<input type="text" name="orig_type" class="valid" value=""  maxlength="64" title="64文字以内で入力してください" />
+			<label class="text-danger" for="orig_type"></label>
+		</td></tr>
+		<tr><td>型長さ: </td><td>
+			<input type="text" name="type_long" class="valid" value="" pattern="^[0-9]+$" maxlength="11" title="数値を入力してください" />
+			<label class="text-danger" for="type_long"></label>
+		</td></tr>
+		<tr><td>NULLフラグ: </td><td>
+			<input type="text" name="null_flg" class="valid" value="" pattern="^[0-9]+$" maxlength="11" title="数値を入力してください" />
+			<label class="text-danger" for="null_flg"></label>
+		</td></tr>
+		<tr><td>主キーフラグ: </td><td>
+			<input type="text" name="p_key_flg" class="valid" value="" pattern="^[0-9]+$" maxlength="11" title="数値を入力してください" />
+			<label class="text-danger" for="p_key_flg"></label>
+		</td></tr>
+		<tr><td>デフォルト値: </td><td>
+			<input type="text" name="def_val" class="valid" value=""  maxlength="64" title="64文字以内で入力してください" />
+			<label class="text-danger" for="def_val"></label>
+		</td></tr>
+		<tr><td>補足: </td><td>
+			<input type="text" name="extra" class="valid" value=""  maxlength="256" title="256文字以内で入力してください" />
+			<label class="text-danger" for="extra"></label>
+		</td></tr>
+		<tr><td>コメント: </td><td>
+			<input type="text" name="comment" class="valid" value=""  maxlength="256" title="256文字以内で入力してください" />
+			<label class="text-danger" for="comment"></label>
+		</td></tr>
+		
+			
 	</tbody></table>
 	
 
@@ -263,31 +354,11 @@ foreach($data as $i=>$ent){
 		<tr><td>ID: </td><td>
 			<span class="id"></span>
 		</td></tr>
-
-		<tr><td>雛型コード: </td><td>
-			<input type="text" name="hina_code" class="valid" value=""  maxlength="255" title="255文字以内で入力してください" />
-			<label class="text-danger" for="hina_code"></label>
+		<tr><td>フィールド名: </td><td>
+			<span class="field_name"></span>
 		</td></tr>
-
 		<tr><td>タイプA: </td><td>
 			<?php $this->CrudBase->selectX('type_a',null,$typeAList,null,'-- タイプA --');?>
-			<label class="text-danger" for="type_a"></label>
-
-		</td></tr>
-
-		<tr><td>雛型： </td><td>
-			<textarea name="hinagata" class="hinagata_ta" maxlength="1000" title="1000文字以内で入力してください"></textarea>
-			<label class="text-danger" for="hinagata"></label>
-			<table class="tbl2"><thead><tr><th>可変コード</th><th>説明</th><th>詳細</th></tr></thead><tbody>
-				<tr><td>%field_s</td><td>フィールド名（スネーク記法）</td><td></td></tr>
-				<tr><td>%field_c</td><td>フィールド名（キャメル記法）</td><td></td></tr>
-				<tr><td>%field_type</td><td>型</td><td></td></tr>
-				<tr><td>%type_long</td><td>型長</td><td>int</td></tr>
-				<tr><td>%null_flg</td><td>NULLフラグ</td><td>0:NULLでない , 1:NULL</td></tr>
-				<tr><td>%p_key_flg</td><td>主キーフラグ</td><td></td></tr>
-				<tr><td>%def_val</td><td>デフォルト値　</td><td></td></tr>
-				<tr><td>%comment</td><td>コメント（和名）　</td><td></td></tr>
-			</tbody></table>
 		</td></tr>
 
 		<tr><td>削除： </td><td>
@@ -338,8 +409,8 @@ foreach($data as $i=>$ent){
 		</td></tr>
 		
 
-		<tr><td>雛型コード: </td><td>
-			<span class="hina_code"></span>
+		<tr><td>フィールド名: </td><td>
+			<span class="field_name"></span>
 		</td></tr>
 
 
@@ -388,8 +459,8 @@ foreach($data as $i=>$ent){
 		</td></tr>
 		
 
-		<tr><td>雛型コード: </td><td>
-			<span class="hina_code"></span>
+		<tr><td>フィールド名: </td><td>
+			<span class="field_name"></span>
 		</td></tr>
 
 
@@ -422,6 +493,8 @@ foreach($data as $i=>$ent){
 <!-- 埋め込みJSON -->
 <div style="display:none">
 	<input id="type_a_json" type="hidden" value='<?php echo $type_a_json; ?>' />
+	<input id="data_json" type="hidden" value='<?php echo $data_json; ?>' />
+	<input id="mission_json" type="hidden" value='<?php echo $mission_json; ?>' />
 </div>
 
 

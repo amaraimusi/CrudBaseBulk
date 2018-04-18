@@ -9,7 +9,7 @@ var crudBase;//AjaxによるCRUD
 var pwms; // ProcessWithMultiSelection.js | 一覧のチェックボックス複数選択による一括処理
 
 /**
- *  任務画面の初期化
+ *  一括作成画面の初期化
  * 
   * ◇主に以下の処理を行う。
  * - 日付系の検索入力フォームにJQueryカレンダーを組み込む
@@ -28,19 +28,19 @@ function init(){
 	
 	//AjaxによるCRUD
 	crudBase = new CrudBase({
-			'src_code':'mission', // 画面コード（スネーク記法)
+			'src_code':'bulk_make', // 画面コード（スネーク記法)
 			'kjs':kjs,
 		});
 	
-	// 雛ファイルリストJSON
-	var hina_file_json = jQuery('#hina_file_json').val();
-	var hinaFileList = JSON.parse(hina_file_json);
-	
+	// タイプAリストJSON
+	var type_a_json = jQuery('#type_a_json').val();
+	var typeAList = JSON.parse(type_a_json);
+
 	// 表示フィルターデータの定義とセット
 	var disFilData = {
-			'hina_file_id':{
+			'type_a':{
 				'fil_type':'select',
-				'option':{'list':hinaFileList}
+				'option':{'list':typeAList}
 			},
 			'delete_flg':{
 				'fil_type':'delete_flg',
@@ -57,8 +57,8 @@ function init(){
 
 	// 一覧のチェックボックス複数選択による一括処理
 	pwms = new ProcessWithMultiSelection({
-		'tbl_slt':'#mission_tbl',
-		'ajax_url':'mission/ajax_pwms',
+		'tbl_slt':'#bulk_make_tbl',
+		'ajax_url':'bulk_make/ajax_pwms',
 			});
 
 	// 新規入力フォームのinput要素にEnterキー押下イベントを組み込む。
@@ -75,6 +75,12 @@ function init(){
 		}
 	});
 	
+	
+
+	
+	// ■■■□□□■■■□□□■■■□□□■■■
+//	// CSVインポートの初期化  <CrudBase/index.js>
+//	initCsvImportFu('bulk_make/csv_fu');
 	
 }
 
@@ -170,7 +176,7 @@ function resetKjs(exempts){
 function moveClmSorter(){
 	
 	//列並替画面に遷移する <CrudBase:index.js>
-	moveClmSorterBase('mission');
+	moveClmSorterBase('bulk_make');
 	
 }
 
@@ -252,6 +258,108 @@ function session_clear(){
 	
 	location.href = '?ini=1&sc=1';
 }
+
+
+
+/**
+ * フィールドデータ読取AJAX
+ */
+function readFieldData(){
+
+	var data_json = jQuery('#data_json').val();
+	var mission_json = jQuery('#mission_json').val();
+	
+	// オプション情報を取得する
+	var parElm = jQuery('#read_fd');
+	var type_a_over = parElm.find('#type_a_over:checked').val(); // タイプA上書きフラグ
+	if(type_a_over == null) type_a_over = 0;
+	var option = {'type_a_over':type_a_over};
+	var option_json = JSON.stringify(option);
+
+	var data_str = 
+		'data_json=' + data_json + 
+		'&mission_json=' + mission_json +
+		'&option_json=' + option_json;
+	
+	// AJAX
+	jQuery.ajax({
+		type: "POST",
+		url: "bulk_make/read_field_data",
+		data: data_str ,
+		cache: false,
+		dataType: "text",
+	})
+	.done(function(str_json, type) {
+		var ent;
+		try{
+			ent =jQuery.parseJSON(str_json);//パース
+			location.reload(true);// パースに成功したらリロード
+		}catch(e){
+			jQuery("#err").html(str_json);
+			return;
+		}
+	})
+	.fail(function(jqXHR, statusText, errorThrown) {
+		jQuery('#err').html(jqXHR.responseText);
+		alert(statusText);
+	});
+	
+}
+
+
+/**
+ * 一括作成実行
+ * 
+ */
+function exeBulkMake(){
+	
+
+	var data_json = jQuery('#data_json').val();
+	var mission_json = jQuery('#mission_json').val();
+	
+	// オプション情報を取得する
+	var parElm = jQuery('#read_fd');
+	var file_over = parElm.find('#file_over:checked').val(); // タイプA上書きフラグ
+	if(file_over == null) file_over = 0;
+	var option = {'file_over':file_over};
+	var option_json = JSON.stringify(option);
+
+	var data_str = 
+		'data_json=' + data_json + 
+		'&mission_json=' + mission_json +
+		'&option_json=' + option_json;
+	
+	// AJAX
+	jQuery.ajax({
+		type: "POST",
+		url: "bulk_make/exe_bulk_make",
+		data: data_str ,
+		cache: false,
+		dataType: "text",
+	})
+	.done(function(str_json, type) {
+		var ent;
+		try{
+			ent =jQuery.parseJSON(str_json);//パース
+			location.reload(true);// パースに成功したらリロード
+		}catch(e){
+			jQuery("#exe_bulk_make_err").html(str_json);
+			return;
+		}
+	})
+	.fail(function(jqXHR, statusText, errorThrown) {
+		jQuery('#exe_bulk_make_err').html(jqXHR.responseText);
+		alert(statusText);
+	});
+}
+
+
+
+
+
+
+
+
 
 
 

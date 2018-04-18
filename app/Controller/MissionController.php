@@ -75,15 +75,17 @@ class MissionController extends CrudBaseController {
 		// CrudBase共通処理（後）
 		$crudBaseData = $this->indexAfter($crudBaseData);//indexアクションの共通後処理
 		
-		$missionGroupList = array(1=>'ペルシャ',2=>'ボンベイ',3=>'三毛',4=>'シャム',5=>'雉トラ',6=>'スフィンクス');
-		$mission_group_json = json_encode($missionGroupList,JSON_HEX_TAG | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_HEX_APOS);
+		// 雛ファイルリストを取得する
+		$hinaFileList = $this->Mission->getHinaFileList();
+		$hina_file_json = json_encode($hinaFileList,JSON_HEX_TAG | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_HEX_APOS);
+		
 		
 		$this->set($crudBaseData);
 		$this->set(array(
 			'title_for_layout'=>'任務',
 			'data'=> $data,
-			'missionGroupList' => $missionGroupList,
-			'mission_group_json' => $mission_group_json,
+			'hinaFileList' => $hinaFileList,
+			'hina_file_json' => $hina_file_json,
 		));
 		
 		//当画面系の共通セット
@@ -445,8 +447,8 @@ class MissionController extends CrudBaseController {
 		$this->kensakuJoken=array(
 		
 		    array('name'=>'kj_id','def'=>null),
-		    array('name'=>'kj_mission_name','def'=>null),
-		    array('name'=>'kj_project_path','def'=>null),
+			array('name'=>'kj_mission_name','def'=>null),
+			array('name'=>'kj_hina_file_id','def'=>null),
 		    array('name'=>'kj_from_path','def'=>null),
 		    array('name'=>'kj_from_scr_code','def'=>null),
 		    array('name'=>'kj_from_db_name','def'=>null),
@@ -485,13 +487,6 @@ class MissionController extends CrudBaseController {
 		        'maxLength'=>array(
 		            'rule' => array('maxLength', 255),
 		            'message' => '任務名は255文字以内で入力してください',
-		            'allowEmpty' => true
-		        ),
-		    ),
-		    'kj_project_path'=> array(
-		        'maxLength'=>array(
-		            'rule' => array('maxLength', 1024),
-		            'message' => 'プロジェクトパスは1024文字以内で入力してください',
 		            'allowEmpty' => true
 		        ),
 		    ),
@@ -624,11 +619,11 @@ class MissionController extends CrudBaseController {
 		        'row_order'=>'Mission.mission_name',
 		        'clm_show'=>1,
 		    ),
-		    'project_path'=>array(
-		        'name'=>'プロジェクトパス',
-		        'row_order'=>'Mission.project_path',
-		        'clm_show'=>0,
-		    ),
+			'hina_file_id'=>array(
+				'name'=>'雛ファイルID',
+				'row_order'=>'Mission.hina_file_id',
+				'clm_show'=>1,
+			),
 		    'from_path'=>array(
 		        'name'=>'複製元パス',
 		        'row_order'=>'Mission.from_path',

@@ -3,28 +3,28 @@ App::uses('CrudBaseController', 'Controller');
 App::uses('PagenationForCake', 'Vendor/Wacg');
 
 /**
- * フィールド雛型
+ * 雛ファイル
  * 
- * フィールド雛型画面ではフィールド雛型一覧を検索閲覧、および編集ができます。
+ * 雛ファイル画面では雛ファイル一覧を検索閲覧、および編集ができます。
  * 
  * 
  * @date 2015-9-16	新規作成 
  * @author k-uehara
  *
  */
-class HinagataController extends CrudBaseController {
+class HinaFileController extends CrudBaseController {
 
 	/// 名称コード
-	public $name = 'Hinagata';
+	public $name = 'HinaFile';
 	
 	/// 使用しているモデル
-	public $uses = array('Hinagata','CrudBase');
+	public $uses = array('HinaFile','CrudBase');
 	
 	/// オリジナルヘルパーの登録
 	public $helpers = array('CrudBase');
 
 	/// デフォルトの並び替え対象フィールド
-	public $defSortFeild='Hinagata.sort_no';
+	public $defSortFeild='HinaFile.sort_no';
 	
 	/// デフォルトソートタイプ	  0:昇順 1:降順
 	public $defSortType=0;
@@ -60,31 +60,30 @@ class HinagataController extends CrudBaseController {
 	/**
 	 * indexページのアクション
 	 *
-	 * indexページではフィールド雛型一覧を検索閲覧できます。
+	 * indexページでは雛ファイル一覧を検索閲覧できます。
 	 * 一覧のidから詳細画面に遷移できます。
 	 * ページネーション、列名ソート、列表示切替、CSVダウンロード機能を備えます。
 	 */
 	public function index() {
 		
         // CrudBase共通処理（前）
-		$crudBaseData = $this->indexBefore('Hinagata');//indexアクションの共通先処理(CrudBaseController)
+		$crudBaseData = $this->indexBefore('HinaFile');//indexアクションの共通先処理(CrudBaseController)
 		
 		//一覧データを取得
-		$data = $this->Hinagata->findData2($crudBaseData);
+		$data = $this->HinaFile->findData2($crudBaseData);
 
 		// CrudBase共通処理（後）
 		$crudBaseData = $this->indexAfter($crudBaseData);//indexアクションの共通後処理
 		
-		// タイプAリストとJSONを取得する
-		$typeAList = $this->Hinagata->getTypeAList();
-		$type_a_json = json_encode($typeAList,JSON_HEX_TAG | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_HEX_APOS);
+		$hina_fileGroupList = array(1=>'ペルシャ',2=>'ボンベイ',3=>'三毛',4=>'シャム',5=>'雉トラ',6=>'スフィンクス');
+		$hina_file_group_json = json_encode($hina_fileGroupList,JSON_HEX_TAG | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_HEX_APOS);
 		
 		$this->set($crudBaseData);
 		$this->set(array(
-			'title_for_layout'=>'フィールド雛型',
+			'title_for_layout'=>'雛ファイル',
 			'data'=> $data,
-			'typeAList' => $typeAList,
-			'type_a_json' => $type_a_json,
+			'hina_fileGroupList' => $hina_fileGroupList,
+			'hina_file_group_json' => $hina_file_group_json,
 		));
 		
 		//当画面系の共通セット
@@ -96,18 +95,18 @@ class HinagataController extends CrudBaseController {
 	/**
 	 * 詳細画面
 	 * 
-	 * フィールド雛型情報の詳細を表示します。
+	 * 雛ファイル情報の詳細を表示します。
 	 * この画面から入力画面に遷移できます。
 	 * 
 	 */
 	public function detail() {
 		
-		$res=$this->edit_before('Hinagata');
+		$res=$this->edit_before('HinaFile');
 		$ent=$res['ent'];
 	
 
 		$this->set(array(
-				'title_for_layout'=>'フィールド雛型・詳細',
+				'title_for_layout'=>'雛ファイル・詳細',
 				'ent'=>$ent,
 		));
 		
@@ -139,11 +138,11 @@ class HinagataController extends CrudBaseController {
 	 */
 	public function edit() {
 
-		$res=$this->edit_before('Hinagata');
+		$res=$this->edit_before('HinaFile');
 		$ent=$res['ent'];
 
 		$this->set(array(
-				'title_for_layout'=>'フィールド雛型・編集',
+				'title_for_layout'=>'雛ファイル・編集',
 				'ent'=>$ent,
 		));
 		
@@ -159,13 +158,13 @@ class HinagataController extends CrudBaseController {
 	 * 入力エラーがある場合は、入力画面へ、エラーメッセージと共にリダイレクトで戻ります。
 	 */
 	public function reg(){
-		$res=$this->reg_before('Hinagata');
+		$res=$this->reg_before('HinaFile');
 		$ent=$res['ent'];
 		
 		$regMsg="<p id='reg_msg'>更新しました。</p>";
 
 		//オリジナルバリデーション■■■□□□■■■□□□■■■□□□
-		//$xFlg=$this->validHinagata();
+		//$xFlg=$this->validHinaFile();
 		$xFlg=true;
 		if($xFlg==false){
 			//エラーメッセージと一緒に編集画面へ、リダイレクトで戻る。
@@ -173,12 +172,12 @@ class HinagataController extends CrudBaseController {
 		}
 		
 		//★DB保存
-		$this->Hinagata->begin();//トランザクション開始
-		$ent=$this->Hinagata->saveEntity($ent);//登録
-		$this->Hinagata->commit();//コミット
+		$this->HinaFile->begin();//トランザクション開始
+		$ent=$this->HinaFile->saveEntity($ent);//登録
+		$this->HinaFile->commit();//コミット
 
 		$this->set(array(
-				'title_for_layout'=>'フィールド雛型・登録完了',
+				'title_for_layout'=>'雛ファイル・登録完了',
 				'ent'=>$ent,
 				'regMsg'=>$regMsg,
 		));
@@ -212,7 +211,7 @@ class HinagataController extends CrudBaseController {
 		$upload_file = null;
 		if(!empty($_FILES["upload_file"])){
 			$upload_file = $_FILES["upload_file"]["name"];
-			$ent['hinagata_fn'] = $upload_file;
+			$ent['hina_file_fn'] = $upload_file;
 		}
 	
 	
@@ -220,9 +219,9 @@ class HinagataController extends CrudBaseController {
 		$ent = $this->setCommonToEntity($ent);
 	
 		// エンティティをDB保存
-		$this->Hinagata->begin();
-		$ent = $this->Hinagata->saveEntity($ent);
-		$this->Hinagata->commit();//コミット
+		$this->HinaFile->begin();
+		$ent = $this->HinaFile->saveEntity($ent);
+		$this->HinaFile->commit();//コミット
 
 		if(!empty($upload_file)){
 			
@@ -273,13 +272,13 @@ class HinagataController extends CrudBaseController {
 		$ent['delete_flg'] = $ent0['delete_flg'];
 	
 		// エンティティをDB保存
-		$this->Hinagata->begin();
+		$this->HinaFile->begin();
 		if($eliminate_flg == 0){
-		    $ent = $this->Hinagata->saveEntity($ent); // 更新
+		    $ent = $this->HinaFile->saveEntity($ent); // 更新
 		}else{
-		    $this->Hinagata->delete($ent['id']); // 削除
+		    $this->HinaFile->delete($ent['id']); // 削除
 		}
-		$this->Hinagata->commit();//コミット
+		$this->HinaFile->commit();//コミット
 	
 		$ent=Sanitize::clean($ent, array('encode' => true));//サニタイズ（XSS対策）
 		$json_data=json_encode($ent);//JSONに変換
@@ -308,9 +307,9 @@ class HinagataController extends CrudBaseController {
 		$data = Sanitize::clean($data, array('encode' => false));
 		
 		// データ保存
-		$this->Hinagata->begin();
-		$this->Hinagata->saveAll($data);
-		$this->Hinagata->commit();
+		$this->HinaFile->begin();
+		$this->HinaFile->saveAll($data);
+		$this->HinaFile->commit();
 
 		$res = array('success');
 		
@@ -331,7 +330,7 @@ class HinagataController extends CrudBaseController {
 	public function csv_fu(){
 		$this->autoRender = false;//ビュー(ctp)を使わない。
 		
-		$this->csv_fu_base($this->Hinagata,array('id','hinagata_val','hinagata_name','hinagata_date','type_a','hinagata_dt','note','sort_no'));
+		$this->csv_fu_base($this->HinaFile,array('id','hina_file_val','hina_file_name','hina_file_date','hina_file_group','hina_file_dt','note','sort_no'));
 		
 	}
 	
@@ -374,7 +373,7 @@ class HinagataController extends CrudBaseController {
 		//CSVファイル名を作成
 		$date = new DateTime();
 		$strDate=$date->format("Y-m-d");
-		$fn='hinagata'.$strDate.'.csv';
+		$fn='hina_file'.$strDate.'.csv';
 	
 	
 		//CSVダウンロード
@@ -395,10 +394,10 @@ class HinagataController extends CrudBaseController {
 		 
 		
         //セッションから検索条件情報を取得
-        $kjs=$this->Session->read('hinagata_kjs');
+        $kjs=$this->Session->read('hina_file_kjs');
         
         // セッションからページネーション情報を取得
-        $pages = $this->Session->read('hinagata_pages');
+        $pages = $this->Session->read('hina_file_pages');
 
         $page_no = 0;
         $row_limit = 100000;
@@ -406,7 +405,7 @@ class HinagataController extends CrudBaseController {
         $sort_desc = $pages['sort_desc'];
 
 		//DBからデータ取得
-	   $data=$this->Hinagata->findData($kjs,$page_no,$row_limit,$sort_field,$sort_desc);
+	   $data=$this->HinaFile->findData($kjs,$page_no,$row_limit,$sort_field,$sort_desc);
 		if(empty($data)){
 			return array();
 		}
@@ -450,9 +449,7 @@ class HinagataController extends CrudBaseController {
 		$this->kensakuJoken=array(
 		
 			array('name'=>'kj_id','def'=>null),
-			array('name'=>'kj_hina_code','def'=>null),
-			array('name'=>'kj_type_a','def'=>null),
-			array('name'=>'kj_hinagata','def'=>null),
+			array('name'=>'kj_hina_file_name','def'=>null),
 			array('name'=>'kj_sort_no','def'=>null),
 			array('name'=>'kj_delete_flg','def'=>0),
 			array('name'=>'kj_update_user','def'=>null),
@@ -477,23 +474,15 @@ class HinagataController extends CrudBaseController {
 								'allowEmpty' => true
 						),
 				),
-					
-				'kj_hina_code'=> array(
+
+				'kj_hina_file_name'=> array(
 						'maxLength'=>array(
 								'rule' => array('maxLength', 255),
-								'message' => '雛型コードは255文字以内で入力してください',
+								'message' => '雛ファイル名前は255文字以内で入力してください',
 								'allowEmpty' => true
 						),
 				),
-					
-				'kj_hinagata'=> array(
-						'maxLength'=>array(
-								'rule' => array('maxLength', 255),
-								'message' => '雛型は255文字以内で入力してください',
-								'allowEmpty' => true
-						),
-				),
-			
+		
 				'kj_sort_no' => array(
 					'custom'=>array(
 						'rule' => array( 'custom', '/^[-]?[0-9]+?$/' ),
@@ -544,52 +533,42 @@ class HinagataController extends CrudBaseController {
 		
 			'id'=>array(
 					'name'=>'ID',//HTMLテーブルの列名
-					'row_order'=>'Hinagata.id',//SQLでの並び替えコード
+					'row_order'=>'HinaFile.id',//SQLでの並び替えコード
 					'clm_show'=>1,//デフォルト列表示 0:非表示 1:表示
 			),
-			'hina_code'=>array(
-					'name'=>'雛型コード',
-					'row_order'=>'Hinagata.hina_code',
-					'clm_show'=>1,
-			),
-			'type_a'=>array(
-				'name'=>'タイプA',
-				'row_order'=>'Hinagata.type_a',
-				'clm_show'=>1,
-			),
-			'hinagata'=>array(
-					'name'=>'雛型',
-					'row_order'=>'Hinagata.hinagata',
+			'hina_file_name'=>array(
+					'name'=>'雛ファイル名前',
+					'row_order'=>'HinaFile.hina_file_name',
 					'clm_show'=>1,
 			),
 			'sort_no'=>array(
 				'name'=>'順番',
-				'row_order'=>'Hinagata.sort_no',
+				'row_order'=>'HinaFile.sort_no',
 				'clm_show'=>0,
 			),
 			'delete_flg'=>array(
 					'name'=>'削除フラグ',
-					'row_order'=>'Hinagata.delete_flg',
+					'row_order'=>'HinaFile.delete_flg',
 					'clm_show'=>1,
 			),
 			'update_user'=>array(
 					'name'=>'更新者',
-					'row_order'=>'Hinagata.update_user',
+					'row_order'=>'HinaFile.update_user',
 					'clm_show'=>0,
 			),
 			'ip_addr'=>array(
 					'name'=>'更新IPアドレス',
-					'row_order'=>'Hinagata.ip_addr',
+					'row_order'=>'HinaFile.ip_addr',
 					'clm_show'=>0,
 			),
 			'created'=>array(
 					'name'=>'生成日時',
-					'row_order'=>'Hinagata.created',
+					'row_order'=>'HinaFile.created',
 					'clm_show'=>0,
 			),
 			'modified'=>array(
 					'name'=>'更新日時',
-					'row_order'=>'Hinagata.modified',
+					'row_order'=>'HinaFile.modified',
 					'clm_show'=>0,
 			),
 		));
@@ -602,9 +581,6 @@ class HinagataController extends CrudBaseController {
 		}
 		unset($fEnt);
 
-		
-		 
 	}
-
 
 }

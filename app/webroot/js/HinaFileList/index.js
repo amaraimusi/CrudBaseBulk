@@ -9,7 +9,7 @@ var crudBase;//AjaxによるCRUD
 var pwms; // ProcessWithMultiSelection.js | 一覧のチェックボックス複数選択による一括処理
 
 /**
- *  任務画面の初期化
+ *  雛ファイルリスト画面の初期化
  * 
   * ◇主に以下の処理を行う。
  * - 日付系の検索入力フォームにJQueryカレンダーを組み込む
@@ -28,20 +28,17 @@ function init(){
 	
 	//AjaxによるCRUD
 	crudBase = new CrudBase({
-			'src_code':'mission', // 画面コード（スネーク記法)
+			'src_code':'hina_file_list', // 画面コード（スネーク記法)
 			'kjs':kjs,
 		});
 	
-	// 雛ファイルリストJSON
-	var hina_file_json = jQuery('#hina_file_json').val();
-	var hinaFileList = JSON.parse(hina_file_json);
-	
+	// 雛ファイルリストグループリストJSON
+	var hina_file_list_group_json = jQuery('#hina_file_list_group_json').val();
+	var hina_file_listGroupList = JSON.parse(hina_file_list_group_json);
+
 	// 表示フィルターデータの定義とセット
 	var disFilData = {
-			'hina_file_id':{
-				'fil_type':'select',
-				'option':{'list':hinaFileList}
-			},
+
 			'delete_flg':{
 				'fil_type':'delete_flg',
 			},
@@ -57,8 +54,8 @@ function init(){
 
 	// 一覧のチェックボックス複数選択による一括処理
 	pwms = new ProcessWithMultiSelection({
-		'tbl_slt':'#mission_tbl',
-		'ajax_url':'mission/ajax_pwms',
+		'tbl_slt':'#hina_file_list_tbl',
+		'ajax_url':'hina_file_list/ajax_pwms',
 			});
 
 	// 新規入力フォームのinput要素にEnterキー押下イベントを組み込む。
@@ -75,6 +72,12 @@ function init(){
 		}
 	});
 	
+	
+
+	
+	// ■■■□□□■■■□□□■■■□□□■■■
+//	// CSVインポートの初期化  <CrudBase/index.js>
+//	initCsvImportFu('hina_file_list/csv_fu');
 	
 }
 
@@ -170,7 +173,7 @@ function resetKjs(exempts){
 function moveClmSorter(){
 	
 	//列並替画面に遷移する <CrudBase:index.js>
-	moveClmSorterBase('mission');
+	moveClmSorterBase('hina_file_list');
 	
 }
 
@@ -252,7 +255,4 @@ function session_clear(){
 	
 	location.href = '?ini=1&sc=1';
 }
-
-
-
 

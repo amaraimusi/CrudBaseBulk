@@ -1,14 +1,13 @@
 <?php
-$this->CrudBase->setModelName('Hinagata');
+$this->CrudBase->setModelName('HinaFileList');
 
 // CSSファイルのインクルード
 $cssList = $this->CrudBase->getCssList();
-$cssList[] = 'Hinagata/index'; // 当画面専用CSS
 $this->assign('css', $this->Html->css($cssList));
 
 // JSファイルのインクルード
 $jsList = $this->CrudBase->getJsList();
-$jsList[] = 'Hinagata/index'; // 当画面専用JavaScript
+$jsList[] = 'HinaFileList/index'; // 当画面専用JavaScript
 $this->assign('script', $this->Html->script($jsList,array('charset'=>'utf-8')));
 
 ?>
@@ -16,14 +15,15 @@ $this->assign('script', $this->Html->script($jsList,array('charset'=>'utf-8')));
 
 
 
-<h2>フィールド雛型</h2>
+<h2>雛ファイルリスト</h2>
 
-フィールド雛型の検索閲覧および編集する画面です。<br>
+雛ファイルリストの検索閲覧および編集する画面です。<br>
 <br>
 
 <?php
 	$this->Html->addCrumb("トップ",'/');
-	$this->Html->addCrumb("フィールド雛型");
+	$this->Html->addCrumb("雛ファイル",'/hina_file');
+	$this->Html->addCrumb("雛ファイルリスト");
 	echo $this->Html->getCrumbs(" > ");
 ?>
 
@@ -34,7 +34,7 @@ $this->assign('script', $this->Html->script($jsList,array('charset'=>'utf-8')));
 <!-- 検索条件入力フォーム -->
 <div style="margin-top:5px">
 	<?php 
-		echo $this->Form->create('Hinagata', array('url' => true ));
+		echo $this->Form->create('HinaFileList', array('url' => true ));
 	?>
 
 	
@@ -45,10 +45,8 @@ $this->assign('script', $this->Html->script($jsList,array('charset'=>'utf-8')));
 		<?php 
 		
 		// --- Start kj_input
-		$this->CrudBase->inputKjText($kjs,'kj_hina_code','雛型コード',300);
-		$this->CrudBase->inputKjNouislider($kjs,'hinagata_val','フィールド雛型数値'); 
-		$this->CrudBase->inputKjSelect($kjs,'kj_type_a','タイプA',$typeAList); 
-		$this->CrudBase->inputKjText($kjs,'kj_hinagata','雛型',200,'部分一致検索');
+		$this->CrudBase->inputKjText($kjs,'kj_hina_file_id','雛ファイルID',300);
+		$this->CrudBase->inputKjText($kjs,'kj_hina_fp','雛型ファイルパス',300);
 		
 		$this->CrudBase->inputKjId($kjs); 
 		$this->CrudBase->inputKjHidden($kjs,'kj_sort_no');
@@ -72,7 +70,7 @@ $this->assign('script', $this->Html->script($jsList,array('charset'=>'utf-8')));
 		
 		echo $this->element('CrudBase/crud_base_index');
 		
-		$csv_dl_url = $this->html->webroot . 'hinagata/csv_download';
+		$csv_dl_url = $this->html->webroot . 'hina_file_list/csv_download';
 		$this->CrudBase->makeCsvBtns($csv_dl_url);
 		?>
 	
@@ -135,7 +133,7 @@ $this->assign('script', $this->Html->script($jsList,array('charset'=>'utf-8')));
 
 <div id="crud_base_auto_save_msg" style="height:20px;" class="text-success"></div>
 <!-- 一覧テーブル -->
-<table id="hinagata_tbl" border="1"  class="table table-striped table-bordered table-condensed">
+<table id="hina_file_list_tbl" border="1"  class="table table-striped table-bordered table-condensed">
 
 <thead>
 <tr>
@@ -159,9 +157,10 @@ foreach($data as $i=>$ent){
 	echo "<tr id=i{$ent['id']}>";
 	// --- Start field_table
 	$this->CrudBase->tdId($ent,'id',array('checkbox_name'=>'pwms'));
-	$this->CrudBase->tdStr($ent,'hina_code');
-	$this->CrudBase->tdList($ent,'type_a',$typeAList);
-	$this->CrudBase->tdNote($ent,'hinagata',512);
+	
+	$this->CrudBase->tdPlain($ent,'hina_file_id');
+	$this->CrudBase->tdStr($ent,'hina_fp');
+	
 	$this->CrudBase->tdPlain($ent,'sort_no');
 	$this->CrudBase->tdDeleteFlg($ent,'delete_flg');
 	$this->CrudBase->tdPlain($ent,'update_user');
@@ -214,21 +213,17 @@ foreach($data as $i=>$ent){
 	<table><tbody>
 
 		<!-- Start ajax_form_new_start -->
-
-		<tr><td>雛型コード: </td><td>
-			<input type="text" name="hina_code" class="valid" value=""  maxlength="255" title="255文字以内で入力してください" />
-			<label class="text-danger" for="hina_code"></label>
+		<tr><td>雛ファイルID: </td><td>
+			<span><?php echo $hina_file_id; ?></span>
+			<input type="hidden" name="hina_file_id" class="valid" value="<?php echo $hina_file_id; ?>"  maxlength="11" title="11文字以内で入力してください" />
 		</td></tr>
-
-		<tr><td>タイプA: </td><td>
-			<?php $this->CrudBase->selectX('type_a',null,$typeAList,null,'-- タイプA --');?>
-			<label class="text-danger" for="type_a"></label>
+		<tr><td>雛型ファイルパス: </td><td>
+			<input type="text" name="hina_fp" class="valid" value=""  maxlength="1024" 
+				 title="ファイルパスのキャメル記法コード部分は「Xxx」、スネーク記法コード部分は「xxx」と入力すること。1024文字以内で入力してください"
+				 style="width:480px" placeholder="XxxController.php" />
+			<label class="text-danger" for="hina_fp"></label>
 		</td></tr>
 		
-		<tr><td>雛型： </td><td>
-			<textarea name="hinagata" class="hinagata_ta" maxlength="1000" title="1000文字以内で入力してください"></textarea>
-			<label class="text-danger" for="hinagata"></label>
-		</td></tr>
 		<!-- Start ajax_form_new_end -->
 	</tbody></table>
 	
@@ -263,31 +258,16 @@ foreach($data as $i=>$ent){
 		<tr><td>ID: </td><td>
 			<span class="id"></span>
 		</td></tr>
-
-		<tr><td>雛型コード: </td><td>
-			<input type="text" name="hina_code" class="valid" value=""  maxlength="255" title="255文字以内で入力してください" />
-			<label class="text-danger" for="hina_code"></label>
+		
+		<tr><td>雛ファイルID: </td><td>
+			<input type="text" name="hina_file_id" class="valid" value=""  maxlength="11" title="11文字以内で入力してください" />
+			<label class="text-danger" for="hina_file_id"></label>
 		</td></tr>
-
-		<tr><td>タイプA: </td><td>
-			<?php $this->CrudBase->selectX('type_a',null,$typeAList,null,'-- タイプA --');?>
-			<label class="text-danger" for="type_a"></label>
-
-		</td></tr>
-
-		<tr><td>雛型： </td><td>
-			<textarea name="hinagata" class="hinagata_ta" maxlength="1000" title="1000文字以内で入力してください"></textarea>
-			<label class="text-danger" for="hinagata"></label>
-			<table class="tbl2"><thead><tr><th>可変コード</th><th>説明</th><th>詳細</th></tr></thead><tbody>
-				<tr><td>%field_s</td><td>フィールド名（スネーク記法）</td><td></td></tr>
-				<tr><td>%field_c</td><td>フィールド名（キャメル記法）</td><td></td></tr>
-				<tr><td>%field_type</td><td>型</td><td></td></tr>
-				<tr><td>%type_long</td><td>型長</td><td>int</td></tr>
-				<tr><td>%null_flg</td><td>NULLフラグ</td><td>0:NULLでない , 1:NULL</td></tr>
-				<tr><td>%p_key_flg</td><td>主キーフラグ</td><td></td></tr>
-				<tr><td>%def_val</td><td>デフォルト値　</td><td></td></tr>
-				<tr><td>%comment</td><td>コメント（和名）　</td><td></td></tr>
-			</tbody></table>
+		<tr><td>雛型ファイルパス: </td><td>
+			<input type="text" name="hina_fp" class="valid" value=""  maxlength="1024" 
+				 title="ファイルパスのキャメル記法コード部分は「Xxx」、スネーク記法コード部分は「xxx」と入力すること。1024文字以内で入力してください"
+				 style="width:480px" placeholder="XxxController.php" />
+			<label class="text-danger" for="hina_fp"></label>
 		</td></tr>
 
 		<tr><td>削除： </td><td>
@@ -338,8 +318,8 @@ foreach($data as $i=>$ent){
 		</td></tr>
 		
 
-		<tr><td>雛型コード: </td><td>
-			<span class="hina_code"></span>
+		<tr><td>雛ファイルリスト名: </td><td>
+			<span class="hina_fp"></span>
 		</td></tr>
 
 
@@ -388,8 +368,8 @@ foreach($data as $i=>$ent){
 		</td></tr>
 		
 
-		<tr><td>雛型コード: </td><td>
-			<span class="hina_code"></span>
+		<tr><td>雛ファイルリスト名: </td><td>
+			<span class="hina_fp"></span>
 		</td></tr>
 
 
@@ -421,7 +401,7 @@ foreach($data as $i=>$ent){
 
 <!-- 埋め込みJSON -->
 <div style="display:none">
-	<input id="type_a_json" type="hidden" value='<?php echo $type_a_json; ?>' />
+	<input id="hina_file_list_group_json" type="hidden" value='<?php echo $hina_file_list_group_json; ?>' />
 </div>
 
 

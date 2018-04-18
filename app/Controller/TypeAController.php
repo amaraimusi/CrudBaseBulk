@@ -449,16 +449,23 @@ class TypeAController extends CrudBaseController {
 		$this->kensakuJoken=array(
 		
 			array('name'=>'kj_id','def'=>null),
-		    array('name'=>'kj_type_a_name','def'=>null),
-		    array('name'=>'kj_cnd_field_name','def'=>null),
-		    array('name'=>'kj_cnd_field_type','def'=>null),
-		    array('name'=>'kj_cnd_type_long1','def'=>null),
-		    array('name'=>'kj_cnd_type_long2','def'=>null),
-		    array('name'=>'kj_cnd_null_flg','def'=>null),
-		    array('name'=>'kj_cnd_p_key_flg','def'=>null),
-		    array('name'=>'kj_cnd_def_val','def'=>null),
-		    array('name'=>'kj_cnd_extra','def'=>null),
-		    array('name'=>'kj_cnd_comment','def'=>null),
+			array('name'=>'kj_type_a_name','def'=>null),
+			array('name'=>'kj_par_id','def'=>null),
+			array('name'=>'kj_cnd_eq_field_name','def'=>null),
+			array('name'=>'kj_cnd_in_field_name','def'=>null),
+			array('name'=>'kj_cnd_eq_field_type','def'=>null),
+			array('name'=>'kj_cnd_in_field_type','def'=>null),
+			array('name'=>'kj_cnd_type_long1','def'=>null),
+			array('name'=>'kj_cnd_type_long2','def'=>null),
+			array('name'=>'kj_cnd_null_flg','def'=>null),
+			array('name'=>'kj_cnd_p_key_flg','def'=>null),
+			array('name'=>'kj_cnd_eq_def_val','def'=>null),
+			array('name'=>'kj_cnd_in_def_val','def'=>null),
+			array('name'=>'kj_cnd_eq_extra','def'=>null),
+			array('name'=>'kj_cnd_in_extra','def'=>null),
+			array('name'=>'kj_cnd_eq_comment','def'=>null),
+			array('name'=>'kj_cnd_in_comment','def'=>null),
+			
 			array('name'=>'kj_sort_no','def'=>null),
 			array('name'=>'kj_delete_flg','def'=>0),
 			array('name'=>'kj_update_user','def'=>null),
@@ -483,66 +490,116 @@ class TypeAController extends CrudBaseController {
 								'allowEmpty' => true
 						),
 				),
+				
+				'kj_par_id' => array(
+						'naturalNumber'=>array(
+								'rule' => array('naturalNumber', true),
+								'message' => '親IDは数値を入力してください',
+								'allowEmpty' => true
+						),
+				),
 					
-		    'kj_type_a_name'=> array(
-		        'maxLength'=>array(
-		            'rule' => array('maxLength', 256),
-		            'message' => 'タイプ名は256文字以内で入力してください',
-		            'allowEmpty' => true
-		        ),
-		    ),
-		    'kj_cnd_field_name'=> array(
-		        'maxLength'=>array(
-		            'rule' => array('maxLength', 64),
-		            'message' => 'フィールド名条件は64文字以内で入力してください',
-		            'allowEmpty' => true
-		        ),
-		    ),
-		    'kj_cnd_field_type'=> array(
-		        'maxLength'=>array(
-		            'rule' => array('maxLength', 32),
-		            'message' => 'フィールド型条件は32文字以内で入力してください',
-		            'allowEmpty' => true
-		        ),
-		    ),
-		    
-		    'kj_cnd_type_long1' => array(
-		        'custom'=>array(
-		            'rule' => array( 'custom', '/^[-]?[0-9]+?$/' ),
-		            'message' => '型長さ条件1は整数を入力してください。',
-		            'allowEmpty' => true
-		        ),
-		    ),
-		    'kj_cnd_type_long2' => array(
-		        'custom'=>array(
-		            'rule' => array( 'custom', '/^[-]?[0-9]+?$/' ),
-		            'message' => '型長さ条件2は整数を入力してください。',
-		            'allowEmpty' => true
-		        ),
-		    ),
-		    
-		    'kj_cnd_def_val'=> array(
-		        'maxLength'=>array(
-		            'rule' => array('maxLength', 256),
-		            'message' => 'デフォルト値条件は256文字以内で入力してください',
-		            'allowEmpty' => true
-		        ),
-		    ),
-		    'kj_cnd_extra'=> array(
-		        'maxLength'=>array(
-		            'rule' => array('maxLength', 256),
-		            'message' => '補足条件は256文字以内で入力してください',
-		            'allowEmpty' => true
-		        ),
-		    ),
-		    'kj_cnd_comment'=> array(
-		        'maxLength'=>array(
-		            'rule' => array('maxLength', 256),
-		            'message' => 'コメント条件は256文字以内で入力してください',
-		            'allowEmpty' => true
-		        ),
-		    ),
-		    
+				'kj_type_a_name'=> array(
+						'maxLength'=>array(
+								'rule' => array('maxLength', 256),
+								'message' => 'タイプ名は256文字以内で入力してください',
+								'allowEmpty' => true
+						),
+				),
+				
+				'kj_cnd_eq_field_name'=> array(
+						'maxLength'=>array(
+								'rule' => array('maxLength', 64),
+								'message' => 'フィールド名条件【完全一致】は64文字以内で入力してください',
+								'allowEmpty' => true
+						),
+				),
+				
+				'kj_cnd_in_field_name'=> array(
+						'maxLength'=>array(
+								'rule' => array('maxLength', 64),
+								'message' => 'フィールド名条件【部分一致】は64文字以内で入力してください',
+								'allowEmpty' => true
+						),
+				),
+				
+				'kj_cnd_eq_field_type'=> array(
+						'maxLength'=>array(
+								'rule' => array('maxLength', 32),
+								'message' => 'フィールド型条件【完全一致】は32文字以内で入力してください',
+								'allowEmpty' => true
+						),
+				),
+				
+				'kj_cnd_in_field_type'=> array(
+						'maxLength'=>array(
+								'rule' => array('maxLength', 32),
+								'message' => 'フィールド型条件【部分一致】は32文字以内で入力してください',
+								'allowEmpty' => true
+						),
+				),
+				'kj_cnd_type_long1' => array(
+						'custom'=>array(
+								'rule' => array( 'custom', '/^[-]?[0-9]+?$/' ),
+								'message' => '型長さ条件1は整数を入力してください。',
+								'allowEmpty' => true
+						),
+				),
+				'kj_cnd_type_long2' => array(
+						'custom'=>array(
+								'rule' => array( 'custom', '/^[-]?[0-9]+?$/' ),
+								'message' => '型長さ条件2は整数を入力してください。',
+								'allowEmpty' => true
+						),
+				),
+				'kj_cnd_eq_def_val'=> array(
+						'maxLength'=>array(
+								'rule' => array('maxLength', 256),
+								'message' => 'デフォルト値条件【完全一致】は256文字以内で入力してください',
+								'allowEmpty' => true
+						),
+				),
+				
+				'kj_cnd_in_def_val'=> array(
+						'maxLength'=>array(
+								'rule' => array('maxLength', 256),
+								'message' => 'デフォルト値条件【部分一致】は256文字以内で入力してください',
+								'allowEmpty' => true
+						),
+				),
+				
+				'kj_cnd_eq_extra'=> array(
+						'maxLength'=>array(
+								'rule' => array('maxLength', 256),
+								'message' => '補足条件【完全一致】は256文字以内で入力してください',
+								'allowEmpty' => true
+						),
+				),
+				
+				'kj_cnd_in_extra'=> array(
+						'maxLength'=>array(
+								'rule' => array('maxLength', 256),
+								'message' => '補足条件【部分一致】は256文字以内で入力してください',
+								'allowEmpty' => true
+						),
+				),
+				
+				'kj_cnd_eq_comment'=> array(
+						'maxLength'=>array(
+								'rule' => array('maxLength', 256),
+								'message' => 'コメント条件【完全一致】は256文字以内で入力してください',
+								'allowEmpty' => true
+						),
+				),
+				
+				'kj_cnd_in_comment'=> array(
+						'maxLength'=>array(
+								'rule' => array('maxLength', 256),
+								'message' => 'コメント条件【部分一致】は256文字以内で入力してください',
+								'allowEmpty' => true
+						),
+				),
+
 				'kj_sort_no' => array(
 					'custom'=>array(
 						'rule' => array( 'custom', '/^[-]?[0-9]+?$/' ),
@@ -596,56 +653,87 @@ class TypeAController extends CrudBaseController {
 					'row_order'=>'TypeA.id',//SQLでの並び替えコード
 					'clm_show'=>1,//デフォルト列表示 0:非表示 1:表示
 			),
-		    'type_a_name'=>array(
-		        'name'=>'タイプ名',
-		        'row_order'=>'TypeA.type_a_name',
-		        'clm_show'=>1,
-		    ),
-		    'cnd_field_name'=>array(
-		        'name'=>'フィールド名条件',
-		        'row_order'=>'TypeA.cnd_field_name',
-		        'clm_show'=>1,
-		    ),
-		    'cnd_field_type'=>array(
-		        'name'=>'フィールド型条件',
-		        'row_order'=>'TypeA.cnd_field_type',
-		        'clm_show'=>1,
-		    ),
-		    'cnd_type_long1'=>array(
-		        'name'=>'型長さ条件1',
-		        'row_order'=>'TypeA.cnd_type_long1',
-		        'clm_show'=>1,
-		    ),
-		    'cnd_type_long2'=>array(
-		        'name'=>'型長さ条件2',
-		        'row_order'=>'TypeA.cnd_type_long2',
-		        'clm_show'=>1,
-		    ),
-		    'cnd_null_flg'=>array(
-		        'name'=>'NULLフラグ条件',
-		        'row_order'=>'TypeA.cnd_null_flg',
-		        'clm_show'=>1,
-		    ),
-		    'cnd_p_key_flg'=>array(
-		        'name'=>'主キーフラグ条件',
-		        'row_order'=>'TypeA.cnd_p_key_flg',
-		        'clm_show'=>1,
-		    ),
-		    'cnd_def_val'=>array(
-		        'name'=>'デフォルト値条件',
-		        'row_order'=>'TypeA.cnd_def_val',
-		        'clm_show'=>1,
-		    ),
-		    'cnd_extra'=>array(
-		        'name'=>'補足条件',
-		        'row_order'=>'TypeA.cnd_extra',
-		        'clm_show'=>1,
-		    ),
-		    'cnd_comment'=>array(
-		        'name'=>'コメント条件',
-		        'row_order'=>'TypeA.cnd_comment',
-		        'clm_show'=>1,
-		    ),
+			'par_id'=>array(
+					'name'=>'親ID',
+					'row_order'=>'TypeA.par_id',
+					'clm_show'=>1,
+			),
+			'type_a_name'=>array(
+					'name'=>'タイプ名',
+					'row_order'=>'TypeA.type_a_name',
+					'clm_show'=>1,
+			),
+			'cnd_eq_field_name'=>array(
+					'name'=>'フィールド名条件【完全一致】',
+					'row_order'=>'TypeA.cnd_eq_field_name',
+					'clm_show'=>1,
+			),
+			'cnd_in_field_name'=>array(
+					'name'=>'フィールド名条件【部】',
+					'row_order'=>'TypeA.cnd_in_field_name',
+					'clm_show'=>1,
+			),
+			'cnd_eq_field_type'=>array(
+					'name'=>'フィールド型条件【完】',
+					'row_order'=>'TypeA.cnd_eq_field_type',
+					'clm_show'=>1,
+			),
+			'cnd_in_field_type'=>array(
+					'name'=>'フィールド型条件【部】',
+					'row_order'=>'TypeA.cnd_in_field_type',
+					'clm_show'=>1,
+			),
+			'cnd_type_long1'=>array(
+					'name'=>'型長さ条件1',
+					'row_order'=>'TypeA.cnd_type_long1',
+					'clm_show'=>0,
+			),
+			'cnd_type_long2'=>array(
+					'name'=>'型長さ条件2',
+					'row_order'=>'TypeA.cnd_type_long2',
+					'clm_show'=>0,
+			),
+			'cnd_null_flg'=>array(
+					'name'=>'NULLフラグ条件',
+					'row_order'=>'TypeA.cnd_null_flg',
+					'clm_show'=>0,
+			),
+			'cnd_p_key_flg'=>array(
+					'name'=>'主キーフラグ条件',
+					'row_order'=>'TypeA.cnd_p_key_flg',
+					'clm_show'=>0,
+			),
+			'cnd_eq_def_val'=>array(
+					'name'=>'デフォルト値条件【完】',
+					'row_order'=>'TypeA.cnd_eq_def_val',
+					'clm_show'=>0,
+			),
+			'cnd_in_def_val'=>array(
+					'name'=>'デフォルト値条件【部】',
+					'row_order'=>'TypeA.cnd_in_def_val',
+					'clm_show'=>0,
+			),
+			'cnd_eq_extra'=>array(
+					'name'=>'補足条件【完】',
+					'row_order'=>'TypeA.cnd_eq_extra',
+					'clm_show'=>0,
+			),
+			'cnd_in_extra'=>array(
+					'name'=>'補足条件【部】',
+					'row_order'=>'TypeA.cnd_in_extra',
+					'clm_show'=>0,
+			),
+			'cnd_eq_comment'=>array(
+					'name'=>'コメント条件【完】',
+					'row_order'=>'TypeA.cnd_eq_comment',
+					'clm_show'=>1,
+			),
+			'cnd_in_comment'=>array(
+					'name'=>'コメント条件【部】',
+					'row_order'=>'TypeA.cnd_in_comment',
+					'clm_show'=>1,
+			),
+
 			'sort_no'=>array(
 				'name'=>'順番',
 				'row_order'=>'TypeA.sort_no',

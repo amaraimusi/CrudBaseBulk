@@ -45,7 +45,7 @@ $this->assign('script', $this->Html->script($jsList,array('charset'=>'utf-8')));
 		
 		// --- Start kj_input
 		$this->CrudBase->inputKjText($kjs,'kj_mission_name','任務名',300);
-		$this->CrudBase->inputKjText($kjs,'kj_project_path','プロジェクトパス',300);
+		$this->CrudBase->inputKjSelect($kjs,'kj_hina_file_id','雛ファイル',$hinaFileList);
 		$this->CrudBase->inputKjText($kjs,'kj_from_path','複製元パス',300);
 		$this->CrudBase->inputKjText($kjs,'kj_from_scr_code','複製元画面コード',300);
 		$this->CrudBase->inputKjText($kjs,'kj_from_db_name','複製元DB名',300);
@@ -113,6 +113,7 @@ $this->assign('script', $this->Html->script($jsList,array('charset'=>'utf-8')));
 
 				<a href="type_a" class="btn btn-primary btn-sm">タイプA</a>
 				<a href="hinagata" class="btn btn-primary btn-sm">フィールド雛型</a>
+				<a href="hina_file" class="btn btn-primary btn-sm">雛ファイル</a>
 			</div>
 
 
@@ -167,7 +168,7 @@ foreach($data as $i=>$ent){
 	// --- Start field_table
 	$this->CrudBase->tdId($ent,'id',array('checkbox_name'=>'pwms'));
 	$this->CrudBase->tdStr($ent,'mission_name');
-	$this->CrudBase->tdStr($ent,'project_path');
+	$this->CrudBase->tdList($ent,'hina_file_id',$hinaFileList);
 	$this->CrudBase->tdStr($ent,'from_path');
 	$this->CrudBase->tdStr($ent,'from_scr_code');
 	$this->CrudBase->tdStr($ent,'from_db_name');
@@ -191,6 +192,7 @@ foreach($data as $i=>$ent){
 	// 行のボタン類
 	echo "<td><div class='btn-group'>";
 	$id = $ent['id'];
+	echo "<a href='bulk_make?kj_mission_id={$id}' class='btn btn-success btn-xs' >一括作成</a>";
 	echo  "<input type='button' value='↑↓' onclick='rowExchangeShowForm(this)' class='row_exc_btn btn btn-info btn-xs' />";
 	$this->CrudBase->rowDeleteBtn($ent); // 削除ボタン
 	$this->CrudBase->rowEnabledBtn($ent); // 有効ボタン
@@ -234,9 +236,9 @@ foreach($data as $i=>$ent){
 			<input type="text" name="mission_name" class="valid" value=""  maxlength="255" title="255文字以内で入力してください" />
 			<label class="text-danger" for="mission_name"></label>
 		</td></tr>
-		<tr><td>プロジェクトパス: </td><td>
-			<input type="text" name="project_path" class="valid" value=""  maxlength="1024" title="1024文字以内で入力してください" />
-			<label class="text-danger" for="project_path"></label>
+		<tr><td>雛ファイル: </td><td>
+			<?php $this->CrudBase->selectX('hina_file_id',null,$hinaFileList,null,'-- 雛ファイル --');?>
+			<label class="text-danger" for="hina_file_id"></label>
 		</td></tr>
 		<tr><td>複製元パス: </td><td>
 			<input type="text" name="from_path" class="valid" value=""  maxlength="1024" title="1024文字以内で入力してください" />
@@ -317,9 +319,9 @@ foreach($data as $i=>$ent){
 			<input type="text" name="mission_name" class="valid" value=""  maxlength="255" title="255文字以内で入力してください" />
 			<label class="text-danger" for="mission_name"></label>
 		</td></tr>
-		<tr><td>プロジェクトパス: </td><td>
-			<input type="text" name="project_path" class="valid" value=""  maxlength="1024" title="1024文字以内で入力してください" />
-			<label class="text-danger" for="project_path"></label>
+		<tr><td>雛ファイル: </td><td>
+			<?php $this->CrudBase->selectX('hina_file_id',null,$hinaFileList,null,'-- 雛ファイル --');?>
+			<label class="text-danger" for="hina_file_id"></label>
 		</td></tr>
 		<tr><td>複製元パス: </td><td>
 			<input type="text" name="from_path" class="valid" value=""  maxlength="1024" title="1024文字以内で入力してください" />
@@ -493,7 +495,7 @@ foreach($data as $i=>$ent){
 
 <!-- 埋め込みJSON -->
 <div style="display:none">
-	<input id="mission_group_json" type="hidden" value='<?php echo $mission_group_json; ?>' />
+	<input id="hina_file_json" type="hidden" value='<?php echo $hina_file_json; ?>' />
 </div>
 
 

@@ -3,32 +3,32 @@ App::uses('Model', 'Model');
 App::uses('CrudBase', 'Model');
 
 /**
- * ネコのモデルクラス
+ * 雛ファイルのモデルクラス
  *
- * ネコ画面用のDB関連メソッドを定義しています。
- * ネコテーブルと関連付けられています。
+ * 雛ファイル画面用のDB関連メソッドを定義しています。
+ * 雛ファイルテーブルと関連付けられています。
  *
  * @date 2015-9-16	新規作成
  * @author k-uehara
  *
  */
-class Neko extends AppModel {
+class HinaFile extends AppModel {
 
 
-	/// ネコテーブルを関連付け
-	public $name='Neko';
+	/// 雛ファイルテーブルを関連付け
+	public $name='HinaFile';
 
 
 	/// バリデーションはコントローラクラスで定義
 	public $validate = null;
 	
 	/**
-	 * ネコエンティティを取得
+	 * 雛ファイルエンティティを取得
 	 *
-	 * ネコテーブルからidに紐づくエンティティを取得します。
+	 * 雛ファイルテーブルからidに紐づくエンティティを取得します。
 	 *
-	 * @param int $id ネコID
-	 * @return array ネコエンティティ
+	 * @param int $id 雛ファイルID
+	 * @return array 雛ファイルエンティティ
 	 */
 	public function findEntity($id){
 
@@ -44,7 +44,7 @@ class Neko extends AppModel {
 
 		$ent=array();
 		if(!empty($data)){
-			$ent=$data['Neko'];
+			$ent=$data['HinaFile'];
 		}
 		
 
@@ -54,10 +54,10 @@ class Neko extends AppModel {
 	}
 
 	/**
-	 * ネコ画面の一覧に表示するデータを、ネコテーブルから取得します。
+	 * 雛ファイル画面の一覧に表示するデータを、雛ファイルテーブルから取得します。
 	 * 
 	 * @note
-	 * 検索条件、ページ番号、表示件数、ソート情報からDB（ネコテーブル）を検索し、
+	 * 検索条件、ページ番号、表示件数、ソート情報からDB（雛ファイルテーブル）を検索し、
 	 * 一覧に表示するデータを取得します。
 	 * 
 	 * @param array $kjs 検索条件情報
@@ -65,7 +65,7 @@ class Neko extends AppModel {
 	 * @param int $row_limit 表示件数
 	 * @param string sort ソートフィールド
 	 * @param int sort_desc ソートタイプ 0:昇順 , 1:降順
-	 * @return array ネコ画面一覧のデータ
+	 * @return array 雛ファイル画面一覧のデータ
 	 */
 	public function findData($kjs,$page_no,$row_limit,$sort_field,$sort_desc){
 
@@ -127,10 +127,10 @@ class Neko extends AppModel {
 	private function dumpSql($option){
 		$dbo = $this->getDataSource();
 		
-		$option['table']=$dbo->fullTableName($this->Neko);
-		$option['alias']='Neko';
+		$option['table']=$dbo->fullTableName($this->HinaFile);
+		$option['alias']='HinaFile';
 		
-		$query = $dbo->buildStatement($option,$this->Neko);
+		$query = $dbo->buildStatement($option,$this->HinaFile);
 		
 		Debugger::dump($query);
 	}
@@ -145,81 +145,51 @@ class Neko extends AppModel {
 	private function createKjConditions($kjs){
 
 		$cnds=null;
-
+		
+		// --- Start kjConditions
+		
 		if(!empty($kjs['kj_id'])){
-			$cnds[]="Neko.id = {$kjs['kj_id']}";
+			$cnds[]="HinaFile.id = {$kjs['kj_id']}";
 		}
 		
-		if(!empty($kjs['kj_neko_val1'])){
-			$cnds[]="Neko.neko_val >= {$kjs['kj_neko_val1']}";
-		}
-		
-		if(!empty($kjs['kj_neko_val2'])){
-			$cnds[]="Neko.neko_val <= {$kjs['kj_neko_val2']}";
-		}
-		
-		if(!empty($kjs['kj_neko_name'])){
-			$cnds[]="Neko.neko_name LIKE '%{$kjs['kj_neko_name']}%'";
-		}
-		
-		if(!empty($kjs['kj_neko_date1'])){
-			$cnds[]="Neko.neko_date >= '{$kjs['kj_neko_date1']}'";
-		}
-		
-		if(!empty($kjs['kj_neko_date2'])){
-			$cnds[]="Neko.neko_date <= '{$kjs['kj_neko_date2']}'";
-		}
-		
-		if(!empty($kjs['kj_neko_group'])){
-			$cnds[]="Neko.neko_group = {$kjs['kj_neko_group']}";
-		}
-		
-		if(!empty($kjs['kj_neko_dt'])){
-		    
-		    if(empty($this->CrudBase)) $this->CrudBase = new CrudBase();
-		    $kj_neko_dt = $kjs['kj_neko_dt'];
-		    $dtInfo = $this->CrudBase->guessDatetimeInfo($kj_neko_dt);
-		    $cnds[]="DATE_FORMAT(Neko.neko_dt,'{$dtInfo['format_mysql_a']}') = DATE_FORMAT('{$dtInfo['datetime_b']}','{$dtInfo['format_mysql_a']}')";
-		   
-		}
-
-		if(!empty($kjs['kj_note'])){
-			$cnds[]="Neko.note LIKE '%{$kjs['kj_note']}%'";
+		if(!empty($kjs['kj_hina_file_name'])){
+			$cnds[]="HinaFile.hina_file_name LIKE '%{$kjs['kj_hina_file_name']}%'";
 		}
 		
 		if(!empty($kjs['kj_sort_no']) || $kjs['kj_sort_no'] ==='0' || $kjs['kj_sort_no'] ===0){
-			$cnds[]="Neko.sort_no = {$kjs['kj_sort_no']}";
+			$cnds[]="HinaFile.sort_no = {$kjs['kj_sort_no']}";
 		}
 		
 		$kj_delete_flg = $kjs['kj_delete_flg'];
 		if(!empty($kjs['kj_delete_flg']) || $kjs['kj_delete_flg'] ==='0' || $kjs['kj_delete_flg'] ===0){
 			if($kjs['kj_delete_flg'] != -1){
-			   $cnds[]="Neko.delete_flg = {$kjs['kj_delete_flg']}";
+			   $cnds[]="HinaFile.delete_flg = {$kjs['kj_delete_flg']}";
 			}
 		}
 
 		if(!empty($kjs['kj_update_user'])){
-			$cnds[]="Neko.update_user = '{$kjs['kj_update_user']}'";
+			$cnds[]="HinaFile.update_user = '{$kjs['kj_update_user']}'";
 		}
 
 		if(!empty($kjs['kj_ip_addr'])){
-			$cnds[]="Neko.ip_addr = '{$kjs['kj_ip_addr']}'";
+			$cnds[]="HinaFile.ip_addr = '{$kjs['kj_ip_addr']}'";
 		}
 		
 		if(!empty($kjs['kj_user_agent'])){
-			$cnds[]="Neko.user_agent LIKE '%{$kjs['kj_user_agent']}%'";
+			$cnds[]="HinaFile.user_agent LIKE '%{$kjs['kj_user_agent']}%'";
 		}
 
 		if(!empty($kjs['kj_created'])){
 			$kj_created=$kjs['kj_created'].' 00:00:00';
-			$cnds[]="Neko.created >= '{$kj_created}'";
+			$cnds[]="HinaFile.created >= '{$kj_created}'";
 		}
 		
 		if(!empty($kjs['kj_modified'])){
 			$kj_modified=$kjs['kj_modified'].' 00:00:00';
-			$cnds[]="Neko.modified >= '{$kj_modified}'";
+			$cnds[]="HinaFile.modified >= '{$kj_modified}'";
 		}
 		
+		// --- End kjConditions
 		
 		$cnd=null;
 		if(!empty($cnds)){
@@ -233,10 +203,10 @@ class Neko extends AppModel {
 	/**
 	 * エンティティをDB保存
 	 *
-	 * ネコエンティティをネコテーブルに保存します。
+	 * 雛ファイルエンティティを雛ファイルテーブルに保存します。
 	 *
-	 * @param array $ent ネコエンティティ
-	 * @return array ネコエンティティ（saveメソッドのレスポンス）
+	 * @param array $ent 雛ファイルエンティティ
+	 * @return array 雛ファイルエンティティ（saveメソッドのレスポンス）
 	 */
 	public function saveEntity($ent){
 
@@ -246,10 +216,10 @@ class Neko extends AppModel {
 		//DBからエンティティを取得
 		$ent = $this->find('first',
 				array(
-						'conditions' => "id={$ent['Neko']['id']}"
+						'conditions' => "id={$ent['HinaFile']['id']}"
 				));
 
-		$ent=$ent['Neko'];
+		$ent=$ent['HinaFile'];
 		if(empty($ent['delete_flg'])) $ent['delete_flg'] = 0;
 
 		return $ent;

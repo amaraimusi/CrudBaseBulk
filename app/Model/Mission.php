@@ -155,8 +155,8 @@ class Mission extends AppModel {
 		if(!empty($kjs['kj_mission_name'])){
 		    $cnds[]="Mission.mission_name LIKE '%{$kjs['kj_mission_name']}%'";
 		}
-		if(!empty($kjs['kj_project_path'])){
-		    $cnds[]="Mission.project_path LIKE '%{$kjs['kj_project_path']}%'";
+		if(!empty($kjs['kj_hina_file_id'])){
+			$cnds[]="Mission.hina_file_id = '{$kjs['kj_hina_file_id']}'";
 		}
 		if(!empty($kjs['kj_from_path'])){
 		    $cnds[]="Mission.from_path LIKE '%{$kjs['kj_from_path']}%'";
@@ -287,6 +287,47 @@ class Mission extends AppModel {
 
 		$cnt=$data[0]['cnt'];
 		return $cnt;
+	}
+	
+	
+	
+	/**
+	 * 雛ファイルリストを取得する
+	 */
+	public function getHinaFileList(){
+		if(empty($this->HinaFile)){
+			App::uses('HinaFile','Model');
+			$this->HinaFile=ClassRegistry::init('HinaFile');
+		}
+		
+		//SELECT情報
+		$fields=array(
+				'id',
+				'hina_file_name',
+		);
+		
+		//WHERE情報
+		$conditions=array("delete_flg = 0");
+		
+		//ORDER情報
+		$order=array('sort_no');
+		
+		//オプション
+		$option=array(
+				'fields'=>$fields,
+				'conditions'=>$conditions,
+				'order'=>$order,
+		);
+		
+		//DBから取得
+		$data=$this->HinaFile->find('all',$option);
+		
+		//2次元配列に構造変換する。
+		if(!empty($data)){
+			$data=Hash::combine($data, '{n}.HinaFile.id','{n}.HinaFile.hina_file_name');
+		}
+		
+		return $data;
 	}
 	
 

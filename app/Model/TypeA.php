@@ -14,11 +14,6 @@ App::uses('CrudBase', 'Model');
  */
 class TypeA extends AppModel {
 
-
-	/// タイプAテーブルを関連付け
-	public $name='TypeA';
-
-
 	/// バリデーションはコントローラクラスで定義
 	public $validate = null;
 	
@@ -155,42 +150,59 @@ class TypeA extends AppModel {
 		if(!empty($kjs['kj_type_a_name'])){
 		    $cnds[]="TypeA.type_a_name LIKE '%{$kjs['kj_type_a_name']}%'";
 		}
-		if(!empty($kjs['kj_cnd_field_name'])){
-		    $cnds[]="TypeA.cnd_field_name LIKE '%{$kjs['kj_cnd_field_name']}%'";
+		if(!empty($kjs['kj_par_id'])){
+			$cnds[]="TypeA.par_id = {$kjs['kj_par_id']}";
 		}
-		if(!empty($kjs['kj_cnd_field_type'])){
-		    $cnds[]="TypeA.cnd_field_type LIKE '%{$kjs['kj_cnd_field_type']}%'";
+		if(!empty($kjs['kj_cnd_eq_field_name'])){
+			$cnds[]="TypeA.cnd_eq_field_name = '{$kjs['kj_cnd_eq_field_name']}'";
 		}
-
+		if(!empty($kjs['kj_cnd_in_field_name'])){
+			$cnds[]="TypeA.cnd_in_field_name LIKE '%{$kjs['kj_cnd_in_field_name']}%'";
+		}
+		if(!empty($kjs['kj_cnd_eq_field_type'])){
+			$cnds[]="TypeA.cnd_eq_field_type = '{$kjs['kj_cnd_eq_field_type']}'";
+		}
+		if(!empty($kjs['kj_cnd_in_field_type'])){
+			$cnds[]="TypeA.cnd_in_field_type LIKE '%{$kjs['kj_cnd_in_field_type']}%'";
+		}
+		
 		if(!empty($kjs['kj_cnd_type_long1'])){
-		    $cnds[]="TypeA.cnd_type_long1 >= {$kjs['kj_cnd_type_long1']}";
+			$cnds[]="TypeA.cnd_type_long1 >= {$kjs['kj_cnd_type_long1']}";
 		}
 		if(!empty($kjs['kj_cnd_type_long2'])){
-		    $cnds[]="TypeA.cnd_type_long2 <= {$kjs['kj_cnd_type_long2']}";
+			$cnds[]="TypeA.cnd_type_long2 <= {$kjs['kj_cnd_type_long2']}";
 		}
 		
 		$kj_cnd_null_flg = $kjs['kj_cnd_null_flg'];
 		if(!empty($kjs['kj_cnd_null_flg']) || $kjs['kj_cnd_null_flg'] ==='0' || $kjs['kj_cnd_null_flg'] ===0){
-		    if($kjs['kj_cnd_null_flg'] != -1){
-		        $cnds[]="TypeA.cnd_null_flg = {$kjs['kj_cnd_null_flg']}";
-		    }
+			if($kjs['kj_cnd_null_flg'] != -1){
+				$cnds[]="TypeA.cnd_null_flg = {$kjs['kj_cnd_null_flg']}";
+			}
 		}
 		
 		$kj_cnd_p_key_flg = $kjs['kj_cnd_p_key_flg'];
 		if(!empty($kjs['kj_cnd_p_key_flg']) || $kjs['kj_cnd_p_key_flg'] ==='0' || $kjs['kj_cnd_p_key_flg'] ===0){
-		    if($kjs['kj_cnd_p_key_flg'] != -1){
-		        $cnds[]="TypeA.cnd_p_key_flg = {$kjs['kj_cnd_p_key_flg']}";
-		    }
+			if($kjs['kj_cnd_p_key_flg'] != -1){
+				$cnds[]="TypeA.cnd_p_key_flg = {$kjs['kj_cnd_p_key_flg']}";
+			}
 		}
-		
-		if(!empty($kjs['kj_cnd_def_val'])){
-		    $cnds[]="TypeA.cnd_def_val LIKE '%{$kjs['kj_cnd_def_val']}%'";
+		if(!empty($kjs['kj_cnd_eq_def_val'])){
+			$cnds[]="TypeA.cnd_eq_def_val = '{$kjs['kj_cnd_eq_def_val']}'";
 		}
-		if(!empty($kjs['kj_cnd_extra'])){
-		    $cnds[]="TypeA.cnd_extra LIKE '%{$kjs['kj_cnd_extra']}%'";
+		if(!empty($kjs['kj_cnd_in_def_val'])){
+			$cnds[]="TypeA.cnd_in_def_val LIKE '%{$kjs['kj_cnd_in_def_val']}%'";
 		}
-		if(!empty($kjs['kj_cnd_comment'])){
-		    $cnds[]="TypeA.cnd_comment LIKE '%{$kjs['kj_cnd_comment']}%'";
+		if(!empty($kjs['kj_cnd_eq_extra'])){
+			$cnds[]="TypeA.cnd_eq_extra = '{$kjs['kj_cnd_eq_extra']}'";
+		}
+		if(!empty($kjs['kj_cnd_in_extra'])){
+			$cnds[]="TypeA.cnd_in_extra LIKE '%{$kjs['kj_cnd_in_extra']}%'";
+		}
+		if(!empty($kjs['kj_cnd_eq_comment'])){
+			$cnds[]="TypeA.cnd_eq_comment = '{$kjs['kj_cnd_eq_comment']}'";
+		}
+		if(!empty($kjs['kj_cnd_in_comment'])){
+			$cnds[]="TypeA.cnd_in_comment LIKE '%{$kjs['kj_cnd_in_comment']}%'";
 		}
 		
 		if(!empty($kjs['kj_sort_no']) || $kjs['kj_sort_no'] ==='0' || $kjs['kj_sort_no'] ===0){
@@ -292,6 +304,39 @@ class TypeA extends AppModel {
 		$cnt=$data[0]['cnt'];
 		return $cnt;
 	}
+	
+	
+	/**
+	 * タイプAリストとJSONを取得する
+	 * @return array タイプAリスト
+	 */
+	public function getTypeAList(){
+		
+		$fields=array('id','type_a_name');//SELECT情報
+		$conditions=array("delete_flg = 0");//WHERE情報
+		$order=array('sort_no');//ORDER情報
+		
+		//オプション
+		$option=array(
+				'fields'=>$fields,
+				'conditions'=>$conditions,
+				'order'=>$order,
+		);
+		
+		//DBから取得
+		$data=$this->find('all',$option);
+
+		//2次元配列に構造変換する。
+		if(!empty($data)){
+			$data=Hash::combine($data, '{n}.TypeA.id','{n}.TypeA.type_a_name');
+
+			$head[0] = '基本型';
+			$data = Hash::merge($head,$data);
+		}
+		return $data;
+		
+	}
+	
 	
 
 }

@@ -46,20 +46,19 @@ $this->assign('script', $this->Html->script($jsList,array('charset'=>'utf-8')));
 		// --- Start kj_input
 		$this->CrudBase->inputKjText($kjs,'kj_neko_name','ネコ名前',300);
 		$this->CrudBase->inputKjMoDateRng($kjs,'kj_neko_date','ネコ日付');
-		$this->CrudBase->inputKjId($kjs); 
 		$this->CrudBase->inputKjNouislider($kjs,'neko_val','ネコ数値'); 
 		$this->CrudBase->inputKjSelect($kjs,'kj_neko_group','ネコ種別',$nekoGroupList); 
 		//$this->CrudBase->inputKjDateTime($kjs,'kj_neko_dt','ネコ日時',150);// ■■■□□□■■■□□□■■■□□□
 		$this->CrudBase->inputKjText($kjs,'kj_neko_dt','ネコ日時',150); 
 		$this->CrudBase->inputKjText($kjs,'kj_note','備考',200,'部分一致検索'); 
+		
+		$this->CrudBase->inputKjId($kjs); 
 		$this->CrudBase->inputKjHidden($kjs,'kj_sort_no');
 		$this->CrudBase->inputKjDeleteFlg($kjs);
-		echo "<div style='clear:both'></div>";
 		$this->CrudBase->inputKjText($kjs,'kj_update_user','更新者',150);
 		$this->CrudBase->inputKjText($kjs,'kj_ip_addr','更新IPアドレス',200);
 		$this->CrudBase->inputKjCreated($kjs);
 		$this->CrudBase->inputKjModified($kjs);
-		echo "<div style='clear:both'></div>";
 		$this->CrudBase->inputKjLimit($kjs);
 		// --- End kj_input
 		

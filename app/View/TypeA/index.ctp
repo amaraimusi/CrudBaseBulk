@@ -44,15 +44,21 @@ $this->assign('script', $this->Html->script($jsList,array('charset'=>'utf-8')));
 		<?php 
 		
 		$this->CrudBase->inputKjText($kjs,'kj_type_a_name','タイプ名',300);
-		$this->CrudBase->inputKjText($kjs,'kj_cnd_field_name','フィールド名条件',300);
-		$this->CrudBase->inputKjText($kjs,'kj_cnd_field_type','フィールド型条件',300);
+		$this->CrudBase->inputKjText($kjs,'kj_par_id','親ID',80);
+		$this->CrudBase->inputKjText($kjs,'kj_cnd_eq_field_name','フィールド名条件【完全一致】',300);
+		$this->CrudBase->inputKjText($kjs,'kj_cnd_in_field_name','フィールド名条件【部分一致】',300);
+		$this->CrudBase->inputKjText($kjs,'kj_cnd_eq_field_type','フィールド型条件【完全一致】',300);
+		$this->CrudBase->inputKjText($kjs,'kj_cnd_in_field_type','フィールド型条件【部分一致】',300);
 		$this->CrudBase->inputKjText($kjs,'kj_cnd_type_long1','型長さ条件1',300);
 		$this->CrudBase->inputKjText($kjs,'kj_cnd_type_long2','型長さ条件2',300);
 		$this->CrudBase->inputKjFlg($kjs,'kj_cnd_null_flg','NULLフラグ条件',300);
 		$this->CrudBase->inputKjFlg($kjs,'kj_cnd_p_key_flg','主キーフラグ条件',300);
-		$this->CrudBase->inputKjText($kjs,'kj_cnd_def_val','デフォルト値条件',300);
-		$this->CrudBase->inputKjText($kjs,'kj_cnd_extra','補足条件',300);
-		$this->CrudBase->inputKjText($kjs,'kj_cnd_comment','コメント条件',300);
+		$this->CrudBase->inputKjText($kjs,'kj_cnd_eq_def_val','デフォルト値条件【完全一致】',300);
+		$this->CrudBase->inputKjText($kjs,'kj_cnd_in_def_val','デフォルト値条件【部分一致】',300);
+		$this->CrudBase->inputKjText($kjs,'kj_cnd_eq_extra','補足条件【完全一致】',300);
+		$this->CrudBase->inputKjText($kjs,'kj_cnd_in_extra','補足条件【部分一致】',300);
+		$this->CrudBase->inputKjText($kjs,'kj_cnd_eq_comment','コメント条件【完全一致】',300);
+		$this->CrudBase->inputKjText($kjs,'kj_cnd_in_comment','コメント条件【部分一致】',300);
 		
 		$this->CrudBase->inputKjId($kjs); 
 		$this->CrudBase->inputKjHidden($kjs,'kj_sort_no');
@@ -164,15 +170,21 @@ foreach($data as $i=>$ent){
 	$this->CrudBase->tdId($ent,'id',array('checkbox_name'=>'pwms'));
 	
 	$this->CrudBase->tdStr($ent,'type_a_name');
-	$this->CrudBase->tdStr($ent,'cnd_field_name');
-	$this->CrudBase->tdStr($ent,'cnd_field_type');
+	$this->CrudBase->tdPlain($ent,'par_id');
+	$this->CrudBase->tdStr($ent,'cnd_eq_field_name');
+	$this->CrudBase->tdStr($ent,'cnd_in_field_name');
+	$this->CrudBase->tdStr($ent,'cnd_eq_field_type');
+	$this->CrudBase->tdStr($ent,'cnd_in_field_type');
 	$this->CrudBase->tdPlain($ent,'cnd_type_long1');
 	$this->CrudBase->tdPlain($ent,'cnd_type_long2');
 	$this->CrudBase->tdFlg($ent,'cnd_null_flg');
 	$this->CrudBase->tdFlg($ent,'cnd_p_key_flg');
-	$this->CrudBase->tdStr($ent,'cnd_def_val');
-	$this->CrudBase->tdStr($ent,'cnd_extra');
-	$this->CrudBase->tdStr($ent,'cnd_comment');
+	$this->CrudBase->tdStr($ent,'cnd_eq_def_val');
+	$this->CrudBase->tdStr($ent,'cnd_in_def_val');
+	$this->CrudBase->tdStr($ent,'cnd_eq_extra');
+	$this->CrudBase->tdStr($ent,'cnd_in_extra');
+	$this->CrudBase->tdStr($ent,'cnd_eq_comment');
+	$this->CrudBase->tdStr($ent,'cnd_in_comment');
 	
 	$this->CrudBase->tdPlain($ent,'sort_no');
 	$this->CrudBase->tdDeleteFlg($ent,'delete_flg');
@@ -229,13 +241,25 @@ foreach($data as $i=>$ent){
 			<input type="text" name="type_a_name" class="valid" value=""  maxlength="256" title="256文字以内で入力してください" />
 			<label class="text-danger" for="type_a_name"></label>
 		</td></tr>
-		<tr><td>フィールド名条件: </td><td>
-			<input type="text" name="cnd_field_name" class="valid" value=""  maxlength="64" title="64文字以内で入力してください" />
-			<label class="text-danger" for="cnd_field_name"></label>
+		<tr><td>親ID: </td><td>
+			<input type="text" name="par_id" class="valid" value=""  pattern="^[0-9]+$" maxlength="11" title="数値を入力してください" />
+			<label class="text-danger" for="par_id"></label>
 		</td></tr>
-		<tr><td>フィールド型条件: </td><td>
-			<input type="text" name="cnd_field_type" class="valid" value=""  maxlength="32" title="32文字以内で入力してください" />
-			<label class="text-danger" for="cnd_field_type"></label>
+		<tr><td>フィールド名条件【完全一致】: </td><td>
+			<input type="text" name="cnd_eq_field_name" class="valid" value=""  maxlength="64" title="64文字以内で入力してください" />
+			<label class="text-danger" for="cnd_eq_field_name"></label>
+		</td></tr>
+		<tr><td>フィールド名条件【部分一致】: </td><td>
+			<input type="text" name="cnd_in_field_name" class="valid" value=""  maxlength="64" title="64文字以内で入力してください" />
+			<label class="text-danger" for="cnd_in_field_name"></label>
+		</td></tr>
+		<tr><td>フィールド型条件【完全一致】: </td><td>
+			<input type="text" name="cnd_eq_field_type" class="valid" value=""  maxlength="32" title="32文字以内で入力してください" />
+			<label class="text-danger" for="cnd_eq_field_type"></label>
+		</td></tr>
+		<tr><td>フィールド型条件【部分一致】: </td><td>
+			<input type="text" name="cnd_in_field_type" class="valid" value=""  maxlength="32" title="32文字以内で入力してください" />
+			<label class="text-danger" for="cnd_in_field_type"></label>
 		</td></tr>
 		<tr><td>型長さ条件1: </td><td>
 			<input type="text" name="cnd_type_long1" class="valid" value=""  maxlength="11" title="11文字以内で入力してください" />
@@ -261,17 +285,29 @@ foreach($data as $i=>$ent){
 			</select>
 			<label class="text-danger" for="cnd_p_key_flg"></label>
 		</td></tr>
-		<tr><td>デフォルト値条件: </td><td>
-			<input type="text" name="cnd_def_val" class="valid" value=""  maxlength="256" title="256文字以内で入力してください" />
-			<label class="text-danger" for="cnd_def_val"></label>
+		<tr><td>デフォルト値条件【完全一致】: </td><td>
+			<input type="text" name="cnd_eq_def_val" class="valid" value=""  maxlength="256" title="256文字以内で入力してください" />
+			<label class="text-danger" for="cnd_eq_def_val"></label>
 		</td></tr>
-		<tr><td>補足条件: </td><td>
-			<input type="text" name="cnd_extra" class="valid" value=""  maxlength="256" title="256文字以内で入力してください" />
-			<label class="text-danger" for="cnd_extra"></label>
+		<tr><td>デフォルト値条件【部分一致】: </td><td>
+			<input type="text" name="cnd_in_def_val" class="valid" value=""  maxlength="256" title="256文字以内で入力してください" />
+			<label class="text-danger" for="cnd_in_def_val"></label>
 		</td></tr>
-		<tr><td>コメント条件: </td><td>
-			<input type="text" name="cnd_comment" class="valid" value=""  maxlength="256" title="256文字以内で入力してください" />
-			<label class="text-danger" for="cnd_comment"></label>
+		<tr><td>補足条件【完全一致】: </td><td>
+			<input type="text" name="cnd_eq_extra" class="valid" value=""  maxlength="256" title="256文字以内で入力してください" />
+			<label class="text-danger" for="cnd_eq_extra"></label>
+		</td></tr>
+		<tr><td>補足条件【部分一致】: </td><td>
+			<input type="text" name="cnd_in_extra" class="valid" value=""  maxlength="256" title="256文字以内で入力してください" />
+			<label class="text-danger" for="cnd_in_extra"></label>
+		</td></tr>
+		<tr><td>コメント条件【完全一致】: </td><td>
+			<input type="text" name="cnd_eq_comment" class="valid" value=""  maxlength="256" title="256文字以内で入力してください" />
+			<label class="text-danger" for="cnd_eq_comment"></label>
+		</td></tr>
+		<tr><td>コメント条件【部分一致】: </td><td>
+			<input type="text" name="cnd_in_comment" class="valid" value=""  maxlength="256" title="256文字以内で入力してください" />
+			<label class="text-danger" for="cnd_in_comment"></label>
 		</td></tr>
 		
 	</tbody></table>
@@ -312,13 +348,25 @@ foreach($data as $i=>$ent){
 			<input type="text" name="type_a_name" class="valid" value=""  maxlength="256" title="256文字以内で入力してください" />
 			<label class="text-danger" for="type_a_name"></label>
 		</td></tr>
-		<tr><td>フィールド名条件: </td><td>
-			<input type="text" name="cnd_field_name" class="valid" value=""  maxlength="64" title="64文字以内で入力してください" />
-			<label class="text-danger" for="cnd_field_name"></label>
+		<tr><td>親ID: </td><td>
+			<input type="text" name="par_id" class="valid" value=""  pattern="^[0-9]+$" maxlength="11" title="数値を入力してください" />
+			<label class="text-danger" for="par_id"></label>
 		</td></tr>
-		<tr><td>フィールド型条件: </td><td>
-			<input type="text" name="cnd_field_type" class="valid" value=""  maxlength="32" title="32文字以内で入力してください" />
-			<label class="text-danger" for="cnd_field_type"></label>
+		<tr><td>フィールド名条件【完全一致】: </td><td>
+			<input type="text" name="cnd_eq_field_name" class="valid" value=""  maxlength="64" title="64文字以内で入力してください" />
+			<label class="text-danger" for="cnd_eq_field_name"></label>
+		</td></tr>
+		<tr><td>フィールド名条件【部分一致】: </td><td>
+			<input type="text" name="cnd_in_field_name" class="valid" value=""  maxlength="64" title="64文字以内で入力してください" />
+			<label class="text-danger" for="cnd_in_field_name"></label>
+		</td></tr>
+		<tr><td>フィールド型条件【完全一致】: </td><td>
+			<input type="text" name="cnd_eq_field_type" class="valid" value=""  maxlength="32" title="32文字以内で入力してください" />
+			<label class="text-danger" for="cnd_eq_field_type"></label>
+		</td></tr>
+		<tr><td>フィールド型条件【部分一致】: </td><td>
+			<input type="text" name="cnd_in_field_type" class="valid" value=""  maxlength="32" title="32文字以内で入力してください" />
+			<label class="text-danger" for="cnd_in_field_type"></label>
 		</td></tr>
 		<tr><td>型長さ条件1: </td><td>
 			<input type="text" name="cnd_type_long1" class="valid" value=""  maxlength="11" title="11文字以内で入力してください" />
@@ -344,19 +392,31 @@ foreach($data as $i=>$ent){
 			</select>
 			<label class="text-danger" for="cnd_p_key_flg"></label>
 		</td></tr>
-		<tr><td>デフォルト値条件: </td><td>
-			<input type="text" name="cnd_def_val" class="valid" value=""  maxlength="256" title="256文字以内で入力してください" />
-			<label class="text-danger" for="cnd_def_val"></label>
+		<tr><td>デフォルト値条件【完全一致】: </td><td>
+			<input type="text" name="cnd_eq_def_val" class="valid" value=""  maxlength="256" title="256文字以内で入力してください" />
+			<label class="text-danger" for="cnd_eq_def_val"></label>
 		</td></tr>
-		<tr><td>補足条件: </td><td>
-			<input type="text" name="cnd_extra" class="valid" value=""  maxlength="256" title="256文字以内で入力してください" />
-			<label class="text-danger" for="cnd_extra"></label>
+		<tr><td>デフォルト値条件【部分一致】: </td><td>
+			<input type="text" name="cnd_in_def_val" class="valid" value=""  maxlength="256" title="256文字以内で入力してください" />
+			<label class="text-danger" for="cnd_in_def_val"></label>
 		</td></tr>
-		<tr><td>コメント条件: </td><td>
-			<input type="text" name="cnd_comment" class="valid" value=""  maxlength="256" title="256文字以内で入力してください" />
-			<label class="text-danger" for="cnd_comment"></label>
+		<tr><td>補足条件【完全一致】: </td><td>
+			<input type="text" name="cnd_eq_extra" class="valid" value=""  maxlength="256" title="256文字以内で入力してください" />
+			<label class="text-danger" for="cnd_eq_extra"></label>
 		</td></tr>
-
+		<tr><td>補足条件【部分一致】: </td><td>
+			<input type="text" name="cnd_in_extra" class="valid" value=""  maxlength="256" title="256文字以内で入力してください" />
+			<label class="text-danger" for="cnd_in_extra"></label>
+		</td></tr>
+		<tr><td>コメント条件【完全一致】: </td><td>
+			<input type="text" name="cnd_eq_comment" class="valid" value=""  maxlength="256" title="256文字以内で入力してください" />
+			<label class="text-danger" for="cnd_eq_comment"></label>
+		</td></tr>
+		<tr><td>コメント条件【部分一致】: </td><td>
+			<input type="text" name="cnd_in_comment" class="valid" value=""  maxlength="256" title="256文字以内で入力してください" />
+			<label class="text-danger" for="cnd_in_comment"></label>
+		</td></tr>
+		
 		<tr><td>削除： </td><td>
 			<input type="checkbox" name="delete_flg" class="valid"  />
 		</td></tr>
