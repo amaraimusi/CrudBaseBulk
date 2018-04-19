@@ -74,16 +74,28 @@ class TypeAController extends CrudBaseController {
 
 		// CrudBase共通処理（後）
 		$crudBaseData = $this->indexAfter($crudBaseData);//indexアクションの共通後処理
+
+		// ツリー構造情報をデータに付加する
+		App::uses('TreeStructureData','Vendor/Wacg');
+		$treeStructureData = new TreeStructureData();
 		
-		$type_aGroupList = array(1=>'ペルシャ',2=>'ボンベイ',3=>'三毛',4=>'シャム',5=>'雉トラ',6=>'スフィンクス');
-		$type_a_group_json = json_encode($type_aGroupList,JSON_HEX_TAG | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_HEX_APOS);
+		$option = array(
+				'res_structure'=>'normal,html_table',
+				'sort_field'=>'sort_no',
+				'html_tbl_class' => 'tbl2',
+				'html_tbl_fields' => array('id','type_a_name'),
+		);
+		$res = $treeStructureData->tree($data,$option);
+		$map_tbl =  $res['html_table'];
+		$data = $res['normal'];
+		
+		
 		
 		$this->set($crudBaseData);
 		$this->set(array(
 			'title_for_layout'=>'タイプA',
 			'data'=> $data,
-			'type_aGroupList' => $type_aGroupList,
-			'type_a_group_json' => $type_a_group_json,
+			'map_tbl'=> $map_tbl,
 		));
 		
 		//当画面系の共通セット
@@ -330,7 +342,7 @@ class TypeAController extends CrudBaseController {
 	public function csv_fu(){
 		$this->autoRender = false;//ビュー(ctp)を使わない。
 		
-		$this->csv_fu_base($this->TypeA,array('id','type_a_val','type_a_name','type_a_date','type_a_group','type_a_dt','note','sort_no'));
+		//$this->csv_fu_base($this->TypeA,array('id','type_a_val','type_a_name','type_a_date','type_a_group','type_a_dt','note','sort_no'));
 		
 	}
 	

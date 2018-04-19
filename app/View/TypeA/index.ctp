@@ -125,6 +125,11 @@ $this->assign('script', $this->Html->script($jsList,array('charset'=>'utf-8')));
 	
 </div>
 
+<input type="button" value="ツリーマップ" class="btn btn-info" onclick="jQuery('#map_tbl').toggle(300);" />
+<div id="map_tbl" style="display:none">
+<?php echo $map_tbl; ?>
+</div>
+
 
 <br />
 
@@ -548,7 +553,7 @@ foreach($data as $i=>$ent){
 
 <!-- 埋め込みJSON -->
 <div style="display:none">
-	<input id="type_a_group_json" type="hidden" value='<?php echo $type_a_group_json; ?>' />
+	
 </div>
 
 

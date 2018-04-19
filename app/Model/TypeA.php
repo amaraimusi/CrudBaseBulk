@@ -258,6 +258,12 @@ class TypeA extends AppModel {
 	 * @return array タイプAエンティティ（saveメソッドのレスポンス）
 	 */
 	public function saveEntity($ent){
+		
+		// ■■■□□□■■■□□□■■■□□□
+// 		// 新規入力かつ、順番が空なら新しい順番をセットする
+// 		if(empty($ent['id']) && empty($ent['sort_no'])){
+// 			$ent['sort_no'] = $this->getNextSortNo();
+// 		}
 
 		//DBに登録('atomic' => false　トランザクションなし）
 		$ent = $this->save($ent, array('atomic' => false,'validate'=>false));

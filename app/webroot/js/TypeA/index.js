@@ -32,9 +32,7 @@ function init(){
 			'kjs':kjs,
 		});
 	
-	// タイプAグループリストJSON
-	var type_a_group_json = jQuery('#type_a_group_json').val();
-	var type_aGroupList = JSON.parse(type_a_group_json);
+
 
 	// 表示フィルターデータの定義とセット
 	var disFilData = {
