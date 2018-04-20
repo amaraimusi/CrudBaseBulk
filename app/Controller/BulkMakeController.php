@@ -211,6 +211,10 @@ class BulkMakeController extends CrudBaseController {
 		// JSON文字列をパースしてエンティティを取得する
 		$json=$_POST['key1'];
 		$ent = json_decode($json,true);
+		
+		// 登録パラメータ
+		$reg_param_json = $_POST['reg_param_json'];
+		$regParam = json_decode($reg_param_json,true);
 	
 	
 		// アップロードファイルが存在すればエンティティにセットする。
@@ -226,7 +230,9 @@ class BulkMakeController extends CrudBaseController {
 	
 		// エンティティをDB保存
 		$this->BulkMake->begin();
-		$ent = $this->BulkMake->saveEntity($ent);
+		$option = array();
+		if(isset($regParam['ni_tr_place'])) $option['ni_tr_place'] = $regParam['ni_tr_place'];
+		$ent = $this->BulkMake->saveEntity($ent,$option);
 		$this->BulkMake->commit();//コミット
 
 		if(!empty($upload_file)){

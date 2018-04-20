@@ -255,15 +255,22 @@ class TypeA extends AppModel {
 	 * タイプAエンティティをタイプAテーブルに保存します。
 	 *
 	 * @param array $ent タイプAエンティティ
+	 * @param array $option オプション
 	 * @return array タイプAエンティティ（saveメソッドのレスポンス）
 	 */
-	public function saveEntity($ent){
+	public function saveEntity($ent,$option=array()){
 		
-		// ■■■□□□■■■□□□■■■□□□
-// 		// 新規入力かつ、順番が空なら新しい順番をセットする
-// 		if(empty($ent['id']) && empty($ent['sort_no'])){
-// 			$ent['sort_no'] = $this->getNextSortNo();
-// 		}
+		
+		// 新規入力であるなら新しい順番をエンティティにセットする。
+		if(empty($ent['id'])){
+			if(empty($this->CrudBase)) $this->CrudBase = new CrudBase();
+			if(empty($option['ni_tr_place'])){
+				$ent['sort_no'] = $this->CrudBase->getLastSortNo($this); // 末尾順番を取得する
+			}else{
+				$ent['sort_no'] = $this->CrudBase->getFirstSortNo($this); // 先頭順番を取得する
+			}
+			
+		}
 
 		//DBに登録('atomic' => false　トランザクションなし）
 		$ent = $this->save($ent, array('atomic' => false,'validate'=>false));

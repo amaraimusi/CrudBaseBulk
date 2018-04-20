@@ -209,9 +209,22 @@ class HinaFileList extends AppModel {
 	 * 雛ファイルリストエンティティを雛ファイルリストテーブルに保存します。
 	 *
 	 * @param array $ent 雛ファイルリストエンティティ
+	 * @param array $option オプション
 	 * @return array 雛ファイルリストエンティティ（saveメソッドのレスポンス）
 	 */
-	public function saveEntity($ent){
+	public function saveEntity($ent,$option=array()){
+		
+		
+		// 新規入力であるなら新しい順番をエンティティにセットする。
+		if(empty($ent['id'])){
+			if(empty($this->CrudBase)) $this->CrudBase = new CrudBase();
+			if(empty($option['ni_tr_place'])){
+				$ent['sort_no'] = $this->CrudBase->getLastSortNo($this); // 末尾順番を取得する
+			}else{
+				$ent['sort_no'] = $this->CrudBase->getFirstSortNo($this); // 先頭順番を取得する
+			}
+			
+		}
 
 		//DBに登録('atomic' => false　トランザクションなし）
 		$ent = $this->save($ent, array('atomic' => false,'validate'=>false));

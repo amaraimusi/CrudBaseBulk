@@ -217,6 +217,10 @@ class TypeAController extends CrudBaseController {
 		// JSON文字列をパースしてエンティティを取得する
 		$json=$_POST['key1'];
 		$ent = json_decode($json,true);
+		
+		// 登録パラメータ
+		$reg_param_json = $_POST['reg_param_json'];
+		$regParam = json_decode($reg_param_json,true);
 	
 	
 		// アップロードファイルが存在すればエンティティにセットする。
@@ -232,7 +236,9 @@ class TypeAController extends CrudBaseController {
 	
 		// エンティティをDB保存
 		$this->TypeA->begin();
-		$ent = $this->TypeA->saveEntity($ent);
+		$option = array();
+		if(isset($regParam['ni_tr_place'])) $option['ni_tr_place'] = $regParam['ni_tr_place'];
+		$ent = $this->TypeA->saveEntity($ent,$option);
 		$this->TypeA->commit();//コミット
 
 		if(!empty($upload_file)){
