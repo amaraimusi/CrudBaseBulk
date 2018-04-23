@@ -67,8 +67,6 @@ function hpo_rewriting(page_code){
 	{"ary" : ary} ,
 		function(str_json){//Ajax通信のコールバック
 
-			$("#test").html(str_json);//■■■□□□■■■□□□■■■□□□
-
 			var data=$.parseJSON(str_json);//レスポンスデータをJSONデコードしてテキストデータを取得する。
 
 			//テキストデータの件数分、処理を繰り返す。
@@ -111,7 +109,7 @@ sanitaize = {
 		  decode : function (str) {
 
 			var str2=str.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;/g, '\'').replace(/&#039;/g, '\'').replace(/&amp;/g, '&');
-			console.log(str2);//■■■□□□■■■□□□■■■□□□)
+
 		    return str2;
 		  }
 		};

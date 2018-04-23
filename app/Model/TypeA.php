@@ -17,6 +17,14 @@ class TypeA extends AppModel {
 	/// バリデーションはコントローラクラスで定義
 	public $validate = null;
 	
+	
+	public function __construct() {
+		parent::__construct();
+		
+		// CrudBaseロジッククラスの生成
+		if(empty($this->CrudBase)) $this->CrudBase = new CrudBase();
+	}
+	
 	/**
 	 * タイプAエンティティを取得
 	 *
@@ -140,6 +148,8 @@ class TypeA extends AppModel {
 	private function createKjConditions($kjs){
 
 		$cnds=null;
+		
+		$this->CrudBase->sql_sanitize($kjs); // SQLサニタイズ
 		
 		// --- Start kjConditions
 		
@@ -342,9 +352,6 @@ class TypeA extends AppModel {
 		//2次元配列に構造変換する。
 		if(!empty($data)){
 			$data=Hash::combine($data, '{n}.TypeA.id','{n}.TypeA.type_a_name');
-
-			$head[0] = '基本型';
-			$data = Hash::merge($head,$data);
 		}
 		return $data;
 		

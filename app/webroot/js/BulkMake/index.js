@@ -74,14 +74,7 @@ function init(){
 			editReg(); // 登録処理
 		}
 	});
-	
-	
 
-	
-	// ■■■□□□■■■□□□■■■□□□■■■
-//	// CSVインポートの初期化  <CrudBase/index.js>
-//	initCsvImportFu('bulk_make/csv_fu');
-	
 }
 
 /**

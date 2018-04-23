@@ -32,13 +32,10 @@ class AppController extends Controller {
 	        echo 'localhost only !';
 	        die();
 	    }
-
-		
-		// ■■■□□□■■■□□□■■■□□□一時的なバグ回避
-		if(empty($role)){
-			$role="developer";
-		}
-		
+	    // ■■■□□□■■■□□□■■■□□□一時的なバグ回避
+	    if(empty($role)){
+	    	$role="developer";
+	    }
 		$this->set('role',$role);
 	}
 
@@ -47,7 +44,7 @@ class AppController extends Controller {
 	 * 
 	 * @note
 	 * セッション中に存在しなければデフォルトを取得。
-	 * @return チャット設定情報
+	 * @return array チャット設定情報
 	 */
     protected function getOpChatConfig(){
     	$chatConfig=$this->Session->read('shch_chat_config');

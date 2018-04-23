@@ -73,7 +73,6 @@ class BulkMakeController extends CrudBaseController {
 		$data = $this->BulkMake->findData2($crudBaseData);
 		$data_json = json_encode($data,JSON_HEX_TAG | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_HEX_APOS);
 		
-
 		// CrudBase共通処理（後）
 		$crudBaseData = $this->indexAfter($crudBaseData);//indexアクションの共通後処理
 		
@@ -87,7 +86,6 @@ class BulkMakeController extends CrudBaseController {
 		$typeAList = $this->BulkMake->getTypeAList();
 		$type_a_json = json_encode($typeAList,JSON_HEX_TAG | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_HEX_APOS);
 
-	
 		$this->set($crudBaseData);
 		$this->set(array(
 			'title_for_layout'=>'一括作成',
@@ -315,8 +313,6 @@ class BulkMakeController extends CrudBaseController {
 		$json=$_POST['key1'];
 		
 		$data = json_decode($json,true);//JSON文字を配列に戻す
-		
-		$data = Sanitize::clean($data, array('encode' => false));
 		
 		// データ保存
 		$this->BulkMake->begin();
@@ -684,7 +680,7 @@ class BulkMakeController extends CrudBaseController {
 		// 複製先DBのテーブルからフィールドデータを取得する
 		$sql = "SHOW FULL COLUMNS FROM {$to_tbl_name}";
 		$fieldData2 = $this->OuterDb->query($sql);
-		
+
 		$rs = $this->OuterDb->changeDbName('crud_base_bulk'); // DBを元に戻す
 
 		// フィールドデータを一括作成用に変換する
@@ -739,8 +735,11 @@ class BulkMakeController extends CrudBaseController {
  		// ソースコードのコード（キャメルとスネーク）と和名を置換する。
  		$scrTexts = $this->BulkMake->replaceCodes($scrTexts,$mission);
  		
+ 		// タイプAデータをDBから取得する
+ 		$typeAData = $this->BulkMake->getTypeADataForExeBulk();
+ 		
  		// フィールドソースコードに置換する
- 		$scrTexts = $this->BulkMake->replaceFieldScr($scrTexts,$fieldData);
+ 		$scrTexts = $this->BulkMake->replaceFieldScr($scrTexts,$fieldData,$typeAData,$mission);
  		
  		// ソースコードテキストリストを出力
  		$this->BulkMake->outputScrTexts($scrTexts,$toFps);

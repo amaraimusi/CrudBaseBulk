@@ -19,7 +19,7 @@ class OuterDb extends AppModel {
 	
 	/**
 	 * データベース名を指定して、DB変更する。
-	 * @param $dbName DB名
+	 * @param string $dbName DB名
 	 */
 	public function changeDbName($dbName,$DbConfig='default') {
 	    $this->setDataSource($DbConfig);

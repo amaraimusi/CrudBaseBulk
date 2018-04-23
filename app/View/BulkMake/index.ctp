@@ -284,7 +284,7 @@ foreach($data as $i=>$ent){
 			<label class="text-danger" for="field_name"></label>
 		</td></tr>
 		<tr><td>タイプA: </td><td>
-			<?php $this->CrudBase->selectX('type_a',null,$typeAList,null,'-- タイプA --');?>
+			<?php $this->CrudBase->selectX('type_a',null,$typeAList,null);?>
 			<label class="text-danger" for="type_a"></label>
 		</td></tr>
 		<tr><td>フィールド型: </td><td>
@@ -358,7 +358,7 @@ foreach($data as $i=>$ent){
 			<span class="field_name"></span>
 		</td></tr>
 		<tr><td>タイプA: </td><td>
-			<?php $this->CrudBase->selectX('type_a',null,$typeAList,null,'-- タイプA --');?>
+			<?php $this->CrudBase->selectX('type_a',null,$typeAList,null);?>
 		</td></tr>
 
 		<tr><td>削除： </td><td>

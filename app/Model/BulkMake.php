@@ -26,6 +26,14 @@ class BulkMake extends AppModel {
 	private $hinaDataCash;
 	
 	
+	public function __construct() {
+		parent::__construct();
+		
+		// CrudBaseロジッククラスの生成
+		if(empty($this->CrudBase)) $this->CrudBase = new CrudBase();
+	}
+	
+	
 	/**
 	 * 一括作成エンティティを取得
 	 *
@@ -146,6 +154,8 @@ class BulkMake extends AppModel {
 	private function createKjConditions($kjs){
 
 		$cnds=null;
+		
+		$this->CrudBase->sql_sanitize($kjs); // SQLサニタイズ
 		
 		// --- Start kjConditions
 		
@@ -318,6 +328,8 @@ class BulkMake extends AppModel {
 		// タイプA上書きフラグを取得
 		$type_a_over = 0;
 		if(isset($option['type_a_over'])) $type_a_over = $option['type_a_over'];
+		
+		$sort_no = 0;
 
 		$fieldData = array();
 		foreach($fieldData2 as $columns){
@@ -361,6 +373,9 @@ class BulkMake extends AppModel {
 			$comment = $ent2['Comment'];
 			if(empty($comment)) $comment = $field_name;
 			
+			// 順番
+			$sort_no ++;
+			
 			$ent = array();
 			$ent['id'] = $id;
 			$ent['mission_id'] = $mission_id;
@@ -374,17 +389,19 @@ class BulkMake extends AppModel {
 			$ent['def_val'] = $ent2['Default'];
 			$ent['extra'] = $ent2['Extra'];
 			$ent['comment'] = $comment;
+			$ent['sort_no'] = $sort_no;
 			
 			$fieldData[] = $ent;
 		}
 		
-		// タイプA上書フラグがOFFであるなら、タイプAの予測判定処理を行う。
-		if(empty($option['type_a_over'])){
-			
+		
+		// タイプA上書フラグがONであるなら、タイプAの予測判定処理を行う。
+		if(!empty($option['type_a_over'])){
+
 			// タイプAを予測する
 			$fieldData = $this->predictionTypeA($fieldData);
 		}
-		
+
 		return $fieldData;
 		
 	}
@@ -423,7 +440,7 @@ class BulkMake extends AppModel {
 		);
 		
 		//ORDER情報
-		$order=array('sort_no');
+		$order=array('sort_no DESC');
 		
 		//オプション
 		$option=array(
@@ -474,7 +491,7 @@ class BulkMake extends AppModel {
 	 * @
 	 */
 	private function getPredTypeA($fEnt,&$typeAData){
-		
+
 		foreach($typeAData as $taEnt){
 
 			$flg = 0;
@@ -575,12 +592,12 @@ class BulkMake extends AppModel {
 					$flg = 1;
 				}
 			}
-			
+
 			if($flg) return $taEnt['id'];
 			
 		}
 		
-		return 0;
+		return 1;
 	}
 	
 	/**
@@ -751,7 +768,7 @@ class BulkMake extends AppModel {
 	 */
 	public function makeFilePath($hinaFiles,$scr_code_c,$path){
 		
-		$scr_code_s = $this->snakize($scr_code_c);// スネーク記法コードを作成
+		$scr_code_s = $this->CrudBase->snakize($scr_code_c);// スネーク記法コードを作成
 		$path = $this->separateAlign($path,null,0,1); //　パスのセパレータをそろえる
 		$fps = array(); // ファイルパスリスト
 		
@@ -767,34 +784,7 @@ class BulkMake extends AppModel {
 		
 		return $fps;
 	}
-	
-	
-	/**
-	 * スネークケースにキャメルケースから変換
-	 * @param string $str キャメルケース
-	 * @return string スネークケース
-	 */
-	private function snakize($str) {
-		$str = preg_replace('/[A-Z]/', '_\0', $str);
-		$str = strtolower($str);
-		return ltrim($str, '_');
-	}
-	
-	/**
-	 * キャメルケースにスネークケースから変換する
-	 *
-	 * 先頭も大文字になる。
-	 *
-	 * @param string $str スネークケースの文字列
-	 * @return string キャメルケースの文字列
-	 */
-	function camelize($str) {
-		$str = strtr($str, '_', ' ');
-		$str = ucwords($str);
-		return str_replace(' ', '', $str);
-	}
-	
-	
+
 	
 	/**
 	 * パスやURLのセパレータをそろえる
@@ -941,10 +931,10 @@ class BulkMake extends AppModel {
 	public function replaceCodes(&$scrTexts,$mission){
 		
 		$from_scr_code_c = $mission['from_scr_code']; //　キャメル記法・複製元画面コード
-		$from_scr_code_s = $this->snakize($from_scr_code_c); // スネーク記法・複製元画面コード
+		$from_scr_code_s = $this->CrudBase->snakize($from_scr_code_c); // スネーク記法・複製元画面コード
 		$from_wamei = $mission['from_wamei']; // 複製元和名
 		$to_scr_code_c = $mission['to_scr_code']; //　キャメル記法・複製先画面コード
-		$to_scr_code_s = $this->snakize($to_scr_code_c); // スネーク記法・複製先画面コード
+		$to_scr_code_s = $this->CrudBase->snakize($to_scr_code_c); // スネーク記法・複製先画面コード
 		$to_wamei = $mission['to_wamei']; // 複製先和名
 		
 		foreach($scrTexts as &$scr_text){
@@ -1070,15 +1060,25 @@ class BulkMake extends AppModel {
 	 * 
 	 * @param array $scrTexts ソースコードテキストリスト
 	 * @param array $fieldData フィールドデータ
+	 * @param array $typeAData タイプAデータ
+	 * @param array $mission 任務データ
 	 * @return array 置換後のフィールドデータ
 	 */
-	public function replaceFieldScr(&$scrTexts,&$fieldData){
+	public function replaceFieldScr(&$scrTexts,&$fieldData,&$typeAData,$mission){
 		
-
+		// 置換データ
+		$model_c = $mission['to_scr_code']; // モデル名（スネーク記法)
+		$model_s = $this->CrudBase->camelize($model_c); // モデル名（キャメル記法））
+		$replaceData = array(
+				'model_c' => $model_c,
+				'model_s' => $model_s,
+		);
+		
+		
 		foreach($scrTexts as $i => $src_text){
 
 			$offset = 0;
-			for($x_i=0;$x_i<10;$x_i++){// あとで10を10000にする■■■□□□■■■□□□■■■□□□
+			for($x_i=0;$x_i<512;$x_i++){
 				
 				// ソースコードからCBBXSタグを含む行情報を取得する
 				$info = $this->getRowContainSearchStr('CBBXS',$src_text,$offset);
@@ -1088,8 +1088,15 @@ class BulkMake extends AppModel {
 				$hina_code = $this->getHinaCodeFromRowStr($row_str); // 行文字列から雛型コードを抜き出す
 				$hinaData = $this->getHinaDataByHinaCode($hina_code); // 雛型コードに紐づく雛型データをDBまたはキャッシュから取得する
 
+				//debug('$hina_code=' . $hina_code);//■■■□□□■■■□□□■■■□□□)
+		
 				// 雛型データとフィールドデータからフィールドソースコードを作成する。
-				$field_scr = $this->makeFieldScr($hinaData,$fieldData);
+				$field_scr = $this->makeFieldScr($hinaData,$fieldData,$typeAData,$replaceData);
+				
+				// ■■■□□□■■■□□□■■■□□□
+				if($hina_code == '1006' && !empty($field_scr)){
+					debug($field_scr);//■■■□□□■■■□□□■■■□□□)
+				}
 				
 				$offset_s2 = $info['offset2']; // CBBXSタグを含む行の末尾位置
 				$offset_s2 += 1; // 位置調整
@@ -1116,43 +1123,87 @@ class BulkMake extends AppModel {
 	 * 雛型データとフィールドデータからフィールドソースコードを作成する。
 	 * @param array $hinaData 雛型データ
 	 * @param array $fieldData フィールドデータ
+	 * @param array $typeAData タイプAデータ
+	 * @param array $replaceData 置換データ
 	 * @return string フィールドソースコード
 	 */
-	private function makeFieldScr(&$hinaData,&$fieldData){
+	private function makeFieldScr(&$hinaData,&$fieldData,&$typeAData,&$replaceData){
+
+		$hinaTypeAList = array_keys($hinaData);// 雛型データのキーを雛型タイプAリストとして取得する
 		
-		
+		if(empty($hinaTypeAList)) return "";
+
 		$field_scr = ''; // フィールドソースコード
 		
 		if(empty($hinaData)) return $field_scr;
 		
 		foreach($fieldData as $ent){
-			$type_a = $ent['type_a'];
+			$type_a_tmp = $ent['type_a']; // 候補タイプA
 			
-			// タイプAに紐づく雛型が存在しないなら、「タイプA＝0(基本型)」の雛型を取得する。
-			if(empty($hinaData[$type_a])){
-				$type_a = 0;
-				if(empty($hinaData[$type_a])) continue;
-			}
+			// ツリー構造のタイプAデータから、候補タイプAを始点に上位をさかのぼって、適切なタイプAを取得する。
+			$type_a = $this->backSearchTypeA($type_a_tmp,$hinaTypeAList,$typeAData);
+			if($type_a == 0) continue;
+			
 			$hinagata = $hinaData[$type_a];
-			
 			$field_s = $ent['field_name'];
-			$field_c = $this->camelize($field_s); // キャメル記法に変換
+			$field_c = $this->CrudBase->camelize($field_s); // キャメル記法に変換
+			$field_lcc = $this->CrudBase->lowerCamelize($field_s); // ローワーキャメル記法に変換
 			
+			$hinagata = str_replace('%model_s', $replaceData['model_s'], $hinagata); // モデル名（スネーク記法）
+			$hinagata = str_replace('%model_c', $replaceData['model_c'], $hinagata); // モデル名（キャメル記法）
 			$hinagata = str_replace('%field_s', $field_s, $hinagata); // フィールド名（スネーク記法）
 			$hinagata = str_replace('%field_c', $field_c, $hinagata); // フィールド名（キャメル記法）
+			$hinagata = str_replace('%field_lcc', $field_lcc, $hinagata); // フィールド名（ローワーキャメル記法）
 			$hinagata = str_replace('%field_type', $ent['field_type'], $hinagata); // 型
-			$hinagata = str_replace('%type_long', $ent['type_long'], $hinagata); // 型長
+			$hinagata = str_replace('%type_long', $ent['type_long'], $hinagata); // 型長　
+			$hinagata = str_replace('%comment', $ent['comment'], $hinagata); // コメント
 			$hinagata = str_replace('%null_flg', $ent['null_flg'], $hinagata); // NULLフラグ
 			$hinagata = str_replace('%p_key_flg', $ent['p_key_flg'], $hinagata); // 主キーフラグ
-			$hinagata = str_replace('%def_val', $ent['def_val'], $hinagata); // デフォルト値　
-			$hinagata = str_replace('%comment', $ent['comment'], $hinagata); // コメント
+			$hinagata = str_replace('%def_val', $ent['def_val'], $hinagata); // デフォルト値
 			
 			$field_scr .= $hinagata . "\n";
 
 		}
-		
+
 		return $field_scr;
 		
+	}
+	
+	
+	/**
+	 * ツリー構造のタイプAデータから、候補タイプAを始点に上位をさかのぼって、適切なタイプAを取得する。
+	 * 
+	 * @param int $type_a_tmp 候補タイプA
+	 * @param array $hinaTypeAList 雛タイプAリスト
+	 * @param array $typeAData タイプAデータ
+	 * 
+	 */
+	private function backSearchTypeA($type_a_tmp,&$hinaTypeAList,&$typeAData){
+		
+		for($i=0;$i<100;$i++){
+
+			// 雛タイプAリストから候補タイプAリストを検索する。
+			$key = array_search($type_a_tmp,$hinaTypeAList);
+			
+			// 雛タイプA配列に候補タイプAが存在するなら、その値であるタイプAを返す。
+			if($key!==false){
+				return $hinaTypeAList[$key];
+			}
+			
+			// 存在しない場合
+			else{
+				
+				if(empty($typeAData[$type_a_tmp])) return 0;
+				
+				// タイプAデータXから候補タイプAに紐づく親IDを候補タイプAとしてセットする
+				$type_a_tmp = $typeAData[$type_a_tmp]['par_id'];
+				
+				// 候補タイプAが0である場合、0を返して処理抜け
+				if($type_a_tmp == 0) return 0;
+
+			}
+		}
+		return 0;
 	}
 	
 	
@@ -1331,6 +1382,43 @@ class BulkMake extends AppModel {
 		}else{
 			// 何もしない
 		}
+	}
+	
+	/**
+	 * タイプAデータをDBから取得する
+	 * @return array タイプAデータ
+	 */
+	public function getTypeADataForExeBulk(){
+		if(empty($this->TypeA)){
+			App::uses('TypeA','Model');
+			$this->TypeA=ClassRegistry::init('TypeA');
+		}
+		
+		//SELECT情報
+		$fields=array(
+				'id',
+				'type_a_name',
+				'par_id	',
+		);
+		
+		//WHERE情報
+		$conditions=array("delete_flg = 0");
+		
+		//オプション
+		$option=array(
+				'fields'=>$fields,
+				'conditions'=>$conditions,
+		);
+		
+		//DBから取得
+		$data=$this->TypeA->find('all',$option);
+		
+		//2次元配列に構造変換する。
+		if(!empty($data)){
+			$data=Hash::combine($data, '{n}.TypeA.id','{n}.TypeA');
+		}
+		
+		return $data;
 	}
 	
 	

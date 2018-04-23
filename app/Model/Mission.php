@@ -22,6 +22,14 @@ class Mission extends AppModel {
 	/// バリデーションはコントローラクラスで定義
 	public $validate = null;
 	
+	
+	public function __construct() {
+		parent::__construct();
+		
+		// CrudBaseロジッククラスの生成
+		if(empty($this->CrudBase)) $this->CrudBase = new CrudBase();
+	}
+	
 	/**
 	 * 任務エンティティを取得
 	 *
@@ -145,6 +153,8 @@ class Mission extends AppModel {
 	private function createKjConditions($kjs){
 
 		$cnds=null;
+		
+		$this->CrudBase->sql_sanitize($kjs); // SQLサニタイズ
 		
 		// --- Start kjConditions
 		

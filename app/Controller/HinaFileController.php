@@ -162,14 +162,6 @@ class HinaFileController extends CrudBaseController {
 		$ent=$res['ent'];
 		
 		$regMsg="<p id='reg_msg'>更新しました。</p>";
-
-		//オリジナルバリデーション■■■□□□■■■□□□■■■□□□
-		//$xFlg=$this->validHinaFile();
-		$xFlg=true;
-		if($xFlg==false){
-			//エラーメッセージと一緒に編集画面へ、リダイレクトで戻る。
-			$this->errBackToEdit("オリジナルバリデーションのエラー");
-		}
 		
 		//★DB保存
 		$this->HinaFile->begin();//トランザクション開始
@@ -309,8 +301,6 @@ class HinaFileController extends CrudBaseController {
 		$json=$_POST['key1'];
 		
 		$data = json_decode($json,true);//JSON文字を配列に戻す
-		
-		$data = Sanitize::clean($data, array('encode' => false));
 		
 		// データ保存
 		$this->HinaFile->begin();

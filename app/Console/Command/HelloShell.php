@@ -10,7 +10,7 @@ class HelloShell extends AppShell {
 				'file' => 'big_cat',
 		));
 		
-		$this->log('test=neko',BIG_CAT);//■■■□□□■■■□□□■■■□□□
+		$this->log('test=neko',BIG_CAT);
 		
 		$this->out('Hello world4.');
 	}

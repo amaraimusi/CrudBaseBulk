@@ -221,7 +221,7 @@ foreach($data as $i=>$ent){
 		</td></tr>
 
 		<tr><td>タイプA: </td><td>
-			<?php $this->CrudBase->selectX('type_a',null,$typeAList,null,'-- タイプA --');?>
+			<?php $this->CrudBase->selectX('type_a',null,$typeAList,null);?>
 			<label class="text-danger" for="type_a"></label>
 		</td></tr>
 		
@@ -270,7 +270,7 @@ foreach($data as $i=>$ent){
 		</td></tr>
 
 		<tr><td>タイプA: </td><td>
-			<?php $this->CrudBase->selectX('type_a',null,$typeAList,null,'-- タイプA --');?>
+			<?php $this->CrudBase->selectX('type_a',null,$typeAList,null);?>
 			<label class="text-danger" for="type_a"></label>
 
 		</td></tr>
@@ -279,8 +279,11 @@ foreach($data as $i=>$ent){
 			<textarea name="hinagata" class="hinagata_ta" maxlength="1000" title="1000文字以内で入力してください"></textarea>
 			<label class="text-danger" for="hinagata"></label>
 			<table class="tbl2"><thead><tr><th>可変コード</th><th>説明</th><th>詳細</th></tr></thead><tbody>
+				<tr><td>%model_s</td><td>モデル名（スネーク記法）</td><td></td></tr>
+				<tr><td>%model_c</td><td>モデル名（キャメル記法）</td><td></td></tr>
 				<tr><td>%field_s</td><td>フィールド名（スネーク記法）</td><td></td></tr>
 				<tr><td>%field_c</td><td>フィールド名（キャメル記法）</td><td></td></tr>
+				<tr><td>%field_lcc</td><td>フィールド名（ローワーキャメル記法）</td><td></td></tr>
 				<tr><td>%field_type</td><td>型</td><td></td></tr>
 				<tr><td>%type_long</td><td>型長</td><td>int</td></tr>
 				<tr><td>%null_flg</td><td>NULLフラグ</td><td>0:NULLでない , 1:NULL</td></tr>
