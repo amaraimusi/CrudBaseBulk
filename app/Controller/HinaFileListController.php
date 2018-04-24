@@ -269,7 +269,7 @@ class HinaFileListController extends CrudBaseController {
 
 	   // 抹消フラグ
 	   $eliminate_flg = 0;
-	   if(isset($_POST['eliminate_flg'])) $eliminate_flg = $_POST['eliminate_flg'];
+	   if(isset($regParam['eliminate_flg'])) $eliminate_flg = $regParam['eliminate_flg'];
 	   
 		// 削除用のエンティティを取得する
 		$ent = $this->getEntForDelete($ent0['id']);
@@ -278,9 +278,7 @@ class HinaFileListController extends CrudBaseController {
 		// エンティティをDB保存
 		$this->HinaFileList->begin();
 		if($eliminate_flg == 0){
-			$option = array();
-			if(isset($regParam['ni_tr_place'])) $option['ni_tr_place'] = $regParam['ni_tr_place'];
-			$ent = $this->HinaFileList->saveEntity($ent,$option); // 更新
+			$ent = $this->HinaFileList->saveEntity($ent,$regParam); // 更新
 		}else{
 		    $this->HinaFileList->delete($ent['id']); // 削除
 		}

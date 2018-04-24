@@ -258,10 +258,14 @@ class HinaFileController extends CrudBaseController {
 		// JSON文字列をパースしてエンティティを取得する
 		$json=$_POST['key1'];
 		$ent0 = json_decode($json,true);
+		
+		// 登録パラメータ
+		$reg_param_json = $_POST['reg_param_json'];
+		$regParam = json_decode($reg_param_json,true);
 
 	   // 抹消フラグ
 	   $eliminate_flg = 0;
-	   if(isset($_POST['eliminate_flg'])) $eliminate_flg = $_POST['eliminate_flg'];
+	   if(isset($regParam['eliminate_flg'])) $eliminate_flg = $regParam['eliminate_flg'];
 	   
 		// 削除用のエンティティを取得する
 		$ent = $this->getEntForDelete($ent0['id']);
@@ -270,7 +274,7 @@ class HinaFileController extends CrudBaseController {
 		// エンティティをDB保存
 		$this->HinaFile->begin();
 		if($eliminate_flg == 0){
-		    $ent = $this->HinaFile->saveEntity($ent); // 更新
+			$ent = $this->HinaFile->saveEntity($ent,$regParam); // 更新
 		}else{
 		    $this->HinaFile->delete($ent['id']); // 削除
 		}
