@@ -254,14 +254,12 @@ class BulkMake extends AppModel {
 		
 		
 		// 新規入力であるなら新しい順番をエンティティにセットする。
-		if(empty($ent['id'])){
-			if(empty($this->CrudBase)) $this->CrudBase = new CrudBase();
+		if($option['form_type']=='new_inp' ){
 			if(empty($option['ni_tr_place'])){
 				$ent['sort_no'] = $this->CrudBase->getLastSortNo($this); // 末尾順番を取得する
 			}else{
 				$ent['sort_no'] = $this->CrudBase->getFirstSortNo($this); // 先頭順番を取得する
 			}
-			
 		}
 
 		//DBに登録('atomic' => false　トランザクションなし）
@@ -1094,7 +1092,7 @@ class BulkMake extends AppModel {
 				$field_scr = $this->makeFieldScr($hinaData,$fieldData,$typeAData,$replaceData);
 				
 				// ■■■□□□■■■□□□■■■□□□
-				if($hina_code == '1006' && !empty($field_scr)){
+				if($hina_code == '1023' && !empty($field_scr)){
 					debug($field_scr);//■■■□□□■■■□□□■■■□□□)
 				}
 				
@@ -1110,7 +1108,7 @@ class BulkMake extends AppModel {
 				// オフセットs1からSBBXEの行情報を再検索し、オフセット2をオフセットにセットする。
 				$infoE = $this->getRowContainSearchStr('CBBXE',$src_text,$offset_s1);
 				$offset = $infoE['offset2'];
-
+				
 				$scrTexts[$i] = $src_text;
 			}
 		}
@@ -1161,7 +1159,9 @@ class BulkMake extends AppModel {
 			$hinagata = str_replace('%p_key_flg', $ent['p_key_flg'], $hinagata); // 主キーフラグ
 			$hinagata = str_replace('%def_val', $ent['def_val'], $hinagata); // デフォルト値
 			
-			$field_scr .= $hinagata . "\n";
+			if(!empty($hinagata)){
+				$field_scr .= $hinagata . "\n";
+			}
 
 		}
 

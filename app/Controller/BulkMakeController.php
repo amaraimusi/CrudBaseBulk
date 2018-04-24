@@ -228,9 +228,7 @@ class BulkMakeController extends CrudBaseController {
 	
 		// エンティティをDB保存
 		$this->BulkMake->begin();
-		$option = array();
-		if(isset($regParam['ni_tr_place'])) $option['ni_tr_place'] = $regParam['ni_tr_place'];
-		$ent = $this->BulkMake->saveEntity($ent,$option);
+		$ent = $this->BulkMake->saveEntity($ent,$regParam);
 		$this->BulkMake->commit();//コミット
 
 		if(!empty($upload_file)){

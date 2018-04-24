@@ -216,9 +216,7 @@ class HinaFileController extends CrudBaseController {
 	
 		// エンティティをDB保存
 		$this->HinaFile->begin();
-		$option = array();
-		if(isset($regParam['ni_tr_place'])) $option['ni_tr_place'] = $regParam['ni_tr_place'];
-		$ent = $this->HinaFile->saveEntity($ent,$option);
+		$ent = $this->HinaFile->saveEntity($ent,$regParam);
 		$this->HinaFile->commit();//コミット
 
 		if(!empty($upload_file)){

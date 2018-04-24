@@ -212,9 +212,7 @@ class HinagataController extends CrudBaseController {
 	
 		// エンティティをDB保存
 		$this->Hinagata->begin();
-		$option = array();
-		if(isset($regParam['ni_tr_place'])) $option['ni_tr_place'] = $regParam['ni_tr_place'];
-		$ent = $this->Hinagata->saveEntity($ent,$option);
+		$ent = $this->Hinagata->saveEntity($ent,$regParam);
 		$this->Hinagata->commit();//コミット
 
 		if(!empty($upload_file)){

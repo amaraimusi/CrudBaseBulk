@@ -198,6 +198,10 @@ class HinaFileListController extends CrudBaseController {
 	
 		$this->autoRender = false;//ビュー(ctp)を使わない。
 	
+		// 登録パラメータ
+		$reg_param_json = $_POST['reg_param_json'];
+		$regParam = json_decode($reg_param_json,true);
+		
 		// JSON文字列をパースしてエンティティを取得する
 		$json=$_POST['key1'];
 		$ent = json_decode($json,true);
@@ -216,7 +220,7 @@ class HinaFileListController extends CrudBaseController {
 	
 		// エンティティをDB保存
 		$this->HinaFileList->begin();
-		$ent = $this->HinaFileList->saveEntity($ent);
+		$ent = $this->HinaFileList->saveEntity($ent,$regParam);
 		$this->HinaFileList->commit();//コミット
 
 		if(!empty($upload_file)){

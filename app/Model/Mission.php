@@ -256,14 +256,12 @@ class Mission extends AppModel {
 		
 		
 		// 新規入力であるなら新しい順番をエンティティにセットする。
-		if(empty($ent['id'])){
-			if(empty($this->CrudBase)) $this->CrudBase = new CrudBase();
+		if($option['form_type']=='new_inp' ){
 			if(empty($option['ni_tr_place'])){
 				$ent['sort_no'] = $this->CrudBase->getLastSortNo($this); // 末尾順番を取得する
 			}else{
 				$ent['sort_no'] = $this->CrudBase->getFirstSortNo($this); // 先頭順番を取得する
 			}
-			
 		}
 
 		//DBに登録('atomic' => false　トランザクションなし）

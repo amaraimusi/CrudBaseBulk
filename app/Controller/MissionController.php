@@ -218,9 +218,7 @@ class MissionController extends CrudBaseController {
 	
 		// エンティティをDB保存
 		$this->Mission->begin();
-		$option = array();
-		if(isset($regParam['ni_tr_place'])) $option['ni_tr_place'] = $regParam['ni_tr_place'];
-		$ent = $this->Mission->saveEntity($ent,$option);
+		$ent = $this->Mission->saveEntity($ent,$regParam);
 		$this->Mission->commit();//コミット
 
 		if(!empty($upload_file)){

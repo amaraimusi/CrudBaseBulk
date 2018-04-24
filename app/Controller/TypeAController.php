@@ -228,9 +228,7 @@ class TypeAController extends CrudBaseController {
 	
 		// エンティティをDB保存
 		$this->TypeA->begin();
-		$option = array();
-		if(isset($regParam['ni_tr_place'])) $option['ni_tr_place'] = $regParam['ni_tr_place'];
-		$ent = $this->TypeA->saveEntity($ent,$option);
+		$ent = $this->TypeA->saveEntity($ent,$regParam);
 		$this->TypeA->commit();//コミット
 
 		if(!empty($upload_file)){
