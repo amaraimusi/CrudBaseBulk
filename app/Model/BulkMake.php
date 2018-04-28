@@ -1086,15 +1086,8 @@ class BulkMake extends AppModel {
 				$hina_code = $this->getHinaCodeFromRowStr($row_str); // 行文字列から雛型コードを抜き出す
 				$hinaData = $this->getHinaDataByHinaCode($hina_code); // 雛型コードに紐づく雛型データをDBまたはキャッシュから取得する
 
-				//debug('$hina_code=' . $hina_code);//■■■□□□■■■□□□■■■□□□)
-		
 				// 雛型データとフィールドデータからフィールドソースコードを作成する。
 				$field_scr = $this->makeFieldScr($hinaData,$fieldData,$typeAData,$replaceData);
-				
-				// ■■■□□□■■■□□□■■■□□□
-				if($hina_code == '1023' && !empty($field_scr)){
-					debug($field_scr);//■■■□□□■■■□□□■■■□□□)
-				}
 				
 				$offset_s2 = $info['offset2']; // CBBXSタグを含む行の末尾位置
 				$offset_s2 += 1; // 位置調整
