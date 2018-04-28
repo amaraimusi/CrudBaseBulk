@@ -14,8 +14,8 @@
  * td内部へのSetやGetは、先頭要素とtd直下にしか対応していない。
  * 複雑なtd内部にも対応するとなるとコールバックを検討しなければならない。
  * 
- * @date 2016-9-21 | 2018-4-24 削除のバグを修正
- * @version 2.1.4
+ * @date 2016-9-21 | 2018-4-26 テーブル型入力フォームをＳＰ版に対応させる。
+ * @version 2.1.6
  * 
  * @param object param
  *  - tbl_slt	CRUD対象テーブルセレクタ
@@ -803,6 +803,7 @@ class CrudBaseBase{
 			var label = form.find("[for='" + field + "']");
 			if(label[0]){
 				label.html("");
+				label.hide();
 			}
 		}
 	}
@@ -860,6 +861,7 @@ class CrudBaseBase{
 			}else{
 				label.attr('class','text-danger');
 				label.html(title);
+				label.show();
 			}
 
 		}catch( e ){
@@ -1593,9 +1595,28 @@ class CrudBaseBase{
 		if(param['kjs'] == null){
 			param['kjs'] = null;
 		}
+
+		// デバイスタイプ
+		if(param['device_type'] == null){
+			param['device_type'] = this.judgDeviceType(); // デバイスタイプ（PC/SP）の判定
+		}
 		
 		return param;
 	}
+	
+	
+	/**
+	 * デバイスタイプ（PC/SP）の判定
+	 * @return string デバイスタイプ pc,sp
+	 */
+	judgDeviceType(){
+		var device = 'pc';
+		if (screen.width <= 480) {
+			device = 'sp';
+		}
+		return device;
+	}
+	
 
 
 	/**
@@ -2237,14 +2258,23 @@ class CrudBaseBase{
 	 */
 	_showForm(form,triggerElm,option){
 
-		if(option == null){
-			option = {};
-		}
-
-		// フォーム位置フラグ
+		if(option == null) option = {};
+		
+		// フォーム位置フラグをセットする。SP(スマホ）である場合は、max(横幅いっぱい）とする。
 		if(option['form_position'] == null){
 			option['form_position'] = this.param.form_position;
+			if(this.param.device_type=='sp'){
+				option['form_position'] = 'max';
+			}
 		}
+		
+		// SPである場合、ＳＰ版のスタイルを適用する
+		if(this.param.device_type == 'sp'){
+			var tblElm = form.find('table');
+			tblElm.addClass('tbl_sp'); // ＳＰ版スタイルを適用
+			tblElm.find('label').hide(); // レイアウトが崩れるのでlabel要素を隠す
+		}
+		
 
 		// 入力フォームストラテジーの使用
 		if(option['use_show_form_strategy'] == null){
@@ -2291,8 +2321,7 @@ class CrudBaseBase{
 
 		// フォーム位置Yをセット
 		var trigger_height = triggerElm.outerHeight();
-		var tt_top=top + trigger_height;
-
+		var tt_top = top + trigger_height;
 
 		var tt_left=0;// フォーム初期位置X
 		var full_w = ww; // コンテンツのフル横幅
@@ -2330,7 +2359,8 @@ class CrudBaseBase{
 
 		case 'max':
 
-			form_width = full_w;
+			var  adjust_v = 2; // 調整値。 左右のborderの幅
+			form_width = full_w - adjust_v;
 
 			break;
 

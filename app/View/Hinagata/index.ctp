@@ -161,7 +161,7 @@ foreach($data as $i=>$ent){
 	$this->CrudBase->tdId($ent,'id',array('checkbox_name'=>'pwms'));
 	$this->CrudBase->tdStr($ent,'hina_code');
 	$this->CrudBase->tdList($ent,'type_a',$typeAList);
-	$this->CrudBase->tdNote($ent,'hinagata',512);
+	$this->CrudBase->tdNote($ent,'hinagata',200);
 	$this->CrudBase->tdPlain($ent,'sort_no');
 	$this->CrudBase->tdDeleteFlg($ent,'delete_flg');
 	$this->CrudBase->tdPlain($ent,'update_user');
@@ -226,7 +226,7 @@ foreach($data as $i=>$ent){
 		</td></tr>
 		
 		<tr><td>雛型： </td><td>
-			<textarea name="hinagata" class="hinagata_ta" maxlength="1000" title="1000文字以内で入力してください"></textarea>
+			<textarea name="hinagata" ></textarea>
 			<label class="text-danger" for="hinagata"></label>
 		</td></tr>
 		<!-- Start ajax_form_new_end -->
@@ -276,7 +276,7 @@ foreach($data as $i=>$ent){
 		</td></tr>
 
 		<tr><td>雛型： </td><td>
-			<textarea name="hinagata" class="hinagata_ta" maxlength="1000" title="1000文字以内で入力してください"></textarea>
+			<textarea name="hinagata" class="hinagata_ta" ></textarea>
 			<label class="text-danger" for="hinagata"></label>
 			<table class="tbl2"><thead><tr><th>可変コード</th><th>説明</th><th>詳細</th></tr></thead><tbody>
 				<tr><td>%model_s</td><td>モデル名（スネーク記法）</td><td></td></tr>
