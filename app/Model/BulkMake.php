@@ -8,7 +8,7 @@ App::uses('CrudBase', 'Model');
  * 一括作成画面用のDB関連メソッドを定義しています。
  * 一括作成テーブルと関連付けられています。
  *
- * @date 2015-9-16	新規作成
+ * @date 2015-9-16 | 2018-4-29	%table_sに対応
  * @author k-uehara
  *
  */
@@ -346,6 +346,8 @@ class BulkMake extends AppModel {
 				$id = $ent1['id'];
 				$mission_id = $ent1['mission_id'];
 				$type_a = $ent1['type_a'];
+			}else{
+				$type_a_over = 1; // 既存フィールドが空であるならタイプＡのセット処理を行うためＯＮにする。
 			}
 			
 
@@ -394,7 +396,7 @@ class BulkMake extends AppModel {
 		
 		
 		// タイプA上書フラグがONであるなら、タイプAの予測判定処理を行う。
-		if(!empty($option['type_a_over'])){
+		if(!empty($type_a_over)){
 
 			// タイプAを予測する
 			$fieldData = $this->predictionTypeA($fieldData);
@@ -1067,9 +1069,11 @@ class BulkMake extends AppModel {
 		// 置換データ
 		$model_c = $mission['to_scr_code']; // モデル名（スネーク記法)
 		$model_s = $this->CrudBase->camelize($model_c); // モデル名（キャメル記法））
+		$table_s = $mission['to_tbl_name']; // テーブル名
 		$replaceData = array(
 				'model_c' => $model_c,
 				'model_s' => $model_s,
+				'table_s' => $table_s,
 		);
 		
 		
@@ -1151,6 +1155,7 @@ class BulkMake extends AppModel {
 			$hinagata = str_replace('%null_flg', $ent['null_flg'], $hinagata); // NULLフラグ
 			$hinagata = str_replace('%p_key_flg', $ent['p_key_flg'], $hinagata); // 主キーフラグ
 			$hinagata = str_replace('%def_val', $ent['def_val'], $hinagata); // デフォルト値
+			$hinagata = str_replace('%table_s', $replaceData['table_s'], $hinagata); // テーブル名
 			
 			if(!empty($hinagata)){
 				$field_scr .= $hinagata . "\n";
