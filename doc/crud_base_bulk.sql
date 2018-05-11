@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 2018 年 5 朁E10 日 09:58
+-- Generation Time: 2018 年 5 朁E11 日 19:45
 -- サーバのバージョン： 10.1.30-MariaDB
 -- PHP Version: 7.1.14
 
@@ -182,7 +182,7 @@ INSERT INTO `hinagatas` (`id`, `hina_code`, `type_a`, `hinagata`, `sort_no`, `de
 (39, '1007', 15, '		<tr><td>%comment: </td><td>\n			<input type=\"text\" name=\"%field_s\" class=\"valid\" value=\"\"  pattern=\"([0-9]{4})(/|-)([0-9]{1,2})(/|-)([0-9]{1,2})\" title=\"日付形式（Y-m-d）で入力してください(例：2012-12-12)\" />\n			<label class=\"text-danger\" for=\"%field_s\"></label>\n		</td></tr>\n', 39, 1, 'kani', '::1', '2018-04-22 14:24:06', '2018-04-28 22:12:47'),
 (40, '1006', 27, '		<tr><td>%comment: </td><td>\n			<?php $this->CrudBase->selectX(\'%field_s\',null,$%field_lccList,null);?>\n			<label class=\"text-danger\" for=\"%field_s\"></label>\n		</td></tr>\n', 40, 0, 'kani', '::1', '2018-04-22 16:38:09', '2018-04-22 07:38:09'),
 (41, '1006', 14, '		<tr><td>%comment: </td><td>\n			<input type=\"text\" name=\"%field_s\" class=\"valid\" value=\"\"  pattern=\"([0-9]{4})(/|-)([0-9]{1,2})(/|-)([0-9]{1,2}) d{2}:d{2}:d{2}\" title=\"日時形式（Y-m-d H:i:s）で入力してください(例：2012-12-12 12:12:12)\" />\n			<label class=\"text-danger\" for=\"%field_s\"></label>\n		</td></tr>', 41, 0, 'kani', '::1', '2018-04-22 16:40:33', '2018-04-22 07:40:33'),
-(42, '1006', 3, '		<tr><td>%comment： </td><td>\n			<textarea name=\"%field_s\"  title=\"%type_long文字以内で入力してください\"></textarea>\n			<label class=\"text-danger\" for=\"%field_s\"></label>\n		</td></tr>', 43, 0, 'kani', '::1', '2018-04-22 16:51:35', '2018-05-10 02:40:34'),
+(42, '1006', 3, '		<tr><td>%comment： </td><td>\n			<textarea name=\"%field_s\" ></textarea>\n			<label class=\"text-danger\" for=\"%field_s\"></label>\n		</td></tr>', 43, 0, 'kani', '::1', '2018-04-22 16:51:35', '2018-05-11 17:44:25'),
 (43, '1006', 22, '', 44, 0, 'kani', '::1', '2018-04-22 16:54:24', '2018-04-22 07:54:24'),
 (44, '1006', 5, '		<tr><td>%comment: </td><td>\n			<input type=\"text\" name=\"%field_s\" class=\"valid\" value=\"\"  pattern=\"^[ -]?[0-9] $\" maxlength=\"11\" title=\"数値（整数数）を入力してください\" />\n			<label class=\"text-danger\" for=\"%field_s\"></label>\n		</td></tr>', 45, 0, 'kani', '::1', '2018-04-23 15:55:07', '2018-04-23 06:55:07'),
 (45, '1006', 10, '		<tr><td>%comment: </td><td>\n			<input type=\"text\" name=\"%field_s\" class=\"valid\" value=\"\"  pattern=\"^[ -]?([0-9]*[.])?[0-9] $\" maxlength=\"11\" title=\"数値（浮動小数点）を入力してください\" />\n			<label class=\"text-danger\" for=\"%field_s\"></label>\n		</td></tr>', 46, 0, 'kani', '::1', '2018-04-23 15:55:56', '2018-04-23 06:55:56'),
@@ -197,7 +197,7 @@ INSERT INTO `hinagatas` (`id`, `hina_code`, `type_a`, `hinagata`, `sort_no`, `de
 (54, '1007', 6, '		<tr><td>%comment: </td><td>\n			<input type=\"text\" name=\"%field_s\" class=\"valid\" value=\"\"  pattern=\"^[0-9] $\" maxlength=\"11\" title=\"数値（自然数）を入力してください\" />\n			<label class=\"text-danger\" for=\"%field_s\"></label>\n		</td></tr>\n', 55, 0, 'kani', '::1', '2018-04-23 16:10:19', '2018-04-23 07:10:19'),
 (55, '1007', 27, '		<tr><td>%comment: </td><td>\n			<?php $this->CrudBase->selectX(\'%field_s\',null,$%field_lccList,null);?>\n			<label class=\"text-danger\" for=\"%field_s\"></label>\n		</td></tr>\n', 56, 0, 'kani', '::1', '2018-04-23 16:10:34', '2018-04-23 07:10:35'),
 (56, '1007', 14, '		<tr><td>%comment: </td><td>\n			<input type=\"text\" name=\"%field_s\" class=\"valid\" value=\"\"  pattern=\"([0-9]{4})(/|-)([0-9]{1,2})(/|-)([0-9]{1,2}) d{2}:d{2}:d{2}\" title=\"日時形式（Y-m-d H:i:s）で入力してください(例：2012-12-12 12:12:12)\" />\n			<label class=\"text-danger\" for=\"%field_s\"></label>\n		</td></tr>', 57, 0, 'kani', '::1', '2018-04-23 16:10:41', '2018-04-23 07:10:41'),
-(57, '1007', 3, '		<tr><td>%comment： </td><td>\n			<textarea name=\"%field_s\" title=\"%type_long文字以内で入力してください\"></textarea>\n			<label class=\"text-danger\" for=\"%field_s\"></label>\n		</td></tr>', 58, 0, 'kani', '::1', '2018-04-23 16:10:47', '2018-05-10 02:41:21'),
+(57, '1007', 3, '		<tr><td>%comment： </td><td>\n			<textarea name=\"%field_s\"></textarea>\n			<label class=\"text-danger\" for=\"%field_s\"></label>\n		</td></tr>', 58, 0, 'kani', '::1', '2018-04-23 16:10:47', '2018-05-11 17:45:01'),
 (58, '1007', 22, '		<tr><td>ID: </td><td>\n			<span class=\"id\"></span>\n		</td></tr>', 59, 0, 'kani', '::1', '2018-04-23 16:11:13', '2018-04-23 07:11:13'),
 (59, '1007', 5, '		<tr><td>%comment: </td><td>\n			<input type=\"text\" name=\"%field_s\" class=\"valid\" value=\"\"  pattern=\"^[ -]?[0-9] $\" maxlength=\"11\" title=\"数値（整数数）を入力してください\" />\n			<label class=\"text-danger\" for=\"%field_s\"></label>\n		</td></tr>', 60, 0, 'kani', '::1', '2018-04-23 16:11:22', '2018-04-23 07:11:22'),
 (60, '1007', 10, '		<tr><td>%comment: </td><td>\n			<input type=\"text\" name=\"%field_s\" class=\"valid\" value=\"\"  pattern=\"^[ -]?([0-9]*[.])?[0-9] $\" maxlength=\"11\" title=\"数値（浮動小数点）を入力してください\" />\n			<label class=\"text-danger\" for=\"%field_s\"></label>\n		</td></tr>', 61, 0, 'kani', '::1', '2018-04-23 16:11:29', '2018-04-23 07:11:29'),
