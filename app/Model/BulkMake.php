@@ -1143,7 +1143,9 @@ class BulkMake extends AppModel {
 			$field_s = $ent['field_name'];
 			$field_c = $this->CrudBase->camelize($field_s); // キャメル記法に変換
 			$field_lcc = $this->CrudBase->lowerCamelize($field_s); // ローワーキャメル記法に変換
-			
+			$field_out_model_s = $this->makeFieldOutModel($field_s);// ID系フィールド・外部モデル名(スネーク記法）
+			$field_out_model_c = $this->CrudBase->camelize($field_out_model_s);
+
 			$hinagata = str_replace('%model_s', $replaceData['model_s'], $hinagata); // モデル名（スネーク記法）
 			$hinagata = str_replace('%model_c', $replaceData['model_c'], $hinagata); // モデル名（キャメル記法）
 			$hinagata = str_replace('%field_s', $field_s, $hinagata); // フィールド名（スネーク記法）
@@ -1156,6 +1158,8 @@ class BulkMake extends AppModel {
 			$hinagata = str_replace('%p_key_flg', $ent['p_key_flg'], $hinagata); // 主キーフラグ
 			$hinagata = str_replace('%def_val', $ent['def_val'], $hinagata); // デフォルト値
 			$hinagata = str_replace('%table_s', $replaceData['table_s'], $hinagata); // テーブル名
+			$hinagata = str_replace('%field_out_model_s', $field_out_model_s, $hinagata); // ID系フィールド・外部モデル名(スネーク記法）
+			$hinagata = str_replace('%field_out_model_c', $field_out_model_c, $hinagata); // ID系フィールド・外部モデル名（キャメル記法）
 			
 			if(!empty($hinagata)){
 				$field_scr .= $hinagata . "\n";
@@ -1203,6 +1207,29 @@ class BulkMake extends AppModel {
 		}
 		return 0;
 	}
+	
+	/**
+	 * ID系フィールド・外部モデル名
+	 * 
+	 * @note
+	 * フィールド名がbig_cat_idである場合、フィールド外部モデルは「BigCat」
+	 * 
+	 * @param string $field_s スネーク記法のフィールド名
+	 * @return string ID系フィールド・外部モデル名
+	 */
+	private function makeFieldOutModel($field_s){
+		
+		if(mb_strlen($field_s) < 4) return $field_s;
+		
+		$str3 = mb_substr($field_s,-3); // 末尾の3文字を取得
+		if($str3 != '_id') return $field_s;
+		
+		// 末尾の3文字を削る
+		$field_out_model = mb_substr($field_s,0,mb_strlen($field_s)-3);
+		
+		return $field_out_model;
+	}
+	
 	
 	
 	/**

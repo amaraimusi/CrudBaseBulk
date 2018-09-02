@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 2018 年 5 朁E11 日 19:45
+-- Generation Time: 
 -- サーバのバージョン： 10.1.30-MariaDB
 -- PHP Version: 7.1.14
 
@@ -115,7 +115,68 @@ INSERT INTO `bulk_makes` (`id`, `mission_id`, `field_name`, `type_a`, `field_typ
 (91, 6, 'ip_addr', 19, 'varchar', 'varchar(16)', 16, 0, 0, NULL, '', 'IPアドレス', 13, 0, NULL, NULL, '2018-05-08 19:54:37', '2018-05-08 10:54:37'),
 (92, 6, 'created', 20, 'datetime', 'datetime', 0, 0, 0, NULL, '', '生成日時', 14, 0, NULL, NULL, '2018-05-08 19:54:37', '2018-05-08 10:54:37'),
 (93, 6, 'modified', 21, 'timestamp', 'timestamp', 0, 0, 0, 'CURRENT_TIMESTAMP', 'on update CURRENT_TIMESTAMP', '更新日時', 15, 0, NULL, NULL, '2018-05-08 19:54:37', '2018-05-08 10:54:37'),
-(94, 6, 'kl_category', 27, 'int', 'int(11)', 11, 1, 0, '0', '', 'カテゴリ', 4, 0, 'kani', '::1', '2018-05-08 19:54:37', '2018-05-08 10:54:48');
+(94, 6, 'kl_category', 27, 'int', 'int(11)', 11, 1, 0, '0', '', 'カテゴリ', 4, 0, 'kani', '::1', '2018-05-08 19:54:37', '2018-05-08 10:54:48'),
+(95, 7, 'id', 22, 'int', 'int(11)', 11, 1, 1, NULL, 'auto_increment', 'id', 1, 0, NULL, NULL, '2018-06-16 19:51:16', '2018-06-16 10:51:16'),
+(96, 7, 'rec_title', 2, 'varchar', 'varchar(50)', 50, 0, 0, NULL, '', 'rec_title', 2, 0, NULL, NULL, '2018-06-16 19:51:16', '2018-06-16 10:51:16'),
+(97, 7, 'rec_date', 14, 'datetime', 'datetime', 0, 0, 0, NULL, '', 'rec_date', 3, 0, NULL, NULL, '2018-06-16 19:51:16', '2018-06-16 10:51:16'),
+(98, 7, 'note', 3, 'varchar', 'varchar(1000)', 1000, 0, 0, '', '', 'note', 4, 0, 'kani', '::1', '2018-06-16 19:51:16', '2018-06-16 10:51:45'),
+(99, 7, 'category_id2', 6, 'int', 'int(11)', 11, 0, 0, '', '', 'category_id2', 5, 0, 'kani', '::1', '2018-06-16 19:51:16', '2018-06-16 10:54:18'),
+(100, 7, 'category_id1', 6, 'int', 'int(11)', 11, 0, 0, '', '', 'category_id1', 6, 0, 'kani', '::1', '2018-06-16 19:51:16', '2018-06-16 10:54:28'),
+(101, 7, 'tags', 2, 'varchar', 'varchar(255)', 255, 0, 0, NULL, '', 'tags', 7, 0, NULL, NULL, '2018-06-16 19:51:16', '2018-06-16 10:51:16'),
+(102, 7, 'photo_fn', 2, 'varchar', 'varchar(128)', 128, 0, 0, NULL, '', 'photo_fn', 8, 0, NULL, NULL, '2018-06-16 19:51:16', '2018-06-16 10:51:16'),
+(103, 7, 'photo_dir', 2, 'varchar', 'varchar(128)', 128, 0, 0, NULL, '', '写真ディレクトリパス', 9, 0, NULL, NULL, '2018-06-16 19:51:16', '2018-06-16 10:51:16'),
+(104, 7, 'ref_url', 2, 'varchar', 'varchar(2083)', 2083, 0, 0, NULL, '', '参照URL', 10, 0, NULL, NULL, '2018-06-16 19:51:16', '2018-06-16 10:51:16'),
+(105, 7, 'nendo', 24, 'int', 'int(11)', 11, 0, 0, NULL, '', 'nendo', 11, 0, NULL, NULL, '2018-06-16 19:51:16', '2018-06-16 10:51:16'),
+(106, 7, 'sort_no', 17, 'int', 'int(11)', 11, 0, 0, NULL, '', 'sort_no', 12, 0, NULL, NULL, '2018-06-16 19:51:16', '2018-06-16 10:51:16'),
+(107, 7, 'no_a', 24, 'int', 'int(11)', 11, 0, 0, NULL, '', '番号A', 13, 0, NULL, NULL, '2018-06-16 19:51:16', '2018-06-16 10:51:16'),
+(108, 7, 'no_b', 24, 'int', 'int(11)', 11, 0, 0, NULL, '', 'no_b', 14, 0, NULL, NULL, '2018-06-16 19:51:16', '2018-06-16 10:51:16'),
+(109, 7, 'parent_id', 6, 'int', 'int(11)', 11, 0, 0, '', '', '親ID', 15, 0, 'kani', '::1', '2018-06-16 19:51:16', '2018-06-16 10:52:31'),
+(110, 7, 'probe_id', 6, 'int', 'int(11)', 11, 0, 0, '', '', 'サンプルID', 16, 0, 'kani', '::1', '2018-06-16 19:51:16', '2018-06-16 10:52:44'),
+(111, 7, 'publish', 5, 'tinyint', 'tinyint(1)', 1, 0, 0, NULL, '', '公開フラグ', 17, 0, NULL, NULL, '2018-06-16 19:51:16', '2018-06-16 10:51:16'),
+(112, 7, 'create_date', 14, 'datetime', 'datetime', 0, 0, 0, NULL, '', 'create_date', 18, 0, NULL, NULL, '2018-06-16 19:51:16', '2018-06-16 10:51:16'),
+(113, 7, 'update_date', 14, 'datetime', 'datetime', 0, 0, 0, NULL, '', 'update_date', 19, 0, NULL, NULL, '2018-06-16 19:51:16', '2018-06-16 10:51:16'),
+(114, 8, 'id', 22, 'int', 'int(11)', 11, 1, 1, NULL, 'auto_increment', 'ID', 1, 0, NULL, NULL, '2018-07-14 07:42:22', '2018-07-13 22:42:22'),
+(115, 8, 'category', 2, 'varchar', 'varchar(16)', 16, 0, 0, NULL, '', 'カテゴリ', 2, 0, NULL, NULL, '2018-07-14 07:42:22', '2018-07-13 22:42:22'),
+(116, 8, 'diary_date', 25, 'date', 'date', 0, 1, 0, NULL, '', '日誌日付', 3, 0, NULL, NULL, '2018-07-14 07:42:22', '2018-07-13 22:42:22'),
+(117, 8, 'diary_dt', 14, 'datetime', 'datetime', 0, 1, 0, NULL, '', '日誌日時', 4, 0, NULL, NULL, '2018-07-14 07:42:22', '2018-07-13 22:42:22'),
+(118, 8, 'diary_note', 3, 'text', 'text', 0, 1, 0, NULL, '', '日誌', 5, 0, NULL, NULL, '2018-07-14 07:42:22', '2018-07-13 22:42:22'),
+(119, 8, 'delete_flg', 12, 'tinyint', 'tinyint(1)', 1, 0, 0, '0', '', '無効フラグ', 6, 0, NULL, NULL, '2018-07-14 07:42:22', '2018-07-13 22:42:22'),
+(120, 8, 'update_user', 18, 'varchar', 'varchar(50)', 50, 0, 0, NULL, '', '更新者', 7, 0, NULL, NULL, '2018-07-14 07:42:22', '2018-07-13 22:42:22'),
+(121, 8, 'ip_addr', 19, 'varchar', 'varchar(40)', 40, 0, 0, NULL, '', 'IPアドレス', 8, 0, NULL, NULL, '2018-07-14 07:42:22', '2018-07-13 22:42:22'),
+(122, 8, 'created', 20, 'datetime', 'datetime', 0, 0, 0, NULL, '', '生成日時', 9, 0, NULL, NULL, '2018-07-14 07:42:22', '2018-07-13 22:42:22'),
+(123, 8, 'modified', 21, 'timestamp', 'timestamp', 0, 0, 0, 'CURRENT_TIMESTAMP', 'on update CURRENT_TIMESTAMP', '更新日', 10, 0, NULL, NULL, '2018-07-14 07:42:22', '2018-07-13 22:42:22'),
+(124, 9, 'id', 22, 'int', 'int(11)', 11, 1, 1, NULL, 'auto_increment', 'id', 1, 0, NULL, NULL, '2018-09-01 22:55:07', '2018-09-01 13:55:07'),
+(125, 9, 'bio_cls_name', 2, 'varchar', 'varchar(255)', 255, 0, 0, NULL, '', '綱名', 2, 0, NULL, NULL, '2018-09-01 22:55:07', '2018-09-01 13:55:07'),
+(126, 9, 'note', 3, 'text', 'text', 0, 1, 0, NULL, '', '備考', 3, 0, NULL, NULL, '2018-09-01 22:55:07', '2018-09-01 13:55:07'),
+(127, 9, 'sort_no', 17, 'int', 'int(11)', 11, 0, 0, '0', '', '順番', 4, 0, NULL, NULL, '2018-09-01 22:55:07', '2018-09-01 13:55:07'),
+(128, 9, 'delete_flg', 12, 'tinyint', 'tinyint(1)', 1, 0, 0, '0', '', '無効フラグ', 5, 0, NULL, NULL, '2018-09-01 22:55:07', '2018-09-01 13:55:07'),
+(129, 9, 'update_user', 18, 'varchar', 'varchar(50)', 50, 0, 0, NULL, '', '更新者', 6, 0, NULL, NULL, '2018-09-01 22:55:07', '2018-09-01 13:55:07'),
+(130, 9, 'ip_addr', 19, 'varchar', 'varchar(40)', 40, 0, 0, NULL, '', 'IPアドレス', 7, 0, NULL, NULL, '2018-09-01 22:55:07', '2018-09-01 13:55:07'),
+(131, 9, 'created', 20, 'datetime', 'datetime', 0, 0, 0, NULL, '', '生成日時', 8, 0, NULL, NULL, '2018-09-01 22:55:07', '2018-09-01 13:55:07'),
+(132, 9, 'modified', 21, 'timestamp', 'timestamp', 0, 0, 0, 'CURRENT_TIMESTAMP', 'on update CURRENT_TIMESTAMP', '更新日', 9, 0, NULL, NULL, '2018-09-01 22:55:07', '2018-09-01 13:55:07'),
+(133, 10, 'id', 22, 'int', 'int(11)', 11, 1, 1, NULL, 'auto_increment', 'id', 1, 0, NULL, NULL, '2018-09-01 23:50:11', '2018-09-01 14:50:11'),
+(134, 10, 'en_ctg_name', 2, 'varchar', 'varchar(255)', 255, 0, 0, NULL, '', '絶滅危惧種カテゴリー名', 2, 0, NULL, NULL, '2018-09-01 23:50:11', '2018-09-01 14:50:11'),
+(135, 10, 'note', 3, 'text', 'text', 0, 1, 0, NULL, '', '備考', 3, 0, NULL, NULL, '2018-09-01 23:50:11', '2018-09-01 14:50:11'),
+(136, 10, 'sort_no', 17, 'int', 'int(11)', 11, 0, 0, '0', '', '順番', 4, 0, NULL, NULL, '2018-09-01 23:50:11', '2018-09-01 14:50:11'),
+(137, 10, 'delete_flg', 12, 'tinyint', 'tinyint(1)', 1, 0, 0, '0', '', '無効フラグ', 5, 0, NULL, NULL, '2018-09-01 23:50:11', '2018-09-01 14:50:11'),
+(138, 10, 'update_user', 18, 'varchar', 'varchar(50)', 50, 0, 0, NULL, '', '更新者', 6, 0, NULL, NULL, '2018-09-01 23:50:11', '2018-09-01 14:50:11'),
+(139, 10, 'ip_addr', 19, 'varchar', 'varchar(40)', 40, 0, 0, NULL, '', 'IPアドレス', 7, 0, NULL, NULL, '2018-09-01 23:50:11', '2018-09-01 14:50:11'),
+(140, 10, 'created', 20, 'datetime', 'datetime', 0, 0, 0, NULL, '', '生成日時', 8, 0, NULL, NULL, '2018-09-01 23:50:11', '2018-09-01 14:50:11'),
+(141, 10, 'modified', 21, 'timestamp', 'timestamp', 0, 0, 0, 'CURRENT_TIMESTAMP', 'on update CURRENT_TIMESTAMP', '更新日', 9, 0, NULL, NULL, '2018-09-01 23:50:11', '2018-09-01 14:50:11'),
+(142, 11, 'id', 22, 'int', 'int(11)', 11, 1, 1, NULL, 'auto_increment', 'id', 1, 0, NULL, NULL, '2018-09-02 15:16:01', '2018-09-02 06:16:01'),
+(143, 11, 'bio_cls_id', 27, 'int', 'int(11)', 11, 0, 0, NULL, '', '綱ID', 2, 0, NULL, NULL, '2018-09-02 15:16:01', '2018-09-02 06:16:01'),
+(144, 11, 'family_name', 2, 'varchar', 'varchar(255)', 255, 0, 0, NULL, '', '科', 3, 0, NULL, NULL, '2018-09-02 15:16:01', '2018-09-02 06:16:01'),
+(145, 11, 'wamei', 2, 'varchar', 'varchar(255)', 255, 0, 0, NULL, '', '和名', 4, 0, NULL, NULL, '2018-09-02 15:16:01', '2018-09-02 06:16:01'),
+(146, 11, 'scien_name', 2, 'varchar', 'varchar(225)', 225, 0, 0, NULL, '', '学名', 5, 0, NULL, NULL, '2018-09-02 15:16:01', '2018-09-02 06:16:01'),
+(147, 11, 'en_ctg_id', 27, 'int', 'int(11)', 11, 0, 0, '0', '', '絶滅危惧種カテゴリーID', 6, 0, NULL, NULL, '2018-09-02 15:16:01', '2018-09-02 06:16:01'),
+(148, 11, 'endemic_sp_flg', 11, 'tinyint', 'tinyint(4)', 4, 0, 0, '0', '', '固有種フラグ', 7, 0, NULL, NULL, '2018-09-02 15:16:01', '2018-09-02 06:16:01'),
+(149, 11, 'note', 3, 'text', 'text', 0, 1, 0, NULL, '', '備考', 8, 0, NULL, NULL, '2018-09-02 15:16:01', '2018-09-02 06:16:01'),
+(150, 11, 'sort_no', 17, 'int', 'int(11)', 11, 0, 0, '0', '', '順番', 9, 0, NULL, NULL, '2018-09-02 15:16:01', '2018-09-02 06:16:01'),
+(151, 11, 'delete_flg', 12, 'tinyint', 'tinyint(1)', 1, 0, 0, '0', '', '無効フラグ', 10, 0, NULL, NULL, '2018-09-02 15:16:01', '2018-09-02 06:16:01'),
+(152, 11, 'update_user', 18, 'varchar', 'varchar(50)', 50, 0, 0, NULL, '', '更新者', 11, 0, NULL, NULL, '2018-09-02 15:16:01', '2018-09-02 06:16:01'),
+(153, 11, 'ip_addr', 19, 'varchar', 'varchar(40)', 40, 0, 0, NULL, '', 'IPアドレス', 12, 0, NULL, NULL, '2018-09-02 15:16:01', '2018-09-02 06:16:01'),
+(154, 11, 'created', 20, 'datetime', 'datetime', 0, 0, 0, NULL, '', '生成日時', 13, 0, NULL, NULL, '2018-09-02 15:16:01', '2018-09-02 06:16:01'),
+(155, 11, 'modified', 21, 'timestamp', 'timestamp', 0, 0, 0, 'CURRENT_TIMESTAMP', 'on update CURRENT_TIMESTAMP', '更新日', 14, 0, NULL, NULL, '2018-09-02 15:16:01', '2018-09-02 06:16:01');
 
 -- --------------------------------------------------------
 
@@ -164,7 +225,7 @@ INSERT INTO `hinagatas` (`id`, `hina_code`, `type_a`, `hinagata`, `sort_no`, `de
 (21, '1004', 1, '		$this->CrudBase->inputKjText($kjs,\'kj_%field_s\',\'%comment\');', 21, 0, 'kani', '::1', '2018-04-21 23:36:52', '2018-04-21 14:36:52'),
 (22, '1004', 24, '		$this->CrudBase->inputKjNouislider($kjs,\'%field_s\',\'%comment\');', 22, 0, 'kani', '::1', '2018-04-21 23:42:45', '2018-04-21 14:42:45'),
 (23, '1004', 25, '		$this->CrudBase->inputKjMoDateRng($kjs,\'kj_%field_s\',\'%comment\');', 23, 0, 'kani', '::1', '2018-04-21 23:44:33', '2018-04-21 14:44:33'),
-(24, '1004', 27, '		$this->CrudBase->inputKjSelect($kjs,\'kj_%field_s\',\'ネコ種別\',$%field_lccList); ', 24, 0, 'kani', '::1', '2018-04-22 08:30:27', '2018-04-21 23:39:05'),
+(24, '1004', 27, '		$this->CrudBase->inputKjSelect($kjs,\'kj_%field_s\',\'%comment\',$%field_lccList); ', 24, 0, 'kani', '::1', '2018-04-22 08:30:27', '2018-09-02 21:56:18'),
 (25, '1004', 22, '		$this->CrudBase->inputKjId($kjs);', 25, 0, 'kani', '::1', '2018-04-22 08:32:26', '2018-04-21 23:32:26'),
 (26, '1004', 17, '		$this->CrudBase->inputKjHidden($kjs,\'kj_sort_no\');', 26, 0, 'kani', '::1', '2018-04-22 08:33:01', '2018-04-21 23:33:01'),
 (27, '1004', 12, '		$this->CrudBase->inputKjDeleteFlg($kjs);', 27, 0, 'kani', '::1', '2018-04-22 08:33:29', '2018-04-21 23:33:30'),
@@ -181,7 +242,7 @@ INSERT INTO `hinagatas` (`id`, `hina_code`, `type_a`, `hinagata`, `sort_no`, `de
 (38, '1006', 6, '		<tr><td>%comment: </td><td>\n			<input type=\"text\" name=\"%field_s\" class=\"valid\" value=\"\"  pattern=\"^[0-9] $\" maxlength=\"11\" title=\"数値（自然数）を入力してください\" />\n			<label class=\"text-danger\" for=\"%field_s\"></label>\n		</td></tr>\n', 38, 0, 'kani', '::1', '2018-04-22 14:21:15', '2018-04-22 05:21:15'),
 (39, '1007', 15, '		<tr><td>%comment: </td><td>\n			<input type=\"text\" name=\"%field_s\" class=\"valid\" value=\"\"  pattern=\"([0-9]{4})(/|-)([0-9]{1,2})(/|-)([0-9]{1,2})\" title=\"日付形式（Y-m-d）で入力してください(例：2012-12-12)\" />\n			<label class=\"text-danger\" for=\"%field_s\"></label>\n		</td></tr>\n', 39, 1, 'kani', '::1', '2018-04-22 14:24:06', '2018-04-28 22:12:47'),
 (40, '1006', 27, '		<tr><td>%comment: </td><td>\n			<?php $this->CrudBase->selectX(\'%field_s\',null,$%field_lccList,null);?>\n			<label class=\"text-danger\" for=\"%field_s\"></label>\n		</td></tr>\n', 40, 0, 'kani', '::1', '2018-04-22 16:38:09', '2018-04-22 07:38:09'),
-(41, '1006', 14, '		<tr><td>%comment: </td><td>\n			<input type=\"text\" name=\"%field_s\" class=\"valid\" value=\"\"  pattern=\"([0-9]{4})(/|-)([0-9]{1,2})(/|-)([0-9]{1,2}) d{2}:d{2}:d{2}\" title=\"日時形式（Y-m-d H:i:s）で入力してください(例：2012-12-12 12:12:12)\" />\n			<label class=\"text-danger\" for=\"%field_s\"></label>\n		</td></tr>', 41, 0, 'kani', '::1', '2018-04-22 16:40:33', '2018-04-22 07:40:33'),
+(41, '1006', 14, '		<tr><td>%comment: </td><td>\n			<input type=\"text\" name=\"%field_s\" class=\"valid\" value=\"\"  pattern=\"([0-9]{4})(/|-)([0-9]{1,2})(/|-)([0-9]{1,2}) [0-9]{1,2}:[0-9]{1,2}:[0-9]{1,2}\" title=\"日時形式（Y-m-d H:i:s）で入力してください(例：2012-12-12 12:12:12)\" />\n			<label class=\"text-danger\" for=\"%field_s\"></label>\n		</td></tr>', 41, 0, 'kani', '::1', '2018-04-22 16:40:33', '2018-05-16 03:18:52'),
 (42, '1006', 3, '		<tr><td>%comment： </td><td>\n			<textarea name=\"%field_s\" ></textarea>\n			<label class=\"text-danger\" for=\"%field_s\"></label>\n		</td></tr>', 43, 0, 'kani', '::1', '2018-04-22 16:51:35', '2018-05-11 17:44:25'),
 (43, '1006', 22, '', 44, 0, 'kani', '::1', '2018-04-22 16:54:24', '2018-04-22 07:54:24'),
 (44, '1006', 5, '		<tr><td>%comment: </td><td>\n			<input type=\"text\" name=\"%field_s\" class=\"valid\" value=\"\"  pattern=\"^[ -]?[0-9] $\" maxlength=\"11\" title=\"数値（整数数）を入力してください\" />\n			<label class=\"text-danger\" for=\"%field_s\"></label>\n		</td></tr>', 45, 0, 'kani', '::1', '2018-04-23 15:55:07', '2018-04-23 06:55:07'),
@@ -196,7 +257,7 @@ INSERT INTO `hinagatas` (`id`, `hina_code`, `type_a`, `hinagata`, `sort_no`, `de
 (53, '1007', 1, '		<tr><td>%comment: </td><td>\n			<input type=\"text\" name=\"%field_s\" class=\"valid\" value=\"\"  maxlength=\"%type_long\" title=\"%type_long文字以内で入力してください\" />\n			<label class=\"text-danger\" for=\"%field_s\"></label>\n		</td></tr>\n', 54, 0, 'kani', '::1', '2018-04-23 16:10:14', '2018-04-23 07:10:14'),
 (54, '1007', 6, '		<tr><td>%comment: </td><td>\n			<input type=\"text\" name=\"%field_s\" class=\"valid\" value=\"\"  pattern=\"^[0-9] $\" maxlength=\"11\" title=\"数値（自然数）を入力してください\" />\n			<label class=\"text-danger\" for=\"%field_s\"></label>\n		</td></tr>\n', 55, 0, 'kani', '::1', '2018-04-23 16:10:19', '2018-04-23 07:10:19'),
 (55, '1007', 27, '		<tr><td>%comment: </td><td>\n			<?php $this->CrudBase->selectX(\'%field_s\',null,$%field_lccList,null);?>\n			<label class=\"text-danger\" for=\"%field_s\"></label>\n		</td></tr>\n', 56, 0, 'kani', '::1', '2018-04-23 16:10:34', '2018-04-23 07:10:35'),
-(56, '1007', 14, '		<tr><td>%comment: </td><td>\n			<input type=\"text\" name=\"%field_s\" class=\"valid\" value=\"\"  pattern=\"([0-9]{4})(/|-)([0-9]{1,2})(/|-)([0-9]{1,2}) d{2}:d{2}:d{2}\" title=\"日時形式（Y-m-d H:i:s）で入力してください(例：2012-12-12 12:12:12)\" />\n			<label class=\"text-danger\" for=\"%field_s\"></label>\n		</td></tr>', 57, 0, 'kani', '::1', '2018-04-23 16:10:41', '2018-04-23 07:10:41'),
+(56, '1007', 14, '		<tr><td>%comment: </td><td>\n			<input type=\"text\" name=\"%field_s\" class=\"valid\" value=\"\"  pattern=\"([0-9]{4})(/|-)([0-9]{1,2})(/|-)([0-9]{1,2}) [0-9]{1,2}:[0-9]{1,2}:[0-9]{1,2}\" title=\"日時形式（Y-m-d H:i:s）で入力してください(例：2012-12-12 12:12:12)\" />\n			<label class=\"text-danger\" for=\"%field_s\"></label>\n		</td></tr>', 57, 0, 'kani', '::1', '2018-04-23 16:10:41', '2018-05-16 03:19:22'),
 (57, '1007', 3, '		<tr><td>%comment： </td><td>\n			<textarea name=\"%field_s\"></textarea>\n			<label class=\"text-danger\" for=\"%field_s\"></label>\n		</td></tr>', 58, 0, 'kani', '::1', '2018-04-23 16:10:47', '2018-05-11 17:45:01'),
 (58, '1007', 22, '		<tr><td>ID: </td><td>\n			<span class=\"id\"></span>\n		</td></tr>', 59, 0, 'kani', '::1', '2018-04-23 16:11:13', '2018-04-23 07:11:13'),
 (59, '1007', 5, '		<tr><td>%comment: </td><td>\n			<input type=\"text\" name=\"%field_s\" class=\"valid\" value=\"\"  pattern=\"^[ -]?[0-9] $\" maxlength=\"11\" title=\"数値（整数数）を入力してください\" />\n			<label class=\"text-danger\" for=\"%field_s\"></label>\n		</td></tr>', 60, 0, 'kani', '::1', '2018-04-23 16:11:22', '2018-04-23 07:11:22'),
@@ -207,9 +268,9 @@ INSERT INTO `hinagatas` (`id`, `hina_code`, `type_a`, `hinagata`, `sort_no`, `de
 (64, '1007', 19, '', 65, 0, 'kani', '::1', '2018-04-23 16:12:36', '2018-04-23 07:12:36'),
 (65, '1007', 26, '', 66, 0, 'kani', '::1', '2018-04-23 16:12:42', '2018-04-23 07:12:42'),
 (66, '1020', 1, '', 67, 0, 'kani', '::1', '2018-04-23 16:22:25', '2018-04-23 07:22:25'),
-(67, '1020', 27, '\n		// %commentリスト\n		$%field_lccList = $this->%model_c->get%field_cList();\n		$%field_s_json = json_encode($%field_lccList,JSON_HEX_TAG | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_HEX_APOS);\n		$this->set(array(\'%field_lccList\' => $%field_lccList,\'%field_s_json\' => $%field_s_json));', 68, 0, 'kani', '::1', '2018-04-23 16:22:38', '2018-04-23 07:22:38'),
+(67, '1020', 27, '\n		// %commentリスト\n		$%field_lccList = $this->%model_c->get%field_cList();\n		$%field_s_json = json_encode($%field_lccList,JSON_HEX_TAG | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_HEX_APOS);\n		$this->set(array(\'%field_lccList\' => $%field_lccList,\'%field_s_json\' => $%field_s_json));', 68, 0, 'kani', '::1', '2018-04-23 16:22:38', '2018-09-02 06:22:00'),
 (68, '1021', 1, '', 69, 0, 'kani', '::1', '2018-04-23 16:41:02', '2018-04-23 07:41:30'),
-(69, '1021', 27, '	/**\n	 * %commentリストをDBから取得する\n	 */\n	public function get%field_cList(){\n		if(empty($this->%field_c)){\n			App::uses(\'%field_c\',\'Model\');\n			$this->%field_c=ClassRegistry::init(\'%field_c\');\n		}\n		$fields=array(\'id\',\'%field_s_name\');//SELECT情報\n		$conditions=array(\"delete_flg = 0\");//WHERE情報\n		$order=array(\'sort_no\');//ORDER情報\n		$option=array(\n				\'fields\'=>$fields,\n				\'conditions\'=>$conditions,\n				\'order\'=>$order,\n		);\n\n		$data=$this->%field_c->find(\'all\',$option); // DBから取得\n		\n		// 構造変換\n		if(!empty($data)){\n			$data = Hash::combine($data, \'{n}.%field_c.id\',\'{n}.%field_c.%field_s_name\');\n		}\n		\n		return $data;\n	}', 70, 0, 'kani', '::1', '2018-04-23 16:41:22', '2018-04-28 05:10:31'),
+(69, '1021', 27, '	/**\n	 * %commentリストをDBから取得する\n	 */\n	public function get%field_cList(){\n		if(empty($this->%field_out_model_c)){\n			App::uses(\'%field_out_model_c\',\'Model\');\n			$this->%field_out_model_c=ClassRegistry::init(\'%field_out_model_c\');\n		}\n		$fields=array(\'id\',\'%field_out_model_s_name\');//SELECT情報\n		$conditions=array(\"delete_flg = 0\");//WHERE情報\n		$order=array(\'sort_no\');//ORDER情報\n		$option=array(\n				\'fields\'=>$fields,\n				\'conditions\'=>$conditions,\n				\'order\'=>$order,\n		);\n\n		$data=$this->%field_out_model_c->find(\'all\',$option); // DBから取得\n		\n		// 構造変換\n		if(!empty($data)){\n			$data = Hash::combine($data, \'{n}.%field_out_model_c.id\',\'{n}.%field_out_model_c.%field_out_model_s_name\');\n		}\n		\n		return $data;\n	}', 70, 0, 'kani', '::1', '2018-04-23 16:41:22', '2018-09-02 13:46:45'),
 (70, '1022', 1, '', 71, 0, 'kani', '::1', '2018-04-23 16:55:06', '2018-04-23 07:55:06'),
 (71, '1022', 27, '	<input id=\"%field_s_json\" type=\"hidden\" value=\'<?php echo $%field_s_json; ?>\' />', 72, 0, 'kani', '::1', '2018-04-23 16:55:18', '2018-04-23 07:55:18'),
 (72, '1023', 1, '', 73, 0, 'kani', '::1', '2018-04-23 17:11:58', '2018-04-23 08:11:58'),
@@ -310,10 +371,15 @@ CREATE TABLE `missions` (
 INSERT INTO `missions` (`id`, `mission_name`, `hina_file_id`, `from_path`, `from_scr_code`, `from_db_name`, `from_tbl_name`, `from_wamei`, `to_path`, `to_scr_code`, `to_db_name`, `to_tbl_name`, `to_wamei`, `sort_no`, `delete_flg`, `update_user`, `ip_addr`, `created`, `modified`) VALUES
 (1, 'TEST', 0, 'd', 'abc', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'cake_demo', 'asfasdfa', NULL, 1, 'kani', '::1', '2018-04-01 23:06:48', '2018-04-05 14:19:52'),
 (2, 'TEST１', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\animal_park\\app', 'Yagi', 'animal_park', 'yagis', 'ヤギ', 1, 0, 'kani', '::1', '2018-04-05 23:19:41', '2018-04-16 00:43:21'),
-(3, '動物・ユーザー管理', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\animal_park\\app', 'UserMng', 'animal_park', 'users', 'ユーザー管理', 2, 0, 'kani', '::1', '2018-04-28 22:47:51', '2018-04-28 13:51:49'),
-(4, 'TEST2 テーブルと画面コードが異なる', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\animal_park\\app', 'HijarX', 'animal_park', 'yagis', 'ヒージャー', 3, 0, 'kani', '::1', '2018-04-28 23:09:35', '2018-04-28 14:09:35'),
-(5, '心得システム・心得カテゴリー', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\Users\\user\\git\\knowledge\\app', 'KlCategory', 'zss_rec', 'kl_categorys', '心得カテゴリー', 5, 0, 'kani', '::1', '2018-05-08 19:06:03', '2018-05-08 10:08:38'),
-(6, '心得システム・心得メイン', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\Users\\user\\git\\knowledge\\app', 'Knowledge', 'zss_rec', 'knowledges', '心得メイン', 4, 0, 'kani', '::1', '2018-05-08 19:16:30', '2018-05-08 10:16:30');
+(3, '動物・ユーザー管理', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\animal_park\\app', 'UserMng', 'animal_park', 'users', 'ユーザー管理', 4, 0, 'kani', '::1', '2018-04-28 22:47:51', '2018-04-28 13:51:49'),
+(4, 'TEST2 テーブルと画面コードが異なる', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\animal_park\\app', 'HijarX', 'animal_park', 'yagis', 'ヒージャー', 5, 0, 'kani', '::1', '2018-04-28 23:09:35', '2018-04-28 14:09:35'),
+(5, '心得システム・心得カテゴリー', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\Users\\user\\git\\knowledge\\app', 'KlCategory', 'zss_rec', 'kl_categorys', '心得カテゴリー', 7, 0, 'kani', '::1', '2018-05-08 19:06:03', '2018-05-08 10:08:38'),
+(6, '心得システム・心得メイン', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\Users\\user\\git\\knowledge\\app', 'Knowledge', 'zss_rec', 'knowledges', '心得メイン', 6, 0, 'kani', '::1', '2018-05-08 19:16:30', '2018-05-08 10:16:30'),
+(7, 'RecX', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\zss_rec\\app', 'RecX', 'zss_rec', 'recs', '農業記録X', 3, 0, 'kani', '::1', '2018-06-16 19:51:07', '2018-06-16 10:51:07'),
+(8, 'RecX', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\zss_rec\\app', 'DiaryA', 'zss_rec', 'diary_as', '日誌Ａ', 2, 0, 'kani', '::1', '2018-07-14 07:41:56', '2018-07-13 22:41:56'),
+(9, 'cb_red_book/BioCls', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\cb_red_book\\app', 'BioCls', 'cb_red_book', 'bio_clss', '綱', 1, 0, 'kani', '::1', '2018-09-01 22:54:54', '2018-09-01 14:48:05'),
+(10, 'cb_red_book/EnCtg', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\cb_red_book\\app', 'EnCtg', 'cb_red_book', 'en_ctgs', '絶滅危惧種カテゴリー', 1, 0, 'kani', '::1', '2018-09-01 23:49:49', '2018-09-01 14:49:49'),
+(11, 'cb_red_book/EnSp', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\cb_red_book\\app', 'EnSp', 'cb_red_book', 'en_sps', '絶滅危惧生物', 1, 0, 'kani', '::1', '2018-09-02 07:44:07', '2018-09-01 22:44:07');
 
 -- --------------------------------------------------------
 
@@ -458,7 +524,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `bulk_makes`
 --
 ALTER TABLE `bulk_makes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=156;
 
 --
 -- AUTO_INCREMENT for table `hinagatas`
@@ -482,7 +548,7 @@ ALTER TABLE `hina_file_lists`
 -- AUTO_INCREMENT for table `missions`
 --
 ALTER TABLE `missions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `type_as`
