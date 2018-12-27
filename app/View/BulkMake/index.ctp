@@ -160,6 +160,7 @@ $this->assign('script', $this->Html->script($jsList,array('charset'=>'utf-8')));
     </div>
 </div>
 
+    <span class="text-danger">不具合対処：フィールドデータを変更したら一旦、ブラウザをリロードしてから一括作成を行うこと。（変更が適用されない不具合あり）</span>
 <div id="total_div">
 	<table><tr>
 		<td>件数:<?php echo $data_count ?></td>
