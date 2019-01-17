@@ -226,7 +226,7 @@ foreach($data as $i=>$ent){
 		</td></tr>
 		
 		<tr><td>雛型： </td><td>
-			<textarea name="hinagata" ></textarea>
+			<textarea name="hinagata" style="width:480px;height:200px;"></textarea>
 			<label class="text-danger" for="hinagata"></label>
 		</td></tr>
 		<!-- Start ajax_form_new_end -->
