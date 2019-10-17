@@ -50,6 +50,16 @@ class BulkMakeController extends CrudBaseController {
 
 
 	public function beforeFilter() {
+		
+		if($_SERVER['SERVER_NAME']!='localhost'){
+			echo 'This system localhost only!';
+			die();
+		}
+		
+		// 未ログイン中である場合、未認証モードの扱いでページ表示する。
+		if(empty($this->Auth->user())){
+			$this->Auth->allow(); // 未認証モードとしてページ表示を許可する。
+		}
 	
 		parent::beforeFilter();
 	

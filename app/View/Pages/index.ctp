@@ -3,14 +3,7 @@
 
 
 <ul>
-	<li><a href="<?php echo $this->Html->webroot.'neko'?>">ネコCRUDサンプル</a></li>
-	<li><a href="<?php echo $this->Html->webroot.'yagi'?>">ヤギAjaxサンプル</a></li>
-	<li><a href="<?php echo $this->Html->webroot.'kani'?>">カニ・ワーカースレッド ver 1.1</a></li>
-	<li><a href="<?php echo $this->Html->webroot.'same'?>">サメファイル読込</a></li>
-	<li><a href="<?php echo $this->Html->webroot.'no_auth'?>">ログイン認証の検証</a></li>
-	<li><a href="<?php echo $this->Html->webroot.'devloper'?>">特別ページ</a></li>
-	<li><a href="<?php echo $this->Html->webroot.'app/webroot/doxygen/html/index.html'?>">ドキュメント | Doxygen</a></li>
-	<li><a href="../shch">テスト（一時的shch）</a></li>
+	<li><a href="<?php echo $this->Html->webroot.'mission'?>">CrudBaseBulk</a></li>
 	
 </ul>
 
