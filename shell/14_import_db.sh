@@ -1,9 +1,9 @@
 ﻿#!/bin/sh
 
-echo '作業ディレクトリ'
-pwd
+echo "ローカルDBのパスワードを入力してください"
+read pw
 
-mysql -u root -p crud_base_bulk < crud_base_bulk.sql
+mysql -u root -p$pw crud_base_bulk < crud_base_bulk.sql
 echo 'インポートしました。'
 
 
