@@ -294,7 +294,7 @@ foreach($data as $i=>$ent){
 					<td><aside>フィールド名がbig_cat_idである場合、フィールド外部モデルは「big_cat」</aside></td></tr>
 				<tr><td>%field_out_model_c</td><td>ID系フィールド・外部モデル名</td>
 					<td><aside>フィールド名がbig_cat_idである場合、フィールド外部モデルは「BigCat」</aside></td></tr>
-				<tr><td>%outer_field_s</td><td>外部フィールド名</td><td>フィールド名から「_id」を取り除いた外部モデル名。例：buta_id⇒buta</td></tr>
+				<tr><td>%outer_model_s</td><td>外部モデル名</td><td>フィールド名から「_id」を取り除いた外部モデル名。例：buta_id⇒buta</td></tr>
 			</tbody></table>
 		</td></tr>
 
