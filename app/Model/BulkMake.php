@@ -1145,6 +1145,7 @@ class BulkMake extends AppModel {
 			$field_lcc = $this->CrudBase->lowerCamelize($field_s); // ローワーキャメル記法に変換
 			$field_out_model_s = $this->makeFieldOutModel($field_s);// ID系フィールド・外部モデル名(スネーク記法）
 			$field_out_model_c = $this->CrudBase->camelize($field_out_model_s);
+			$outer_field_s = str_replace('_id', '', $field_s); // 外部フィールド名
 
 			$hinagata = str_replace('%model_s', $replaceData['model_s'], $hinagata); // モデル名（スネーク記法）
 			$hinagata = str_replace('%model_c', $replaceData['model_c'], $hinagata); // モデル名（キャメル記法）
@@ -1160,6 +1161,7 @@ class BulkMake extends AppModel {
 			$hinagata = str_replace('%table_s', $replaceData['table_s'], $hinagata); // テーブル名
 			$hinagata = str_replace('%field_out_model_s', $field_out_model_s, $hinagata); // ID系フィールド・外部モデル名(スネーク記法）
 			$hinagata = str_replace('%field_out_model_c', $field_out_model_c, $hinagata); // ID系フィールド・外部モデル名（キャメル記法）
+			$hinagata = str_replace('%outer_field_s', $outer_field_s, $hinagata); // ID系フィールド・外部モデル名（キャメル記法）
 			
 			if(!empty($hinagata)){
 				$field_scr .= $hinagata . "\n";

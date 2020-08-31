@@ -15,6 +15,7 @@ $this->assign('script', $this->Html->script($jsList,array('charset'=>'utf-8')));
 
 
 
+
 <h2>任務</h2>
 
 任務の検索閲覧および編集する画面です。<br>
@@ -294,7 +295,10 @@ foreach($data as $i=>$ent){
 
 
 <!-- 編集フォーム -->
-<div id="ajax_crud_edit_form" class="panel panel-primary">
+<style>
+#ajax_crud_edit_form input{width:400px}
+</style>
+<div id="ajax_crud_edit_form" class="panel panel-primary" style="width:700px">
 
 	<div class="panel-heading">
 		<div class="pnl_head1">編集</div>
@@ -308,7 +312,7 @@ foreach($data as $i=>$ent){
 	</div>
 	<div class="panel-body">
 	<div class="err text-danger"></div>
-	<table><tbody>
+	<table style="width:100%"><tbody>
 
 		<!-- Start ajax_form_edit_start -->
 		<tr><td>ID: </td><td>
