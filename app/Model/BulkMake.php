@@ -930,14 +930,17 @@ class BulkMake extends AppModel {
 	 */
 	public function replaceCodes(&$scrTexts,$mission){
 		
+		$from_tbl_name = $mission['from_tbl_name']; // 複製元テーブル名
 		$from_scr_code_c = $mission['from_scr_code']; //　キャメル記法・複製元画面コード
 		$from_scr_code_s = $this->CrudBase->snakize($from_scr_code_c); // スネーク記法・複製元画面コード
 		$from_wamei = $mission['from_wamei']; // 複製元和名
+		$to_tbl_name = $mission['to_tbl_name']; // 複製先テーブル名
 		$to_scr_code_c = $mission['to_scr_code']; //　キャメル記法・複製先画面コード
 		$to_scr_code_s = $this->CrudBase->snakize($to_scr_code_c); // スネーク記法・複製先画面コード
 		$to_wamei = $mission['to_wamei']; // 複製先和名
 		
 		foreach($scrTexts as &$scr_text){
+			$scr_text = str_replace($from_tbl_name, $to_tbl_name, $scr_text);
 			$scr_text = str_replace($from_scr_code_c, $to_scr_code_c, $scr_text);
 			$scr_text = str_replace($from_scr_code_s, $to_scr_code_s, $scr_text);
 			$scr_text = str_replace($from_wamei, $to_wamei, $scr_text);

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- ホスト: 127.0.0.1
--- 生成日時: 2020-08-31 13:55:45
+-- 生成日時: 2020-09-05 17:12:33
 -- サーバのバージョン： 10.4.13-MariaDB
 -- PHP のバージョン: 7.4.7
 
@@ -656,7 +656,18 @@ INSERT INTO `bulk_makes` (`id`, `mission_id`, `field_name`, `type_a`, `field_typ
 (660, 44, 'update_user', 18, 'varchar', 'varchar(50)', '50', 0, 0, NULL, '', '更新者', 12, 0, NULL, NULL, '2020-08-29 19:11:03', '2020-08-29 10:11:03'),
 (661, 44, 'ip_addr', 19, 'varchar', 'varchar(40)', '40', 0, 0, NULL, '', 'IPアドレス', 13, 0, NULL, NULL, '2020-08-29 19:11:03', '2020-08-29 10:11:03'),
 (662, 44, 'created', 20, 'datetime', 'datetime', 'atetim', 0, 0, NULL, '', '生成日時', 14, 0, NULL, NULL, '2020-08-29 19:11:03', '2020-08-29 10:11:03'),
-(663, 44, 'modified', 21, 'timestamp', 'timestamp', 'imestam', 0, 0, 'current_timestamp()', 'on update current_timestamp()', '更新日', 15, 0, NULL, NULL, '2020-08-29 19:11:03', '2020-08-29 10:11:03');
+(663, 44, 'modified', 21, 'timestamp', 'timestamp', 'imestam', 0, 0, 'current_timestamp()', 'on update current_timestamp()', '更新日', 15, 0, NULL, NULL, '2020-08-29 19:11:03', '2020-08-29 10:11:03'),
+(664, 45, 'id', 22, 'bigint', 'bigint(20) unsigned', '20', 1, 1, NULL, 'auto_increment', 'id', 1, 0, NULL, NULL, '2020-09-03 23:44:24', '2020-09-03 14:44:24'),
+(665, 45, 'name', 2, 'varchar', 'varchar(255)', '255', 1, 0, NULL, '', 'name', 2, 0, NULL, NULL, '2020-09-03 23:44:24', '2020-09-03 14:44:24'),
+(666, 45, 'email', 2, 'varchar', 'varchar(255)', '255', 1, 0, NULL, '', 'email', 3, 0, NULL, NULL, '2020-09-03 23:44:24', '2020-09-03 14:44:24'),
+(670, 45, 'role', 30, 'varchar', 'varchar(20)', '20', 0, 0, NULL, '', '権限', 7, 0, NULL, NULL, '2020-09-03 23:44:24', '2020-09-03 14:44:24'),
+(673, 45, 'email_verified_at', 1, 'timestamp', 'timestamp', 'imestam', 0, 0, NULL, '', 'email_verified_at', 4, 1, 'kani', '::1', '2020-09-03 23:44:24', '2020-09-03 14:44:45'),
+(674, 45, 'password', 2, 'varchar', 'varchar(255)', '255', 1, 0, NULL, '', 'password', 5, 1, 'kani', '::1', '2020-09-03 23:44:24', '2020-09-03 14:44:44'),
+(675, 45, 'remember_token', 2, 'varchar', 'varchar(100)', '100', 0, 0, NULL, '', 'remember_token', 6, 1, 'kani', '::1', '2020-09-03 23:44:24', '2020-09-03 14:44:42'),
+(676, 45, 'sort_no', 17, 'int', 'int(11)', '11', 0, 0, '0', '', '順番', 8, 0, NULL, NULL, '2020-09-03 23:44:24', '2020-09-03 14:44:24'),
+(677, 45, 'delete_flg', 12, 'tinyint', 'tinyint(1)', '1', 0, 0, '0', '', '削除フラグ', 9, 0, NULL, NULL, '2020-09-03 23:44:24', '2020-09-03 14:44:24'),
+(678, 45, 'created_at', 1, 'timestamp', 'timestamp', 'imestam', 0, 0, NULL, '', 'created_at', 10, 1, 'kani', '::1', '2020-09-03 23:44:24', '2020-09-03 14:44:38'),
+(679, 45, 'updated_at', 1, 'timestamp', 'timestamp', 'imestam', 0, 0, NULL, '', 'updated_at', 11, 1, 'kani', '::1', '2020-09-03 23:44:24', '2020-09-03 14:44:40');
 
 -- --------------------------------------------------------
 
@@ -856,7 +867,11 @@ INSERT INTO `hinagatas` (`id`, `hina_code`, `type_a`, `hinagata`, `sort_no`, `de
 (172, '2021', 1, '', 76, 0, 'kani', '::1', '2020-08-31 09:21:12', '2020-08-31 00:21:12'),
 (173, '2021', 27, '	/**\n	 * %commentリストをDBから取得する\n	 */\n	public function get%field_cList(){\n\n		// DBからデータを取得\n		$query = \\\\DB::table(\'%outer_model_ss\')->\n		whereRaw(\"delete_flg = 0\")->\n		orderBy(\'sort_no\', \'ASC\');\n		$data = $query->get();\n\n		// リスト変換\n		$list = [];\n		foreach($data as $ent){\n			$ent = (array)$ent;\n			$id = $ent[\'id\'];\n			$name = $ent[\'%outer_model_s_name\'];\n			$list[$id] = $name;\n		}\n\n		return $list;\n		\n	}', 77, 0, 'kani', '::1', '2020-08-31 09:21:35', '2020-08-31 00:53:13'),
 (174, '2023', 1, '', 80, 0, 'kani', '::1', '2020-08-31 12:29:12', '2020-08-31 03:29:12'),
-(175, '2023', 27, '	// %commentリストJSON\n	let %field_lccList = crudBaseData.masters.%field_lccList;\n	disFilData[\'%field_s\'] ={\'fil_type\':\'select\',\'option\':{\'list\':%field_lccList}};', 81, 0, 'kani', '::1', '2020-08-31 12:29:19', '2020-08-31 03:30:31');
+(175, '2023', 27, '	// %commentリストJSON\n	let %field_lccList = crudBaseData.masters.%field_lccList;\n	disFilData[\'%field_s\'] ={\'fil_type\':\'select\',\'option\':{\'list\':%field_lccList}};', 81, 0, 'kani', '::1', '2020-08-31 12:29:19', '2020-08-31 03:30:31'),
+(176, '0000', 1, '', 113, 0, 'kani', '::1', '2020-09-03 23:29:26', '2020-09-03 14:39:46'),
+(177, '2020', 30, '		// 権限リスト\n		$roleList = $this->cb->getRoleList();\n		\n		// 権限リスト空である場合、当画面にアクセス禁止にする。\n		if(empty($roleList)){\n			echo \'権限がありません。 You do not have permission.\';\n			die();\n		}\n		$masters[\'roleList\'] = $roleList;', 73, 0, 'kani', '::1', '2020-09-04 08:57:50', '2020-09-04 07:01:43'),
+(178, '2019', 1, '', 114, 0, 'kani', '::1', '2020-09-05 13:40:49', '2020-09-05 04:40:49'),
+(179, '2019', 30, ' 		// 許可権限リストを作成(扱える下位権限のリスト）\n 		$crudBaseData[\'kjs\'][\'permRoles\'] = $this->cb->makePermRoles();', 115, 0, 'kani', '::1', '2020-09-05 13:41:14', '2020-09-05 04:41:14');
 
 -- --------------------------------------------------------
 
@@ -997,7 +1012,8 @@ INSERT INTO `missions` (`id`, `mission_name`, `hina_file_id`, `from_path`, `from
 (41, 'actiestim client_act', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\actiestim\\mng\\app', 'ClientAct', 'actiestim', 'client_acts', '顧客アクティビティ', 5, 0, '', '::1', '2020-02-05 12:44:11', '2020-02-05 03:44:48'),
 (42, 'actiestim genres', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\actiestim\\mng\\app', 'Genre', 'actiestim', 'genres', 'ジャンル', 6, 0, '', '::1', '2020-02-10 09:26:18', '2020-02-10 00:29:07'),
 (43, 'actiestim a_config', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\actiestim\\mng\\app', 'AConfig', 'actiestim', 'a_configs', '設定', 7, 0, '', '::1', '2020-04-03 12:19:06', '2020-04-03 03:21:05'),
-(44, 'CrudBaseForLaravel7', 2, 'C:\\Users\\user\\git\\CrudBase\\laravel7\\dev', 'Neko', 'crud_base_laravel7', 'nekos', 'ネコ', 'C:\\Users\\user\\git\\CrudBase\\laravel7\\dev', 'Yagi', 'crud_base_laravel7', 'yagis', 'ヤギ', 1, 0, 'kani', '::1', '2020-08-29 12:10:13', '2020-08-29 03:15:13');
+(44, 'CrudBaseForLaravel7', 2, 'C:\\Users\\user\\git\\CrudBase\\laravel7\\dev', 'Neko', 'crud_base_laravel7', 'nekos', 'ネコ', 'C:\\Users\\user\\git\\CrudBase\\laravel7\\dev', 'Yagi', 'crud_base_laravel7', 'yagis', 'ヤギ', 1, 0, 'kani', '::1', '2020-08-29 12:10:13', '2020-08-29 03:15:13'),
+(45, 'CrudBaseForLaravel7:User', 2, 'C:\\Users\\user\\git\\CrudBase\\laravel7\\dev', 'Neko', 'crud_base_laravel7', 'nekos', 'ネコ', 'C:\\Users\\user\\git\\CrudBase\\laravel7\\dev', 'UserMng', 'crud_base_laravel7', 'users', 'ユーザー管理', 1, 0, 'kani', '::1', '2020-09-03 22:23:14', '2020-09-03 13:24:12');
 
 -- --------------------------------------------------------
 
@@ -1146,13 +1162,13 @@ ALTER TABLE `users`
 -- テーブルのAUTO_INCREMENT `bulk_makes`
 --
 ALTER TABLE `bulk_makes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=664;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=680;
 
 --
 -- テーブルのAUTO_INCREMENT `hinagatas`
 --
 ALTER TABLE `hinagatas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=176;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=180;
 
 --
 -- テーブルのAUTO_INCREMENT `hina_files`
@@ -1170,7 +1186,7 @@ ALTER TABLE `hina_file_lists`
 -- テーブルのAUTO_INCREMENT `missions`
 --
 ALTER TABLE `missions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- テーブルのAUTO_INCREMENT `type_as`
