@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- ホスト: 127.0.0.1
--- 生成日時: 2020-09-05 17:12:33
+-- 生成日時: 2020-09-07 15:37:21
 -- サーバのバージョン： 10.4.13-MariaDB
 -- PHP のバージョン: 7.4.7
 
@@ -871,7 +871,10 @@ INSERT INTO `hinagatas` (`id`, `hina_code`, `type_a`, `hinagata`, `sort_no`, `de
 (176, '0000', 1, '', 113, 0, 'kani', '::1', '2020-09-03 23:29:26', '2020-09-03 14:39:46'),
 (177, '2020', 30, '		// 権限リスト\n		$roleList = $this->cb->getRoleList();\n		\n		// 権限リスト空である場合、当画面にアクセス禁止にする。\n		if(empty($roleList)){\n			echo \'権限がありません。 You do not have permission.\';\n			die();\n		}\n		$masters[\'roleList\'] = $roleList;', 73, 0, 'kani', '::1', '2020-09-04 08:57:50', '2020-09-04 07:01:43'),
 (178, '2019', 1, '', 114, 0, 'kani', '::1', '2020-09-05 13:40:49', '2020-09-05 04:40:49'),
-(179, '2019', 30, ' 		// 許可権限リストを作成(扱える下位権限のリスト）\n 		$crudBaseData[\'kjs\'][\'permRoles\'] = $this->cb->makePermRoles();', 115, 0, 'kani', '::1', '2020-09-05 13:41:14', '2020-09-05 04:41:14');
+(179, '2019', 30, ' 		// 許可権限リストを作成(扱える下位権限のリスト）\n 		$crudBaseData[\'kjs\'][\'permRoles\'] = $this->cb->makePermRoles();', 115, 0, 'kani', '::1', '2020-09-05 13:41:14', '2020-09-05 04:41:14'),
+(180, '2012', 1, '', 116, 0, 'kani', '::1', '2020-09-07 13:16:53', '2020-09-07 04:21:08'),
+(181, '2012', 20, '	const CREATED_AT = \'created\';', 117, 0, 'kani', '::1', '2020-09-07 13:17:05', '2020-09-07 04:21:33'),
+(182, '2012', 21, '	const UPDATED_AT = \'modified\';', 118, 0, 'kani', '::1', '2020-09-07 13:21:55', '2020-09-07 04:21:56');
 
 -- --------------------------------------------------------
 
@@ -1168,7 +1171,7 @@ ALTER TABLE `bulk_makes`
 -- テーブルのAUTO_INCREMENT `hinagatas`
 --
 ALTER TABLE `hinagatas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=180;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=183;
 
 --
 -- テーブルのAUTO_INCREMENT `hina_files`
