@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- ホスト: 127.0.0.1
--- 生成日時: 2020-09-07 15:37:21
--- サーバのバージョン： 10.4.13-MariaDB
--- PHP のバージョン: 7.4.7
+-- 生成日時: 2021-04-10 09:35:53
+-- サーバのバージョン： 10.4.17-MariaDB
+-- PHP のバージョン: 7.4.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -667,7 +667,121 @@ INSERT INTO `bulk_makes` (`id`, `mission_id`, `field_name`, `type_a`, `field_typ
 (676, 45, 'sort_no', 17, 'int', 'int(11)', '11', 0, 0, '0', '', '順番', 8, 0, NULL, NULL, '2020-09-03 23:44:24', '2020-09-03 14:44:24'),
 (677, 45, 'delete_flg', 12, 'tinyint', 'tinyint(1)', '1', 0, 0, '0', '', '削除フラグ', 9, 0, NULL, NULL, '2020-09-03 23:44:24', '2020-09-03 14:44:24'),
 (678, 45, 'created_at', 1, 'timestamp', 'timestamp', 'imestam', 0, 0, NULL, '', 'created_at', 10, 1, 'kani', '::1', '2020-09-03 23:44:24', '2020-09-03 14:44:38'),
-(679, 45, 'updated_at', 1, 'timestamp', 'timestamp', 'imestam', 0, 0, NULL, '', 'updated_at', 11, 1, 'kani', '::1', '2020-09-03 23:44:24', '2020-09-03 14:44:40');
+(679, 45, 'updated_at', 1, 'timestamp', 'timestamp', 'imestam', 0, 0, NULL, '', 'updated_at', 11, 1, 'kani', '::1', '2020-09-03 23:44:24', '2020-09-03 14:44:40'),
+(680, 46, 'id', 22, 'int', 'int(11)', '11', 1, 1, NULL, 'auto_increment', 'id', 1, 0, NULL, NULL, '2021-02-17 13:08:22', '2021-02-17 04:08:22'),
+(681, 46, 'bio_cls_id', 27, 'int', 'int(11)', '11', 0, 0, NULL, '', '綱ID', 2, 0, NULL, NULL, '2021-02-17 13:08:22', '2021-02-17 04:08:22'),
+(682, 46, 'family_name', 2, 'varchar', 'varchar(255)', '255', 0, 0, NULL, '', '科', 3, 0, NULL, NULL, '2021-02-17 13:08:22', '2021-02-17 04:08:22'),
+(683, 46, 'wamei', 2, 'varchar', 'varchar(255)', '255', 0, 0, NULL, '', '和名', 4, 0, NULL, NULL, '2021-02-17 13:08:22', '2021-02-17 04:08:22'),
+(684, 46, 'scien_name', 2, 'varchar', 'varchar(225)', '225', 0, 0, NULL, '', '学名', 5, 0, NULL, NULL, '2021-02-17 13:08:22', '2021-02-17 04:08:22'),
+(685, 46, 'en_ctg_id', 27, 'int', 'int(11)', '11', 0, 0, '0', '', '絶滅危惧種カテゴリーID', 6, 0, NULL, NULL, '2021-02-17 13:08:22', '2021-02-17 04:08:22'),
+(686, 46, 'endemic_sp_flg', 11, 'tinyint', 'tinyint(4)', '4', 0, 0, '0', '', '固有種フラグ', 7, 0, NULL, '::1', '2021-02-17 13:08:22', '2021-02-17 04:09:20'),
+(687, 46, 'note', 3, 'text', 'text', 'ex', 1, 0, NULL, '', '備考', 8, 0, NULL, NULL, '2021-02-17 13:08:22', '2021-02-17 04:08:22'),
+(688, 46, 'sort_no', 17, 'int', 'int(11)', '11', 0, 0, '0', '', '順番', 9, 0, NULL, NULL, '2021-02-17 13:08:22', '2021-02-17 04:08:22'),
+(689, 46, 'delete_flg', 12, 'tinyint', 'tinyint(1)', '1', 0, 0, '0', '', '無効フラグ', 10, 0, NULL, NULL, '2021-02-17 13:08:22', '2021-02-17 04:08:22'),
+(690, 46, 'update_user', 18, 'varchar', 'varchar(50)', '50', 0, 0, NULL, '', '更新者', 11, 0, NULL, NULL, '2021-02-17 13:08:22', '2021-02-17 04:08:22'),
+(691, 46, 'ip_addr', 19, 'varchar', 'varchar(40)', '40', 0, 0, NULL, '', 'IPアドレス', 12, 0, NULL, NULL, '2021-02-17 13:08:22', '2021-02-17 04:08:22'),
+(692, 46, 'created', 20, 'datetime', 'datetime', 'atetim', 0, 0, NULL, '', '生成日時', 13, 0, NULL, NULL, '2021-02-17 13:08:22', '2021-02-17 04:08:22'),
+(693, 46, 'modified', 21, 'timestamp', 'timestamp', 'imestam', 0, 0, 'current_timestamp()', 'on update current_timestamp()', '更新日', 14, 0, NULL, NULL, '2021-02-17 13:08:22', '2021-02-17 04:08:22'),
+(694, 47, 'id', 22, 'int', 'int(11)', '11', 1, 1, NULL, 'auto_increment', 'id', 1, 0, NULL, NULL, '2021-02-18 11:31:38', '2021-02-18 02:31:38'),
+(695, 47, 'bio_cls_name', 2, 'varchar', 'varchar(255)', '255', 0, 0, NULL, '', '綱名', 2, 0, NULL, NULL, '2021-02-18 11:31:38', '2021-02-18 02:31:38'),
+(696, 47, 'note', 3, 'text', 'text', 'ex', 1, 0, NULL, '', '備考', 3, 0, NULL, NULL, '2021-02-18 11:31:38', '2021-02-18 02:31:38'),
+(697, 47, 'sort_no', 17, 'int', 'int(11)', '11', 0, 0, '0', '', '順番', 4, 0, NULL, NULL, '2021-02-18 11:31:38', '2021-02-18 02:31:38'),
+(698, 47, 'delete_flg', 12, 'tinyint', 'tinyint(1)', '1', 0, 0, '0', '', '無効フラグ', 5, 0, NULL, NULL, '2021-02-18 11:31:38', '2021-02-18 02:31:38'),
+(699, 47, 'update_user', 18, 'varchar', 'varchar(50)', '50', 0, 0, NULL, '', '更新者', 6, 0, NULL, NULL, '2021-02-18 11:31:38', '2021-02-18 02:31:38'),
+(700, 47, 'ip_addr', 19, 'varchar', 'varchar(40)', '40', 0, 0, NULL, '', 'IPアドレス', 7, 0, NULL, NULL, '2021-02-18 11:31:38', '2021-02-18 02:31:38'),
+(701, 47, 'created', 20, 'datetime', 'datetime', 'atetim', 0, 0, NULL, '', '生成日時', 8, 0, NULL, NULL, '2021-02-18 11:31:38', '2021-02-18 02:31:38'),
+(702, 47, 'modified', 21, 'timestamp', 'timestamp', 'imestam', 0, 0, 'current_timestamp()', 'on update current_timestamp()', '更新日', 9, 0, NULL, NULL, '2021-02-18 11:31:38', '2021-02-18 02:31:38'),
+(703, 48, 'id', 22, 'int', 'int(11)', '11', 1, 1, NULL, 'auto_increment', 'id', 1, 0, NULL, NULL, '2021-02-18 11:38:56', '2021-02-18 02:38:56'),
+(704, 48, 'en_ctg_name', 2, 'varchar', 'varchar(255)', '255', 0, 0, NULL, '', '絶滅危惧種カテゴリー名', 2, 0, NULL, NULL, '2021-02-18 11:38:56', '2021-02-18 02:38:56'),
+(705, 48, 'note', 3, 'text', 'text', 'ex', 1, 0, NULL, '', '備考', 3, 0, NULL, NULL, '2021-02-18 11:38:56', '2021-02-18 02:38:56'),
+(706, 48, 'sort_no', 17, 'int', 'int(11)', '11', 0, 0, '0', '', '順番', 4, 0, NULL, NULL, '2021-02-18 11:38:56', '2021-02-18 02:38:56'),
+(707, 48, 'delete_flg', 12, 'tinyint', 'tinyint(1)', '1', 0, 0, '0', '', '無効フラグ', 5, 0, NULL, NULL, '2021-02-18 11:38:56', '2021-02-18 02:38:56'),
+(708, 48, 'update_user', 18, 'varchar', 'varchar(50)', '50', 0, 0, NULL, '', '更新者', 6, 0, NULL, NULL, '2021-02-18 11:38:56', '2021-02-18 02:38:56'),
+(709, 48, 'ip_addr', 19, 'varchar', 'varchar(40)', '40', 0, 0, NULL, '', 'IPアドレス', 7, 0, NULL, NULL, '2021-02-18 11:38:56', '2021-02-18 02:38:56'),
+(710, 48, 'created', 20, 'datetime', 'datetime', 'atetim', 0, 0, NULL, '', '生成日時', 8, 0, NULL, NULL, '2021-02-18 11:38:56', '2021-02-18 02:38:56'),
+(711, 48, 'modified', 21, 'timestamp', 'timestamp', 'imestam', 0, 0, 'current_timestamp()', 'on update current_timestamp()', '更新日', 9, 0, NULL, NULL, '2021-02-18 11:38:56', '2021-02-18 02:38:56'),
+(712, 49, 'id', 22, 'int', 'int(11)', '11', 1, 1, NULL, 'auto_increment', 'id', 1, 0, NULL, NULL, '2021-04-09 10:40:23', '2021-04-09 01:40:23'),
+(713, 49, 'seminar_name', 2, 'varchar', 'varchar(256)', '256', 0, 0, NULL, '', 'セミナー名', 2, 0, NULL, NULL, '2021-04-09 10:40:23', '2021-04-09 01:40:23'),
+(714, 49, 'status', 31, 'int', 'int(11)', '11', 0, 0, '', '', '状態', 3, 0, NULL, '::1', '2021-04-09 10:40:23', '2021-04-09 01:41:15'),
+(715, 49, 'start_date', 25, 'date', 'date', 'at', 0, 0, NULL, '', '開催日', 4, 0, NULL, NULL, '2021-04-09 10:40:23', '2021-04-09 01:40:23'),
+(716, 49, 'start_time', 16, 'time', 'time', 'im', 0, 0, NULL, '', '開催時間', 5, 0, NULL, NULL, '2021-04-09 10:40:23', '2021-04-09 01:40:23'),
+(717, 49, 'seminar_content', 3, 'text', 'text', 'ex', 0, 0, NULL, '', 'セミナー内容', 6, 0, NULL, NULL, '2021-04-09 10:40:23', '2021-04-09 01:40:23'),
+(718, 49, 'seminar_img_fn', 28, 'varchar', 'varchar(256)', '256', 0, 0, NULL, '', 'セミナー画像', 7, 0, NULL, NULL, '2021-04-09 10:40:23', '2021-04-09 01:40:23'),
+(719, 49, 'seminar_json', 3, 'text', 'text', 'ex', 0, 0, NULL, '', 'メタ情報', 8, 0, NULL, NULL, '2021-04-09 10:40:23', '2021-04-09 01:40:23'),
+(720, 49, 'sort_no', 17, 'int', 'int(11)', '11', 0, 0, '0', '', '順番', 9, 0, NULL, NULL, '2021-04-09 10:40:23', '2021-04-09 01:40:23'),
+(721, 49, 'delete_flg', 12, 'tinyint', 'tinyint(1)', '1', 0, 0, '0', '', '無効フラグ', 10, 0, NULL, NULL, '2021-04-09 10:40:23', '2021-04-09 01:40:23'),
+(722, 49, 'update_user', 18, 'varchar', 'varchar(50)', '50', 0, 0, NULL, '', '更新者', 11, 0, NULL, NULL, '2021-04-09 10:40:23', '2021-04-09 01:40:23'),
+(723, 49, 'ip_addr', 19, 'varchar', 'varchar(40)', '40', 0, 0, NULL, '', 'IPアドレス', 12, 0, NULL, NULL, '2021-04-09 10:40:23', '2021-04-09 01:40:23'),
+(724, 49, 'created', 20, 'datetime', 'datetime', 'atetim', 0, 0, NULL, '', '生成日時', 13, 0, NULL, NULL, '2021-04-09 10:40:23', '2021-04-09 01:40:23'),
+(725, 49, 'modified', 21, 'timestamp', 'timestamp', 'imestam', 0, 0, 'current_timestamp()', 'on update current_timestamp()', '更新日', 14, 0, NULL, NULL, '2021-04-09 10:40:23', '2021-04-09 01:40:23'),
+(726, 50, 'id', 22, 'int', 'int(11)', '11', 1, 1, NULL, 'auto_increment', 'id', 1, 0, NULL, NULL, '2021-04-09 14:16:35', '2021-04-09 05:16:35'),
+(727, 50, 'seminar_id', 27, 'int', 'int(11)', '11', 0, 0, NULL, '', 'セミナーID', 2, 0, NULL, NULL, '2021-04-09 14:16:35', '2021-04-09 05:16:35'),
+(728, 50, 'organizer_user_id', 27, 'int', 'int(11)', '11', 0, 0, NULL, '', '主催者ユーザーID', 3, 0, NULL, NULL, '2021-04-09 14:16:35', '2021-04-09 05:16:35'),
+(729, 50, 'entrant_user_id', 27, 'int', 'int(11)', '11', 0, 0, NULL, '', '受講者ユーザーID', 4, 0, NULL, NULL, '2021-04-09 14:16:35', '2021-04-09 05:16:35'),
+(730, 50, 'message', 3, 'varchar', 'varchar(2000)', '2000', 0, 0, NULL, '', 'メッセージ', 5, 0, NULL, NULL, '2021-04-09 14:16:35', '2021-04-09 05:16:35'),
+(731, 50, 'attach_fn', 28, 'varchar', 'varchar(256)', '256', 0, 0, NULL, '', '添付ファイル名', 6, 0, NULL, NULL, '2021-04-09 14:16:35', '2021-04-09 05:16:35'),
+(732, 50, 'a_file_type', 31, 'varchar', 'varchar(4)', '4', 0, 0, NULL, '', '添付ファイルタイプ', 7, 0, NULL, NULL, '2021-04-09 14:16:35', '2021-04-09 05:16:35'),
+(733, 50, 'sort_no', 17, 'int', 'int(11)', '11', 0, 0, '0', '', '順番', 8, 0, NULL, NULL, '2021-04-09 14:16:35', '2021-04-09 05:16:35'),
+(734, 50, 'delete_flg', 12, 'tinyint', 'tinyint(1)', '1', 0, 0, '0', '', '無効フラグ', 9, 0, NULL, NULL, '2021-04-09 14:16:35', '2021-04-09 05:16:35'),
+(735, 50, 'update_user', 18, 'varchar', 'varchar(50)', '50', 0, 0, NULL, '', '更新者', 10, 0, NULL, NULL, '2021-04-09 14:16:35', '2021-04-09 05:16:35'),
+(736, 50, 'ip_addr', 19, 'varchar', 'varchar(40)', '40', 0, 0, NULL, '', 'IPアドレス', 11, 0, NULL, NULL, '2021-04-09 14:16:35', '2021-04-09 05:16:35'),
+(737, 50, 'created', 20, 'datetime', 'datetime', 'atetim', 0, 0, NULL, '', '生成日時', 12, 0, NULL, NULL, '2021-04-09 14:16:35', '2021-04-09 05:16:35'),
+(738, 50, 'modified', 21, 'timestamp', 'timestamp', 'imestam', 0, 0, 'current_timestamp()', 'on update current_timestamp()', '更新日', 13, 0, NULL, NULL, '2021-04-09 14:16:35', '2021-04-09 05:16:35'),
+(739, 51, 'id', 22, 'int', 'int(11)', '11', 1, 1, NULL, 'auto_increment', 'id', 1, 0, NULL, NULL, '2021-04-09 12:01:49', '2021-04-09 03:01:49'),
+(740, 51, 'seminar_id', 27, 'int', 'int(11)', '11', 0, 0, NULL, '', 'セミナーID', 2, 0, NULL, NULL, '2021-04-09 12:01:49', '2021-04-09 03:01:49'),
+(741, 51, 'user_id', 27, 'int', 'int(11)', '11', 0, 0, NULL, '', 'ユーザーID', 3, 0, NULL, NULL, '2021-04-09 12:01:49', '2021-04-09 03:01:49'),
+(742, 51, 'message', 3, 'varchar', 'varchar(2000)', '2000', 0, 0, '', '', 'メッセージ', 4, 0, NULL, '::1', '2021-04-09 12:01:49', '2021-04-09 03:02:16'),
+(743, 51, 'attach_fn', 28, 'varchar', 'varchar(256)', '256', 0, 0, NULL, '', '添付ファイル名', 5, 0, NULL, NULL, '2021-04-09 12:01:49', '2021-04-09 03:01:49');
+INSERT INTO `bulk_makes` (`id`, `mission_id`, `field_name`, `type_a`, `field_type`, `orig_type`, `type_long`, `null_flg`, `p_key_flg`, `def_val`, `extra`, `comment`, `sort_no`, `delete_flg`, `update_user`, `ip_addr`, `created`, `modified`) VALUES
+(744, 51, 'a_file_type', 31, 'varchar', 'varchar(4)', '4', 0, 0, NULL, '', '添付ファイルタイプ', 6, 0, NULL, NULL, '2021-04-09 12:01:49', '2021-04-09 03:01:49'),
+(745, 51, 'sort_no', 17, 'int', 'int(11)', '11', 0, 0, '0', '', '順番', 7, 0, NULL, NULL, '2021-04-09 12:01:49', '2021-04-09 03:01:49'),
+(746, 51, 'delete_flg', 12, 'tinyint', 'tinyint(1)', '1', 0, 0, '0', '', '無効フラグ', 8, 0, NULL, NULL, '2021-04-09 12:01:49', '2021-04-09 03:01:49'),
+(747, 51, 'update_user', 18, 'varchar', 'varchar(50)', '50', 0, 0, NULL, '', '更新者', 9, 0, NULL, NULL, '2021-04-09 12:01:49', '2021-04-09 03:01:49'),
+(748, 51, 'ip_addr', 19, 'varchar', 'varchar(40)', '40', 0, 0, NULL, '', 'IPアドレス', 10, 0, NULL, NULL, '2021-04-09 12:01:49', '2021-04-09 03:01:49'),
+(749, 51, 'created', 20, 'datetime', 'datetime', 'atetim', 0, 0, NULL, '', '生成日時', 11, 0, NULL, NULL, '2021-04-09 12:01:49', '2021-04-09 03:01:49'),
+(750, 51, 'modified', 21, 'timestamp', 'timestamp', 'imestam', 0, 0, 'current_timestamp()', 'on update current_timestamp()', '更新日', 12, 0, NULL, NULL, '2021-04-09 12:01:49', '2021-04-09 03:01:49'),
+(751, 52, 'id', 22, 'int', 'int(11)', '11', 1, 1, NULL, 'auto_increment', 'id', 1, 0, NULL, NULL, '2021-04-09 12:09:12', '2021-04-09 03:09:12'),
+(752, 52, 'seminar_id', 27, 'int', 'int(11)', '11', 0, 0, NULL, '', 'セミナーID', 2, 0, NULL, NULL, '2021-04-09 12:09:12', '2021-04-09 03:09:12'),
+(753, 52, 'entrant_user_id', 27, 'int', 'int(11)', '11', 0, 0, NULL, '', '受講者ユーザーID', 3, 0, NULL, NULL, '2021-04-09 12:09:12', '2021-04-09 03:09:12'),
+(754, 52, 'permission', 31, 'int', 'int(11)', '11', 0, 0, '', '', '受講許可', 4, 0, NULL, '::1', '2021-04-09 12:09:12', '2021-04-09 03:09:22'),
+(755, 52, 'sort_no', 17, 'int', 'int(11)', '11', 0, 0, '0', '', '順番', 5, 0, NULL, NULL, '2021-04-09 12:09:12', '2021-04-09 03:09:12'),
+(756, 52, 'delete_flg', 12, 'tinyint', 'tinyint(1)', '1', 0, 0, '0', '', '無効フラグ', 6, 0, NULL, NULL, '2021-04-09 12:09:12', '2021-04-09 03:09:12'),
+(757, 52, 'update_user', 18, 'varchar', 'varchar(50)', '50', 0, 0, NULL, '', '更新者', 7, 0, NULL, NULL, '2021-04-09 12:09:12', '2021-04-09 03:09:12'),
+(758, 52, 'ip_addr', 19, 'varchar', 'varchar(40)', '40', 0, 0, NULL, '', 'IPアドレス', 8, 0, NULL, NULL, '2021-04-09 12:09:12', '2021-04-09 03:09:12'),
+(759, 52, 'created', 20, 'datetime', 'datetime', 'atetim', 0, 0, NULL, '', '生成日時', 9, 0, NULL, NULL, '2021-04-09 12:09:12', '2021-04-09 03:09:12'),
+(760, 52, 'modified', 21, 'timestamp', 'timestamp', 'imestam', 0, 0, 'current_timestamp()', 'on update current_timestamp()', '更新日', 10, 0, NULL, NULL, '2021-04-09 12:09:12', '2021-04-09 03:09:12'),
+(761, 53, 'id', 22, 'int', 'int(11)', '11', 1, 1, NULL, 'auto_increment', 'id', 1, 0, NULL, NULL, '2021-04-09 12:12:46', '2021-04-09 03:12:46'),
+(762, 53, 'user_id', 27, 'int', 'int(11)', '11', 0, 0, NULL, '', 'ユーザーID', 2, 0, NULL, NULL, '2021-04-09 12:12:46', '2021-04-09 03:12:46'),
+(763, 53, 'nickname', 2, 'varchar', 'varchar(50)', '50', 0, 0, NULL, '', 'ニックネーム', 3, 0, NULL, NULL, '2021-04-09 12:12:46', '2021-04-09 03:12:46'),
+(764, 53, 'user_icon', 28, 'varchar', 'varchar(256)', '256', 0, 0, '', '', 'ユーザーアイコン', 4, 0, NULL, '::1', '2021-04-09 12:12:46', '2021-04-09 03:13:19'),
+(765, 53, 'profile_text', 3, 'varchar', 'varchar(4000)', '4000', 0, 0, '', '', 'プロフィールテキスト', 5, 0, NULL, '::1', '2021-04-09 12:12:46', '2021-04-09 03:12:59'),
+(766, 53, 'sort_no', 17, 'int', 'int(11)', '11', 0, 0, '0', '', '順番', 6, 0, NULL, NULL, '2021-04-09 12:12:46', '2021-04-09 03:12:46'),
+(767, 53, 'delete_flg', 12, 'tinyint', 'tinyint(1)', '1', 0, 0, '0', '', '無効フラグ', 7, 0, NULL, NULL, '2021-04-09 12:12:46', '2021-04-09 03:12:46'),
+(768, 53, 'update_user', 18, 'varchar', 'varchar(50)', '50', 0, 0, NULL, '', '更新者', 8, 0, NULL, NULL, '2021-04-09 12:12:46', '2021-04-09 03:12:46'),
+(769, 53, 'ip_addr', 19, 'varchar', 'varchar(40)', '40', 0, 0, NULL, '', 'IPアドレス', 9, 0, NULL, NULL, '2021-04-09 12:12:46', '2021-04-09 03:12:46'),
+(770, 53, 'created', 20, 'datetime', 'datetime', 'atetim', 0, 0, NULL, '', '生成日時', 10, 0, NULL, NULL, '2021-04-09 12:12:46', '2021-04-09 03:12:46'),
+(771, 53, 'modified', 21, 'timestamp', 'timestamp', 'imestam', 0, 0, 'current_timestamp()', 'on update current_timestamp()', '更新日', 11, 0, NULL, NULL, '2021-04-09 12:12:46', '2021-04-09 03:12:46'),
+(772, 54, 'id', 22, 'bigint', 'bigint(20) unsigned', '20', 1, 1, NULL, 'auto_increment', 'id', 1, 0, NULL, NULL, '2021-04-09 14:23:38', '2021-04-09 05:23:38'),
+(773, 54, 'name', 2, 'varchar', 'varchar(255)', '255', 1, 0, NULL, '', 'name', 2, 0, NULL, NULL, '2021-04-09 14:23:38', '2021-04-09 05:23:38'),
+(774, 54, 'email', 2, 'varchar', 'varchar(255)', '255', 1, 0, NULL, '', 'email', 3, 0, NULL, NULL, '2021-04-09 14:23:38', '2021-04-09 05:23:38'),
+(775, 54, 'email_verified_at', 1, 'timestamp', 'timestamp', 'imestam', 0, 0, NULL, '', 'email_verified_at', 4, 0, NULL, NULL, '2021-04-09 14:23:38', '2021-04-09 05:23:38'),
+(776, 54, 'password', 29, 'varchar', 'varchar(255)', '255', 1, 0, '', '', 'password', 5, 0, NULL, '::1', '2021-04-09 14:23:38', '2021-04-09 05:23:53'),
+(777, 54, 'remember_token', 2, 'varchar', 'varchar(100)', '100', 0, 0, NULL, '', 'remember_token', 6, 0, NULL, NULL, '2021-04-09 14:23:38', '2021-04-09 05:23:38'),
+(778, 54, 'role', 30, 'varchar', 'varchar(20)', '20', 0, 0, NULL, '', '権限', 7, 0, NULL, NULL, '2021-04-09 14:23:38', '2021-04-09 05:23:38'),
+(779, 54, 'sort_no', 17, 'int', 'int(11)', '11', 0, 0, '0', '', '順番', 8, 0, NULL, NULL, '2021-04-09 14:23:38', '2021-04-09 05:23:38'),
+(780, 54, 'delete_flg', 12, 'tinyint', 'tinyint(1)', '1', 0, 0, '0', '', '削除フラグ', 9, 0, NULL, NULL, '2021-04-09 14:23:38', '2021-04-09 05:23:38'),
+(781, 54, 'created_at', 1, 'timestamp', 'timestamp', 'imestam', 0, 0, NULL, '', 'created_at', 10, 0, NULL, NULL, '2021-04-09 14:23:38', '2021-04-09 05:23:38'),
+(782, 54, 'updated_at', 1, 'timestamp', 'timestamp', 'imestam', 0, 0, NULL, '', 'updated_at', 11, 0, NULL, NULL, '2021-04-09 14:23:38', '2021-04-09 05:23:38'),
+(783, 55, 'id', 22, 'int', 'int(10) unsigned', '10', 1, 1, NULL, 'auto_increment', 'ID', 1, 0, NULL, NULL, '2021-04-10 15:56:34', '2021-04-10 06:56:34'),
+(784, 55, 'username', 2, 'varchar', 'varchar(50)', '50', 0, 0, NULL, '', 'ユーザー名', 2, 0, NULL, NULL, '2021-04-10 15:56:34', '2021-04-10 06:56:34'),
+(785, 55, 'password', 29, 'varchar', 'varchar(50)', '50', 0, 0, NULL, '', 'パスワード', 3, 0, NULL, NULL, '2021-04-10 15:56:34', '2021-04-10 06:56:34'),
+(786, 55, 'role', 31, 'varchar', 'varchar(20)', '20', 0, 0, NULL, '', '権限', 4, 0, NULL, NULL, '2021-04-10 15:56:34', '2021-04-10 06:56:34'),
+(787, 55, 'sort_no', 17, 'int', 'int(11)', '11', 0, 0, '0', '', '順番', 5, 0, NULL, NULL, '2021-04-10 15:56:34', '2021-04-10 06:56:34'),
+(788, 55, 'delete_flg', 12, 'tinyint', 'tinyint(4)', '4', 0, 0, '0', '', '削除フラグ', 6, 0, NULL, NULL, '2021-04-10 15:56:34', '2021-04-10 06:56:34'),
+(789, 55, 'update_user', 18, 'varchar', 'varchar(50)', '50', 0, 0, NULL, '', '更新ユーザー', 7, 0, NULL, NULL, '2021-04-10 15:56:34', '2021-04-10 06:56:34'),
+(790, 55, 'ip_addr', 19, 'varchar', 'varchar(40)', '40', 0, 0, NULL, '', '更新IPアドレス', 8, 0, NULL, NULL, '2021-04-10 15:56:34', '2021-04-10 06:56:34'),
+(791, 55, 'created', 20, 'datetime', 'datetime', 'atetim', 0, 0, NULL, '', '作成日時', 9, 0, NULL, NULL, '2021-04-10 15:56:34', '2021-04-10 06:56:34'),
+(792, 55, 'modified', 21, 'datetime', 'datetime', 'atetim', 0, 0, NULL, '', '更新日時', 10, 0, NULL, NULL, '2021-04-10 15:56:34', '2021-04-10 06:56:34');
 
 -- --------------------------------------------------------
 
@@ -800,7 +914,7 @@ INSERT INTO `hinagatas` (`id`, `hina_code`, `type_a`, `hinagata`, `sort_no`, `de
 (105, '1002', 20, '			\'%field_s\'=>array(\n					\'name\'=>\'%comment\',\n					\'row_order\'=>\'%model_c.%field_s\',\n					\'clm_show\'=>0,\n			),', 11, 0, 'kani', '::1', '2019-01-17 20:37:18', '2019-01-17 11:37:18'),
 (106, '1002', 21, '			\'%field_s\'=>array(\n					\'name\'=>\'%comment\',\n					\'row_order\'=>\'%model_c.%field_s\',\n					\'clm_show\'=>0,\n			),', 11, 0, 'kani', '::1', '2019-01-17 20:37:27', '2019-01-17 11:37:27'),
 (107, '1024', 1, '', 93, 0, 'kani', '::1', '2019-01-17 20:50:53', '2019-01-17 11:50:53'),
-(108, '1024', 28, '$ent[\'%field_s\'] = $this->makeFilePath($_FILES, \'rsc/img/%field/y%Y/m%m/orig/%Y%m%d%H%i%s_%fn\', $ent, \'%field_s\');', 94, 0, 'kani', '::1', '2019-01-17 20:51:14', '2019-02-13 02:01:13'),
+(108, '1024', 28, '$ent[\'%field_s\'] = $this->makeFilePath($_FILES, \'rsc/img/%field/y%Y/m%m/orig/%Y%m%d%H%i%s_%fn\', $ent, \'%field_s\');', 94, 1, 'kani', '::1', '2019-01-17 20:51:14', '2021-04-10 06:50:45'),
 (109, '1024', 29, '		// パスワードを暗号化する\n		if(!empty($ent[\'password\'])){\n			$ent[\'password\'] = AuthComponent::password($ent[\'password\']);\n		}else{\n			unset($ent[\'password\']);\n		}', 94, 0, 'kani', '::1', '2019-01-17 20:51:39', '2019-01-17 11:51:40'),
 (110, '1019', 1, '', 95, 0, 'kani', '::1', '2019-01-18 12:23:24', '2019-01-18 03:23:24'),
 (111, '1019', 30, '		// 許可権限リストを作成(扱える下位権限のリスト）\n		$crudBaseData[\'kjs\'][\'permRoles\'] = $this->makePermRoles();\n		', 96, 0, 'kani', '::1', '2019-01-18 12:23:50', '2019-01-18 03:34:13'),
@@ -930,9 +1044,9 @@ INSERT INTO `hina_file_lists` (`id`, `hina_file_id`, `hina_fp`, `sort_no`, `dele
 (4, 1, 'webroot\\js\\Xxx\\index.js', NULL, 0, 'kani', '::1', '2018-04-11 06:22:29', '2018-04-10 21:22:29'),
 (5, 1, 'webroot\\css\\Xxx\\index.css', NULL, 0, 'kani', '::1', '2018-04-11 06:22:54', '2018-04-10 21:47:22'),
 (6, 1, 'Controller/Component/XxxFrontAComponent.php', 1, 0, 'kani', '::1', '2018-10-05 10:38:48', '2018-10-05 01:38:48'),
-(7, 1, 'View/Xxx/front_a.ctp', 2, 0, 'kani', '::1', '2018-10-05 10:39:00', '2018-10-05 01:39:00'),
-(8, 1, 'webroot/css/Xxx/front_a.css', 3, 0, 'kani', '::1', '2018-10-05 10:39:11', '2018-10-05 01:39:11'),
-(9, 1, 'webroot\\js\\Xxx\\front_a.js', NULL, 0, 'kani', '::1', '2019-02-18 23:25:58', '2019-02-18 14:25:58'),
+(7, 1, 'View/Xxx/front_a.ctp', 2, 1, 'kani', '::1', '2018-10-05 10:39:00', '2021-04-10 07:24:09'),
+(8, 1, 'webroot/css/Xxx/front_a.css', 3, 1, 'kani', '::1', '2018-10-05 10:39:11', '2021-04-10 07:24:11'),
+(9, 1, 'webroot\\js\\Xxx\\front_a.js', NULL, 1, 'kani', '::1', '2019-02-18 23:25:58', '2021-04-10 07:24:07'),
 (10, 2, 'app\\Http\\Controllers\\XxxController.php', 4, 0, 'kani', '::1', '2020-08-29 11:55:33', '2020-08-29 02:55:33'),
 (11, 2, 'app\\Models\\Xxx.php', 5, 0, 'kani', '::1', '2020-08-29 11:55:57', '2020-08-29 02:55:57'),
 (12, 2, 'public\\css\\Xxx\\index.css', 6, 0, 'kani', '::1', '2020-08-29 11:56:12', '2020-08-29 02:56:12'),
@@ -973,50 +1087,60 @@ CREATE TABLE `missions` (
 
 INSERT INTO `missions` (`id`, `mission_name`, `hina_file_id`, `from_path`, `from_scr_code`, `from_db_name`, `from_tbl_name`, `from_wamei`, `to_path`, `to_scr_code`, `to_db_name`, `to_tbl_name`, `to_wamei`, `sort_no`, `delete_flg`, `update_user`, `ip_addr`, `created`, `modified`) VALUES
 (1, 'TEST', 0, 'd', 'abc', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'cake_demo', 'asfasdfa', NULL, 1, 'kani', '::1', '2018-04-01 23:06:48', '2018-04-05 14:19:52'),
-(2, 'cake_demo_old', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\animal_park\\app', 'Yagi', 'animal_park', 'yagis', 'ヤギ', 2, 0, 'kani', '::1', '2018-04-05 23:19:41', '2020-08-29 03:12:14'),
-(3, '動物・ユーザー管理', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\animal_park\\app', 'UserMng', 'animal_park', 'users', 'ユーザー管理', 37, 0, 'kani', '::1', '2018-04-28 22:47:51', '2018-04-28 13:51:49'),
-(4, 'TEST2 テーブルと画面コードが異なる', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\animal_park\\app', 'HijarX', 'animal_park', 'yagis', 'ヒージャー', 38, 0, 'kani', '::1', '2018-04-28 23:09:35', '2018-04-28 14:09:35'),
-(5, '心得システム・心得カテゴリー', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\Users\\user\\git\\knowledge\\app', 'KlCategory', 'zss_rec', 'kl_categorys', '心得カテゴリー', 40, 0, 'kani', '::1', '2018-05-08 19:06:03', '2018-05-08 10:08:38'),
-(6, '心得システム・心得メイン', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\Users\\user\\git\\knowledge\\app', 'Knowledge', 'zss_rec', 'knowledges', '心得メイン', 39, 0, 'kani', '::1', '2018-05-08 19:16:30', '2018-05-08 10:16:30'),
-(7, 'RecX', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\zss_rec\\app', 'RecX', 'zss_rec', 'recs', '農業記録X', 36, 0, 'kani', '::1', '2018-06-16 19:51:07', '2018-06-16 10:51:07'),
-(8, 'RecX', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\zss_rec\\app', 'DiaryA', 'zss_rec', 'diary_as', '日誌Ａ', 35, 0, 'kani', '::1', '2018-07-14 07:41:56', '2018-07-13 22:41:56'),
-(9, 'cb_red_book/BioCls', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\cb_red_book\\app', 'BioCls', 'cb_red_book', 'bio_clss', '綱', 32, 0, 'kani', '::1', '2018-09-01 22:54:54', '2018-09-01 14:48:05'),
-(10, 'cb_red_book/EnCtg', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\cb_red_book\\app', 'EnCtg', 'cb_red_book', 'en_ctgs', '絶滅危惧種カテゴリー', 33, 0, 'kani', '::1', '2018-09-01 23:49:49', '2018-09-01 14:49:49'),
-(11, 'cb_red_book/EnSp', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\cb_red_book\\app', 'EnSp', 'cb_red_book', 'en_sps', '絶滅危惧生物', 34, 0, 'kani', '::1', '2018-09-02 07:44:07', '2018-09-01 22:44:07'),
-(12, '沖縄の動物', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\okianim\\app', 'OkiAnimal', 'okianim', 'oki_animals', '沖縄動物', 30, 0, 'kani', '::1', '2018-09-10 15:14:34', '2018-09-10 06:15:21'),
-(13, '沖縄の動物', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\okianim\\app', 'AnimCtg', 'okianim', 'anim_ctgs', '動物カテゴリ', 31, 0, 'kani', '::1', '2018-09-10 15:18:21', '2018-09-10 06:18:21'),
-(14, 'zss_rec2:titles', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\zss_rec2\\app', 'Title', 'zss_rec2', 'titles', 'タイトル', 26, 0, 'kani', '::1', '2018-10-05 16:38:56', '2018-10-05 07:38:56'),
-(15, 'zss_rec2:title_ctg', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\zss_rec2\\app', 'TitleCtg', 'zss_rec2', 'title_ctgs', 'タイトルカテゴリ', 27, 0, 'kani', '::1', '2018-10-05 20:31:49', '2018-10-05 11:31:50'),
-(16, 'zss_rec2:rec', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\zss_rec2\\app', 'Rec', 'zss_rec2', 'recs', '記録', 28, 0, 'kani', '::1', '2018-10-06 08:28:39', '2018-10-05 23:41:43'),
-(17, 'zss_rec2:rec_ctg', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\zss_rec2\\app', 'RecCtg', 'zss_rec2', 'rec_ctgs', '記録カテゴリ', 29, 0, 'kani', '::1', '2018-10-06 08:36:22', '2018-10-05 23:41:49'),
-(18, 'テスト検証用', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\Users\\user\\git\\cake_demo\\app', 'Buta', 'cake_demo', 'nekos', 'ブタ', 25, 0, 'kani', '::1', '2018-10-10 13:34:56', '2018-10-10 04:48:50'),
+(2, 'cake_demo_old', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\animal_park\\app', 'Yagi', 'animal_park', 'yagis', 'ヤギ', 13, 0, 'kani', '::1', '2018-04-05 23:19:41', '2020-08-29 03:12:14'),
+(3, '動物・ユーザー管理', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\animal_park\\app', 'UserMng', 'animal_park', 'users', 'ユーザー管理', 48, 0, 'kani', '::1', '2018-04-28 22:47:51', '2018-04-28 13:51:49'),
+(4, 'TEST2 テーブルと画面コードが異なる', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\animal_park\\app', 'HijarX', 'animal_park', 'yagis', 'ヒージャー', 49, 0, 'kani', '::1', '2018-04-28 23:09:35', '2018-04-28 14:09:35'),
+(5, '心得システム・心得カテゴリー', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\Users\\user\\git\\knowledge\\app', 'KlCategory', 'zss_rec', 'kl_categorys', '心得カテゴリー', 51, 0, 'kani', '::1', '2018-05-08 19:06:03', '2018-05-08 10:08:38'),
+(6, '心得システム・心得メイン', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\Users\\user\\git\\knowledge\\app', 'Knowledge', 'zss_rec', 'knowledges', '心得メイン', 50, 0, 'kani', '::1', '2018-05-08 19:16:30', '2018-05-08 10:16:30'),
+(7, 'RecX', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\zss_rec\\app', 'RecX', 'zss_rec', 'recs', '農業記録X', 47, 0, 'kani', '::1', '2018-06-16 19:51:07', '2018-06-16 10:51:07'),
+(8, 'RecX', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\zss_rec\\app', 'DiaryA', 'zss_rec', 'diary_as', '日誌Ａ', 46, 0, 'kani', '::1', '2018-07-14 07:41:56', '2018-07-13 22:41:56'),
+(9, 'cb_red_book/BioCls', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\cb_red_book\\app', 'BioCls', 'cb_red_book', 'bio_clss', '綱', 43, 0, 'kani', '::1', '2018-09-01 22:54:54', '2018-09-01 14:48:05'),
+(10, 'cb_red_book/EnCtg', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\cb_red_book\\app', 'EnCtg', 'cb_red_book', 'en_ctgs', '絶滅危惧種カテゴリー', 44, 0, 'kani', '::1', '2018-09-01 23:49:49', '2018-09-01 14:49:49'),
+(11, 'cb_red_book/EnSp', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\cb_red_book\\app', 'EnSp', 'cb_red_book', 'en_sps', '絶滅危惧生物', 45, 0, 'kani', '::1', '2018-09-02 07:44:07', '2018-09-01 22:44:07'),
+(12, '沖縄の動物', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\okianim\\app', 'OkiAnimal', 'okianim', 'oki_animals', '沖縄動物', 41, 0, 'kani', '::1', '2018-09-10 15:14:34', '2018-09-10 06:15:21'),
+(13, '沖縄の動物', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\okianim\\app', 'AnimCtg', 'okianim', 'anim_ctgs', '動物カテゴリ', 42, 0, 'kani', '::1', '2018-09-10 15:18:21', '2018-09-10 06:18:21'),
+(14, 'zss_rec2:titles', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\zss_rec2\\app', 'Title', 'zss_rec2', 'titles', 'タイトル', 37, 0, 'kani', '::1', '2018-10-05 16:38:56', '2018-10-05 07:38:56'),
+(15, 'zss_rec2:title_ctg', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\zss_rec2\\app', 'TitleCtg', 'zss_rec2', 'title_ctgs', 'タイトルカテゴリ', 38, 0, 'kani', '::1', '2018-10-05 20:31:49', '2018-10-05 11:31:50'),
+(16, 'zss_rec2:rec', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\zss_rec2\\app', 'Rec', 'zss_rec2', 'recs', '記録', 39, 0, 'kani', '::1', '2018-10-06 08:28:39', '2018-10-05 23:41:43'),
+(17, 'zss_rec2:rec_ctg', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\zss_rec2\\app', 'RecCtg', 'zss_rec2', 'rec_ctgs', '記録カテゴリ', 40, 0, 'kani', '::1', '2018-10-06 08:36:22', '2018-10-05 23:41:49'),
+(18, 'テスト検証用', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\Users\\user\\git\\cake_demo\\app', 'Buta', 'cake_demo', 'nekos', 'ブタ', 36, 0, 'kani', '::1', '2018-10-10 13:34:56', '2018-10-10 04:48:50'),
 (19, 'テスト検証用2', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\animal_park\\app', 'Yagi', 'animal_park', 'yagis', 'ヤギ', 1, 1, 'kani', '::1', '2018-10-10 13:35:49', '2018-10-10 04:36:29'),
-(20, '見本予約', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\wakg_rsv\\mng\\app', 'RentalItem', 'wakg_rsv', 'rental_items', 'レンタルアイテム', 20, 0, 'kani', '::1', '2018-12-26 15:55:13', '2018-12-26 06:55:13'),
-(21, '見本予約・お客一覧', 1, 'C:\\xampp\\htdocs\\wakg_rsv\\mng\\app', 'RentalItem', 'wakg_rsv', 'rental_items', 'レンタルアイテム', 'C:\\xampp\\htdocs\\wakg_rsv\\mng\\app', 'Customer', 'wakg_rsv', 'customers', 'お客一覧', 21, 0, 'kani', '::1', '2018-12-27 12:06:36', '2018-12-27 03:06:37'),
-(22, '見本予約・休日管理', 1, 'C:\\xampp\\htdocs\\wakg_rsv\\mng\\app', 'RentalItem', 'wakg_rsv', 'rental_items', 'レンタルアイテム', 'C:\\xampp\\htdocs\\wakg_rsv\\mng\\app', 'Holiday', 'wakg_rsv', 'holidays', '休日管理', 22, 0, 'kani', '::1', '2018-12-27 17:49:57', '2018-12-27 08:49:57'),
-(23, '見本予約・時間割', 1, 'C:\\xampp\\htdocs\\wakg_rsv\\mng\\app', 'RentalItem', 'wakg_rsv', 'rental_items', 'レンタルアイテム', 'C:\\xampp\\htdocs\\wakg_rsv\\mng\\app', 'Timetable', 'wakg_rsv', 'timetables', '時間割', 23, 0, 'kani', '::1', '2018-12-27 20:49:33', '2018-12-27 11:49:33'),
-(24, '見本予約・レンタル数管理', 1, 'C:\\xampp\\htdocs\\wakg_rsv\\mng\\app', 'RentalItem', 'wakg_rsv', 'rental_items', 'レンタルアイテム', 'C:\\xampp\\htdocs\\wakg_rsv\\mng\\app', 'RentalCnt', 'wakg_rsv', 'rental_cnts', 'レンタル数管理', 24, 0, 'kani', '::1', '2018-12-28 06:12:19', '2018-12-27 21:12:20'),
-(25, 'SDRS:現場マスタ', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\sdrs\\app', 'Site', 'sdrs', 'sites', '現場', 17, 0, 'kani', '::1', '2019-01-17 12:15:41', '2019-01-17 03:16:29'),
-(26, 'SDRS:作業カテゴリ', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\sdrs\\app', 'WorkCategory', 'sdrs', 'work_categorys', '作業カテゴリ', 18, 0, 'kani', '::1', '2019-01-17 16:46:23', '2019-01-17 07:46:49'),
-(27, 'SDRS:日報', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\sdrs\\app', 'DailyReport', 'sdrs', 'daily_reports', '日報', 19, 0, 'kani', '::1', '2019-01-17 17:22:48', '2019-01-17 08:22:48'),
-(28, 'CakeDemo:ユーザー管理', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\cake_demo\\app', 'UserMng', 'cake_demo', 'users', 'ユーザー管理', 16, 0, 'kani', '::1', '2019-01-17 19:27:54', '2019-01-17 10:27:54'),
-(29, '木曽町空き家検索', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\kiso_fvh\\app', 'Bukken', 'kiso_fvh', 'bukkens', '空き家物件', 15, 0, 'kani', '::1', '2019-01-23 16:02:38', '2019-01-23 07:02:38'),
-(30, 'joberch', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\joberch\\app', 'HurryLevel', 'joberch', 'hurry_levels', '緊急度', 9, 0, 'kani', '::1', '2019-04-05 11:14:22', '2019-04-05 02:16:28'),
+(20, '見本予約', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\wakg_rsv\\mng\\app', 'RentalItem', 'wakg_rsv', 'rental_items', 'レンタルアイテム', 31, 0, 'kani', '::1', '2018-12-26 15:55:13', '2018-12-26 06:55:13'),
+(21, '見本予約・お客一覧', 1, 'C:\\xampp\\htdocs\\wakg_rsv\\mng\\app', 'RentalItem', 'wakg_rsv', 'rental_items', 'レンタルアイテム', 'C:\\xampp\\htdocs\\wakg_rsv\\mng\\app', 'Customer', 'wakg_rsv', 'customers', 'お客一覧', 32, 0, 'kani', '::1', '2018-12-27 12:06:36', '2018-12-27 03:06:37'),
+(22, '見本予約・休日管理', 1, 'C:\\xampp\\htdocs\\wakg_rsv\\mng\\app', 'RentalItem', 'wakg_rsv', 'rental_items', 'レンタルアイテム', 'C:\\xampp\\htdocs\\wakg_rsv\\mng\\app', 'Holiday', 'wakg_rsv', 'holidays', '休日管理', 33, 0, 'kani', '::1', '2018-12-27 17:49:57', '2018-12-27 08:49:57'),
+(23, '見本予約・時間割', 1, 'C:\\xampp\\htdocs\\wakg_rsv\\mng\\app', 'RentalItem', 'wakg_rsv', 'rental_items', 'レンタルアイテム', 'C:\\xampp\\htdocs\\wakg_rsv\\mng\\app', 'Timetable', 'wakg_rsv', 'timetables', '時間割', 34, 0, 'kani', '::1', '2018-12-27 20:49:33', '2018-12-27 11:49:33'),
+(24, '見本予約・レンタル数管理', 1, 'C:\\xampp\\htdocs\\wakg_rsv\\mng\\app', 'RentalItem', 'wakg_rsv', 'rental_items', 'レンタルアイテム', 'C:\\xampp\\htdocs\\wakg_rsv\\mng\\app', 'RentalCnt', 'wakg_rsv', 'rental_cnts', 'レンタル数管理', 35, 0, 'kani', '::1', '2018-12-28 06:12:19', '2018-12-27 21:12:20'),
+(25, 'SDRS:現場マスタ', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\sdrs\\app', 'Site', 'sdrs', 'sites', '現場', 28, 0, 'kani', '::1', '2019-01-17 12:15:41', '2019-01-17 03:16:29'),
+(26, 'SDRS:作業カテゴリ', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\sdrs\\app', 'WorkCategory', 'sdrs', 'work_categorys', '作業カテゴリ', 29, 0, 'kani', '::1', '2019-01-17 16:46:23', '2019-01-17 07:46:49'),
+(27, 'SDRS:日報', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\sdrs\\app', 'DailyReport', 'sdrs', 'daily_reports', '日報', 30, 0, 'kani', '::1', '2019-01-17 17:22:48', '2019-01-17 08:22:48'),
+(28, 'CakeDemo:ユーザー管理', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\cake_demo\\app', 'UserMng', 'cake_demo', 'users', 'ユーザー管理', 27, 0, 'kani', '::1', '2019-01-17 19:27:54', '2019-01-17 10:27:54'),
+(29, '木曽町空き家検索', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\kiso_fvh\\app', 'Bukken', 'kiso_fvh', 'bukkens', '空き家物件', 26, 0, 'kani', '::1', '2019-01-23 16:02:38', '2019-01-23 07:02:38'),
+(30, 'joberch', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\joberch\\app', 'HurryLevel', 'joberch', 'hurry_levels', '緊急度', 20, 0, 'kani', '::1', '2019-04-05 11:14:22', '2019-04-05 02:16:28'),
 (31, 'joberch job_types', 1, 'C:\\xampp\\htdocs\\joberch\\app', 'JobType', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\joberch\\app', 'JobType', 'joberch', 'job_types', '職種', 2, 1, 'kani', '::1', '2019-04-05 12:23:51', '2019-04-05 04:41:10'),
-(32, 'joberch service_types', 1, 'C:\\xampp\\htdocs\\joberch\\app', 'HurryLevel', 'hurry_levels', 'joberch', '緊急度', 'C:\\xampp\\htdocs\\joberch\\app', 'ServiceType', 'joberch', 'service_types', 'サービス種別', 10, 0, 'kani', '::1', '2019-04-05 13:40:22', '2019-04-05 04:42:43'),
-(33, 'joberch employ_types', 1, 'C:\\xampp\\htdocs\\joberch\\app', 'HurryLevel', 'hurry_levels', 'joberch', '緊急度', 'C:\\xampp\\htdocs\\joberch\\app', 'EmployType', 'joberch', 'employ_types', '雇用形態', 11, 0, 'kani', '::1', '2019-04-05 13:49:52', '2019-04-05 04:49:52'),
-(34, 'joberch working_times', 1, 'C:\\xampp\\htdocs\\joberch\\app', 'HurryLevel', 'hurry_levels', 'joberch', '緊急度', 'C:\\xampp\\htdocs\\joberch\\app', 'WorkingTime', 'joberch', 'working_times', '勤務時間帯', 12, 0, 'kani', '::1', '2019-04-05 14:00:46', '2019-04-05 05:01:07'),
-(35, 'joberch salary_types', 1, 'C:\\xampp\\htdocs\\joberch\\app', 'HurryLevel', 'hurry_levels', 'joberch', '緊急度', 'C:\\xampp\\htdocs\\joberch\\app', 'SalaryType', 'joberch', 'salary_types', '給与形態', 13, 0, 'kani', '::1', '2019-04-05 14:03:42', '2019-04-05 05:03:42'),
-(36, 'joberch gender_types', 1, 'C:\\xampp\\htdocs\\joberch\\app', 'HurryLevel', 'hurry_levels', 'joberch', '緊急度', 'C:\\xampp\\htdocs\\joberch\\app', 'GenderType', 'joberch', 'gender_types', '性別条件', 14, 0, 'kani', '::1', '2019-04-05 14:06:50', '2019-04-05 05:07:25'),
+(32, 'joberch service_types', 1, 'C:\\xampp\\htdocs\\joberch\\app', 'HurryLevel', 'hurry_levels', 'joberch', '緊急度', 'C:\\xampp\\htdocs\\joberch\\app', 'ServiceType', 'joberch', 'service_types', 'サービス種別', 21, 0, 'kani', '::1', '2019-04-05 13:40:22', '2019-04-05 04:42:43'),
+(33, 'joberch employ_types', 1, 'C:\\xampp\\htdocs\\joberch\\app', 'HurryLevel', 'hurry_levels', 'joberch', '緊急度', 'C:\\xampp\\htdocs\\joberch\\app', 'EmployType', 'joberch', 'employ_types', '雇用形態', 22, 0, 'kani', '::1', '2019-04-05 13:49:52', '2019-04-05 04:49:52'),
+(34, 'joberch working_times', 1, 'C:\\xampp\\htdocs\\joberch\\app', 'HurryLevel', 'hurry_levels', 'joberch', '緊急度', 'C:\\xampp\\htdocs\\joberch\\app', 'WorkingTime', 'joberch', 'working_times', '勤務時間帯', 23, 0, 'kani', '::1', '2019-04-05 14:00:46', '2019-04-05 05:01:07'),
+(35, 'joberch salary_types', 1, 'C:\\xampp\\htdocs\\joberch\\app', 'HurryLevel', 'hurry_levels', 'joberch', '緊急度', 'C:\\xampp\\htdocs\\joberch\\app', 'SalaryType', 'joberch', 'salary_types', '給与形態', 24, 0, 'kani', '::1', '2019-04-05 14:03:42', '2019-04-05 05:03:42'),
+(36, 'joberch gender_types', 1, 'C:\\xampp\\htdocs\\joberch\\app', 'HurryLevel', 'hurry_levels', 'joberch', '緊急度', 'C:\\xampp\\htdocs\\joberch\\app', 'GenderType', 'joberch', 'gender_types', '性別条件', 25, 0, 'kani', '::1', '2019-04-05 14:06:50', '2019-04-05 05:07:25'),
 (37, 'joberch jobs', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\joberch\\app', 'HurryLevel', 'joberch', 'hurry_levels', '緊急度', 2, 1, 'kani', '::1', '2019-04-05 14:29:57', '2019-04-05 05:31:38'),
-(38, 'joberch jobs', 1, 'C:\\xampp\\htdocs\\joberch\\app', 'HurryLevel', 'hurry_levels', 'joberch', '緊急度', 'C:\\xampp\\htdocs\\joberch\\app', 'Job', 'joberch', 'jobs', '求人', 8, 0, 'kani', '::1', '2019-04-05 14:31:57', '2019-04-05 05:32:56'),
-(39, 'actiestim client', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\actiestim\\mng\\app', 'Client', 'actiestim', 'clients', '顧客', 3, 0, '', '::1', '2020-02-04 14:25:47', '2020-02-04 05:27:58'),
-(40, 'actiestim act', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\actiestim\\mng\\app', 'Act', 'actiestim', 'acts', 'アクティビティ', 4, 0, '', '::1', '2020-02-04 16:54:07', '2020-02-04 07:54:47'),
-(41, 'actiestim client_act', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\actiestim\\mng\\app', 'ClientAct', 'actiestim', 'client_acts', '顧客アクティビティ', 5, 0, '', '::1', '2020-02-05 12:44:11', '2020-02-05 03:44:48'),
-(42, 'actiestim genres', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\actiestim\\mng\\app', 'Genre', 'actiestim', 'genres', 'ジャンル', 6, 0, '', '::1', '2020-02-10 09:26:18', '2020-02-10 00:29:07'),
-(43, 'actiestim a_config', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\actiestim\\mng\\app', 'AConfig', 'actiestim', 'a_configs', '設定', 7, 0, '', '::1', '2020-04-03 12:19:06', '2020-04-03 03:21:05'),
-(44, 'CrudBaseForLaravel7', 2, 'C:\\Users\\user\\git\\CrudBase\\laravel7\\dev', 'Neko', 'crud_base_laravel7', 'nekos', 'ネコ', 'C:\\Users\\user\\git\\CrudBase\\laravel7\\dev', 'Yagi', 'crud_base_laravel7', 'yagis', 'ヤギ', 1, 0, 'kani', '::1', '2020-08-29 12:10:13', '2020-08-29 03:15:13'),
-(45, 'CrudBaseForLaravel7:User', 2, 'C:\\Users\\user\\git\\CrudBase\\laravel7\\dev', 'Neko', 'crud_base_laravel7', 'nekos', 'ネコ', 'C:\\Users\\user\\git\\CrudBase\\laravel7\\dev', 'UserMng', 'crud_base_laravel7', 'users', 'ユーザー管理', 1, 0, 'kani', '::1', '2020-09-03 22:23:14', '2020-09-03 13:24:12');
+(38, 'joberch jobs', 1, 'C:\\xampp\\htdocs\\joberch\\app', 'HurryLevel', 'hurry_levels', 'joberch', '緊急度', 'C:\\xampp\\htdocs\\joberch\\app', 'Job', 'joberch', 'jobs', '求人', 19, 0, 'kani', '::1', '2019-04-05 14:31:57', '2019-04-05 05:32:56'),
+(39, 'actiestim client', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\actiestim\\mng\\app', 'Client', 'actiestim', 'clients', '顧客', 14, 0, '', '::1', '2020-02-04 14:25:47', '2020-02-04 05:27:58'),
+(40, 'actiestim act', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\actiestim\\mng\\app', 'Act', 'actiestim', 'acts', 'アクティビティ', 15, 0, '', '::1', '2020-02-04 16:54:07', '2020-02-04 07:54:47'),
+(41, 'actiestim client_act', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\actiestim\\mng\\app', 'ClientAct', 'actiestim', 'client_acts', '顧客アクティビティ', 16, 0, '', '::1', '2020-02-05 12:44:11', '2020-02-05 03:44:48'),
+(42, 'actiestim genres', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\actiestim\\mng\\app', 'Genre', 'actiestim', 'genres', 'ジャンル', 17, 0, '', '::1', '2020-02-10 09:26:18', '2020-02-10 00:29:07'),
+(43, 'actiestim a_config', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\actiestim\\mng\\app', 'AConfig', 'actiestim', 'a_configs', '設定', 18, 0, '', '::1', '2020-04-03 12:19:06', '2020-04-03 03:21:05'),
+(44, 'CrudBaseForLaravel7', 2, 'C:\\Users\\user\\git\\CrudBase\\laravel7\\dev', 'Neko', 'crud_base_laravel7', 'nekos', 'ネコ', 'C:\\Users\\user\\git\\CrudBase\\laravel7\\dev', 'Yagi', 'crud_base_laravel7', 'yagis', 'ヤギ', 8, 0, 'kani', '::1', '2020-08-29 12:10:13', '2020-08-29 03:15:13'),
+(45, 'CrudBaseForLaravel7:User', 2, 'C:\\Users\\user\\git\\CrudBase\\laravel7\\dev', 'Neko', 'crud_base_laravel7', 'nekos', 'ネコ', 'C:\\Users\\user\\git\\CrudBase\\laravel7\\dev', 'UserMng', 'crud_base_laravel7', 'users', 'ユーザー管理', 9, 0, 'kani', '::1', '2020-09-03 22:23:14', '2020-09-03 13:24:12'),
+(46, 'redbook7:EnSp', 2, 'C:\\Users\\user\\git\\CrudBase\\laravel7\\dev', 'Neko', 'crud_base_laravel7', 'nekos', 'ネコ', 'C:\\Users\\user\\git\\red_book\\dev', 'EnSp', 'red_book', 'en_sps', '絶滅危惧種', 10, 0, '', '::1', '2021-02-17 12:36:45', '2021-02-18 02:28:23'),
+(47, 'redbook7:BioCls', 2, 'C:\\Users\\user\\git\\CrudBase\\laravel7\\dev', 'Neko', 'crud_base_laravel7', 'nekos', 'ネコ', 'C:\\Users\\user\\git\\red_book\\dev', 'BioCls', 'red_book', 'bio_clss', '綱クラス', 11, 0, '', '::1', '2021-02-18 11:30:57', '2021-02-18 02:31:32'),
+(48, 'redbook7:EnCtg', 2, 'C:\\Users\\user\\git\\CrudBase\\laravel7\\dev', 'Neko', 'crud_base_laravel7', 'nekos', 'ネコ', 'C:\\Users\\user\\git\\red_book\\dev', 'EnCtg', 'red_book', 'en_ctgs', '絶滅危惧種カテゴリー', 12, 0, '', '::1', '2021-02-18 11:38:46', '2021-02-18 02:38:46'),
+(49, 'farmin_food:seminars', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\farmin_food\\mng\\app', 'Seminar', 'farmin_food', 'seminars', 'セミナー', 2, 0, '', '::1', '2021-04-09 10:36:44', '2021-04-09 01:39:29'),
+(50, 'farmin_food:two_comms', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\farmin_food\\mng\\app', 'TwoComm', 'farmin_food', 'two_comms', 'マンツーマン・コミュニケーション', 3, 0, '', '::1', '2021-04-09 11:50:21', '2021-04-09 05:18:30'),
+(51, 'farmin_food:group_comms', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\farmin_food\\mng\\app', 'GroupComm', 'farmin_food', 'group_comms', 'グループ・コミュニケーション', 4, 0, '', '::1', '2021-04-09 12:00:55', '2021-04-09 03:01:40'),
+(52, 'farmin_food:seminar_entrants', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\farmin_food\\mng\\app', 'SeminarEntrant', 'farmin_food', 'seminar_entrants', 'セミナー受講者', 5, 0, '', '::1', '2021-04-09 12:06:51', '2021-04-09 03:08:03'),
+(53, 'farmin_food:profiles', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\farmin_food\\mng\\app', 'Profile', 'farmin_food', 'profiles', 'プロフィール', 6, 0, '', '::1', '2021-04-09 12:09:52', '2021-04-09 03:11:32'),
+(54, 'farmin_food:pub_user', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\farmin_food\\mng\\app', 'PubUser', 'farmin_food', 'users', '一般ユーザー', 7, 0, '', '::1', '2021-04-09 14:22:51', '2021-04-09 05:23:28'),
+(55, 'cake_demo_old_mng_user', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\cake_demo\\app', 'UserMng', 'cake_demo', 'users', 'ユーザー管理', 1, 0, 'kani', '::1', '2021-04-10 15:51:35', '2021-04-10 06:56:29');
 
 -- --------------------------------------------------------
 
@@ -1158,47 +1282,47 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- ダンプしたテーブルのAUTO_INCREMENT
+-- ダンプしたテーブルの AUTO_INCREMENT
 --
 
 --
--- テーブルのAUTO_INCREMENT `bulk_makes`
+-- テーブルの AUTO_INCREMENT `bulk_makes`
 --
 ALTER TABLE `bulk_makes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=680;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=793;
 
 --
--- テーブルのAUTO_INCREMENT `hinagatas`
+-- テーブルの AUTO_INCREMENT `hinagatas`
 --
 ALTER TABLE `hinagatas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=183;
 
 --
--- テーブルのAUTO_INCREMENT `hina_files`
+-- テーブルの AUTO_INCREMENT `hina_files`
 --
 ALTER TABLE `hina_files`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- テーブルのAUTO_INCREMENT `hina_file_lists`
+-- テーブルの AUTO_INCREMENT `hina_file_lists`
 --
 ALTER TABLE `hina_file_lists`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- テーブルのAUTO_INCREMENT `missions`
+-- テーブルの AUTO_INCREMENT `missions`
 --
 ALTER TABLE `missions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
--- テーブルのAUTO_INCREMENT `type_as`
+-- テーブルの AUTO_INCREMENT `type_as`
 --
 ALTER TABLE `type_as`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
--- テーブルのAUTO_INCREMENT `users`
+-- テーブルの AUTO_INCREMENT `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
