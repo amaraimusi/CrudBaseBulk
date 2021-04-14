@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- ホスト: 127.0.0.1
--- 生成日時: 2021-04-10 09:35:53
+-- 生成日時: 2021-04-14 11:26:27
 -- サーバのバージョン： 10.4.17-MariaDB
 -- PHP のバージョン: 7.4.14
 
@@ -700,67 +700,62 @@ INSERT INTO `bulk_makes` (`id`, `mission_id`, `field_name`, `type_a`, `field_typ
 (709, 48, 'ip_addr', 19, 'varchar', 'varchar(40)', '40', 0, 0, NULL, '', 'IPアドレス', 7, 0, NULL, NULL, '2021-02-18 11:38:56', '2021-02-18 02:38:56'),
 (710, 48, 'created', 20, 'datetime', 'datetime', 'atetim', 0, 0, NULL, '', '生成日時', 8, 0, NULL, NULL, '2021-02-18 11:38:56', '2021-02-18 02:38:56'),
 (711, 48, 'modified', 21, 'timestamp', 'timestamp', 'imestam', 0, 0, 'current_timestamp()', 'on update current_timestamp()', '更新日', 9, 0, NULL, NULL, '2021-02-18 11:38:56', '2021-02-18 02:38:56'),
-(712, 49, 'id', 22, 'int', 'int(11)', '11', 1, 1, NULL, 'auto_increment', 'id', 1, 0, NULL, NULL, '2021-04-09 10:40:23', '2021-04-09 01:40:23'),
-(713, 49, 'seminar_name', 2, 'varchar', 'varchar(256)', '256', 0, 0, NULL, '', 'セミナー名', 2, 0, NULL, NULL, '2021-04-09 10:40:23', '2021-04-09 01:40:23'),
-(714, 49, 'status', 31, 'int', 'int(11)', '11', 0, 0, '', '', '状態', 3, 0, NULL, '::1', '2021-04-09 10:40:23', '2021-04-09 01:41:15'),
-(715, 49, 'start_date', 25, 'date', 'date', 'at', 0, 0, NULL, '', '開催日', 4, 0, NULL, NULL, '2021-04-09 10:40:23', '2021-04-09 01:40:23'),
-(716, 49, 'start_time', 16, 'time', 'time', 'im', 0, 0, NULL, '', '開催時間', 5, 0, NULL, NULL, '2021-04-09 10:40:23', '2021-04-09 01:40:23'),
-(717, 49, 'seminar_content', 3, 'text', 'text', 'ex', 0, 0, NULL, '', 'セミナー内容', 6, 0, NULL, NULL, '2021-04-09 10:40:23', '2021-04-09 01:40:23'),
-(718, 49, 'seminar_img_fn', 28, 'varchar', 'varchar(256)', '256', 0, 0, NULL, '', 'セミナー画像', 7, 0, NULL, NULL, '2021-04-09 10:40:23', '2021-04-09 01:40:23'),
-(719, 49, 'seminar_json', 3, 'text', 'text', 'ex', 0, 0, NULL, '', 'メタ情報', 8, 0, NULL, NULL, '2021-04-09 10:40:23', '2021-04-09 01:40:23'),
-(720, 49, 'sort_no', 17, 'int', 'int(11)', '11', 0, 0, '0', '', '順番', 9, 0, NULL, NULL, '2021-04-09 10:40:23', '2021-04-09 01:40:23'),
-(721, 49, 'delete_flg', 12, 'tinyint', 'tinyint(1)', '1', 0, 0, '0', '', '無効フラグ', 10, 0, NULL, NULL, '2021-04-09 10:40:23', '2021-04-09 01:40:23'),
-(722, 49, 'update_user', 18, 'varchar', 'varchar(50)', '50', 0, 0, NULL, '', '更新者', 11, 0, NULL, NULL, '2021-04-09 10:40:23', '2021-04-09 01:40:23'),
-(723, 49, 'ip_addr', 19, 'varchar', 'varchar(40)', '40', 0, 0, NULL, '', 'IPアドレス', 12, 0, NULL, NULL, '2021-04-09 10:40:23', '2021-04-09 01:40:23'),
-(724, 49, 'created', 20, 'datetime', 'datetime', 'atetim', 0, 0, NULL, '', '生成日時', 13, 0, NULL, NULL, '2021-04-09 10:40:23', '2021-04-09 01:40:23'),
-(725, 49, 'modified', 21, 'timestamp', 'timestamp', 'imestam', 0, 0, 'current_timestamp()', 'on update current_timestamp()', '更新日', 14, 0, NULL, NULL, '2021-04-09 10:40:23', '2021-04-09 01:40:23'),
-(726, 50, 'id', 22, 'int', 'int(11)', '11', 1, 1, NULL, 'auto_increment', 'id', 1, 0, NULL, NULL, '2021-04-09 14:16:35', '2021-04-09 05:16:35'),
-(727, 50, 'seminar_id', 27, 'int', 'int(11)', '11', 0, 0, NULL, '', 'セミナーID', 2, 0, NULL, NULL, '2021-04-09 14:16:35', '2021-04-09 05:16:35'),
-(728, 50, 'organizer_user_id', 27, 'int', 'int(11)', '11', 0, 0, NULL, '', '主催者ユーザーID', 3, 0, NULL, NULL, '2021-04-09 14:16:35', '2021-04-09 05:16:35'),
-(729, 50, 'entrant_user_id', 27, 'int', 'int(11)', '11', 0, 0, NULL, '', '受講者ユーザーID', 4, 0, NULL, NULL, '2021-04-09 14:16:35', '2021-04-09 05:16:35'),
-(730, 50, 'message', 3, 'varchar', 'varchar(2000)', '2000', 0, 0, NULL, '', 'メッセージ', 5, 0, NULL, NULL, '2021-04-09 14:16:35', '2021-04-09 05:16:35'),
-(731, 50, 'attach_fn', 28, 'varchar', 'varchar(256)', '256', 0, 0, NULL, '', '添付ファイル名', 6, 0, NULL, NULL, '2021-04-09 14:16:35', '2021-04-09 05:16:35'),
-(732, 50, 'a_file_type', 31, 'varchar', 'varchar(4)', '4', 0, 0, NULL, '', '添付ファイルタイプ', 7, 0, NULL, NULL, '2021-04-09 14:16:35', '2021-04-09 05:16:35'),
-(733, 50, 'sort_no', 17, 'int', 'int(11)', '11', 0, 0, '0', '', '順番', 8, 0, NULL, NULL, '2021-04-09 14:16:35', '2021-04-09 05:16:35'),
-(734, 50, 'delete_flg', 12, 'tinyint', 'tinyint(1)', '1', 0, 0, '0', '', '無効フラグ', 9, 0, NULL, NULL, '2021-04-09 14:16:35', '2021-04-09 05:16:35'),
-(735, 50, 'update_user', 18, 'varchar', 'varchar(50)', '50', 0, 0, NULL, '', '更新者', 10, 0, NULL, NULL, '2021-04-09 14:16:35', '2021-04-09 05:16:35'),
-(736, 50, 'ip_addr', 19, 'varchar', 'varchar(40)', '40', 0, 0, NULL, '', 'IPアドレス', 11, 0, NULL, NULL, '2021-04-09 14:16:35', '2021-04-09 05:16:35'),
-(737, 50, 'created', 20, 'datetime', 'datetime', 'atetim', 0, 0, NULL, '', '生成日時', 12, 0, NULL, NULL, '2021-04-09 14:16:35', '2021-04-09 05:16:35'),
-(738, 50, 'modified', 21, 'timestamp', 'timestamp', 'imestam', 0, 0, 'current_timestamp()', 'on update current_timestamp()', '更新日', 13, 0, NULL, NULL, '2021-04-09 14:16:35', '2021-04-09 05:16:35'),
-(739, 51, 'id', 22, 'int', 'int(11)', '11', 1, 1, NULL, 'auto_increment', 'id', 1, 0, NULL, NULL, '2021-04-09 12:01:49', '2021-04-09 03:01:49'),
-(740, 51, 'seminar_id', 27, 'int', 'int(11)', '11', 0, 0, NULL, '', 'セミナーID', 2, 0, NULL, NULL, '2021-04-09 12:01:49', '2021-04-09 03:01:49'),
-(741, 51, 'user_id', 27, 'int', 'int(11)', '11', 0, 0, NULL, '', 'ユーザーID', 3, 0, NULL, NULL, '2021-04-09 12:01:49', '2021-04-09 03:01:49'),
-(742, 51, 'message', 3, 'varchar', 'varchar(2000)', '2000', 0, 0, '', '', 'メッセージ', 4, 0, NULL, '::1', '2021-04-09 12:01:49', '2021-04-09 03:02:16'),
-(743, 51, 'attach_fn', 28, 'varchar', 'varchar(256)', '256', 0, 0, NULL, '', '添付ファイル名', 5, 0, NULL, NULL, '2021-04-09 12:01:49', '2021-04-09 03:01:49');
+(712, 49, 'id', 22, 'int', 'int(11)', '11', 1, 1, NULL, 'auto_increment', 'id', 1, 0, NULL, NULL, '2021-04-13 11:13:21', '2021-04-13 02:13:21'),
+(713, 49, 'seminar_name', 2, 'varchar', 'varchar(256)', '256', 0, 0, NULL, '', 'セミナー名', 2, 0, NULL, NULL, '2021-04-13 11:13:21', '2021-04-13 02:13:21'),
+(714, 49, 'status', 24, 'int', 'int(11)', '11', 0, 0, NULL, '', '状態', 4, 0, NULL, NULL, '2021-04-13 11:13:21', '2021-04-13 02:13:21'),
+(715, 49, 'start_date', 25, 'date', 'date', 'at', 0, 0, NULL, '', '開催日', 5, 0, NULL, NULL, '2021-04-13 11:13:21', '2021-04-13 02:13:21'),
+(716, 49, 'start_time', 16, 'time', 'time', 'im', 0, 0, NULL, '', '開催時間', 6, 0, NULL, NULL, '2021-04-13 11:13:21', '2021-04-13 02:13:21'),
+(717, 49, 'seminar_content', 3, 'text', 'text', 'ex', 0, 0, NULL, '', 'セミナー内容', 7, 0, NULL, NULL, '2021-04-13 11:13:21', '2021-04-13 02:13:21'),
+(719, 49, 'seminar_json', 3, 'text', 'text', 'ex', 0, 0, NULL, '', 'メタ情報', 8, 0, NULL, NULL, '2021-04-13 11:13:21', '2021-04-13 02:13:21'),
+(720, 49, 'sort_no', 17, 'int', 'int(11)', '11', 0, 0, '0', '', '順番', 9, 0, NULL, NULL, '2021-04-13 11:13:21', '2021-04-13 02:13:21'),
+(721, 49, 'delete_flg', 12, 'tinyint', 'tinyint(1)', '1', 0, 0, '0', '', '無効フラグ', 10, 0, NULL, NULL, '2021-04-13 11:13:21', '2021-04-13 02:13:21'),
+(722, 49, 'update_user', 18, 'varchar', 'varchar(50)', '50', 0, 0, NULL, '', '更新者', 11, 0, NULL, NULL, '2021-04-13 11:13:21', '2021-04-13 02:13:21'),
+(723, 49, 'ip_addr', 19, 'varchar', 'varchar(40)', '40', 0, 0, NULL, '', 'IPアドレス', 12, 0, NULL, NULL, '2021-04-13 11:13:21', '2021-04-13 02:13:21'),
+(724, 49, 'created', 20, 'datetime', 'datetime', 'atetim', 0, 0, NULL, '', '生成日時', 13, 0, NULL, NULL, '2021-04-13 11:13:21', '2021-04-13 02:13:21'),
+(725, 49, 'modified', 21, 'timestamp', 'timestamp', 'imestam', 0, 0, 'current_timestamp()', 'on update current_timestamp()', '更新日', 14, 0, NULL, NULL, '2021-04-13 11:13:21', '2021-04-13 02:13:21'),
+(726, 50, 'id', 22, 'int', 'int(11)', '11', 1, 1, NULL, 'auto_increment', 'id', 1, 0, NULL, NULL, '2021-04-14 11:58:24', '2021-04-14 02:58:24'),
+(727, 50, 'seminar_id', 27, 'int', 'int(11)', '11', 0, 0, NULL, '', 'セミナーID', 2, 0, NULL, NULL, '2021-04-14 11:58:24', '2021-04-14 02:58:24'),
+(728, 50, 'organizer_user_id', 27, 'int', 'int(11)', '11', 0, 0, NULL, '', '主催者ユーザーID', 3, 0, NULL, NULL, '2021-04-14 11:58:24', '2021-04-14 02:58:24'),
+(729, 50, 'entrant_user_id', 27, 'int', 'int(11)', '11', 0, 0, NULL, '', '受講者ユーザーID', 4, 0, NULL, NULL, '2021-04-14 11:58:24', '2021-04-14 02:58:24'),
+(730, 50, 'message', 3, 'varchar', 'varchar(2000)', '2000', 0, 0, NULL, '', 'メッセージ', 5, 0, NULL, NULL, '2021-04-14 11:58:24', '2021-04-14 02:58:24'),
+(733, 50, 'sort_no', 17, 'int', 'int(11)', '11', 0, 0, '0', '', '順番', 6, 0, NULL, NULL, '2021-04-14 11:58:24', '2021-04-14 02:58:24'),
+(734, 50, 'delete_flg', 12, 'tinyint', 'tinyint(1)', '1', 0, 0, '0', '', '無効フラグ', 7, 0, NULL, NULL, '2021-04-14 11:58:24', '2021-04-14 02:58:24'),
+(735, 50, 'update_user', 18, 'varchar', 'varchar(50)', '50', 0, 0, NULL, '', '更新者', 8, 0, NULL, NULL, '2021-04-14 11:58:24', '2021-04-14 02:58:24'),
+(736, 50, 'ip_addr', 19, 'varchar', 'varchar(40)', '40', 0, 0, NULL, '', 'IPアドレス', 9, 0, NULL, NULL, '2021-04-14 11:58:24', '2021-04-14 02:58:24'),
+(737, 50, 'created', 20, 'datetime', 'datetime', 'atetim', 0, 0, NULL, '', '生成日時', 10, 0, NULL, NULL, '2021-04-14 11:58:24', '2021-04-14 02:58:24'),
+(738, 50, 'modified', 21, 'timestamp', 'timestamp', 'imestam', 0, 0, 'current_timestamp()', 'on update current_timestamp()', '更新日', 11, 0, NULL, NULL, '2021-04-14 11:58:24', '2021-04-14 02:58:24'),
+(739, 51, 'id', 22, 'int', 'int(11)', '11', 1, 1, NULL, 'auto_increment', 'id', 1, 0, NULL, NULL, '2021-04-14 11:59:19', '2021-04-14 02:59:19'),
+(740, 51, 'seminar_id', 27, 'int', 'int(11)', '11', 0, 0, NULL, '', 'セミナーID', 2, 0, NULL, NULL, '2021-04-14 11:59:19', '2021-04-14 02:59:19'),
+(741, 51, 'user_id', 27, 'int', 'int(11)', '11', 0, 0, NULL, '', 'ユーザーID', 3, 0, NULL, NULL, '2021-04-14 11:59:19', '2021-04-14 02:59:19'),
+(742, 51, 'message', 2, 'varchar', 'varchar(2000)', '2000', 0, 0, NULL, '', 'メッセージ', 4, 0, NULL, NULL, '2021-04-14 11:59:19', '2021-04-14 02:59:19'),
+(745, 51, 'sort_no', 17, 'int', 'int(11)', '11', 0, 0, '0', '', '順番', 5, 0, NULL, NULL, '2021-04-14 11:59:19', '2021-04-14 02:59:19'),
+(746, 51, 'delete_flg', 12, 'tinyint', 'tinyint(1)', '1', 0, 0, '0', '', '無効フラグ', 6, 0, NULL, NULL, '2021-04-14 11:59:19', '2021-04-14 02:59:19'),
+(747, 51, 'update_user', 18, 'varchar', 'varchar(50)', '50', 0, 0, NULL, '', '更新者', 7, 0, NULL, NULL, '2021-04-14 11:59:19', '2021-04-14 02:59:19'),
+(748, 51, 'ip_addr', 19, 'varchar', 'varchar(40)', '40', 0, 0, NULL, '', 'IPアドレス', 8, 0, NULL, NULL, '2021-04-14 11:59:19', '2021-04-14 02:59:19');
 INSERT INTO `bulk_makes` (`id`, `mission_id`, `field_name`, `type_a`, `field_type`, `orig_type`, `type_long`, `null_flg`, `p_key_flg`, `def_val`, `extra`, `comment`, `sort_no`, `delete_flg`, `update_user`, `ip_addr`, `created`, `modified`) VALUES
-(744, 51, 'a_file_type', 31, 'varchar', 'varchar(4)', '4', 0, 0, NULL, '', '添付ファイルタイプ', 6, 0, NULL, NULL, '2021-04-09 12:01:49', '2021-04-09 03:01:49'),
-(745, 51, 'sort_no', 17, 'int', 'int(11)', '11', 0, 0, '0', '', '順番', 7, 0, NULL, NULL, '2021-04-09 12:01:49', '2021-04-09 03:01:49'),
-(746, 51, 'delete_flg', 12, 'tinyint', 'tinyint(1)', '1', 0, 0, '0', '', '無効フラグ', 8, 0, NULL, NULL, '2021-04-09 12:01:49', '2021-04-09 03:01:49'),
-(747, 51, 'update_user', 18, 'varchar', 'varchar(50)', '50', 0, 0, NULL, '', '更新者', 9, 0, NULL, NULL, '2021-04-09 12:01:49', '2021-04-09 03:01:49'),
-(748, 51, 'ip_addr', 19, 'varchar', 'varchar(40)', '40', 0, 0, NULL, '', 'IPアドレス', 10, 0, NULL, NULL, '2021-04-09 12:01:49', '2021-04-09 03:01:49'),
-(749, 51, 'created', 20, 'datetime', 'datetime', 'atetim', 0, 0, NULL, '', '生成日時', 11, 0, NULL, NULL, '2021-04-09 12:01:49', '2021-04-09 03:01:49'),
-(750, 51, 'modified', 21, 'timestamp', 'timestamp', 'imestam', 0, 0, 'current_timestamp()', 'on update current_timestamp()', '更新日', 12, 0, NULL, NULL, '2021-04-09 12:01:49', '2021-04-09 03:01:49'),
-(751, 52, 'id', 22, 'int', 'int(11)', '11', 1, 1, NULL, 'auto_increment', 'id', 1, 0, NULL, NULL, '2021-04-09 12:09:12', '2021-04-09 03:09:12'),
-(752, 52, 'seminar_id', 27, 'int', 'int(11)', '11', 0, 0, NULL, '', 'セミナーID', 2, 0, NULL, NULL, '2021-04-09 12:09:12', '2021-04-09 03:09:12'),
-(753, 52, 'entrant_user_id', 27, 'int', 'int(11)', '11', 0, 0, NULL, '', '受講者ユーザーID', 3, 0, NULL, NULL, '2021-04-09 12:09:12', '2021-04-09 03:09:12'),
-(754, 52, 'permission', 31, 'int', 'int(11)', '11', 0, 0, '', '', '受講許可', 4, 0, NULL, '::1', '2021-04-09 12:09:12', '2021-04-09 03:09:22'),
-(755, 52, 'sort_no', 17, 'int', 'int(11)', '11', 0, 0, '0', '', '順番', 5, 0, NULL, NULL, '2021-04-09 12:09:12', '2021-04-09 03:09:12'),
-(756, 52, 'delete_flg', 12, 'tinyint', 'tinyint(1)', '1', 0, 0, '0', '', '無効フラグ', 6, 0, NULL, NULL, '2021-04-09 12:09:12', '2021-04-09 03:09:12'),
-(757, 52, 'update_user', 18, 'varchar', 'varchar(50)', '50', 0, 0, NULL, '', '更新者', 7, 0, NULL, NULL, '2021-04-09 12:09:12', '2021-04-09 03:09:12'),
-(758, 52, 'ip_addr', 19, 'varchar', 'varchar(40)', '40', 0, 0, NULL, '', 'IPアドレス', 8, 0, NULL, NULL, '2021-04-09 12:09:12', '2021-04-09 03:09:12'),
-(759, 52, 'created', 20, 'datetime', 'datetime', 'atetim', 0, 0, NULL, '', '生成日時', 9, 0, NULL, NULL, '2021-04-09 12:09:12', '2021-04-09 03:09:12'),
-(760, 52, 'modified', 21, 'timestamp', 'timestamp', 'imestam', 0, 0, 'current_timestamp()', 'on update current_timestamp()', '更新日', 10, 0, NULL, NULL, '2021-04-09 12:09:12', '2021-04-09 03:09:12'),
-(761, 53, 'id', 22, 'int', 'int(11)', '11', 1, 1, NULL, 'auto_increment', 'id', 1, 0, NULL, NULL, '2021-04-09 12:12:46', '2021-04-09 03:12:46'),
-(762, 53, 'user_id', 27, 'int', 'int(11)', '11', 0, 0, NULL, '', 'ユーザーID', 2, 0, NULL, NULL, '2021-04-09 12:12:46', '2021-04-09 03:12:46'),
-(763, 53, 'nickname', 2, 'varchar', 'varchar(50)', '50', 0, 0, NULL, '', 'ニックネーム', 3, 0, NULL, NULL, '2021-04-09 12:12:46', '2021-04-09 03:12:46'),
-(764, 53, 'user_icon', 28, 'varchar', 'varchar(256)', '256', 0, 0, '', '', 'ユーザーアイコン', 4, 0, NULL, '::1', '2021-04-09 12:12:46', '2021-04-09 03:13:19'),
-(765, 53, 'profile_text', 3, 'varchar', 'varchar(4000)', '4000', 0, 0, '', '', 'プロフィールテキスト', 5, 0, NULL, '::1', '2021-04-09 12:12:46', '2021-04-09 03:12:59'),
-(766, 53, 'sort_no', 17, 'int', 'int(11)', '11', 0, 0, '0', '', '順番', 6, 0, NULL, NULL, '2021-04-09 12:12:46', '2021-04-09 03:12:46'),
-(767, 53, 'delete_flg', 12, 'tinyint', 'tinyint(1)', '1', 0, 0, '0', '', '無効フラグ', 7, 0, NULL, NULL, '2021-04-09 12:12:46', '2021-04-09 03:12:46'),
-(768, 53, 'update_user', 18, 'varchar', 'varchar(50)', '50', 0, 0, NULL, '', '更新者', 8, 0, NULL, NULL, '2021-04-09 12:12:46', '2021-04-09 03:12:46'),
-(769, 53, 'ip_addr', 19, 'varchar', 'varchar(40)', '40', 0, 0, NULL, '', 'IPアドレス', 9, 0, NULL, NULL, '2021-04-09 12:12:46', '2021-04-09 03:12:46'),
-(770, 53, 'created', 20, 'datetime', 'datetime', 'atetim', 0, 0, NULL, '', '生成日時', 10, 0, NULL, NULL, '2021-04-09 12:12:46', '2021-04-09 03:12:46'),
-(771, 53, 'modified', 21, 'timestamp', 'timestamp', 'imestam', 0, 0, 'current_timestamp()', 'on update current_timestamp()', '更新日', 11, 0, NULL, NULL, '2021-04-09 12:12:46', '2021-04-09 03:12:46'),
+(749, 51, 'created', 20, 'datetime', 'datetime', 'atetim', 0, 0, NULL, '', '生成日時', 9, 0, NULL, NULL, '2021-04-14 11:59:19', '2021-04-14 02:59:19'),
+(750, 51, 'modified', 21, 'timestamp', 'timestamp', 'imestam', 0, 0, 'current_timestamp()', 'on update current_timestamp()', '更新日', 10, 0, NULL, NULL, '2021-04-14 11:59:19', '2021-04-14 02:59:19'),
+(751, 52, 'id', 22, 'int', 'int(11)', '11', 1, 1, NULL, 'auto_increment', 'id', 1, 0, NULL, NULL, '2021-04-14 11:59:58', '2021-04-14 02:59:58'),
+(752, 52, 'seminar_id', 27, 'int', 'int(11)', '11', 0, 0, NULL, '', 'セミナーID', 2, 0, NULL, NULL, '2021-04-14 11:59:58', '2021-04-14 02:59:58'),
+(753, 52, 'entrant_user_id', 27, 'int', 'int(11)', '11', 0, 0, NULL, '', '受講者ユーザーID', 3, 0, NULL, NULL, '2021-04-14 11:59:58', '2021-04-14 02:59:58'),
+(754, 52, 'permission', 13, 'int', 'int(11)', '11', 0, 0, '', '', '受講許可', 4, 0, NULL, '::1', '2021-04-14 11:59:58', '2021-04-14 03:00:27'),
+(755, 52, 'sort_no', 17, 'int', 'int(11)', '11', 0, 0, '0', '', '順番', 5, 0, NULL, NULL, '2021-04-14 11:59:58', '2021-04-14 02:59:58'),
+(756, 52, 'delete_flg', 12, 'tinyint', 'tinyint(1)', '1', 0, 0, '0', '', '無効フラグ', 6, 0, NULL, NULL, '2021-04-14 11:59:58', '2021-04-14 02:59:58'),
+(757, 52, 'update_user', 18, 'varchar', 'varchar(50)', '50', 0, 0, NULL, '', '更新者', 7, 0, NULL, NULL, '2021-04-14 11:59:58', '2021-04-14 02:59:58'),
+(758, 52, 'ip_addr', 19, 'varchar', 'varchar(40)', '40', 0, 0, NULL, '', 'IPアドレス', 8, 0, NULL, NULL, '2021-04-14 11:59:58', '2021-04-14 02:59:58'),
+(759, 52, 'created', 20, 'datetime', 'datetime', 'atetim', 0, 0, NULL, '', '生成日時', 9, 0, NULL, NULL, '2021-04-14 11:59:58', '2021-04-14 02:59:58'),
+(760, 52, 'modified', 21, 'timestamp', 'timestamp', 'imestam', 0, 0, 'current_timestamp()', 'on update current_timestamp()', '更新日', 10, 0, NULL, NULL, '2021-04-14 11:59:58', '2021-04-14 02:59:58'),
+(761, 53, 'id', 22, 'int', 'int(11)', '11', 1, 1, NULL, 'auto_increment', 'id', 1, 0, NULL, NULL, '2021-04-14 12:01:13', '2021-04-14 03:01:13'),
+(762, 53, 'user_id', 27, 'int', 'int(11)', '11', 0, 0, NULL, '', 'ユーザーID', 2, 0, NULL, NULL, '2021-04-14 12:01:13', '2021-04-14 03:01:13'),
+(763, 53, 'nickname', 2, 'varchar', 'varchar(50)', '50', 0, 0, NULL, '', 'ニックネーム', 3, 0, NULL, NULL, '2021-04-14 12:01:13', '2021-04-14 03:01:13'),
+(764, 53, 'user_icon', 2, 'varchar', 'varchar(256)', '256', 0, 0, NULL, '', 'ユーザーアイコン', 4, 0, NULL, NULL, '2021-04-14 12:01:13', '2021-04-14 03:01:13'),
+(765, 53, 'profile_text', 2, 'varchar', 'varchar(4000)', '4000', 0, 0, NULL, '', 'プロフィールテキスト', 5, 0, NULL, NULL, '2021-04-14 12:01:13', '2021-04-14 03:01:13'),
+(766, 53, 'sort_no', 17, 'int', 'int(11)', '11', 0, 0, '0', '', '順番', 6, 0, NULL, NULL, '2021-04-14 12:01:13', '2021-04-14 03:01:13'),
+(767, 53, 'delete_flg', 12, 'tinyint', 'tinyint(1)', '1', 0, 0, '0', '', '無効フラグ', 7, 0, NULL, NULL, '2021-04-14 12:01:13', '2021-04-14 03:01:13'),
+(768, 53, 'update_user', 18, 'varchar', 'varchar(50)', '50', 0, 0, NULL, '', '更新者', 8, 0, NULL, NULL, '2021-04-14 12:01:13', '2021-04-14 03:01:13'),
+(769, 53, 'ip_addr', 19, 'varchar', 'varchar(40)', '40', 0, 0, NULL, '', 'IPアドレス', 9, 0, NULL, NULL, '2021-04-14 12:01:13', '2021-04-14 03:01:13'),
+(770, 53, 'created', 20, 'datetime', 'datetime', 'atetim', 0, 0, NULL, '', '生成日時', 10, 0, NULL, NULL, '2021-04-14 12:01:13', '2021-04-14 03:01:13'),
+(771, 53, 'modified', 21, 'timestamp', 'timestamp', 'imestam', 0, 0, 'current_timestamp()', 'on update current_timestamp()', '更新日', 11, 0, NULL, NULL, '2021-04-14 12:01:13', '2021-04-14 03:01:13'),
 (772, 54, 'id', 22, 'bigint', 'bigint(20) unsigned', '20', 1, 1, NULL, 'auto_increment', 'id', 1, 0, NULL, NULL, '2021-04-09 14:23:38', '2021-04-09 05:23:38'),
 (773, 54, 'name', 2, 'varchar', 'varchar(255)', '255', 1, 0, NULL, '', 'name', 2, 0, NULL, NULL, '2021-04-09 14:23:38', '2021-04-09 05:23:38'),
 (774, 54, 'email', 2, 'varchar', 'varchar(255)', '255', 1, 0, NULL, '', 'email', 3, 0, NULL, NULL, '2021-04-09 14:23:38', '2021-04-09 05:23:38'),
@@ -781,7 +776,44 @@ INSERT INTO `bulk_makes` (`id`, `mission_id`, `field_name`, `type_a`, `field_typ
 (789, 55, 'update_user', 18, 'varchar', 'varchar(50)', '50', 0, 0, NULL, '', '更新ユーザー', 7, 0, NULL, NULL, '2021-04-10 15:56:34', '2021-04-10 06:56:34'),
 (790, 55, 'ip_addr', 19, 'varchar', 'varchar(40)', '40', 0, 0, NULL, '', '更新IPアドレス', 8, 0, NULL, NULL, '2021-04-10 15:56:34', '2021-04-10 06:56:34'),
 (791, 55, 'created', 20, 'datetime', 'datetime', 'atetim', 0, 0, NULL, '', '作成日時', 9, 0, NULL, NULL, '2021-04-10 15:56:34', '2021-04-10 06:56:34'),
-(792, 55, 'modified', 21, 'datetime', 'datetime', 'atetim', 0, 0, NULL, '', '更新日時', 10, 0, NULL, NULL, '2021-04-10 15:56:34', '2021-04-10 06:56:34');
+(792, 55, 'modified', 21, 'datetime', 'datetime', 'atetim', 0, 0, NULL, '', '更新日時', 10, 0, NULL, NULL, '2021-04-10 15:56:34', '2021-04-10 06:56:34'),
+(793, 49, 'seminar_category_id', 27, 'int', 'int(11)', '11', 0, 0, '0', '', 'セミナーカテゴリID', 3, 0, NULL, NULL, '2021-04-13 11:13:21', '2021-04-13 02:13:21'),
+(794, 56, 'id', 22, 'int', 'int(11)', '11', 1, 1, NULL, 'auto_increment', 'id', 1, 0, NULL, NULL, '2021-04-13 11:40:29', '2021-04-13 02:40:29'),
+(796, 56, 'note', 3, 'varchar', 'varchar(1000)', '1000', 0, 0, '', '', '備考', 3, 0, NULL, '::1', '2021-04-13 11:40:29', '2021-04-13 02:49:22'),
+(797, 56, 'sort_no', 17, 'int', 'int(11)', '11', 0, 0, '0', '', '順番', 4, 0, NULL, NULL, '2021-04-13 11:40:29', '2021-04-13 02:40:29'),
+(798, 56, 'delete_flg', 12, 'tinyint', 'tinyint(1)', '1', 0, 0, '0', '', '無効フラグ', 5, 0, NULL, NULL, '2021-04-13 11:40:29', '2021-04-13 02:40:29'),
+(799, 56, 'update_user', 18, 'varchar', 'varchar(50)', '50', 0, 0, NULL, '', '更新者', 6, 0, NULL, NULL, '2021-04-13 11:40:29', '2021-04-13 02:40:29'),
+(800, 56, 'ip_addr', 19, 'varchar', 'varchar(40)', '40', 0, 0, NULL, '', 'IPアドレス', 7, 0, NULL, NULL, '2021-04-13 11:40:29', '2021-04-13 02:40:29'),
+(801, 56, 'created', 20, 'datetime', 'datetime', 'atetim', 0, 0, NULL, '', '生成日時', 8, 0, NULL, NULL, '2021-04-13 11:40:29', '2021-04-13 02:40:29'),
+(802, 56, 'modified', 21, 'timestamp', 'timestamp', 'imestam', 0, 0, 'current_timestamp()', 'on update current_timestamp()', '更新日', 9, 0, NULL, NULL, '2021-04-13 11:40:29', '2021-04-13 02:40:29'),
+(803, 56, 'seminar_category_name', 2, 'varchar', 'varchar(100)', '100', 0, 0, NULL, '', 'セミナーカテゴリ', 2, 0, NULL, NULL, '2021-04-13 11:40:29', '2021-04-13 02:40:29'),
+(804, 57, 'id', 22, 'int', 'int(11)', '11', 1, 1, NULL, 'auto_increment', 'id', 1, 0, NULL, NULL, '2021-04-14 11:56:15', '2021-04-14 02:56:15'),
+(805, 57, 'seminar_id', 27, 'int', 'int(11)', '11', 0, 0, NULL, '', 'セミナーID', 2, 0, NULL, NULL, '2021-04-14 11:56:15', '2021-04-14 02:56:15'),
+(806, 57, 'lecturer_name', 2, 'varchar', 'varchar(100)', '100', 0, 0, NULL, '', 'セミナー講師名', 3, 0, NULL, NULL, '2021-04-14 11:56:15', '2021-04-14 02:56:15'),
+(807, 57, 'public_note', 3, 'varchar', 'varchar(4000)', '4000', 0, 0, '', '', '公開プロフィール', 4, 0, NULL, '::1', '2021-04-14 11:56:15', '2021-04-14 02:56:35'),
+(808, 57, 'private_note', 3, 'varchar', 'varchar(1000)', '1000', 0, 0, '', '', '非公開備考', 5, 0, NULL, '::1', '2021-04-14 11:56:15', '2021-04-14 02:56:42'),
+(809, 57, 'sort_no', 17, 'int', 'int(11)', '11', 0, 0, '0', '', '順番', 6, 0, NULL, NULL, '2021-04-14 11:56:15', '2021-04-14 02:56:15'),
+(810, 57, 'delete_flg', 12, 'tinyint', 'tinyint(1)', '1', 0, 0, '0', '', '無効フラグ', 7, 0, NULL, NULL, '2021-04-14 11:56:15', '2021-04-14 02:56:15'),
+(811, 57, 'update_user', 18, 'varchar', 'varchar(50)', '50', 0, 0, NULL, '', '更新者', 8, 0, NULL, NULL, '2021-04-14 11:56:15', '2021-04-14 02:56:15'),
+(812, 57, 'ip_addr', 19, 'varchar', 'varchar(40)', '40', 0, 0, NULL, '', 'IPアドレス', 9, 0, NULL, NULL, '2021-04-14 11:56:15', '2021-04-14 02:56:15'),
+(813, 57, 'created', 20, 'datetime', 'datetime', 'atetim', 0, 0, NULL, '', '生成日時', 10, 0, NULL, NULL, '2021-04-14 11:56:15', '2021-04-14 02:56:15'),
+(814, 57, 'modified', 21, 'timestamp', 'timestamp', 'imestam', 0, 0, 'current_timestamp()', 'on update current_timestamp()', '更新日', 11, 0, NULL, NULL, '2021-04-14 11:56:15', '2021-04-14 02:56:15'),
+(815, 58, 'id', 22, 'int', 'int(11)', '11', 1, 1, NULL, 'auto_increment', 'id', 1, 0, NULL, NULL, '2021-04-14 12:02:55', '2021-04-14 03:02:55'),
+(816, 58, 'meta_id', 5, 'int', 'int(11)', '11', 0, 0, '', '', 'メタID', 2, 0, NULL, '::1', '2021-04-14 12:02:55', '2021-04-14 03:03:18'),
+(817, 58, 'meta_key', 2, 'varchar', 'varchar(32)', '32', 0, 0, NULL, '', 'メタキー', 3, 0, NULL, NULL, '2021-04-14 12:02:55', '2021-04-14 03:02:55'),
+(818, 58, 'filename', 28, 'varchar', 'varchar(256)', '256', 0, 0, '', '', 'ファイル名', 4, 0, NULL, '::1', '2021-04-14 12:02:55', '2021-04-14 03:04:15'),
+(819, 58, 'file_type', 31, 'varchar', 'varchar(8)', '8', 0, 0, NULL, '', 'ファイル種別', 5, 0, NULL, NULL, '2021-04-14 12:02:55', '2021-04-14 03:02:55'),
+(820, 58, 'orig_fn', 2, 'varchar', 'varchar(256)', '256', 0, 0, '', '', 'オリジナルファイル名', 6, 0, NULL, '::1', '2021-04-14 12:02:55', '2021-04-14 03:03:39'),
+(821, 58, 'fp', 2, 'varchar', 'varchar(512)', '512', 0, 0, NULL, '', 'ファイルパス', 7, 0, NULL, NULL, '2021-04-14 12:02:55', '2021-04-14 03:02:55'),
+(822, 58, 'public_note', 3, 'varchar', 'varchar(1000)', '1000', 0, 0, '', '', '公開説明説明文', 8, 0, NULL, '::1', '2021-04-14 12:02:55', '2021-04-14 03:04:45'),
+(823, 58, 'private_note', 3, 'varchar', 'varchar(1000)', '1000', 0, 0, '', '', '非公開説明文', 9, 0, NULL, '::1', '2021-04-14 12:02:55', '2021-04-14 03:04:53'),
+(824, 58, 'meta_user_id', 27, 'int', 'int(11)', '11', 0, 0, NULL, '', 'メタユーザーID', 10, 0, NULL, NULL, '2021-04-14 12:02:55', '2021-04-14 03:02:55'),
+(825, 58, 'sort_no', 17, 'int', 'int(11)', '11', 0, 0, '0', '', '順番', 11, 0, NULL, NULL, '2021-04-14 12:02:55', '2021-04-14 03:02:55'),
+(826, 58, 'delete_flg', 12, 'tinyint', 'tinyint(1)', '1', 0, 0, '0', '', '無効フラグ', 12, 0, NULL, NULL, '2021-04-14 12:02:55', '2021-04-14 03:02:55'),
+(827, 58, 'update_user', 18, 'varchar', 'varchar(50)', '50', 0, 0, NULL, '', '更新者', 13, 0, NULL, NULL, '2021-04-14 12:02:55', '2021-04-14 03:02:55'),
+(828, 58, 'ip_addr', 19, 'varchar', 'varchar(40)', '40', 0, 0, NULL, '', 'IPアドレス', 14, 0, NULL, NULL, '2021-04-14 12:02:55', '2021-04-14 03:02:55'),
+(829, 58, 'created', 20, 'datetime', 'datetime', 'atetim', 0, 0, NULL, '', '生成日時', 15, 0, NULL, NULL, '2021-04-14 12:02:55', '2021-04-14 03:02:55'),
+(830, 58, 'modified', 21, 'timestamp', 'timestamp', 'imestam', 0, 0, 'current_timestamp()', 'on update current_timestamp()', '更新日', 16, 0, NULL, NULL, '2021-04-14 12:02:55', '2021-04-14 03:02:55');
 
 -- --------------------------------------------------------
 
@@ -919,8 +951,8 @@ INSERT INTO `hinagatas` (`id`, `hina_code`, `type_a`, `hinagata`, `sort_no`, `de
 (110, '1019', 1, '', 95, 0, 'kani', '::1', '2019-01-18 12:23:24', '2019-01-18 03:23:24'),
 (111, '1019', 30, '		// 許可権限リストを作成(扱える下位権限のリスト）\n		$crudBaseData[\'kjs\'][\'permRoles\'] = $this->makePermRoles();\n		', 96, 0, 'kani', '::1', '2019-01-18 12:23:50', '2019-01-18 03:34:13'),
 (112, '1003', 30, '		if(!empty($kjs[\'kj_role\']) || $kjs[\'kj_role\'] ===\'0\' || $kjs[\'kj_role\'] ===0){\n			$cnds[]=\"UserMng.role = {$kjs[\'kj_role\']}\";\n		}\n		if(!empty($kjs[\'permRoles\'])){\n			$perm_roles_c = \"\'\" . implode(\"\',\'\", $kjs[\'permRoles\']) . \"\'\";\n			$cnds[]=\"UserMng.role IN({$perm_roles_c})\";\n		}else{\n			$cnds[]=\"UserMng.role =\'empty\'\";\n		}', 97, 0, 'kani', '::1', '2019-01-18 12:29:14', '2019-01-18 03:29:14'),
-(113, '1006', 16, '		<div class=\"cbf_inp_wrap\">\n			<div class=\'cbf_inp_label\' >%comment: </div>\n			<div class=\'cbf_input\'>\n				<input type=\"text\" name=\"%field_s\" class=\"valid \" value=\"\"  pattern=\"[0-9]{1,2}:[0-9]{1,2}:[0-9]{1,2}\" title=\"時刻形式（H:i:s）で入力してください(例：12:12:12)\" />\n				<label class=\"text-danger\" for=\"%field_s\"></label>\n			</div>\n		</div>', 41, 0, 'kani', '::1', '2019-01-24 12:34:23', '2019-01-24 03:35:40'),
-(114, '1007', 16, '		<div class=\"cbf_inp_wrap\">\n			<div class=\'cbf_inp_label\' >%comment: </div>\n			<div class=\'cbf_input\'>\n				<input type=\"text\" name=\"%field_s\" class=\"valid \" value=\"\"  pattern=\"[0-9]{1,2}:[0-9]{1,2}:[0-9]{1,2}\" title=\"時刻形式（H:i:s）で入力してください(例：12:12:12)\" />\n				<label class=\"text-danger\" for=\"%field_s\"></label>\n			</div>\n		</div>', 61, 0, 'kani', '::1', '2019-01-24 12:36:28', '2019-01-24 03:36:28'),
+(113, '1006', 16, '		<div class=\"cbf_inp_wrap\">\n			<div class=\'cbf_inp_label\' >%comment: </div>\n			<div class=\'cbf_input\'>\n				<input type=\"time\" name=\"%field_s\" class=\"valid \" value=\"\"  pattern=\"[0-9]{1,2}:[0-9]{1,2}:[0-9]{1,2}\" title=\"時刻形式（H:i:s）で入力してください(例：12:12:12)\" />\n				<label class=\"text-danger\" for=\"%field_s\"></label>\n			</div>\n		</div>', 41, 0, 'kani', '::1', '2019-01-24 12:34:23', '2021-04-14 09:22:50'),
+(114, '1007', 16, '		<div class=\"cbf_inp_wrap\">\n			<div class=\'cbf_inp_label\' >%comment: </div>\n			<div class=\'cbf_input\'>\n				<input type=\"time\" name=\"%field_s\" class=\"valid \" value=\"\"  pattern=\"[0-9]{1,2}:[0-9]{1,2}:[0-9]{1,2}\" title=\"時刻形式（H:i:s）で入力してください(例：12:12:12)\" />\n				<label class=\"text-danger\" for=\"%field_s\"></label>\n			</div>\n		</div>', 61, 0, 'kani', '::1', '2019-01-24 12:36:28', '2021-04-14 09:23:12'),
 (115, '1025', 1, '', 98, 0, 'kani', '::1', '2019-04-05 13:14:23', '2019-04-05 04:14:23'),
 (116, '1025', 28, '		App::uses(\'FileUploadK\',\'Vendor/CrudBase/FileUploadK\');\n		$fileUploadK = new FileUploadK();\n		$res = $fileUploadK->putFile1($_FILES, \'%field_s\', $ent[\'%field_s\']);', 99, 0, 'kani', '::1', '2019-04-05 13:15:10', '2019-04-05 04:15:36'),
 (117, '1021', 31, '	/**\n	 * %commentリストをDBから取得する\n	 */\n	public function get%field_cList(){\n		$data = Configure::read(\'%field_lccList\');\n		return $data;\n	}', 77, 0, 'kani', '::1', '2020-02-09 14:06:17', '2020-02-15 08:44:12'),
@@ -1140,7 +1172,10 @@ INSERT INTO `missions` (`id`, `mission_name`, `hina_file_id`, `from_path`, `from
 (52, 'farmin_food:seminar_entrants', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\farmin_food\\mng\\app', 'SeminarEntrant', 'farmin_food', 'seminar_entrants', 'セミナー受講者', 5, 0, '', '::1', '2021-04-09 12:06:51', '2021-04-09 03:08:03'),
 (53, 'farmin_food:profiles', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\farmin_food\\mng\\app', 'Profile', 'farmin_food', 'profiles', 'プロフィール', 6, 0, '', '::1', '2021-04-09 12:09:52', '2021-04-09 03:11:32'),
 (54, 'farmin_food:pub_user', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\farmin_food\\mng\\app', 'PubUser', 'farmin_food', 'users', '一般ユーザー', 7, 0, '', '::1', '2021-04-09 14:22:51', '2021-04-09 05:23:28'),
-(55, 'cake_demo_old_mng_user', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\cake_demo\\app', 'UserMng', 'cake_demo', 'users', 'ユーザー管理', 1, 0, 'kani', '::1', '2021-04-10 15:51:35', '2021-04-10 06:56:29');
+(55, 'cake_demo_old_mng_user', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\cake_demo\\app', 'UserMng', 'cake_demo', 'users', 'ユーザー管理', 1, 0, 'kani', '::1', '2021-04-10 15:51:35', '2021-04-10 06:56:29'),
+(56, 'farmin_food:seminar_categorys', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\farmin_food\\mng\\app', 'SeminarCategory', 'farmin_food', 'seminar_categorys', 'セミナーカテゴリ', 2, 0, NULL, '::1', '2021-04-13 11:21:47', '2021-04-13 02:35:07'),
+(57, 'farmin_food:lecturers', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\farmin_food\\mng\\app', 'Lecturer', 'farmin_food', 'lecturers', 'セミナー講師', 2, 0, NULL, '::1', '2021-04-14 11:54:50', '2021-04-14 02:56:07'),
+(58, 'farmin_food:meta_attach_files', 1, 'C:\\Users\\user\\git\\cake_demo\\app', 'Neko', 'cake_demo', 'nekos', 'ネコ', 'C:\\xampp\\htdocs\\farmin_food\\mng\\app', 'MetaAttachFile', 'farmin_food', 'meta_attach_files', 'メタ添付ファイル', 6, 0, NULL, '::1', '2021-04-14 12:02:05', '2021-04-14 03:02:32');
 
 -- --------------------------------------------------------
 
@@ -1289,7 +1324,7 @@ ALTER TABLE `users`
 -- テーブルの AUTO_INCREMENT `bulk_makes`
 --
 ALTER TABLE `bulk_makes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=793;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=831;
 
 --
 -- テーブルの AUTO_INCREMENT `hinagatas`
@@ -1313,7 +1348,7 @@ ALTER TABLE `hina_file_lists`
 -- テーブルの AUTO_INCREMENT `missions`
 --
 ALTER TABLE `missions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- テーブルの AUTO_INCREMENT `type_as`
