@@ -216,6 +216,7 @@
  *
  */
 	Configure::write('Session', array(
+		'cookie'=>'CrudBaseBulk', 
 		'defaults' => 'php'
 	));
 
