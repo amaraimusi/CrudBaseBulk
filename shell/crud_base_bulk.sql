@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- ホスト: 127.0.0.1
--- 生成日時: 2021-06-25 11:39:26
+-- 生成日時: 2021-07-20 17:11:40
 -- サーバのバージョン： 10.4.17-MariaDB
 -- PHP のバージョン: 7.4.14
 
@@ -1182,7 +1182,7 @@ INSERT INTO `hinagatas` (`id`, `hina_code`, `type_a`, `hinagata`, `sort_no`, `de
 (120, '2024', 1, '', 93, 0, 'kani', '::1', '2020-08-29 19:27:47', '2020-08-29 10:27:48'),
 (121, '2024', 28, '		$ent[\'%field_s\'] = $this->cb->makeFilePath($_FILES, \'rsc/img/%field/y%Y/m%m/orig/%Y%m%d%H%i%s_%fn\', $ent, \'%field_s\');', 94, 0, 'kani', '::1', '2020-08-29 19:28:33', '2020-08-29 10:29:21'),
 (122, '2025', 1, '', 98, 0, 'kani', '::1', '2020-08-29 20:08:43', '2020-08-29 11:08:43'),
-(123, '2025', 28, '		// ファイルアップロードの一括作業\n		$fileUploadK = $this->factoryFileUploadK();\n		$res = $fileUploadK->putFile1($_FILES, \'%field_s\', $ent[\'%field_s\']);', 99, 0, 'kani', '::1', '2020-08-29 20:08:50', '2020-08-29 11:09:41'),
+(123, '2025', 28, '		// ファイルアップロードとファイル名のDB保存\n		if(!empty($_FILES)){\n			// CBBXS-2027\n			$%field_s = $this->cb->makeFilePath($_FILES, \"storage/neko/y%Y/{$ent[\'id\']}/%unique/orig/%fn\", $ent, \'%field_s\');\n			$fileUploadK = $this->factoryFileUploadK();\n			\n			// ▼旧ファイルを指定ディレクトリごと削除する。\n			$ary = explode(\"/\", $%field_s);\n			$ary = array_slice($ary, 0, 4);\n			$del_dp = implode(\'/\', $ary);\n			$fileUploadK->removeDirectory($del_dp); // 旧ファイルを指定ディレクトリごと削除\n			\n			// ファイル配置＆DB保存\n			$fileUploadK->putFile1($_FILES, \'%field_s\', $%field_s);\n			$ent[\'%field_s\'] = $%field_s;\n			$this->md->saveEntity($ent, $regParam);\n			// CBBXE\n		}', 99, 0, 'kani', '::1', '2020-08-29 20:08:50', '2021-07-20 08:41:47'),
 (124, '2026', 1, '', 100, 0, 'kani', '::1', '2020-08-30 08:26:21', '2020-08-29 23:26:21'),
 (125, '2026', 28, ' 			$this->cb->eliminateFiles($ent[\'id\'], \'%field_s\', $ent); // ファイル抹消（他のレコードが保持しているファイルは抹消対象外）', 101, 0, 'kani', '::1', '2020-08-30 08:26:36', '2020-08-29 23:27:18'),
 (126, '2000', 12, '				[\'name\'=>\'kj_%field_s\', \'def\'=>0],', 1, 0, 'kani', '::1', '2020-08-30 08:29:23', '2020-08-29 23:31:41'),
