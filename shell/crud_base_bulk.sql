@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- ホスト: 127.0.0.1
--- 生成日時: 2021-10-13 03:50:19
--- サーバのバージョン： 10.4.17-MariaDB
--- PHP のバージョン: 7.4.14
+-- 生成日時: 2021-12-01 16:34:41
+-- サーバのバージョン： 10.4.21-MariaDB
+-- PHP のバージョン: 8.0.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -1344,7 +1344,9 @@ INSERT INTO `hinagatas` (`id`, `hina_code`, `type_a`, `hinagata`, `sort_no`, `de
 (191, '2028', 32, '		{unique_code:\'kj_%field_s\', wamei:\'%comment\'},\n		{unique_code:\'edit_%field_s\', wamei:\'%comment\'},\n		{unique_code:\'ni_%field_s\', wamei:\'%comment\'},', 122, 0, 'kani', '::1', '2021-06-05 12:42:27', '2021-06-05 04:42:35'),
 (192, '20271', 28, '			$%field_s = $this->cb->makeFilePath($_FILES, \"storage/%model_s/y%Y/{$ent[\'id\']}/%unique/orig/%fn\", $ent, \'%field_s\');\n			$fileUploadK = $this->factoryFileUploadK();\n			\n			// ▼旧ファイルを指定ディレクトリごと削除する。\n			$ary = explode(\"/\", $%field_s);\n			$ary = array_slice($ary, 0, 4);\n			$del_dp = implode(\'/\', $ary);\n 			$fileUploadK->removeDirectory($del_dp); // 旧ファイルを指定ディレクトリごと削除\n 			\n 			// ファイル配置＆DB保存\n			$fileUploadK->putFile1($_FILES, \'%field_s\', $%field_s);\n			$ent[\'%field_s\'] = $%field_s;\n			$this->md->saveEntity($ent, $regParam);', 120, 0, 'kani', '::1', '2021-10-01 12:55:06', '2021-10-01 03:55:30'),
 (193, '20271', 1, '', 123, 0, 'kani', '::1', '2021-10-01 12:55:40', '2021-10-01 03:55:40'),
-(194, '2024', 29, '		$ent[\'%field_s\'] = \\Hash::make($ent[\'%field_s\']); // %commentをハッシュ化する。', 93, 0, 'kani', '::1', '2021-10-13 10:48:28', '2021-10-13 01:49:47');
+(194, '2024', 29, '		// 新規入力である場合、メールの重複チェックを行う。\n		if($form_type == \'new_inp\'){\n		    \n		    if($this->md->checkEMailDuplication($ent[\'email\']) == false){\n		        $ent[\'err\'] = \"エラー：すでに登録済みのメールアドレスです。\";\n		        $json_str = json_encode($ent, JSON_HEX_TAG | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_HEX_APOS); // JSONに変換\n		        return $json_str;\n		    }\n		}\n		$ent[\'password\'] = \\Hash::make($ent[\'password\']); // パスワードをハッシュ化する。', 93, 0, 'kani', '::1', '2021-10-13 10:48:28', '2021-12-01 07:28:58'),
+(195, '2022', 1, '', 124, 0, 'kani', '::1', '2021-12-01 16:23:22', '2021-12-01 07:23:22'),
+(196, '2022', 29, '	/**\n	 * メールの重複チェック\n	 * @param string $email メールアドレス\n	 * @return bool true:無問題, false:重複あり\n	 */\n	public function checkEMailDuplication($email){\n	    \n	    $email = $this->sqlSanitizeW($email);\n	    $sql = \"SELECT id,email FROM users WHERE email=\'{$email}\';\";\n	    \n	    $res = $this->cb->selectValue($sql);\n	    \n	    if(!empty($res)) return false;\n	    return true;\n	    \n	}', 125, 0, 'kani', '::1', '2021-12-01 16:23:58', '2021-12-01 07:34:29');
 
 -- --------------------------------------------------------
 
@@ -1678,7 +1680,7 @@ ALTER TABLE `bulk_makes`
 -- テーブルの AUTO_INCREMENT `hinagatas`
 --
 ALTER TABLE `hinagatas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=195;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=197;
 
 --
 -- テーブルの AUTO_INCREMENT `hina_files`
