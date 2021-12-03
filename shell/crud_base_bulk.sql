@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- ホスト: 127.0.0.1
--- 生成日時: 2021-12-01 16:34:41
+-- 生成日時: 2021-12-03 21:09:27
 -- サーバのバージョン： 10.4.21-MariaDB
 -- PHP のバージョン: 8.0.12
 
@@ -1125,7 +1125,28 @@ INSERT INTO `bulk_makes` (`id`, `mission_id`, `field_name`, `type_a`, `field_typ
 (1144, 81, 'update_user', 18, 'varchar', 'varchar(50)', '50', 0, 0, NULL, '', '更新ユーザー', 13, 0, NULL, NULL, '2021-10-13 10:29:09', '2021-10-13 01:29:09'),
 (1145, 81, 'ip_addr', 19, 'varchar', 'varchar(40)', '40', 0, 0, NULL, '', '更新IPアドレス', 14, 0, NULL, NULL, '2021-10-13 10:29:09', '2021-10-13 01:29:09'),
 (1148, 81, 'created', 20, 'datetime', 'datetime', 'atetim', 0, 0, NULL, '', '生成日時', 15, 0, NULL, NULL, '2021-10-13 10:29:09', '2021-10-13 01:29:09'),
-(1149, 81, 'modified', 21, 'timestamp', 'timestamp', 'imestam', 0, 0, 'current_timestamp()', '', '更新日時', 16, 0, NULL, NULL, '2021-10-13 10:29:09', '2021-10-13 01:29:09');
+(1149, 81, 'modified', 21, 'timestamp', 'timestamp', 'imestam', 0, 0, 'current_timestamp()', '', '更新日時', 16, 0, NULL, NULL, '2021-10-13 10:29:09', '2021-10-13 01:29:09'),
+(1150, 82, 'id', 22, 'int', 'int(11)', '11', 1, 1, NULL, 'auto_increment', 'id', 1, 0, NULL, NULL, '2021-12-03 09:21:43', '2021-12-03 00:21:43'),
+(1151, 82, 'other_id', 22, 'int', 'int(11)', '11', 0, 0, '', '', '外部ID', 2, 0, NULL, '::1', '2021-12-03 09:21:43', '2021-12-03 01:18:31'),
+(1152, 82, 'user_id', 32, 'int', 'int(11)', '11', 0, 0, NULL, '', 'ユーザーID', 3, 0, NULL, NULL, '2021-12-03 09:21:43', '2021-12-03 00:21:43'),
+(1153, 82, 'user_type', 31, 'varchar', 'varchar(10)', '10', 0, 0, NULL, '', 'ユーザータイプ', 4, 0, NULL, NULL, '2021-12-03 09:21:43', '2021-12-03 00:21:43'),
+(1154, 82, 'message', 2, 'varchar', 'varchar(2000)', '2000', 0, 0, NULL, '', 'メッセージ', 5, 0, NULL, NULL, '2021-12-03 09:21:43', '2021-12-03 00:21:43'),
+(1155, 82, 'attach_fn', 28, 'varchar', 'varchar(512)', '512', 0, 0, NULL, '', '添付ファイル', 6, 0, NULL, NULL, '2021-12-03 09:21:43', '2021-12-03 00:21:43'),
+(1156, 82, 'sort_no', 17, 'int', 'int(11)', '11', 0, 0, '0', '', '順番', 7, 0, NULL, NULL, '2021-12-03 09:21:43', '2021-12-03 00:21:43'),
+(1157, 82, 'delete_flg', 12, 'tinyint', 'tinyint(1)', '1', 0, 0, '0', '', '無効フラグ', 8, 0, NULL, NULL, '2021-12-03 09:21:43', '2021-12-03 00:21:43'),
+(1158, 82, 'update_user', 18, 'varchar', 'varchar(50)', '50', 0, 0, NULL, '', '更新者', 9, 0, NULL, NULL, '2021-12-03 09:21:43', '2021-12-03 00:21:43'),
+(1159, 82, 'ip_addr', 19, 'varchar', 'varchar(40)', '40', 0, 0, NULL, '', 'IPアドレス', 10, 0, NULL, NULL, '2021-12-03 09:21:43', '2021-12-03 00:21:43'),
+(1160, 82, 'created', 20, 'datetime', 'datetime', 'atetim', 0, 0, NULL, '', '生成日時', 11, 0, NULL, NULL, '2021-12-03 09:21:43', '2021-12-03 00:21:43'),
+(1161, 82, 'modified', 21, 'timestamp', 'timestamp', 'imestam', 0, 0, 'current_timestamp()', 'on update current_timestamp()', '更新日', 12, 0, NULL, NULL, '2021-12-03 09:21:43', '2021-12-03 00:21:43'),
+(1162, 83, 'id', 22, 'int', 'int(11)', '11', 1, 1, NULL, 'auto_increment', 'id', 1, 0, NULL, NULL, '2021-12-03 09:36:05', '2021-12-03 00:36:05'),
+(1163, 83, 'msg_board_id', 32, 'int', 'int(11)', '11', 0, 0, NULL, '', 'メッセージボードID', 2, 0, NULL, NULL, '2021-12-03 09:36:05', '2021-12-03 00:36:05'),
+(1164, 83, 'user_id', 32, 'int', 'int(11)', '11', 0, 0, '', '', 'ユーザーID', 3, 0, NULL, '::1', '2021-12-03 09:36:05', '2021-12-03 00:38:40'),
+(1165, 83, 'sort_no', 17, 'int', 'int(11)', '11', 0, 0, '0', '', '順番', 4, 0, NULL, NULL, '2021-12-03 09:36:05', '2021-12-03 00:36:05'),
+(1166, 83, 'delete_flg', 12, 'tinyint', 'tinyint(1)', '1', 0, 0, '0', '', '無効フラグ', 5, 0, NULL, NULL, '2021-12-03 09:36:05', '2021-12-03 00:36:05'),
+(1167, 83, 'update_user', 18, 'varchar', 'varchar(50)', '50', 0, 0, NULL, '', '更新者', 6, 0, NULL, NULL, '2021-12-03 09:36:05', '2021-12-03 00:36:05'),
+(1168, 83, 'ip_addr', 19, 'varchar', 'varchar(40)', '40', 0, 0, NULL, '', 'IPアドレス', 7, 0, NULL, NULL, '2021-12-03 09:36:05', '2021-12-03 00:36:05'),
+(1169, 83, 'created', 20, 'datetime', 'datetime', 'atetim', 0, 0, NULL, '', '生成日時', 8, 0, NULL, NULL, '2021-12-03 09:36:05', '2021-12-03 00:36:05'),
+(1170, 83, 'modified', 21, 'timestamp', 'timestamp', 'imestam', 0, 0, 'current_timestamp()', 'on update current_timestamp()', '更新日', 9, 0, NULL, NULL, '2021-12-03 09:36:05', '2021-12-03 00:36:05');
 
 -- --------------------------------------------------------
 
@@ -1290,26 +1311,26 @@ INSERT INTO `hinagatas` (`id`, `hina_code`, `type_a`, `hinagata`, `sort_no`, `de
 (137, '2002', 21, '			\'%field_s\'=>[\n					\'name\'=>\'%comment\',\n					\'row_order\'=>\'%model_c.%field_s\',\n					\'clm_show\'=>0,\n			],', 11, 0, 'kani', '::1', '2020-08-30 08:53:08', '2020-08-29 23:53:35'),
 (138, '2002', 22, '			\'id\'=>[\n					\'name\'=>\'ID\',//HTMLテーブルの列名\n					\'row_order\'=>\'%model_c.id\',//SQLでの並び替えコード\n					\'clm_show\'=>1,//デフォルト列表示 0:非表示 1:表示\n			],', 12, 0, 'kani', '::1', '2020-08-30 08:53:26', '2020-08-29 23:53:26'),
 (139, '2009', 1, '			\'%field_s\',', 102, 0, 'kani', '::1', '2020-08-30 17:02:15', '2020-08-30 08:02:15'),
-(140, '2004', 1, '		$this->CrudBase->inputKjText(\'kj_%field_s\',\'%comment\');', 21, 0, 'kani', '::1', '2020-08-30 17:26:02', '2020-08-30 08:27:08'),
-(141, '2004', 24, '		$this->CrudBase->inputKjNumRange(\'%field_s\',\'%comment\'); ', 22, 0, 'kani', '::1', '2020-08-30 17:27:21', '2020-08-30 08:28:20'),
-(142, '2004', 25, '		$this->CrudBase->inputKjMoDateRng(\'kj_%field_s\',\'%comment\');', 23, 0, 'kani', '::1', '2020-08-30 17:28:32', '2020-08-30 08:29:23'),
-(143, '2004', 27, '		$this->CrudBase->inputKjSelect(\'kj_%field_s\',\'%comment\', $masters[\'%field_lccList\']); ', 24, 0, 'kani', '::1', '2020-08-30 17:29:42', '2020-08-30 08:31:02'),
-(144, '2004', 13, '		$this->CrudBase->inputKjFlg(\'kj_%field_s\',\'%comment\');', 24, 0, 'kani', '::1', '2020-08-30 17:38:19', '2020-08-30 08:39:17'),
-(145, '2004', 22, '		$this->CrudBase->inputKjId(); ', 25, 0, 'kani', '::1', '2020-08-30 17:39:26', '2020-08-30 08:39:46'),
-(146, '2004', 17, '		$this->CrudBase->inputKjHidden(\'kj_sort_no\');', 26, 0, 'kani', '::1', '2020-08-30 17:39:59', '2020-08-30 08:40:37'),
-(147, '2004', 12, '		$this->CrudBase->inputKjDeleteFlg();', 27, 0, 'kani', '::1', '2020-08-30 17:41:07', '2020-08-30 08:41:07'),
-(148, '2004', 20, '		$this->CrudBase->inputKjCreated();', 28, 0, 'kani', '::1', '2020-08-30 17:41:30', '2020-08-30 08:41:30'),
-(149, '2004', 21, '		$this->CrudBase->inputKjModified();', 29, 0, 'kani', '::1', '2020-08-30 17:41:56', '2020-08-30 08:41:56'),
-(150, '2005', 1, '	$this->CrudBase->tdPlain($ent, \'%field_s\');', 30, 0, 'kani', '::1', '2020-08-30 22:39:25', '2020-08-30 13:41:07'),
-(151, '2005', 22, '	$this->CrudBase->tdId($ent,\'id\', [\'checkbox_name\'=>\'pwms\']);', 31, 0, 'kani', '::1', '2020-08-30 22:42:31', '2020-08-30 13:42:54'),
-(152, '2005', 9, '	$this->CrudBase->tdMoney($ent, \'%field_s\');', 32, 0, 'kani', '::1', '2020-08-30 22:43:55', '2020-08-30 13:44:46'),
-(153, '2005', 2, '	$this->CrudBase->tdStr($ent, \'%field_s\');', 33, 0, 'kani', '::1', '2020-08-30 22:46:24', '2020-08-30 13:46:24'),
-(154, '2005', 28, '	$this->CrudBase->tdImage($ent, \'%field_s\');', 33, 0, 'kani', '::1', '2020-08-30 22:48:25', '2020-08-30 13:48:25'),
-(155, '2005', 27, '	$this->CrudBase->tdList($ent, \'%field_s\', $%field_lccList);', 34, 0, 'kani', '::1', '2020-08-30 22:48:46', '2020-08-30 13:48:47'),
-(156, '2005', 13, '	$this->CrudBase->tdFlg($ent, \'%field_s\');', 34, 0, 'kani', '::1', '2020-08-30 22:50:09', '2020-08-30 13:50:09'),
-(157, '2005', 3, '	$this->CrudBase->tdNote($ent, \'%field_s\');', 35, 0, 'kani', '::1', '2020-08-30 22:52:25', '2020-08-30 13:52:25'),
-(158, '2005', 12, '	$this->CrudBase->tdDeleteFlg($ent, \'delete_flg\');', 36, 0, 'kani', '::1', '2020-08-30 22:52:37', '2020-08-30 13:52:38'),
-(159, '2006', 1, '		<div class=\"cbf_inp_wrap\">\n			<div class=\'cbf_inp\' >%comment: </div>\n			<div class=\'cbf_input\'>\n				<input type=\"text\" name=\"%field_s\" class=\"valid \" value=\"\"  maxlength=\"%type_long\" title=\"%type_long文字以内で入力してください\" />\n				<label class=\"text-danger\" for=\"%field_s\"></label>\n			</div>\n		</div>\n', 37, 0, 'kani', '::1', '2020-08-30 23:13:45', '2020-08-30 14:13:45'),
+(140, '2004', 1, '		$cbh->inputKjText(\'kj_%field_s\',\'%comment\');', 21, 0, 'kani', '::1', '2020-08-30 17:26:02', '2021-12-03 11:18:21'),
+(141, '2004', 24, '		$cbh->inputKjNumRange(\'%field_s\',\'%comment\'); ', 22, 0, 'kani', '::1', '2020-08-30 17:27:21', '2021-12-03 11:18:33'),
+(142, '2004', 25, '		$cbh->inputKjMoDateRng(\'kj_%field_s\',\'%comment\');', 23, 0, 'kani', '::1', '2020-08-30 17:28:32', '2021-12-03 11:27:24'),
+(143, '2004', 27, '		$cbh->CrudBase->inputKjSelect(\'kj_%field_s\',\'%comment\', $masters[\'%field_lccList\']); ', 24, 0, 'kani', '::1', '2020-08-30 17:29:42', '2021-12-03 11:27:33'),
+(144, '2004', 13, '		$cbh->inputKjFlg(\'kj_%field_s\',\'%comment\');', 24, 0, 'kani', '::1', '2020-08-30 17:38:19', '2021-12-03 11:27:46'),
+(145, '2004', 22, '		$cbh->inputKjId(); ', 25, 0, 'kani', '::1', '2020-08-30 17:39:26', '2021-12-03 11:28:04'),
+(146, '2004', 17, '		$cbh->inputKjHidden(\'kj_sort_no\');', 26, 0, 'kani', '::1', '2020-08-30 17:39:59', '2021-12-03 11:28:22'),
+(147, '2004', 12, '		$cbh->inputKjDeleteFlg();', 27, 0, 'kani', '::1', '2020-08-30 17:41:07', '2021-12-03 11:28:12'),
+(148, '2004', 20, '		$cbh->inputKjCreated();', 28, 0, 'kani', '::1', '2020-08-30 17:41:30', '2021-12-03 11:28:31'),
+(149, '2004', 21, '		$cbh->inputKjModified();', 29, 0, 'kani', '::1', '2020-08-30 17:41:56', '2021-12-03 11:28:42'),
+(150, '2005', 1, '	$cbh->tdPlain($ent, \'%field_s\');', 30, 0, 'kani', '::1', '2020-08-30 22:39:25', '2021-12-03 11:38:27'),
+(151, '2005', 22, '	$cbh->tdId($ent,\'id\', [\'checkbox_name\'=>\'pwms\']);', 31, 0, 'kani', '::1', '2020-08-30 22:42:31', '2021-12-03 11:38:39'),
+(152, '2005', 9, '	$cbh->tdMoney($ent, \'%field_s\');', 32, 0, 'kani', '::1', '2020-08-30 22:43:55', '2021-12-03 11:38:49'),
+(153, '2005', 2, '	$cbh->tdStr($ent, \'%field_s\');', 33, 0, 'kani', '::1', '2020-08-30 22:46:24', '2021-12-03 11:39:02'),
+(154, '2005', 28, '	$cbh->tdImage($ent, \'%field_s\');', 33, 0, 'kani', '::1', '2020-08-30 22:48:25', '2021-12-03 11:39:12'),
+(155, '2005', 27, '	$cbh->tdList($ent, \'%field_s\', $%field_lccList);', 34, 0, 'kani', '::1', '2020-08-30 22:48:46', '2021-12-03 11:39:44'),
+(156, '2005', 13, '	$cbh->tdFlg($ent, \'%field_s\');', 34, 0, 'kani', '::1', '2020-08-30 22:50:09', '2021-12-03 11:39:58'),
+(157, '2005', 3, '	$cbh->tdNote($ent, \'%field_s\');', 35, 0, 'kani', '::1', '2020-08-30 22:52:25', '2021-12-03 11:40:10'),
+(158, '2005', 12, '	$cbh->tdDeleteFlg($ent, \'delete_flg\');', 36, 0, 'kani', '::1', '2020-08-30 22:52:37', '2021-12-03 11:40:22'),
+(159, '2006', 1, '		<div class=\"cbf_inp_wrap\">\n			<div class=\'cbf_inp\' >%comment: </div>\n			<div class=\'cbf_input\'>\n				<input type=\"text\" name=\"%field_s\" class=\"valid \" value=\"\"  maxlength=\"%type_long\" title=\"%type_long文字以内で入力してください\" />\n				<label class=\"text-danger\" for=\"%field_s\"></label>\n			</div>\n		</div>\n', 37, 1, 'kani', '::1', '2020-08-30 23:13:45', '2021-12-03 11:43:28'),
 (160, '2010', 1, '			{\'field\':\'%field_s\', \'inp_type\':\'textarea\'}, ', 103, 0, 'kani', '::1', '2020-08-30 23:27:16', '2020-08-30 14:35:26'),
 (161, '2010', 4, '			{\'field\':\'%field_s\', \'inp_type\':\'textarea\'}, ', 104, 0, 'kani', '::1', '2020-08-30 23:27:50', '2020-08-30 14:27:50'),
 (162, '2010', 27, '			{\'field\':\'%field_s\', \'inp_type\':\'select\', \'list\':%field_lccList, \'def\':0}, ', 105, 0, 'kani', '::1', '2020-08-30 23:29:32', '2020-08-30 14:34:45'),
@@ -1336,8 +1357,8 @@ INSERT INTO `hinagatas` (`id`, `hina_code`, `type_a`, `hinagata`, `sort_no`, `de
 (183, '2027', 1, '', 119, 0, 'kani', '::1', '2021-05-24 10:01:34', '2021-05-24 01:01:34'),
 (184, '2027', 28, '			$%field_s = $this->cb->makeFilePath($_FILES, \"storage/%model_s/y%Y/{$ent[\'id\']}/%unique/orig/%fn\", $ent, \'%field_s\');\n			$fileUploadK = $this->factoryFileUploadK();\n			\n			// ▼旧ファイルを指定ディレクトリごと削除する。\n			$ary = explode(\"/\", $%field_s);\n			$ary = array_slice($ary, 0, 4);\n			$del_dp = implode(\'/\', $ary);\n 			$fileUploadK->removeDirectory($del_dp); // 旧ファイルを指定ディレクトリごと削除\n 			\n 			// ファイル配置＆DB保存\n			$fileUploadK->putFile1($_FILES, \'%field_s\', $%field_s);\n			$ent[\'%field_s\'] = $%field_s;\n			$this->md->save($ent, [\'validate\'=>false]);', 120, 0, 'kani', '::1', '2021-05-24 10:01:47', '2021-06-10 14:48:25'),
 (185, '2002', 32, '			\'%field_s\'=>[\n					\'name\'=>\'%comment\',\n					\'row_order\'=>\'%model_c.%field_s\',\n					\'clm_show\'=>1,\n					\'outer_tbl_name\'=>\'%field_out_model_ss\',\n					\'outer_tbl_name_c\'=>\'%field_out_model_c\',\n					\'outer_field\'=>\'%outer_model_s_name\',\n					\'outer_alias\'=>\'%outer_model_s_name\',\n			],', 11, 0, 'kani', '::1', '2021-06-05 11:51:35', '2021-06-05 02:55:57'),
-(186, '2004', 32, '		$this->CrudBase->inputKjOuterId(\'kj_%field_s\',\'%comment\'); ', 24, 0, 'kani', '::1', '2021-06-05 12:03:28', '2021-06-05 03:23:48'),
-(187, '2005', 32, '	$this->CrudBase->tdOuterName($ent, \'%field_s\', \'%outer_model_s_name\');', 33, 0, 'kani', '::1', '2021-06-05 12:13:44', '2021-06-05 03:23:27'),
+(186, '2004', 32, '		$cbh->inputKjOuterId(\'kj_%field_s\',\'%comment\'); ', 24, 0, 'kani', '::1', '2021-06-05 12:03:28', '2021-12-03 11:27:56'),
+(187, '2005', 32, '	$cbh->tdOuterName($ent, \'%field_s\', \'%outer_model_s_name\');', 33, 0, 'kani', '::1', '2021-06-05 12:13:44', '2021-12-03 11:39:25'),
 (188, '1006', 32, '		<div class=\"cbf_inp_wrap\">\n			<div class=\'cbf_inp_label\' >%comment: </div>\n			<?php $this->CrudBase->formOuterName(\'%field_s\', \'%comment\', \'ni\'); ?>\n		</div>', 37, 0, 'kani', '::1', '2021-06-05 12:28:01', '2021-06-05 03:28:11'),
 (189, '1007', 32, '		<div class=\"cbf_inp_wrap\">\n			<div class=\'cbf_inp_label\' >%comment: </div>\n			<?php $this->CrudBase->formOuterName(\'%field_s\', \'%comment\', \'edit\'); ?>\n		</div>', 57, 0, 'kani', '::1', '2021-06-05 12:29:12', '2021-06-05 03:29:52'),
 (190, '2028', 1, '', 121, 0, 'kani', '::1', '2021-06-05 12:42:07', '2021-06-05 03:42:07'),
@@ -1346,7 +1367,47 @@ INSERT INTO `hinagatas` (`id`, `hina_code`, `type_a`, `hinagata`, `sort_no`, `de
 (193, '20271', 1, '', 123, 0, 'kani', '::1', '2021-10-01 12:55:40', '2021-10-01 03:55:40'),
 (194, '2024', 29, '		// 新規入力である場合、メールの重複チェックを行う。\n		if($form_type == \'new_inp\'){\n		    \n		    if($this->md->checkEMailDuplication($ent[\'email\']) == false){\n		        $ent[\'err\'] = \"エラー：すでに登録済みのメールアドレスです。\";\n		        $json_str = json_encode($ent, JSON_HEX_TAG | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_HEX_APOS); // JSONに変換\n		        return $json_str;\n		    }\n		}\n		$ent[\'password\'] = \\Hash::make($ent[\'password\']); // パスワードをハッシュ化する。', 93, 0, 'kani', '::1', '2021-10-13 10:48:28', '2021-12-01 07:28:58'),
 (195, '2022', 1, '', 124, 0, 'kani', '::1', '2021-12-01 16:23:22', '2021-12-01 07:23:22'),
-(196, '2022', 29, '	/**\n	 * メールの重複チェック\n	 * @param string $email メールアドレス\n	 * @return bool true:無問題, false:重複あり\n	 */\n	public function checkEMailDuplication($email){\n	    \n	    $email = $this->sqlSanitizeW($email);\n	    $sql = \"SELECT id,email FROM users WHERE email=\'{$email}\';\";\n	    \n	    $res = $this->cb->selectValue($sql);\n	    \n	    if(!empty($res)) return false;\n	    return true;\n	    \n	}', 125, 0, 'kani', '::1', '2021-12-01 16:23:58', '2021-12-01 07:34:29');
+(196, '2022', 29, '	/**\n	 * メールの重複チェック\n	 * @param string $email メールアドレス\n	 * @return bool true:無問題, false:重複あり\n	 */\n	public function checkEMailDuplication($email){\n	    \n	    $email = $this->sqlSanitizeW($email);\n	    $sql = \"SELECT id,email FROM users WHERE email=\'{$email}\';\";\n	    \n	    $res = $this->cb->selectValue($sql);\n	    \n	    if(!empty($res)) return false;\n	    return true;\n	    \n	}', 125, 0, 'kani', '::1', '2021-12-01 16:23:58', '2021-12-01 07:34:29'),
+(197, '2006', 1, '		<div class=\"cbf_inp_wrap\">\n			<div class=\'cbf_inp\' >%comment: </div>\n			<div class=\'cbf_input\'>\n				<input type=\"text\" name=\"%field_s\" class=\"valid \" value=\"\"  maxlength=\"%type_long\" title=\"%type_long文字以内で入力してください\" />\n				<label class=\"text-danger\" for=\"%field_s\"></label>\n			</div>\n		</div>\n', 37, 0, 'kani', '::1', '2021-12-03 20:49:08', '2021-12-03 11:49:08'),
+(198, '2006', 28, '		<div class=\"cbf_inp_wrap\" style=\"float:left\">\n			<div class=\'cbf_inp_label_long\' >%comment: </div>\n			<div class=\'cbf_input\' style=\"width:180px;height:auto;\">\n				<label for=\"%field_s_n\" class=\"fuk_label\" >\n					<input type=\"file\" id=\"%field_s_n\" class=\"%field_s\" style=\"display:none\" accept=\"image/*\" title=\"画像ファイルをドラッグ＆ドロップ(複数可)\"  data-inp-ex=\'image_fuk\' data-fp=\'\' />\n					<span class=\'fuk_msg\' style=\"padding:20%\">画像ファイルをドラッグ＆ドロップ(複数可)</span>\n				</label>\n			</div>\n		</div>', 37, 0, 'kani', '::1', '2021-12-03 20:49:28', '2021-12-03 11:49:28'),
+(199, '2006', 32, '		<div class=\"cbf_inp_wrap\">\n			<div class=\'cbf_inp_label\' >%comment: </div>\n			<?php $cbh->formOuterName(\'%field_s\', \'%comment\', \'ni\'); ?>\n		</div>', 37, 0, 'kani', '::1', '2021-12-03 20:49:41', '2021-12-03 11:51:08'),
+(200, '2006', 6, '		<div class=\"cbf_inp_wrap\">\n			<div class=\'cbf_inp_label\' >%comment: </div>\n			<div class=\'cbf_input\'>\n				<input type=\"text\" name=\"%field_s\" class=\"valid\" value=\"\" pattern=\"^[0-9]+$\" maxlength=\"11\" title=\"数値（自然数）を入力してください\" />\n				<label class=\"text-danger\" for=\"%field_s\" ></label>\n			</div>\n		</div>\n', 38, 0, 'kani', '::1', '2021-12-03 20:49:50', '2021-12-03 11:49:50'),
+(201, '2006', 27, '		<div class=\"cbf_inp_wrap\">\n			<div class=\'cbf_inp_label\' >%comment: </div>\n			<div class=\'cbf_input\'>\n				<?php $cbh->selectX(\'%field_s\',null,$%field_lccList,null);?>\n				<label class=\"text-danger\" for=\"%field_s\"></label>\n			</div>\n		</div>\n', 40, 0, 'kani', '::1', '2021-12-03 20:50:42', '2021-12-03 11:50:42'),
+(202, '2006', 13, '		<div class=\"cbf_inp_wrap\">\n			<div class=\'cbf_inp_label\' >%comment: </div>\n			<div class=\'cbf_input\'>\n				<input type=\"checkbox\" name=\"%field_s\" class=\"valid\"/>\n				<label class=\"text-danger\" for=\"%field_s\" ></label>\n			</div>\n		</div>', 40, 0, 'kani', '::1', '2021-12-03 20:51:42', '2021-12-03 11:51:42'),
+(203, '2006', 14, '		<div class=\"cbf_inp_wrap\">\n			<div class=\'cbf_inp_label\' >%comment: </div>\n			<div class=\'cbf_input\'>\n				<input type=\"text\" name=\"%field_s\" class=\"valid \" value=\"\"  pattern=\"([0-9]{4})(/|-)([0-9]{1,2})(/|-)([0-9]{1,2}) [0-9]{1,2}:[0-9]{1,2}:[0-9]{1,2}\" title=\"日時形式（Y-m-d H:i:s）で入力してください(例：2012-12-12 12:12:12)\" />\n				<label class=\"text-danger\" for=\"%field_s\"></label>\n			</div>\n		</div>', 41, 0, 'kani', '::1', '2021-12-03 20:51:56', '2021-12-03 11:51:56'),
+(204, '2006', 16, '		<div class=\"cbf_inp_wrap\">\n			<div class=\'cbf_inp_label\' >%comment: </div>\n			<div class=\'cbf_input\'>\n				<input type=\"time\" name=\"%field_s\" class=\"valid \" value=\"\"  pattern=\"[0-9]{1,2}:[0-9]{1,2}:[0-9]{1,2}\" title=\"時刻形式（H:i:s）で入力してください(例：12:12:12)\" />\n				<label class=\"text-danger\" for=\"%field_s\"></label>\n			</div>\n		</div>', 41, 0, 'kani', '::1', '2021-12-03 20:52:07', '2021-12-03 11:52:07'),
+(205, '2006', 15, '		<div class=\"cbf_inp_wrap\">\n			<div class=\'cbf_inp_label\' >%comment: </div>\n			<div class=\'cbf_input\'>\n				<input type=\"text\" name=\"%field_s\" class=\"valid datepicker\" value=\"\"  pattern=\"([0-9]{4})(/|-)([0-9]{1,2})(/|-)([0-9]{1,2})\" title=\"日付形式（Y-m-d）で入力してください(例：2012-12-12)\" />\n				<label class=\"text-danger\" for=\"%field_s\"></label>\n			</div>\n		</div>', 42, 0, 'kani', '::1', '2021-12-03 20:52:16', '2021-12-03 11:52:16'),
+(206, '2006', 3, '		<div class=\"cbf_inp_wrap_long\">\n			<div class=\'cbf_inp_label\' >%comment： </div>\n			<div class=\'cbf_input\'>\n				<textarea name=\"%field_s\" maxlength=\"1000\" title=\"1000文字以内で入力してください\" style=\"height:100px;width:100%\"></textarea>\n				<label class=\"text-danger\" for=\"%field_s\"></label>\n			</div>\n		</div>', 43, 0, 'kani', '::1', '2021-12-03 20:52:28', '2021-12-03 11:52:28'),
+(207, '2006', 22, '', 44, 0, 'kani', '::1', '2021-12-03 20:52:37', '2021-12-03 11:52:37');
+INSERT INTO `hinagatas` (`id`, `hina_code`, `type_a`, `hinagata`, `sort_no`, `delete_flg`, `update_user`, `ip_addr`, `created`, `modified`) VALUES
+(208, '2006', 4, '		<div class=\"cbf_inp_wrap\">\n			<div class=\'cbf_inp_label\' >%comment: </div>\n			<div class=\'cbf_input\'>\n				<input type=\"text\" name=\"%field_s\" class=\"valid\" value=\"\" pattern=\"^[+-]?([0-9]*[.])?[0-9]+$\" maxlength=\"11\" title=\"数値を入力してください\" />\n				<label class=\"text-danger\" for=\"%field_s\" ></label>\n			</div>\n		</div>', 44, 0, 'kani', '::1', '2021-12-03 20:52:46', '2021-12-03 11:52:46'),
+(209, '2006', 5, '		<div class=\"cbf_inp_wrap\">\n			<div class=\'cbf_inp_label\' >%comment: </div>\n			<div class=\'cbf_input\'>\n				<input type=\"text\" name=\"%field_s\" class=\"valid\" value=\"\" pattern=\"^[+-]?[0-9]$\" maxlength=\"11\" title=\"数値（整数数）を入力してください\" />\n				<label class=\"text-danger\" for=\"%field_s\" ></label>\n			</div>\n		</div>', 45, 0, 'kani', '::1', '2021-12-03 20:52:57', '2021-12-03 11:52:58'),
+(210, '2006', 10, '		<div class=\"cbf_inp_wrap\">\n			<div class=\'cbf_inp_label\' >%comment: </div>\n			<div class=\'cbf_input\'>\n				<input type=\"text\" name=\"%field_s\" class=\"valid\" value=\"\" pattern=\"[+-]?[0-9]+[\\.]?[0-9]*([eE][+-])?[0-9]*\" maxlength=\"64\" title=\"数値（浮動小数点）を入力してください\" />\n				<label class=\"text-danger\" for=\"%field_s\" ></label>\n			</div>\n		</div>', 46, 0, 'kani', '::1', '2021-12-03 20:53:07', '2021-12-03 11:53:07'),
+(211, '2006', 12, '', 47, 0, 'kani', '::1', '2021-12-03 20:53:14', '2021-12-03 11:53:14'),
+(212, '2006', 17, '', 51, 0, 'kani', '::1', '2021-12-03 20:53:20', '2021-12-03 11:53:20'),
+(213, '2006', 18, '', 52, 0, 'kani', '::1', '2021-12-03 20:53:26', '2021-12-03 11:53:26'),
+(214, '2006', 19, '', 53, 0, 'kani', '::1', '2021-12-03 20:53:32', '2021-12-03 11:53:32'),
+(215, '2006', 26, '', 54, 0, 'kani', '::1', '2021-12-03 20:53:38', '2021-12-03 11:53:38'),
+(216, '2007', 4, '		<div class=\"cbf_inp_wrap\">\n			<div class=\'cbf_inp\' >%comment: </div>\n			<div class=\'cbf_input\'>\n				<input type=\"text\" name=\"%field_s\" class=\"valid \" value=\"\"  maxlength=\"%type_long\" title=\"%type_long文字以内で入力してください\" />\n				<label class=\"text-danger\" for=\"%field_s\"></label>\n			</div>\n		</div>\n', 44, 0, 'kani', '::1', '2021-12-03 21:05:35', '2021-12-03 12:05:35'),
+(217, '2007', 12, '			<div class=\"cbf_inp_wrap\">\n				<div class=\'cbf_inp_label\' >%comment：</div>\n				<div class=\'cbf_input\'>\n					<input type=\"checkbox\" name=\"%field_s\" class=\"valid\"  />\n				</div>\n			</div>\n			', 56, 0, 'kani', '::1', '2021-12-03 21:05:43', '2021-12-03 12:05:43'),
+(218, '2007', 1, '		<div class=\"cbf_inp_wrap\">\n			<div class=\'cbf_inp\' >%comment: </div>\n			<div class=\'cbf_input\'>\n				<input type=\"text\" name=\"%field_s\" class=\"valid \" value=\"\"  maxlength=\"%type_long\" title=\"%type_long文字以内で入力してください\" />\n				<label class=\"text-danger\" for=\"%field_s\"></label>\n			</div>\n		</div>\n\n', 57, 0, 'kani', '::1', '2021-12-03 21:05:51', '2021-12-03 12:05:51'),
+(219, '2007', 32, '		<div class=\"cbf_inp_wrap\">\n			<div class=\'cbf_inp_label\' >%comment: </div>\n			<?php $this->CrudBase->formOuterName(\'%field_s\', \'%comment\', \'edit\'); ?>\n		</div>', 57, 0, 'kani', '::1', '2021-12-03 21:05:58', '2021-12-03 12:05:59'),
+(220, '2007', 28, '		<div class=\"cbf_inp_wrap\" style=\"float:left\">\n			<div class=\'cbf_inp_label_long\' >%comment: </div>\n			<div class=\'cbf_input\' style=\"width:180px;height:auto;\">\n				<label for=\"%field_s_e\" class=\"fuk_label\" >\n					<input type=\"file\" id=\"%field_s_e\" class=\"%field_s\" style=\"display:none\" accept=\"image/*\" title=\"画像ファイルをドラッグ＆ドロップ(複数可)\"  data-inp-ex=\'image_fuk\' data-fp=\'\' />\n					<span class=\'fuk_msg\' style=\"padding:20%\">画像ファイルをドラッグ＆ドロップ(複数可)</span>\n				</label>\n			</div>\n		</div>', 58, 0, 'kani', '::1', '2021-12-03 21:06:11', '2021-12-03 12:06:11'),
+(221, '2007', 6, '		<div class=\"cbf_inp_wrap\">\n			<div class=\'cbf_inp_label\' >%comment: </div>\n			<div class=\'cbf_input\'>\n				<input type=\"text\" name=\"%field_s\" class=\"valid\" value=\"\" pattern=\"^[0-9]+$\" maxlength=\"11\" title=\"数値（自然数）を入力してください\" />\n				<label class=\"text-danger\" for=\"%field_s\" ></label>\n			</div>\n		</div>\n', 59, 0, 'kani', '::1', '2021-12-03 21:06:22', '2021-12-03 12:06:22'),
+(222, '2007', 27, '		<div class=\"cbf_inp_wrap\">\n			<div class=\'cbf_inp_label\' >%comment: </div>\n			<div class=\'cbf_input\'>\n				<?php $cbh->selectX(\'%field_s\',null,$%field_lccList,null);?>\n				<label class=\"text-danger\" for=\"%field_s\"></label>\n			</div>\n		</div>\n', 60, 0, 'kani', '::1', '2021-12-03 21:06:44', '2021-12-03 12:06:44'),
+(223, '2007', 13, '		<div class=\"cbf_inp_wrap\">\n			<div class=\'cbf_inp_label\' >%comment: </div>\n			<div class=\'cbf_input\'>\n				<input type=\"checkbox\" name=\"%field_s\" class=\"valid\"/>\n				<label class=\"text-danger\" for=\"%field_s\" ></label>\n			</div>\n		</div>\n', 60, 0, 'kani', '::1', '2021-12-03 21:06:56', '2021-12-03 12:06:56'),
+(224, '2007', 14, '		<div class=\"cbf_inp_wrap\">\n			<div class=\'cbf_inp_label\' >%comment: </div>\n			<div class=\'cbf_input\'>\n				<input type=\"text\" name=\"%field_s\" class=\"valid \" value=\"\"  pattern=\"([0-9]{4})(/|-)([0-9]{1,2})(/|-)([0-9]{1,2}) [0-9]{1,2}:[0-9]{1,2}:[0-9]{1,2}\" title=\"日時形式（Y-m-d H:i:s）で入力してください(例：2012-12-12 12:12:12)\" />\n				<label class=\"text-danger\" for=\"%field_s\"></label>\n			</div>\n		</div>\n', 61, 0, 'kani', '::1', '2021-12-03 21:07:14', '2021-12-03 12:07:14'),
+(225, '2007', 16, '		<div class=\"cbf_inp_wrap\">\n			<div class=\'cbf_inp_label\' >%comment: </div>\n			<div class=\'cbf_input\'>\n				<input type=\"time\" name=\"%field_s\" class=\"valid \" value=\"\"  pattern=\"[0-9]{1,2}:[0-9]{1,2}:[0-9]{1,2}\" title=\"時刻形式（H:i:s）で入力してください(例：12:12:12)\" />\n				<label class=\"text-danger\" for=\"%field_s\"></label>\n			</div>\n		</div>', 61, 0, 'kani', '::1', '2021-12-03 21:07:24', '2021-12-03 12:07:24'),
+(226, '2007', 15, '		<div class=\"cbf_inp_wrap\">\n			<div class=\'cbf_inp_label\' >%comment: </div>\n			<div class=\'cbf_input\'>\n				<input type=\"text\" name=\"%field_s\" class=\"valid datepicker\" value=\"\"  pattern=\"([0-9]{4})(/|-)([0-9]{1,2})(/|-)([0-9]{1,2})\" title=\"日付形式（Y-m-d）で入力してください(例：2012-12-12)\" />\n				<label class=\"text-danger\" for=\"%field_s\"></label>\n			</div>\n		</div>\n', 62, 0, 'kani', '::1', '2021-12-03 21:07:33', '2021-12-03 12:07:33'),
+(227, '2007', 3, '		<div class=\"cbf_inp_wrap_long\">\n			<div class=\'cbf_inp_label\' >%comment： </div>\n			<div class=\'cbf_input\'>\n				<textarea name=\"%field_s\" maxlength=\"1000\" title=\"1000文字以内で入力してください\" data-folding-ta=\"40\" style=\"height:100px;width:100%\"></textarea>\n				<label class=\"text-danger\" for=\"%field_s\"></label>\n			</div>\n		</div>\n', 63, 0, 'kani', '::1', '2021-12-03 21:07:44', '2021-12-03 12:07:44'),
+(228, '2007', 22, '			<div class=\"cbf_inp_wrap\">\n				<div class=\'cbf_inp\' >ID: </div>\n				<div class=\'cbf_input\'>\n					<span class=\"id\"></span>\n				</div>\n			</div>', 64, 0, 'kani', '::1', '2021-12-03 21:07:52', '2021-12-03 12:07:52'),
+(229, '2007', 5, '		<div class=\"cbf_inp_wrap\">\n			<div class=\'cbf_inp_label\' >%comment: </div>\n			<div class=\'cbf_input\'>\n				<input type=\"text\" name=\"%field_s\" class=\"valid\" value=\"\" pattern=\"^[+-]?([0-9]*[.])?[0-9]+$\" maxlength=\"11\" title=\"数値を入力してください\" />\n				<label class=\"text-danger\" for=\"%field_s\" ></label>\n			</div>\n		</div>', 65, 0, 'kani', '::1', '2021-12-03 21:08:03', '2021-12-03 12:08:03'),
+(230, '2007', 10, '		<div class=\"cbf_inp_wrap\">\n			<div class=\'cbf_inp_label\' >%comment: </div>\n			<div class=\'cbf_input\'>\n				<input type=\"text\" name=\"%field_s\" class=\"valid\" value=\"\" pattern=\"[+-]?[0-9]+[\\.]?[0-9]*([eE][+-])?[0-9]*\" maxlength=\"64\" title=\"数値（浮動小数点）を入力してください\" />\n				<label class=\"text-danger\" for=\"%field_s\" ></label>\n			</div>\n		</div>\n', 66, 0, 'kani', '::1', '2021-12-03 21:08:11', '2021-12-03 12:08:11'),
+(231, '2007', 12, '			<div class=\"cbf_inp_wrap\">\n				<div class=\'cbf_inp_label\' >%comment：</div>\n				<div class=\'cbf_input\'>\n					<input type=\"checkbox\" name=\"%field_s\" class=\"valid\"  />\n				</div>\n			</div>', 67, 0, 'kani', '::1', '2021-12-03 21:08:18', '2021-12-03 12:08:18'),
+(232, '2007', 17, '', 68, 0, 'kani', '::1', '2021-12-03 21:08:25', '2021-12-03 12:08:25'),
+(233, '2007', 18, '', 69, 0, 'kani', '::1', '2021-12-03 21:08:32', '2021-12-03 12:08:32'),
+(234, '2007', 19, '', 70, 0, 'kani', '::1', '2021-12-03 21:08:39', '2021-12-03 12:08:39'),
+(235, '2007', 26, '', 71, 0, 'kani', '::1', '2021-12-03 21:08:45', '2021-12-03 12:08:45');
 
 -- --------------------------------------------------------
 
@@ -1524,7 +1585,9 @@ INSERT INTO `missions` (`id`, `mission_name`, `hina_file_id`, `from_path`, `from
 (78, 'coralpaint', 2, 'C:\\Users\\user\\git\\coralpaint_mng', 'Neko', 'coralpaint', 'nekos', 'ネコ', 'C:\\Users\\user\\git\\coralpaint_mng', 'Content', 'coralpaint', 'contents', 'コンテンツ', 2, 0, '', '::1', '2021-09-29 22:51:47', '2021-10-02 13:40:12'),
 (79, 'coralpaint pages', 2, 'C:\\Users\\user\\git\\coralpaint\\mng\\', 'Neko', 'coralpaint', 'nekos', 'ネコ', 'C:\\Users\\user\\git\\coralpaint\\mng\\', 'Page', 'coralpaint', 'pages', 'ページ', 3, 0, '', '::1', '2021-09-29 23:23:26', '2021-09-29 14:24:08'),
 (80, 'coralpaint a_img', 2, 'C:\\Users\\user\\git\\coralpaint\\mng\\', 'Neko', 'coralpaint', 'nekos', 'ネコ', 'C:\\Users\\user\\git\\coralpaint\\mng\\', 'AImg', 'coralpaint', 'a_imgs', 'A画像', 4, 0, '', '::1', '2021-09-30 09:09:24', '2021-09-30 00:21:44'),
-(81, 'coralpaint_mng:UserMng', 2, 'C:\\Users\\user\\git\\CrudBase\\laravel7\\dev', 'Neko', 'crud_base_laravel7', 'nekos', 'ネコ', 'C:\\Users\\user\\git\\coralpaint_mng', 'UserMng', 'coralpaint', 'users', 'ユーザー管理', 1, 0, 'kani', '::1', '2021-10-12 15:42:42', '2021-10-12 07:11:45');
+(81, 'coralpaint_mng:UserMng', 2, 'C:\\Users\\user\\git\\CrudBase\\laravel7\\dev', 'Neko', 'crud_base_laravel7', 'nekos', 'ネコ', 'C:\\Users\\user\\git\\coralpaint_mng', 'UserMng', 'coralpaint', 'users', 'ユーザー管理', 1, 0, 'kani', '::1', '2021-10-12 15:42:42', '2021-10-12 07:11:45'),
+(82, 'crud_base_laravel8:MstBoard', 2, 'C:\\Users\\user\\git\\crud_base_laravel8\\dev', 'Neko', 'crud_base_laravel8', 'nekos', 'ネコ', 'C:\\Users\\user\\git\\crud_base_laravel8\\dev', 'MsgBoard', 'crud_base_laravel8', 'msg_boards', 'メッセージボード', 1, 0, NULL, '::1', '2021-12-03 09:17:03', '2021-12-03 00:21:05'),
+(83, 'crud_base_laravel8:MsgBoardGood', 2, 'C:\\Users\\user\\git\\crud_base_laravel8\\dev', 'Neko', 'crud_base_laravel8', 'nekos', 'ネコ', 'C:\\Users\\user\\git\\crud_base_laravel8\\dev', 'MsgBoardGood', 'crud_base_laravel8', 'msg_board_goods', 'メッセージボード・いいね', 1, 0, NULL, '::1', '2021-12-03 09:34:26', '2021-12-03 00:35:58');
 
 -- --------------------------------------------------------
 
@@ -1674,13 +1737,13 @@ ALTER TABLE `users`
 -- テーブルの AUTO_INCREMENT `bulk_makes`
 --
 ALTER TABLE `bulk_makes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1150;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1171;
 
 --
 -- テーブルの AUTO_INCREMENT `hinagatas`
 --
 ALTER TABLE `hinagatas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=197;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=236;
 
 --
 -- テーブルの AUTO_INCREMENT `hina_files`
@@ -1698,7 +1761,7 @@ ALTER TABLE `hina_file_lists`
 -- テーブルの AUTO_INCREMENT `missions`
 --
 ALTER TABLE `missions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
 
 --
 -- テーブルの AUTO_INCREMENT `type_as`
