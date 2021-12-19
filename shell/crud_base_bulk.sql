@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- ホスト: 127.0.0.1
--- 生成日時: 2021-12-20 07:52:07
+-- 生成日時: 2021-12-20 07:57:43
 -- サーバのバージョン： 10.4.21-MariaDB
 -- PHP のバージョン: 8.0.12
 
@@ -1391,7 +1391,7 @@ INSERT INTO `hinagatas` (`id`, `hina_code`, `type_a`, `hinagata`, `sort_no`, `de
 (216, '2007', 4, '		<div class=\"cbf_inp_wrap\">\n			<div class=\'cbf_inp\' >%comment: </div>\n			<div class=\'cbf_input\'>\n				<input type=\"text\" name=\"%field_s\" class=\"valid \" value=\"\"  maxlength=\"%type_long\" title=\"%type_long文字以内で入力してください\" />\n				<label class=\"text-danger\" for=\"%field_s\"></label>\n			</div>\n		</div>\n', 44, 0, 'kani', '::1', '2021-12-03 21:05:35', '2021-12-03 12:05:35'),
 (217, '2007', 12, '			<div class=\"cbf_inp_wrap\">\n				<div class=\'cbf_inp_label\' >%comment：</div>\n				<div class=\'cbf_input\'>\n					<input type=\"checkbox\" name=\"%field_s\" class=\"valid\"  />\n				</div>\n			</div>\n			', 56, 0, 'kani', '::1', '2021-12-03 21:05:43', '2021-12-03 12:05:43'),
 (218, '2007', 1, '		<div class=\"cbf_inp_wrap\">\n			<div class=\'cbf_inp\' >%comment: </div>\n			<div class=\'cbf_input\'>\n				<input type=\"text\" name=\"%field_s\" class=\"valid \" value=\"\"  maxlength=\"%type_long\" title=\"%type_long文字以内で入力してください\" />\n				<label class=\"text-danger\" for=\"%field_s\"></label>\n			</div>\n		</div>\n\n', 57, 0, 'kani', '::1', '2021-12-03 21:05:51', '2021-12-03 12:05:51'),
-(219, '2007', 32, '		<div class=\"cbf_inp_wrap\">\n			<div class=\'cbf_inp_label\' >%comment: </div>\n			<?php $this->CrudBase->formOuterName(\'%field_s\', \'%comment\', \'edit\'); ?>\n		</div>', 57, 0, 'kani', '::1', '2021-12-03 21:05:58', '2021-12-03 12:05:59'),
+(219, '2007', 32, '		<div class=\"cbf_inp_wrap\">\n			<div class=\'cbf_inp_label\' >%comment: </div>\n			<?php $cbh->formOuterName(\'%field_s\', \'%comment\', \'edit\'); ?>\n		</div>', 57, 0, 'kani', '::1', '2021-12-03 21:05:58', '2021-12-19 22:57:32'),
 (220, '2007', 28, '		<div class=\"cbf_inp_wrap\" style=\"float:left\">\n			<div class=\'cbf_inp_label_long\' >%comment: </div>\n			<div class=\'cbf_input\' style=\"width:180px;height:auto;\">\n				<label for=\"%field_s_e\" class=\"fuk_label\" >\n					<input type=\"file\" id=\"%field_s_e\" class=\"%field_s\" style=\"display:none\" accept=\"image/*\" title=\"画像ファイルをドラッグ＆ドロップ(複数可)\"  data-inp-ex=\'image_fuk\' data-fp=\'\' />\n					<span class=\'fuk_msg\' style=\"padding:20%\">画像ファイルをドラッグ＆ドロップ(複数可)</span>\n				</label>\n			</div>\n		</div>', 58, 0, 'kani', '::1', '2021-12-03 21:06:11', '2021-12-03 12:06:11'),
 (221, '2007', 6, '		<div class=\"cbf_inp_wrap\">\n			<div class=\'cbf_inp_label\' >%comment: </div>\n			<div class=\'cbf_input\'>\n				<input type=\"text\" name=\"%field_s\" class=\"valid\" value=\"\" pattern=\"^[0-9]+$\" maxlength=\"11\" title=\"数値（自然数）を入力してください\" />\n				<label class=\"text-danger\" for=\"%field_s\" ></label>\n			</div>\n		</div>\n', 59, 0, 'kani', '::1', '2021-12-03 21:06:22', '2021-12-03 12:06:22'),
 (222, '2007', 27, '		<div class=\"cbf_inp_wrap\">\n			<div class=\'cbf_inp_label\' >%comment: </div>\n			<div class=\'cbf_input\'>\n				<?php $cbh->selectX(\'%field_s\',null,$%field_lccList,null);?>\n				<label class=\"text-danger\" for=\"%field_s\"></label>\n			</div>\n		</div>\n', 60, 0, 'kani', '::1', '2021-12-03 21:06:44', '2021-12-03 12:06:44'),
