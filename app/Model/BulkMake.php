@@ -1070,13 +1070,16 @@ class BulkMake extends AppModel {
 	public function replaceFieldScr(&$scrTexts,&$fieldData,&$typeAData,$mission){
 		
 		// 置換データ
-		$model_c = $mission['to_scr_code']; // モデル名（スネーク記法)
-		$model_s = $this->CrudBase->camelize($model_c); // モデル名（キャメル記法））
+		$model_c = $mission['to_scr_code']; // モデル名（キャメル記法)
+		$model_s = $this->CrudBase->snakize($model_c); // モデル名（スネーク記法））
+		$model_lcc = lcfirst($model_c); // キャメル記法（先頭だけ小文字）
+
 		$table_s = $mission['to_tbl_name']; // テーブル名
 		$replaceData = array(
-				'model_c' => $model_c,
-				'model_s' => $model_s,
-				'table_s' => $table_s,
+			'model_c' => $model_c,
+			'model_s' => $model_s,
+		    'table_s' => $table_s,
+		    'model_lcc' => $model_lcc,
 		);
 		
 		
@@ -1152,6 +1155,7 @@ class BulkMake extends AppModel {
 
 			$hinagata = str_replace('%model_s', $replaceData['model_s'], $hinagata); // モデル名（スネーク記法）
 			$hinagata = str_replace('%model_c', $replaceData['model_c'], $hinagata); // モデル名（キャメル記法）
+			$hinagata = str_replace('%model_lcc', $replaceData['model_lcc'], $hinagata); // モデル名（キャメル記法）
 			$hinagata = str_replace('%field_s', $field_s, $hinagata); // フィールド名（スネーク記法）
 			$hinagata = str_replace('%field_c', $field_c, $hinagata); // フィールド名（キャメル記法）
 			$hinagata = str_replace('%field_lcc', $field_lcc, $hinagata); // フィールド名（ローワーキャメル記法）

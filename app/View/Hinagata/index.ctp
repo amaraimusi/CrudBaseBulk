@@ -281,6 +281,7 @@ foreach($data as $i=>$ent){
 			<table class="tbl2"><thead><tr><th>可変コード</th><th>説明</th><th>詳細</th></tr></thead><tbody>
 				<tr><td>%model_s</td><td>モデル名（スネーク記法）</td><td></td></tr>
 				<tr><td>%model_c</td><td>モデル名（キャメル記法）</td><td></td></tr>
+				<tr><td>%model_lcc</td><td>モデル名（ローワーキャメル記法）</td><td></td></tr>
 				<tr><td>%field_s</td><td>フィールド名（スネーク記法）</td><td></td></tr>
 				<tr><td>%field_c</td><td>フィールド名（キャメル記法）</td><td></td></tr>
 				<tr><td>%field_lcc</td><td>フィールド名（ローワーキャメル記法）</td><td></td></tr>
