@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- ホスト: 127.0.0.1
--- 生成日時: 2022-08-10 11:27:44
+-- 生成日時: 2022-08-17 09:04:24
 -- サーバのバージョン： 10.4.21-MariaDB
 -- PHP のバージョン: 8.0.12
 
@@ -1369,21 +1369,21 @@ INSERT INTO `bulk_makes` (`id`, `mission_id`, `field_name`, `type_a`, `field_typ
 (1400, 95, 'modified', 21, 'timestamp', 'timestamp', 'imestam', 0, 0, 'current_timestamp()', 'on update current_timestamp()', '更新日', 13, 0, NULL, NULL, '2022-06-15 13:06:13', '2022-06-15 04:06:13'),
 (1402, 95, 'users_show_flg', 13, 'tinyint', 'tinyint(11)', '11', 0, 0, '0', '', 'ユーザー表示フラグ', 5, 0, NULL, NULL, '2022-06-15 13:06:13', '2022-06-15 04:06:13'),
 (1403, 95, 'conversely_eval_type_id', 32, 'int', 'int(11)', '11', 0, 0, NULL, '', '反対評価種別ID', 4, 0, NULL, NULL, '2022-06-15 13:06:13', '2022-06-15 04:06:13'),
-(1404, 96, 'id', 22, 'int', 'int(11)', '11', 1, 1, NULL, 'auto_increment', 'id', 1, 0, NULL, NULL, '2022-08-09 10:56:19', '2022-08-09 01:56:19'),
-(1405, 96, 'neko_val', 24, 'int', 'int(11)', '11', 0, 0, NULL, '', 'neko_val', 2, 0, NULL, NULL, '2022-08-09 10:56:19', '2022-08-09 01:56:19'),
-(1406, 96, 'neko_name', 2, 'varchar', 'varchar(255)', '255', 0, 0, NULL, '', 'neko_name', 3, 0, NULL, NULL, '2022-08-09 10:56:19', '2022-08-09 01:56:19'),
-(1407, 96, 'neko_date', 25, 'date', 'date', 'at', 0, 0, NULL, '', 'neko_date', 4, 0, NULL, NULL, '2022-08-09 10:56:19', '2022-08-09 01:56:19'),
-(1408, 96, 'neko_type', 27, 'int', 'int(11)', '11', 0, 0, '', '', '猫種別', 5, 0, 'kani', '::1', '2022-08-09 10:56:19', '2022-08-09 01:56:31'),
-(1409, 96, 'neko_dt', 14, 'datetime', 'datetime', 'atetim', 0, 0, NULL, '', 'neko_dt', 6, 0, NULL, NULL, '2022-08-09 10:56:19', '2022-08-09 01:56:19'),
-(1410, 96, 'neko_flg', 13, 'tinyint', 'tinyint(4)', '4', 0, 0, '0', '', 'ネコフラグ', 7, 0, NULL, NULL, '2022-08-09 10:56:19', '2022-08-09 01:56:19'),
-(1411, 96, 'img_fn', 28, 'varchar', 'varchar(256)', '256', 0, 0, NULL, '', '画像ファイル名', 8, 0, NULL, NULL, '2022-08-09 10:56:19', '2022-08-09 01:56:19'),
-(1412, 96, 'note', 3, 'text', 'text', 'ex', 0, 0, NULL, '', '備考', 9, 0, NULL, NULL, '2022-08-09 10:56:19', '2022-08-09 01:56:19'),
-(1413, 96, 'sort_no', 17, 'int', 'int(11)', '11', 0, 0, '0', '', '順番', 10, 0, NULL, NULL, '2022-08-09 10:56:19', '2022-08-09 01:56:19'),
-(1414, 96, 'delete_flg', 12, 'tinyint', 'tinyint(1)', '1', 0, 0, '0', '', '無効フラグ', 11, 0, NULL, NULL, '2022-08-09 10:56:19', '2022-08-09 01:56:19'),
-(1415, 96, 'update_user_id', 33, 'int', 'int(11)', '11', 0, 0, NULL, '', '更新者', 12, 0, NULL, NULL, '2022-08-09 10:56:19', '2022-08-09 01:56:19'),
-(1416, 96, 'ip_addr', 19, 'varchar', 'varchar(40)', '40', 0, 0, NULL, '', 'IPアドレス', 13, 0, NULL, NULL, '2022-08-09 10:56:19', '2022-08-09 01:56:19'),
-(1419, 96, 'created_at', 14, 'datetime', 'datetime', 'atetim', 0, 0, NULL, '', '生成日時', 14, 0, NULL, NULL, '2022-08-09 10:56:19', '2022-08-09 01:56:19'),
-(1420, 96, 'updated_at', 14, 'datetime', 'datetime', 'atetim', 0, 0, 'current_timestamp()', 'on update current_timestamp()', '更新日', 15, 0, NULL, NULL, '2022-08-09 10:56:19', '2022-08-09 01:56:19'),
+(1404, 96, 'id', 22, 'int', 'int(11)', '11', 1, 1, NULL, 'auto_increment', 'id', 1, 0, NULL, NULL, '2022-08-10 12:48:45', '2022-08-10 03:48:45'),
+(1405, 96, 'neko_val', 24, 'int', 'int(11)', '11', 0, 0, NULL, '', 'neko_val', 2, 0, NULL, NULL, '2022-08-10 12:48:47', '2022-08-10 03:48:47'),
+(1406, 96, 'neko_name', 2, 'varchar', 'varchar(255)', '255', 0, 0, NULL, '', 'neko_name', 3, 0, NULL, NULL, '2022-08-10 12:48:47', '2022-08-10 03:48:47'),
+(1407, 96, 'neko_date', 25, 'date', 'date', 'at', 0, 0, NULL, '', 'neko_date', 4, 0, NULL, NULL, '2022-08-10 12:48:47', '2022-08-10 03:48:47'),
+(1408, 96, 'neko_type', 27, 'int', 'int(11)', '11', 0, 0, NULL, '', '猫種別', 5, 0, NULL, NULL, '2022-08-10 12:48:47', '2022-08-10 03:48:47'),
+(1409, 96, 'neko_dt', 14, 'datetime', 'datetime', 'atetim', 0, 0, NULL, '', 'neko_dt', 6, 0, NULL, NULL, '2022-08-10 12:48:47', '2022-08-10 03:48:47'),
+(1410, 96, 'neko_flg', 13, 'tinyint', 'tinyint(4)', '4', 0, 0, '0', '', 'ネコフラグ', 7, 0, NULL, NULL, '2022-08-10 12:48:47', '2022-08-10 03:48:47'),
+(1411, 96, 'img_fn', 28, 'varchar', 'varchar(256)', '256', 0, 0, NULL, '', '画像ファイル名', 8, 0, NULL, NULL, '2022-08-10 12:48:47', '2022-08-10 03:48:47'),
+(1412, 96, 'note', 3, 'text', 'text', 'ex', 0, 0, NULL, '', '備考', 9, 0, NULL, NULL, '2022-08-10 12:48:47', '2022-08-10 03:48:47'),
+(1413, 96, 'sort_no', 17, 'int', 'int(11)', '11', 0, 0, '0', '', '順番', 10, 0, NULL, NULL, '2022-08-10 12:48:47', '2022-08-10 03:48:47'),
+(1414, 96, 'delete_flg', 12, 'tinyint', 'tinyint(1)', '1', 0, 0, '0', '', '無効フラグ', 11, 0, NULL, NULL, '2022-08-10 12:48:47', '2022-08-10 03:48:47'),
+(1415, 96, 'update_user_id', 33, 'int', 'int(11)', '11', 0, 0, NULL, '', '更新者', 12, 0, NULL, NULL, '2022-08-10 12:48:47', '2022-08-10 03:48:47'),
+(1416, 96, 'ip_addr', 19, 'varchar', 'varchar(40)', '40', 0, 0, NULL, '', 'IPアドレス', 13, 0, NULL, NULL, '2022-08-10 12:48:47', '2022-08-10 03:48:47'),
+(1419, 96, 'created_at', 20, 'datetime', 'datetime', 'atetim', 0, 0, '', '', '生成日時', 14, 0, 'kani', '::1', '2022-08-10 12:48:47', '2022-08-10 03:49:33'),
+(1420, 96, 'updated_at', 21, 'datetime', 'datetime', 'atetim', 0, 0, 'current_timestamp()', 'on update current_timestamp()', '更新日', 15, 0, 'kani', '::1', '2022-08-10 12:48:47', '2022-08-10 03:49:44'),
 (1421, 97, 'id', 22, 'int', 'int(11)', '11', 1, 1, NULL, 'auto_increment', 'id', 1, 0, NULL, NULL, '2022-08-09 12:50:09', '2022-08-09 03:50:09'),
 (1422, 97, 'neko_type_name', 2, 'varchar', 'varchar(255)', '255', 0, 0, '', '', 'ネコ種別', 2, 0, 'kani', '::1', '2022-08-09 12:50:09', '2022-08-09 03:51:50'),
 (1423, 97, 'sort_no', 17, 'int', 'int(11)', '11', 0, 0, '0', '', '順番', 3, 0, NULL, NULL, '2022-08-09 12:50:09', '2022-08-09 03:50:09'),
@@ -1391,7 +1391,23 @@ INSERT INTO `bulk_makes` (`id`, `mission_id`, `field_name`, `type_a`, `field_typ
 (1425, 97, 'update_user_id', 33, 'int', 'int(11)', '11', 0, 0, NULL, '', '更新ユーザーID', 5, 0, NULL, NULL, '2022-08-09 12:50:09', '2022-08-09 03:50:09'),
 (1426, 97, 'ip_addr', 19, 'varchar', 'varchar(40)', '40', 0, 0, NULL, '', 'IPアドレス', 6, 0, NULL, NULL, '2022-08-09 12:50:09', '2022-08-09 03:50:09'),
 (1427, 97, 'created_at', 20, 'datetime', 'datetime', 'atetim', 0, 0, NULL, '', '生成日時', 7, 0, NULL, NULL, '2022-08-09 12:50:09', '2022-08-09 03:50:09'),
-(1428, 97, 'updated_at', 21, 'datetime', 'datetime', 'atetim', 0, 0, 'current_timestamp()', 'on update current_timestamp()', '更新日', 8, 0, 'kani', '::1', '2022-08-09 12:50:09', '2022-08-09 03:51:38');
+(1428, 97, 'updated_at', 21, 'datetime', 'datetime', 'atetim', 0, 0, 'current_timestamp()', 'on update current_timestamp()', '更新日', 8, 0, 'kani', '::1', '2022-08-09 12:50:09', '2022-08-09 03:51:38'),
+(1429, 98, 'id', 22, 'int', 'int(11)', '11', 1, 1, NULL, 'auto_increment', 'id', 1, 0, NULL, NULL, '2022-08-12 15:49:55', '2022-08-12 06:49:55'),
+(1430, 98, 'dog_val', 24, 'int', 'int(11)', '11', 0, 0, NULL, '', 'イヌ数値', 2, 0, NULL, NULL, '2022-08-12 15:49:55', '2022-08-12 06:49:55'),
+(1431, 98, 'small_dog_name', 2, 'varchar', 'varchar(255)', '255', 0, 0, NULL, '', '子犬名', 3, 0, NULL, NULL, '2022-08-12 15:49:55', '2022-08-12 06:49:55'),
+(1432, 98, 'small_dog_date', 25, 'date', 'date', 'at', 0, 0, NULL, '', '子犬日付', 4, 0, NULL, NULL, '2022-08-12 15:49:55', '2022-08-12 06:49:55');
+INSERT INTO `bulk_makes` (`id`, `mission_id`, `field_name`, `type_a`, `field_type`, `orig_type`, `type_long`, `null_flg`, `p_key_flg`, `def_val`, `extra`, `comment`, `sort_no`, `delete_flg`, `update_user`, `ip_addr`, `created`, `modified`) VALUES
+(1433, 98, 'dog_type', 27, 'int', 'int(11)', '11', 0, 0, '', '', '犬種', 5, 0, 'kani', '::1', '2022-08-12 15:49:55', '2022-08-12 06:50:43'),
+(1434, 98, 'dog_dt', 14, 'datetime', 'datetime', 'atetim', 0, 0, NULL, '', '子犬保護日時', 6, 0, NULL, NULL, '2022-08-12 15:49:55', '2022-08-12 06:49:55'),
+(1435, 98, 'neko_flg', 13, 'tinyint', 'tinyint(4)', '4', 0, 0, '0', '', 'ネコフラグ', 7, 0, NULL, NULL, '2022-08-12 15:49:55', '2022-08-12 06:49:55'),
+(1436, 98, 'img_fn', 28, 'varchar', 'varchar(256)', '256', 0, 0, NULL, '', '画像ファイル名', 8, 0, NULL, NULL, '2022-08-12 15:49:55', '2022-08-12 06:49:55'),
+(1437, 98, 'note', 3, 'text', 'text', 'ex', 0, 0, NULL, '', '備考', 9, 0, NULL, NULL, '2022-08-12 15:49:55', '2022-08-12 06:49:55'),
+(1438, 98, 'sort_no', 17, 'int', 'int(11)', '11', 0, 0, '0', '', '順番', 10, 0, NULL, NULL, '2022-08-12 15:49:55', '2022-08-12 06:49:55'),
+(1439, 98, 'delete_flg', 12, 'tinyint', 'tinyint(1)', '1', 0, 0, '0', '', '無効フラグ', 11, 0, NULL, NULL, '2022-08-12 15:49:55', '2022-08-12 06:49:55'),
+(1440, 98, 'update_user_id', 33, 'int', 'int(11)', '11', 0, 0, NULL, '', '更新者', 12, 0, NULL, NULL, '2022-08-12 15:49:55', '2022-08-12 06:49:55'),
+(1441, 98, 'ip_addr', 19, 'varchar', 'varchar(40)', '40', 0, 0, NULL, '', 'IPアドレス', 13, 0, NULL, NULL, '2022-08-12 15:49:55', '2022-08-12 06:49:55'),
+(1442, 98, 'created_at', 20, 'datetime', 'datetime', 'atetim', 0, 0, NULL, '', '生成日時', 14, 0, NULL, NULL, '2022-08-12 15:49:55', '2022-08-12 06:49:55'),
+(1443, 98, 'updated_at', 21, 'datetime', 'datetime', 'atetim', 0, 0, 'current_timestamp()', 'on update current_timestamp()', '更新日', 15, 0, 'kani', '::1', '2022-08-12 15:49:55', '2022-08-12 06:50:09');
 
 -- --------------------------------------------------------
 
@@ -1702,7 +1718,7 @@ INSERT INTO `hinagatas` (`id`, `hina_code`, `type_a`, `hinagata`, `sort_no`, `de
 (282, '3035', 1, '			<th>{!! BaseXHelper::sortLink($searches, \'%model_s\', \'%field_s\', \'%comment\') !!}</th>', 158, 0, 'kani', '::1', '2022-08-05 19:35:53', '2022-08-05 10:35:53'),
 (283, '3005', 1, '				<td>{{$ent->%field_s}}</td>', 159, 0, 'kani', '::1', '2022-08-06 10:30:45', '2022-08-06 01:30:45'),
 (284, '3005', 27, '				<td>{{ $%field_lccList[$ent->%field_s] ?? \'\' }}</td>', 160, 0, 'kani', '::1', '2022-08-06 10:31:12', '2022-08-06 01:43:19'),
-(285, '3005', 12, '				<td>{{($ent->delete_flg) ? \'無効\': \'有効\' }}</td>', 161, 0, 'kani', '::1', '2022-08-06 10:35:10', '2022-08-06 01:35:10'),
+(285, '3005', 12, '				<td>{!! BaseXHelper::notationDeleteFlg($ent->delete_flg) !!}</td>', 161, 0, 'kani', '::1', '2022-08-06 10:35:10', '2022-08-16 23:29:12'),
 (286, '3006', 1, '			<div class=\"row\">\n				<label for=\"%field_s\" class=\"col-12 col-md-5 col-form-label\">%comment</label>\n				<div class=\"col-12 col-md-7\">\n					<input name=\"%field_s\" type=\"text\"  class=\"form-control form-control-lg\" placeholder=\"%comment\" value=\"{{old(\'%field_s\')}}\">\n				</div>\n			</div>', 162, 0, 'kani', '::1', '2022-08-09 08:32:52', '2022-08-08 23:32:52'),
 (287, '3006', 27, '			<div class=\"row\">\n				<label for=\"%field_s\" class=\"col-12 col-md-5 col-form-label\">%comment</label>\n				<div class=\"col-12 col-md-7\">\n					<select name=\"%field_s\" class=\"form-control form-control-lg\">\n						@foreach (%field_lccList as $%field_s => $%field_s_name)\n							<option value=\"{{ $%field_s }}\" @selected(old(\'%field_s\') == $%field_s)>\n								{{ $%field_s_name }}\n							</option>\n						@endforeach\n					</select>\n				</div>\n			</div>', 163, 0, 'kani', '::1', '2022-08-09 08:39:41', '2022-08-09 00:40:57'),
 (288, '3006', 3, '			<div class=\"row\">\n				<label for=\"%field_s\" class=\"col-12 col-md-5 col-form-label\">%comment</label>\n				<div class=\"col-12 col-md-7\">\n					<textarea name=\"%field_s\" id=\"%field_s\" class=\"form-control form-control-lg\" placeholder=\"%comment\"  maxlength=\"2000\">{{old(\'%field_s\')}}</textarea>\n				</div>\n			</div>', 164, 0, 'kani', '::1', '2022-08-09 08:43:30', '2022-08-08 23:43:30'),
@@ -1740,7 +1756,14 @@ INSERT INTO `hinagatas` (`id`, `hina_code`, `type_a`, `hinagata`, `sort_no`, `de
 (320, '3000', 19, '', 126, 1, 'kani', '::1', '2022-08-09 12:02:51', '2022-08-10 00:57:04'),
 (321, '3007', 17, '', 187, 0, 'kani', '::1', '2022-08-09 12:46:07', '2022-08-09 03:46:07'),
 (322, '3006', 17, '', 188, 0, 'kani', '::1', '2022-08-09 12:46:50', '2022-08-09 03:46:50'),
-(323, '3008', 17, '', 189, 0, 'kani', '::1', '2022-08-10 11:16:03', '2022-08-10 02:16:03');
+(323, '3008', 17, '', 189, 0, 'kani', '::1', '2022-08-10 11:16:03', '2022-08-10 02:16:03'),
+(324, '3020B', 27, '		    \'%field_lccList\'=>$%field_lccList,', 190, 0, 'kani', '::1', '2022-08-12 15:31:05', '2022-08-12 06:31:05'),
+(325, '3020B', 1, '', 191, 0, 'kani', '::1', '2022-08-12 15:31:12', '2022-08-12 06:31:13'),
+(326, '3020', 1, '', 192, 0, 'kani', '::1', '2022-08-12 15:32:43', '2022-08-12 06:33:07'),
+(327, '3020', 27, '		$%field_lccList = $model->get%field_cList(); // %comment', 193, 0, 'kani', '::1', '2022-08-12 15:32:57', '2022-08-12 06:32:57'),
+(328, '3021', 1, '', 194, 0, 'kani', '::1', '2022-08-12 16:04:33', '2022-08-12 07:04:33'),
+(329, '3021', 27, '	/**\n	 *  %comment種別リストを取得する\n	 *  @return [] %comment種別リスト\n	 */\n	public function get%field_out_model_cList(){\n	    \n	    $query = DB::table(\'%field_out_model_ss\')->\n	       select([\'id\', \'%field_out_model_s_name\'])->\n	       where(\'delete_flg\',0);\n	    \n	    $res = $query->get();\n	    $list = [];\n	    foreach($res as $ent){\n	        $list[$ent->id] = $ent->%field_out_model_s_name;\n	    }\n\n	    return $list;\n	}', 195, 0, 'kani', '::1', '2022-08-12 16:05:10', '2022-08-12 07:07:22'),
+(330, '3005', 13, '				<td>{!! BaseXHelper::notationFlg($ent->%field_s) !!}</td>', 196, 0, 'kani', '::1', '2022-08-17 08:30:12', '2022-08-16 23:30:12');
 
 -- --------------------------------------------------------
 
@@ -1949,7 +1972,8 @@ INSERT INTO `missions` (`id`, `mission_name`, `hina_file_id`, `from_path`, `from
 (94, 'crud_base_laravel8:MsgBoardUserEval', 2, 'C:\\Users\\user\\git\\crud_base_laravel8\\dev', 'Neko', 'crud_base_laravel8', 'nekos', 'ネコ', 'C:\\Users\\user\\git\\crud_base_laravel8\\dev', 'MsgBoardUserEval', 'crud_base_laravel8', 'msg_board_user_evals', 'メッセージボード・ユーザー評価', 1, 0, NULL, '::1', '2022-06-08 10:53:14', '2022-06-08 02:30:23'),
 (95, 'crud_base_laravel8:MsgBoardEvalType', 2, 'C:\\Users\\user\\git\\crud_base_laravel8\\dev', 'Neko', 'crud_base_laravel8', 'nekos', 'ネコ', 'C:\\Users\\user\\git\\crud_base_laravel8\\dev\\bk', 'MsgBoardEvalType', 'crud_base_laravel8', 'msg_board_eval_types', 'メッセージボード・評価種別', 1, 0, NULL, '::1', '2022-06-08 11:06:17', '2022-06-15 03:19:21'),
 (96, 'mpa_l9', 3, 'C:\\Users\\user\\git\\mpa_l9\\dev', 'Client', 'mpa_l9', 'clients', '顧客', 'C:\\Users\\user\\git\\mpa_l9\\dev', 'Neko', 'mpa_l9', 'nekos', 'ネコ', 1, 0, 'kani', '::1', '2022-07-22 09:47:16', '2022-07-22 00:59:05'),
-(97, 'mpa_l9', 3, 'C:\\Users\\user\\git\\mpa_l9\\dev', 'Client', 'mpa_l9', 'clients', '顧客', 'C:\\Users\\user\\git\\mpa_l9\\dev', 'NekoType', 'mpa_l9', 'neko_types', 'ネコ種別', 1, 0, 'kani', '::1', '2022-08-09 10:58:40', '2022-08-09 01:58:40');
+(97, 'mpa_l9', 3, 'C:\\Users\\user\\git\\mpa_l9\\dev', 'Client', 'mpa_l9', 'clients', '顧客', 'C:\\Users\\user\\git\\mpa_l9\\dev', 'NekoType', 'mpa_l9', 'neko_types', 'ネコ種別', 1, 0, 'kani', '::1', '2022-08-09 10:58:40', '2022-08-09 01:58:40'),
+(98, 'mpa_l9:small_dog', 3, 'C:\\Users\\user\\git\\mpa_l9\\dev', 'Neko', 'mpa_l9', 'nekos', 'ネコ', 'C:\\Users\\user\\git\\mpa_l9\\dev', 'SmallDog', 'mpa_l9', 'small_dogs', '子犬', 1, 0, 'kani', '::1', '2022-08-12 15:47:37', '2022-08-12 06:49:24');
 
 -- --------------------------------------------------------
 
@@ -2100,13 +2124,13 @@ ALTER TABLE `users`
 -- テーブルの AUTO_INCREMENT `bulk_makes`
 --
 ALTER TABLE `bulk_makes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1429;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1444;
 
 --
 -- テーブルの AUTO_INCREMENT `hinagatas`
 --
 ALTER TABLE `hinagatas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=324;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=331;
 
 --
 -- テーブルの AUTO_INCREMENT `hina_files`
@@ -2124,7 +2148,7 @@ ALTER TABLE `hina_file_lists`
 -- テーブルの AUTO_INCREMENT `missions`
 --
 ALTER TABLE `missions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
 
 --
 -- テーブルの AUTO_INCREMENT `type_as`
