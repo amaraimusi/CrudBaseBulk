@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- ホスト: 127.0.0.1
--- 生成日時: 2022-08-17 09:04:24
+-- 生成日時: 2022-08-18 14:22:42
 -- サーバのバージョン： 10.4.21-MariaDB
 -- PHP のバージョン: 8.0.12
 
@@ -1718,7 +1718,7 @@ INSERT INTO `hinagatas` (`id`, `hina_code`, `type_a`, `hinagata`, `sort_no`, `de
 (282, '3035', 1, '			<th>{!! BaseXHelper::sortLink($searches, \'%model_s\', \'%field_s\', \'%comment\') !!}</th>', 158, 0, 'kani', '::1', '2022-08-05 19:35:53', '2022-08-05 10:35:53'),
 (283, '3005', 1, '				<td>{{$ent->%field_s}}</td>', 159, 0, 'kani', '::1', '2022-08-06 10:30:45', '2022-08-06 01:30:45'),
 (284, '3005', 27, '				<td>{{ $%field_lccList[$ent->%field_s] ?? \'\' }}</td>', 160, 0, 'kani', '::1', '2022-08-06 10:31:12', '2022-08-06 01:43:19'),
-(285, '3005', 12, '				<td>{!! BaseXHelper::notationDeleteFlg($ent->delete_flg) !!}</td>', 161, 0, 'kani', '::1', '2022-08-06 10:35:10', '2022-08-16 23:29:12'),
+(285, '3005', 12, '				<td>{!! BaseXHelper::tdDeleteFlg($ent->delete_flg) !!}</td>', 161, 0, 'kani', '::1', '2022-08-06 10:35:10', '2022-08-18 05:10:29'),
 (286, '3006', 1, '			<div class=\"row\">\n				<label for=\"%field_s\" class=\"col-12 col-md-5 col-form-label\">%comment</label>\n				<div class=\"col-12 col-md-7\">\n					<input name=\"%field_s\" type=\"text\"  class=\"form-control form-control-lg\" placeholder=\"%comment\" value=\"{{old(\'%field_s\')}}\">\n				</div>\n			</div>', 162, 0, 'kani', '::1', '2022-08-09 08:32:52', '2022-08-08 23:32:52'),
 (287, '3006', 27, '			<div class=\"row\">\n				<label for=\"%field_s\" class=\"col-12 col-md-5 col-form-label\">%comment</label>\n				<div class=\"col-12 col-md-7\">\n					<select name=\"%field_s\" class=\"form-control form-control-lg\">\n						@foreach (%field_lccList as $%field_s => $%field_s_name)\n							<option value=\"{{ $%field_s }}\" @selected(old(\'%field_s\') == $%field_s)>\n								{{ $%field_s_name }}\n							</option>\n						@endforeach\n					</select>\n				</div>\n			</div>', 163, 0, 'kani', '::1', '2022-08-09 08:39:41', '2022-08-09 00:40:57'),
 (288, '3006', 3, '			<div class=\"row\">\n				<label for=\"%field_s\" class=\"col-12 col-md-5 col-form-label\">%comment</label>\n				<div class=\"col-12 col-md-7\">\n					<textarea name=\"%field_s\" id=\"%field_s\" class=\"form-control form-control-lg\" placeholder=\"%comment\"  maxlength=\"2000\">{{old(\'%field_s\')}}</textarea>\n				</div>\n			</div>', 164, 0, 'kani', '::1', '2022-08-09 08:43:30', '2022-08-08 23:43:30'),
@@ -1763,7 +1763,10 @@ INSERT INTO `hinagatas` (`id`, `hina_code`, `type_a`, `hinagata`, `sort_no`, `de
 (327, '3020', 27, '		$%field_lccList = $model->get%field_cList(); // %comment', 193, 0, 'kani', '::1', '2022-08-12 15:32:57', '2022-08-12 06:32:57'),
 (328, '3021', 1, '', 194, 0, 'kani', '::1', '2022-08-12 16:04:33', '2022-08-12 07:04:33'),
 (329, '3021', 27, '	/**\n	 *  %comment種別リストを取得する\n	 *  @return [] %comment種別リスト\n	 */\n	public function get%field_out_model_cList(){\n	    \n	    $query = DB::table(\'%field_out_model_ss\')->\n	       select([\'id\', \'%field_out_model_s_name\'])->\n	       where(\'delete_flg\',0);\n	    \n	    $res = $query->get();\n	    $list = [];\n	    foreach($res as $ent){\n	        $list[$ent->id] = $ent->%field_out_model_s_name;\n	    }\n\n	    return $list;\n	}', 195, 0, 'kani', '::1', '2022-08-12 16:05:10', '2022-08-12 07:07:22'),
-(330, '3005', 13, '				<td>{!! BaseXHelper::notationFlg($ent->%field_s) !!}</td>', 196, 0, 'kani', '::1', '2022-08-17 08:30:12', '2022-08-16 23:30:12');
+(330, '3005', 13, '				<td>{!! BaseXHelper::tdFlg($ent->%field_s) !!}</td>', 196, 0, 'kani', '::1', '2022-08-17 08:30:12', '2022-08-18 05:10:42'),
+(331, '3005', 3, '				<td>{!! BaseXHelper::td%field_s($ent->%field_s, \'%field_s\', 30) !!}</td>', 197, 0, 'kani', '::1', '2022-08-18 14:11:53', '2022-08-18 05:11:53'),
+(332, '3005', 15, '				<td>{!! BaseXHelper::tdDate($ent->%field_s) !!}</td>', 198, 0, 'kani', '::1', '2022-08-18 14:20:19', '2022-08-18 05:20:19'),
+(333, '3005', 14, '				<td>{!! BaseXHelper::tdDate($ent->%field_s) !!}</td>', 199, 0, 'kani', '::1', '2022-08-18 14:20:35', '2022-08-18 05:20:35');
 
 -- --------------------------------------------------------
 
@@ -2130,7 +2133,7 @@ ALTER TABLE `bulk_makes`
 -- テーブルの AUTO_INCREMENT `hinagatas`
 --
 ALTER TABLE `hinagatas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=331;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=334;
 
 --
 -- テーブルの AUTO_INCREMENT `hina_files`
