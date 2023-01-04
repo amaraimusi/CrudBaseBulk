@@ -292,9 +292,11 @@ foreach($data as $i=>$ent){
 				<tr><td>%def_val</td><td>デフォルト値　</td><td></td></tr>
 				<tr><td>%comment</td><td>コメント（和名）　</td><td></td></tr>
 				<tr><td>%field_out_model_s</td><td>ID系フィールド・外部モデル名(スネーク記法）</td>
-					<td><aside>フィールド名がbig_cat_idである場合、フィールド外部モデルは「big_cat」</aside></td></tr>
+					<td><aside>フィールド名がbig_cat_idである場合、「big_cat」になる</aside></td></tr>
 				<tr><td>%field_out_model_c</td><td>ID系フィールド・外部モデル名</td>
-					<td><aside>フィールド名がbig_cat_idである場合、フィールド外部モデルは「BigCat」</aside></td></tr>
+					<td><aside>フィールド名がbig_cat_idである場合、「BigCat」になる</aside></td></tr>
+				<tr><td>%field_out_model_lcc</td><td>ID系フィールド・外部モデル名(先頭小文字のキャメル記法）</td>
+					<td><aside>フィールド名がbig_cat_idである場合、「bigCat」になる</aside></td></tr>
 				<tr><td>%outer_model_s</td><td>外部モデル名</td><td>フィールド名から「_id」を取り除いた外部モデル名。例：buta_id⇒buta</td></tr>
 			</tbody></table>
 		</td></tr>
