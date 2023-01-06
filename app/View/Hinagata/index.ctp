@@ -257,6 +257,10 @@ foreach($data as $i=>$ent){
 	</div>
 	<div class="panel-body">
 	<div class="err text-danger"></div>
+
+	<button type="button"  onclick="editReg();" class="btn btn-success">
+		<span class="glyphicon glyphicon-ok"></span>
+	</button>
 	<table><tbody>
 
 		<!-- Start ajax_form_edit_start -->
@@ -298,6 +302,7 @@ foreach($data as $i=>$ent){
 				<tr><td>%field_out_model_lcc</td><td>ID系フィールド・外部モデル名(先頭小文字のキャメル記法）</td>
 					<td><aside>フィールド名がbig_cat_idである場合、「bigCat」になる</aside></td></tr>
 				<tr><td>%outer_model_s</td><td>外部モデル名</td><td>フィールド名から「_id」を取り除いた外部モデル名。例：buta_id⇒buta</td></tr>
+				<tr><td>%tbl_s</td><td>テーブル名</td><td>例→big_cats</td></tr>
 			</tbody></table>
 		</td></tr>
 

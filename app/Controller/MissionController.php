@@ -24,10 +24,10 @@ class MissionController extends CrudBaseController {
 	public $helpers = array('CrudBase');
 
 	/// デフォルトの並び替え対象フィールド
-	public $defSortFeild='Mission.sort_no';
+	public $defSortFeild='Mission.id';
 	
 	/// デフォルトソートタイプ	  0:昇順 1:降順
-	public $defSortType=0;
+	public $defSortType=1;
 	
 	/// 検索条件情報の定義
 	public $kensakuJoken=array();
