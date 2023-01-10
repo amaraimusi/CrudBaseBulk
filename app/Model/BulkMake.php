@@ -1140,7 +1140,7 @@ class BulkMake extends AppModel {
 		
 		foreach($fieldData as $ent){
 			$type_a_tmp = $ent['type_a']; // 候補タイプA
-			
+
 			// ツリー構造のタイプAデータから、候補タイプAを始点に上位をさかのぼって、適切なタイプAを取得する。
 			$type_a = $this->backSearchTypeA($type_a_tmp,$hinaTypeAList,$typeAData);
 			if($type_a == 0) continue;
@@ -1173,6 +1173,16 @@ class BulkMake extends AppModel {
 			$hinagata = str_replace('%field_out_model_lcc', $field_out_model_lcc, $hinagata); // ID系フィールド・外部モデル名（ローワーキャメル記法
 			$hinagata = str_replace('%outer_model_s', $outer_model_s, $hinagata); // 外部モデル名
 			$hinagata = str_replace('%tbl_s', $tbl_s, $hinagata); // 外部モデル名
+			
+			if($ent['null_flg'] == 1){
+				$hinagata = str_replace('%form_required', 'required', $hinagata); // form inputのrequiredをセット
+				$hinagata = str_replace('%label_required', '<span class="text-danger label_required">【必須】</span>', $hinagata); //ラベルの【必須】
+				
+			}else{
+				$hinagata = str_replace('%form_required', '', $hinagata); // requiredは無しにする
+				$hinagata = str_replace('%label_required', '', $hinagata); //ラベルの【必須】
+			}
+			
 			
 			if(!empty($hinagata)){
 				$field_scr .= $hinagata . "\n";
