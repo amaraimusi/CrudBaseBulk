@@ -39,13 +39,13 @@ $this->assign('script', $this->Html->script($jsList,array('charset'=>'utf-8')));
 
 	
 	<div style="clear:both"></div>
-	
+	<?php $this->CrudBase->inputKjText($kjs,'kj_hina_code','雛型コード',300);?>
+		
 	<div id="detail_div" style="display:none">
 		
 		<?php 
 		
 		// --- Start kj_input
-		$this->CrudBase->inputKjText($kjs,'kj_hina_code','雛型コード',300);
 		$this->CrudBase->inputKjNouislider($kjs,'hinagata_val','フィールド雛型数値'); 
 		$this->CrudBase->inputKjSelect($kjs,'kj_type_a','タイプA',$typeAList); 
 		$this->CrudBase->inputKjText($kjs,'kj_hinagata','雛型',200,'部分一致検索');
