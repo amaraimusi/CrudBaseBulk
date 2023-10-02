@@ -1,4 +1,4 @@
-
+var bulcCopyByHinaCode;
 
 $(function() {
 	init();//初期化
@@ -74,6 +74,9 @@ function init(){
 			editReg(); // 登録処理
 		}
 	});
+	
+	// 雛型コードを指定して一括コピー
+	bulcCopyByHinaCode = new BulcCopyByHinaCode({main_slt:'#bulkCopyByHinaCode'});
 
 }
 

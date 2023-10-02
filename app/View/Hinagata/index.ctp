@@ -8,6 +8,8 @@ $this->assign('css', $this->Html->css($cssList));
 
 // JSファイルのインクルード
 $jsList = $this->CrudBase->getJsList();
+
+$jsList[] = 'Hinagata/BulcCopyByHinaCode.js'; // 雛型コードを指定して一括コピー
 $jsList[] = 'Hinagata/index'; // 当画面専用JavaScript
 $this->assign('script', $this->Html->script($jsList,array('charset'=>'utf-8')));
 
@@ -89,7 +91,7 @@ $this->assign('script', $this->Html->script($jsList,array('charset'=>'utf-8')));
 				<button type="button" onclick="$('#detail_div').toggle(300);" class="btn btn-default btn-sm">
 					<span class="glyphicon glyphicon-cog"></span>
 				</button>
-
+				<div id="bulkCopyByHinaCode" style="display:inline-block"></div><!--  雛型コードを指定して一括コピー -->
 			</div>
 			
 			<div class="line-middle"></div>

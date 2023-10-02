@@ -608,6 +608,58 @@ class HinagataController extends CrudBaseController {
 		
 		 
 	}
+	
+	
+	/**
+	 * 雛型コードを指定して一括コピー | Ajax 非同期通信
+	 * @return string
+	 */
+	public function bulkCopyByHinaCode(){
+		$this->autoRender = false;//ビュー(ctp)を使わない。
+
+		// 通信元から送信されてきたパラメータを取得する。
+		$param_json = $_POST['key1'];
+		$param=json_decode($param_json,true);//JSON文字を配列に戻す
+		
+		$hina_code_orig = $param['hina_code_orig'];
+		$hina_code_new = $param['hina_code_new'];
+		
+		$sql = "
+			INSERT INTO hinagatas(
+				hina_code, 
+				type_a, 
+				hinagata, 
+				sort_no, 
+				delete_flg, 
+				update_user_id, 
+				update_user, 
+				ip_addr, 
+				created, 
+				modified
+			) 
+			SELECT 
+				'{$hina_code_new}' AS hina_code, 
+				type_a, 
+				hinagata, 
+				sort_no, 
+				delete_flg, 
+				update_user_id, 
+				update_user, 
+				ip_addr, 
+				created, 
+				modified
+			 FROM hinagatas WHERE hina_code='{$hina_code_orig}';
+		";
+		$res = $this->Hinagata->query($sql);
+
+		//データ加工や取得
+		$res['success'] = 1;
+		
+		// JSONに変換し、通信元に返す。
+		$json_str = json_encode($res, JSON_HEX_TAG | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_HEX_APOS);
+		return $json_str;
+		
+	}
 
 
 }

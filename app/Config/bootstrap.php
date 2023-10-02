@@ -109,5 +109,7 @@ CakeLog::config('error', array(
 
 config('crud_base_const');//CrudBase定数ファイル
 
-
-
+// ダンプ関数のエイリアス
+function dump($val){
+	debug($val);
+}
