@@ -660,6 +660,96 @@ class HinagataController extends CrudBaseController {
 		return $json_str;
 		
 	}
+	
+	
+	/**
+	 * 雛型コード・一括定型入力 | Ajax 非同期通信
+	 * @return string
+	 */
+	public function bulkCommonByHinaCode(){
+		$this->autoRender = false;//ビュー(ctp)を使わない。
+		
+		// 通信元から送信されてきたパラメータを取得する。
+		$param_json = $_POST['key1'];
+		$param=json_decode($param_json,true);//JSON文字を配列に戻す
+		
+		$hina_code = $param['hina_code'];
+		if(empty($hina_code)) throw new Exception('雛コードが未入力です。');
+		
+		$sql = "SELECT MAX(sort_no) AS max_sort_no FROM hinagatas";
+		$res = $this->Hinagata->query($sql);
+		$next_sort_no = 0;
+		if(!empty($res)){
+			$next_sort_no = $res[0][0]['max_sort_no'];
+			$next_sort_no ++;
+		}
+
+		$sql = "
+			INSERT INTO `hinagatas` (`hina_code`, `type_a`, `hinagata`, `sort_no`, `delete_flg`, `update_user_id`, `update_user`, `ip_addr`) VALUES
+			('{$hina_code}', 33, '', {$next_sort_no}, 0, NULL, 'kenzy', '::1'),
+			('{$hina_code}', 26, '', {$next_sort_no}, 0, NULL, 'kenzy', '::1'),
+			('{$hina_code}', 19, '', {$next_sort_no}, 0, NULL, 'kenzy', '::1'),
+			('{$hina_code}', 18, '', {$next_sort_no}, 0, NULL, 'kenzy', '::1'),
+			('{$hina_code}', 12, '', {$next_sort_no}, 0, NULL, 'kenzy', '::1'),
+			('{$hina_code}', 17, '', {$next_sort_no}, 0, NULL, 'kenzy', '::1'),
+			('{$hina_code}', 22, '', {$next_sort_no}, 0, NULL, 'kenzy', '::1');
+		";
+		$res = $this->Hinagata->query($sql);
+		
+		//データ加工や取得
+		$res['success'] = 1;
+		
+		// JSONに変換し、通信元に返す。
+		$json_str = json_encode($res, JSON_HEX_TAG | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_HEX_APOS);
+		return $json_str;
+		
+	}
+	
+	
+	/**
+	 * 雛型コード・一括削除	 | Ajax 非同期通信
+	 * @return string
+	 */
+	public function bulkDeleteByHinaCode	(){
+		$this->autoRender = false;//ビュー(ctp)を使わない。
+		
+		// 通信元から送信されてきたパラメータを取得する。
+		$param_json = $_POST['key1'];
+		$param=json_decode($param_json,true);//JSON文字を配列に戻す
+		
+		$hina_code = $param['hina_code'];
+		$del_type = $param['del_type'];
+		
+		if(empty($hina_code)) throw new Exception('雛コードが未入力です。');
+		
+		switch ($del_type){
+			case 'delete_flg_on': // 削除フラグON
+				$sql = "UPDATE hinagatas SET delete_flg = 1  WHERE hina_code='{$hina_code}'";
+				$res = $this->Hinagata->query($sql);
+				break;
+			case 'delete_flg_off': // 削除フラグOFF
+				
+				$sql = "UPDATE hinagatas SET delete_flg = 0  WHERE hina_code='{$hina_code}'";
+				$res = $this->Hinagata->query($sql);
+				break;
+			case 'destroy': // DBから完全削除
+				
+				$sql = "DELETE  FROM hinagatas WHERE hina_code='{$hina_code}'";
+				$res = $this->Hinagata->query($sql);
+				break;
+			default:
+				throw new Exception('$del_type is empty!');
+		}
+
+		
+		//データ加工や取得
+		$param['success'] = 1;
+		
+		// JSONに変換し、通信元に返す。
+		$json_str = json_encode($param, JSON_HEX_TAG | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_HEX_APOS);
+		return $json_str;
+		
+	}
 
 
 }

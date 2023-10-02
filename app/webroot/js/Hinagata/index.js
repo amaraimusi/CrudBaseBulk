@@ -1,4 +1,6 @@
-var bulcCopyByHinaCode;
+var bulkCopyByHinaCode; // 雛型コード・一括複製
+var bulkCommonByHinaCode; // 雛型コード・一括定型入力
+var bulkDeleteByHinaCode; // 雛型コード・一括削除
 
 $(function() {
 	init();//初期化
@@ -76,8 +78,14 @@ function init(){
 	});
 	
 	// 雛型コードを指定して一括コピー
-	bulcCopyByHinaCode = new BulcCopyByHinaCode({main_slt:'#bulkCopyByHinaCode'});
+	bulkCopyByHinaCode = new BulkCopyByHinaCode({main_slt:'#bulkCopyByHinaCode'});
 
+	// 雛型コード・一括定型入力
+	bulkCommonByHinaCode = new BulkCommonByHinaCode({main_slt:'#bulkCommonByHinaCode'});
+
+	// 雛型コード・一括削除
+	bulkDeleteByHinaCode = new BulkDeleteByHinaCode({main_slt:'#bulkDeleteByHinaCode'}); // 雛型コードを指定して一括削除
+	
 }
 
 /**

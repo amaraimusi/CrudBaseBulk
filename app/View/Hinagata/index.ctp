@@ -9,7 +9,9 @@ $this->assign('css', $this->Html->css($cssList));
 // JSファイルのインクルード
 $jsList = $this->CrudBase->getJsList();
 
-$jsList[] = 'Hinagata/BulcCopyByHinaCode.js'; // 雛型コードを指定して一括コピー
+$jsList[] = 'Hinagata/BulkCopyByHinaCode.js'; // 雛型コードを指定して一括コピー
+$jsList[] = 'Hinagata/BulkCommonByHinaCode.js'; // 雛型コード・一括定型入力
+$jsList[] = 'Hinagata/BulkDeleteByHinaCode.js'; // 雛型コード・一括削除
 $jsList[] = 'Hinagata/index'; // 当画面専用JavaScript
 $this->assign('script', $this->Html->script($jsList,array('charset'=>'utf-8')));
 
@@ -85,18 +87,19 @@ $this->assign('script', $this->Html->script($jsList,array('charset'=>'utf-8')));
 
 	</div><!-- detail_div -->
 
-	<div id="func_btns" >
+	<div style="display:flex;justify-content:space-around;" >
 		
-			<div class="line-left">
-				<button type="button" onclick="$('#detail_div').toggle(300);" class="btn btn-default btn-sm">
+			<div>
+				<button type="button" onclick="$('#detail_div').toggle(300);" class="btn btn-default btn-xs">
 					<span class="glyphicon glyphicon-cog"></span>
 				</button>
-				<div id="bulkCopyByHinaCode" style="display:inline-block"></div><!--  雛型コードを指定して一括コピー -->
 			</div>
 			
-			<div class="line-middle"></div>
-			
-			<div class="line-right">
+			<div id="bulkCopyByHinaCode" style="display:inline-block"></div><!--  雛型コードを指定して一括コピー -->
+			<div id="bulkCommonByHinaCode" style="display:inline-block"></div><!--  雛型コード・一括定型入力 -->
+			<div id="bulkDeleteByHinaCode" style="display:inline-block"></div><!--  雛型コード・一括削除 -->
+
+			<div>
 				<a href="<?php echo $home_url; ?>" class="btn btn-info" title="この画面を最初に表示したときの状態に戻します。（検索状態、列並べの状態を初期状態に戻します。）">
 					<span class="glyphicon glyphicon-certificate"  ></span></a>
 				<?php 
@@ -114,6 +117,7 @@ $this->assign('script', $this->Html->script($jsList,array('charset'=>'utf-8')));
 	</div>
 	<div style="clear:both"></div>
 	<?php echo $this->Form->end()?>
+
 
 	
 </div>
